@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GEPT-CORE: 核心突破</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'VT323', 'Noto Sans TC', monospace;
+            background-color: #0a0a0c;
+            color: #00ffcc;
+            letter-spacing: 1px;
+            user-select: none;
+        }
+
+        .crt::before {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 50;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .shake {
+            animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        .btn-pixel {
+            border: 2px solid #00ffcc;
+            background-color: rgba(0, 50, 40, 0.6);
+            color: #00ffcc;
+            text-transform: uppercase;
+            transition: all 0.1s;
+            box-shadow: 4px 4px 0px #005544;
+            text-shadow: 1px 1px 0px #000;
+        }
+        .btn-pixel:hover:not(:disabled) {
+            background-color: #00ffcc;
+            color: #000;
+            box-shadow: 2px 2px 0px #005544;
+            transform: translate(2px, 2px);
+        }
+        .btn-pixel:disabled {
+            border-color: #555;
+            color: #555;
+            background-color: #222;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+        
+        .enemy-sprite { filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.5)); }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen overflow-hidden m-0">
+    <div class="crt relative w-full max-w-4xl h-[95vh] sm:h-[85vh] bg-gray-900 border-4 border-[#00ffcc] p-4 flex flex-col shadow-[0_0_30px_rgba(0,255,204,0.3)] overflow-hidden">
+        
+        <!-- 系統開始畫面 -->
+        <div id="screen-start" class="flex-1 flex flex-col items-center justify-center text-center space-y-8 z-10">
+            <h1 class="text-6xl sm:text-8xl font-bold animate-pulse text-[#00ffcc] drop-shadow-[0_0_10px_#00ffcc]">GEPT-CORE</h1>
+            <p class="text-2xl text-teal-300">>> 終端機連線中... 載入初級英檢資料庫...</p>
+            <div class="w-full max-w-sm space-y-6">
+                <input type="text" id="player-name" placeholder="輸入機器人型號 (Name)" class="w-full bg-black border-2 border-[#00ffcc] text-[#00ffcc] p-3 focus:outline-none focus:bg-gray-800 text-center text-3xl placeholder-teal-700 uppercase">
+                <button onclick="startGame()" class="btn-pixel w-full py-4 text-3xl font-bold font-sans">啟動電源 (POWER ON)</button>
+            </div>
+        </div>
+
+        <!-- 遊戲主畫面 -->
+        <div id="screen-game" class="hidden flex-1 flex flex-col z-10">
+            <!-- 頂部資訊列 -->
+            <div class="flex justify-between items-end border-b-2 border-teal-800 pb-2 mb-4 text-xl sm:text-2xl font-sans">
+                <div>
+                    <span id="ui-name" class="font-bold text-teal-100"></span><br>
+                    裝甲 (HP): <span id="ui-hp" class="text-red-400 font-bold">100</span>/100
+                    <div class="w-32 sm:w-48 h-4 border-2 border-red-500 mt-1 bg-black">
+                        <div id="ui-hp-bar" class="h-full bg-red-500 w-full transition-all duration-300"></div>
+                    </div>
+                </div>
+                <div class="text-right leading-tight">
+                    作弊晶片 (HACK): <span id="ui-chips" class="font-bold text-yellow-400 text-3xl">3</span> 
+                    <button onclick="useChip()" id="btn-chip" class="ml-2 text-lg border-2 border-yellow-600 bg-yellow-900 text-yellow-400 px-2 py-0 hover:bg-yellow-700 disabled:opacity-50 transition">自動作答</button><br>
+                    機體零件 (PARTS): <span id="ui-parts" class="font-bold text-blue-400 text-2xl">0</span>/3<br>
+                    <span class="text-gray-400 text-lg">迷宮深度: <span id="ui-stage">1</span>/<span id="ui-max-stage">5</span></span>
+                </div>
+            </div>
+
+            <!-- 第一人稱敵人視角區 -->
+            <div class="flex-1 flex flex-col items-center justify-center relative mb-2">
+                <div class="text-center mb-4">
+                    <h2 id="enemy-name" class="text-3xl sm:text-4xl font-bold text-red-500 mb-4 tracking-widest uppercase font-sans"></h2>
+                    <div id="enemy-sprite" class="text-7xl sm:text-9xl mb-4 animate-bounce enemy-sprite select-none">🛸</div>
+                    <div class="text-xl font-sans" id="enemy-hp-container">
+                        防護盾 (SHIELD): <br>
+                        <span id="enemy-hp" class="text-blue-400 text-3xl font-bold tracking-widest"></span>
+                    </div>
+                </div>
+
+                <!-- 系統訊息疊加層 -->
+                <div id="sys-message" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-90 hidden z-20 border-2 border-teal-500">
+                    <h2 id="sys-message-text" class="text-4xl sm:text-5xl font-bold text-center px-4 leading-relaxed font-sans"></h2>
+                </div>
+            </div>
+
+            <!-- 計時器 -->
+            <div class="w-full h-4 bg-gray-950 border-2 border-gray-700 mb-4" id="timer-container">
+                <div id="ui-timer-bar" class="h-full bg-[#00ffcc] w-full transition-all duration-100"></div>
+            </div>
+
+            <!-- 操作面板 -->
+            <div class="h-72 sm:h-80 bg-black border-4 border-teal-700 p-4 flex flex-col relative font-sans">
+                
+                <!-- 突發狀況區塊 -->
+                <div id="event-area" class="hidden flex-1 flex flex-col items-center justify-center space-y-6">
+                    <p id="event-text" class="text-2xl text-blue-300 text-center leading-relaxed"></p>
+                    <div id="event-options" class="flex gap-6 w-full justify-center"></div>
+                </div>
+
+                <!-- 選擇題 (戰鬥) 區塊 -->
+                <div id="combat-area" class="hidden flex-1 flex-col">
+                    <p id="combat-q" class="text-2xl sm:text-3xl mb-4 text-center text-teal-100"></p>
+                    <div id="combat-options" class="grid grid-cols-2 gap-4 flex-1"></div>
+                </div>
+
+                <!-- 重組題 (解謎) 區塊 -->
+                <div id="puzzle-area" class="hidden flex-1 flex-col">
+                    <p id="puzzle-hint" class="text-xl text-gray-400 mb-2 text-center"></p>
+                    <div class="flex-1 border-b-2 border-dashed border-teal-800 mb-3 p-2 flex flex-wrap content-start gap-2 min-h-[70px] bg-gray-900" id="puzzle-selected"></div>
+                    <div class="flex-1 p-2 flex flex-wrap content-start gap-2" id="puzzle-pool"></div>
+                    <button onclick="submitPuzzle()" id="btn-submit-puzzle" class="btn-pixel w-full py-3 mt-2 text-2xl">傳送指令 (EXECUTE)</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 結束畫面 -->
+        <div id="screen-end" class="hidden flex-1 flex flex-col items-center justify-center text-center space-y-8 z-10 font-sans">
+            <h1 id="end-title" class="text-5xl sm:text-7xl font-bold"></h1>
+            <p id="end-desc" class="text-3xl leading-relaxed text-teal-200"></p>
+            <button onclick="location.reload()" class="btn-pixel px-8 py-4 text-3xl mt-8 font-sans">系統重啟 (REBOOT)</button>
+        </div>
+    </div>
+
+    <script>
+        // --- 題庫：結合 GEPT 講義 W1-W14 與練習題 ---
+        const Q_COMBAT = [
+            { q: "My father's brother is my ______.", opt: ["uncle", "aunt", "cousin", "sister"], ans: 0 },
+            { q: "The library is very ______, so I like to read and study there.", opt: ["formal", "busy", "thirsty", "quiet"], ans: 3 },
+            { q: "If it ______ tomorrow, we will stay at home.", opt: ["rain", "rained", "raining", "rains"], ans: 3 },
+            { q: "Look! The birds ______ in the sky.", opt: ["fly", "flies", "are flying", "is flying"], ans: 2 },
+            { q: "The bank is ______ the school and the park.", opt: ["between", "among", "under", "behind"], ans: 0 },
+            { q: "______ do you go to the movies? — About twice a month.", opt: ["How long", "How much", "How often", "How many"], ans: 2 },
+            { q: "He is tired, ______ he goes to bed early.", opt: ["but", "or", "so", "because"], ans: 2 },
+            { q: "Where ______ you last night? I called you three times.", opt: ["are", "is", "was", "were"], ans: 3 },
+            { q: "He didn't ______ his homework last night.", opt: ["do", "does", "did", "doing"], ans: 0 },
+            { q: "I have ______ money. Let's buy some drinks.", opt: ["many", "a few", "a little", "few"], ans: 2 },
+            { q: "______ you swim? — Yes, I can.", opt: ["Do", "Are", "Can", "Is"], ans: 2 },
+            { q: "The box is ______ heavy for the boy to carry.", opt: ["very", "so", "too", "enough"], ans: 2 },
+            { q: "It usually ______ me twenty minutes to walk to school.", opt: ["spends", "takes", "costs", "pays"], ans: 1 },
+            { q: "Harry Potter is a famous book. It ______ by a great writer.", opt: ["writes", "wrote", "is written", "was written"], ans: 3 }
+        ];
+
+        const Q_PUZZLE = [
+            { hint: "提示：你妹妹幾歲？", words: ["how", "old", "is", "your", "sister"], correct: "how old is your sister" },
+            { hint: "提示：袋子裡有一些蘋果。", words: ["there", "are", "some", "apples", "in", "the", "bag"], correct: "there are some apples in the bag" },
+            { hint: "提示：她現在正在做什麼？", words: ["what", "is", "she", "doing", "now"], correct: "what is she doing now" },
+            { hint: "提示：你喜歡哪一個？", words: ["which", "one", "do", "you", "like"], correct: "which one do you like" },
+            { hint: "提示：你昨天去哪裡了？", words: ["where", "did", "you", "go", "yesterday"], correct: "where did you go yesterday" },
+            { hint: "提示：我該怎麼去郵局？", words: ["how", "can", "I", "get", "to", "the", "post", "office"], correct: "how can I get to the post office" },
+            { hint: "提示：我無話可說。", words: ["I", "have", "nothing", "to", "say"], correct: "I have nothing to say" },
+            { hint: "提示：這些男孩是我的兄弟。", words: ["these", "boys", "are", "my", "brothers"], correct: "these boys are my brothers" }
+        ];
+
+        // 迷宮關卡設定 (濃縮為 5 關：迷宮守衛 -> 雷射解謎 -> 事件 -> 強力守衛 -> 王)
+        const LEVELS = [
+            { type: 'combat', name: '巡邏無人機 (Drone)', sprite: '🛸', hp: 2, time: 25 },
+            { type: 'puzzle', name: '雷射閘門 (Laser Gate)', sprite: '⚡', hp: 1, time: 40 },
+            { type: 'event',  name: '廢棄物資箱 (Cargo)', sprite: '📦', hp: 0, time: 0 },
+            { type: 'combat', name: '重裝守衛 (Guard)', sprite: '🤖', hp: 3, time: 20 },
+            { type: 'boss',   name: '母艦核心 (MAINFRAME)', sprite: '👁️', hp: 4, time: 15 }
+        ];
+
+        let GAME = {
+            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0,
+            enemyHp: 0, isProcessing: false, isEventChallenge: false,
+            timer: null, timeLeft: 0, maxTime: 10, currentQ: null
+        };
+
+        let puzzleSelected = [];
+        let puzzlePool = [];
+
+        function showScreen(id) {
+            ['screen-start', 'screen-game', 'screen-end'].forEach(s => document.getElementById(s).classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        async function showMessage(text, colorClass, duration = 1200) {
+            const msgEl = document.getElementById('sys-message');
+            const textEl = document.getElementById('sys-message-text');
+            msgEl.classList.remove('hidden');
+            textEl.innerHTML = text;
+            textEl.className = `text-4xl sm:text-5xl font-bold text-center px-4 leading-relaxed tracking-widest font-sans ${colorClass}`;
+            
+            return new Promise(resolve => {
+                setTimeout(() => { msgEl.classList.add('hidden'); resolve(); }, duration);
+            });
+        }
+
+        function startGame() {
+            const nameInput = document.getElementById('player-name').value.trim();
+            if (nameInput) GAME.player = nameInput.toUpperCase();
+            
+            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0;
+            document.getElementById('ui-max-stage').innerText = LEVELS.length;
+            
+            updateTopUI();
+            showScreen('screen-game');
+            loadStage();
+        }
+
+        function updateTopUI() {
+            document.getElementById('ui-name').innerText = `[${GAME.player}]`;
+            document.getElementById('ui-hp').innerText = Math.max(0, GAME.hp);
+            document.getElementById('ui-hp-bar').style.width = `${Math.max(0, GAME.hp)}%`;
+            document.getElementById('ui-chips').innerText = GAME.chips;
+            document.getElementById('ui-parts').innerText = GAME.parts;
+            document.getElementById('ui-stage').innerText = Math.min(GAME.stage + 1, LEVELS.length);
+            document.getElementById('btn-chip').disabled = GAME.chips <= 0;
+        }
+
+        function loadStage() {
+            if (GAME.stage >= LEVELS.length) {
+                gameOver(true);
+                return;
+            }
+
+            // 重置所有狀態 (修復之前卡住的 Bug)
+            GAME.isProcessing = false;
+            GAME.isEventChallenge = false;
+            clearInterval(GAME.timer);
+
+            const level = LEVELS[GAME.stage];
+            GAME.enemyHp = level.hp;
+            
+            document.getElementById('enemy-name').innerText = level.name;
+            document.getElementById('enemy-sprite').innerText = level.sprite;
+            
+            document.getElementById('combat-area').classList.add('hidden');
+            document.getElementById('puzzle-area').classList.add('hidden');
+            document.getElementById('event-area').classList.add('hidden');
+            
+            document.getElementById('timer-container').style.visibility = 'visible';
+            document.getElementById('enemy-hp-container').style.visibility = 'visible';
+            document.getElementById('enemy-hp').innerText = '█'.repeat(GAME.enemyHp);
+
+            let currentType = level.type;
+            if (currentType === 'event') {
+                setupEvent(); return; 
+            }
+            if (currentType === 'boss') {
+                currentType = Math.random() > 0.5 ? 'combat' : 'puzzle';
+            }
+
+            if (currentType === 'combat') setupCombat();
+            else setupPuzzle();
+
+            GAME.maxTime = level.time;
+            GAME.timeLeft = GAME.maxTime;
+            startTimer();
+        }
+
+        function setupEvent() {
+            document.getElementById('timer-container').style.visibility = 'hidden'; 
+            document.getElementById('enemy-hp-container').style.visibility = 'hidden';
+            document.getElementById('event-area').classList.remove('hidden');
+            
+            document.getElementById('event-text').innerHTML = "偵測到廢棄物資箱。<br>是否嘗試回答問題破解防火牆，以取得【機體零件】？<br><span class='text-sm text-gray-400'>(集滿3個零件可恢復HP並獲得晶片)</span>";
+
+            const optDiv = document.getElementById('event-options');
+            optDiv.innerHTML = '';
+            
+            const btnHack = document.createElement('button');
+            btnHack.className = 'btn-pixel px-6 py-3 text-xl font-sans';
+            btnHack.innerText = '嘗試破解 (HACK)';
+            btnHack.onclick = () => {
+                if(GAME.isProcessing) return;
+                document.getElementById('event-area').classList.add('hidden');
+                document.getElementById('timer-container').style.visibility = 'visible';
+                
+                GAME.enemyHp = 1; GAME.isEventChallenge = true;
+                if(Math.random() > 0.5) setupCombat(); else setupPuzzle();
+                
+                GAME.maxTime = 20; GAME.timeLeft = 20; 
+                startTimer();
+            };
+
+            const btnLeave = document.createElement('button');
+            btnLeave.className = 'border-2 border-gray-600 text-gray-400 px-6 py-3 text-xl bg-gray-900 hover:bg-gray-800 transition font-sans';
+            btnLeave.innerText = '忽略前進 (IGNORE)';
+            btnLeave.onclick = () => {
+                if(GAME.isProcessing) return;
+                GAME.stage++; loadStage();
+            };
+            optDiv.appendChild(btnHack); optDiv.appendChild(btnLeave);
+        }
+
+        function setupCombat() {
+            document.getElementById('combat-area').classList.remove('hidden');
+            document.getElementById('combat-options').innerHTML = ''; 
+            
+            GAME.currentQ = Q_COMBAT[Math.floor(Math.random() * Q_COMBAT.length)];
+            document.getElementById('combat-q').innerText = GAME.currentQ.q;
+
+            GAME.currentQ.opt.forEach((opt, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'btn-pixel py-3 text-xl break-words font-sans';
+                btn.innerText = opt;
+                btn.onclick = () => handleCombatAnswer(idx, btn);
+                document.getElementById('combat-options').appendChild(btn);
+            });
+        }
+
+        function setupPuzzle() {
+            document.getElementById('puzzle-area').classList.remove('hidden');
+            GAME.currentQ = Q_PUZZLE[Math.floor(Math.random() * Q_PUZZLE.length)];
+            document.getElementById('puzzle-hint').innerText = GAME.currentQ.hint;
+
+            // 隨機打亂單字
+            puzzlePool = [...GAME.currentQ.words].sort(() => Math.random() - 0.5);
+            puzzleSelected = [];
+            renderPuzzleUI();
+        }
+
+        function renderPuzzleUI() {
+            const poolEl = document.getElementById('puzzle-pool');
+            const selEl = document.getElementById('puzzle-selected');
+            poolEl.innerHTML = ''; selEl.innerHTML = '';
+
+            puzzlePool.forEach((word, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'border-2 border-teal-600 bg-gray-800 text-teal-300 px-3 py-1 text-lg sm:text-xl hover:bg-teal-900 transition shadow-[2px_2px_0px_#005544] font-sans';
+                btn.innerText = word;
+                btn.onclick = () => {
+                    if(GAME.isProcessing) return;
+                    puzzlePool.splice(idx, 1); puzzleSelected.push(word);
+                    renderPuzzleUI();
+                };
+                poolEl.appendChild(btn);
+            });
+
+            puzzleSelected.forEach((word, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'border-2 border-[#00ffcc] bg-teal-900 text-[#00ffcc] px-3 py-1 text-lg sm:text-xl hover:bg-red-900 transition shadow-[2px_2px_0px_#00aa88] font-sans';
+                btn.innerText = word;
+                btn.onclick = () => {
+                    if(GAME.isProcessing) return;
+                    puzzleSelected.splice(idx, 1); puzzlePool.push(word);
+                    renderPuzzleUI();
+                };
+                selEl.appendChild(btn);
+            });
+        }
+
+        async function handleCombatAnswer(idx, btn) {
+            if (GAME.isProcessing) return;
+            GAME.isProcessing = true; clearInterval(GAME.timer);
+
+            if (idx === GAME.currentQ.ans) {
+                btn.style.backgroundColor = '#00ffcc'; btn.style.color = '#000';
+                await damageEnemy();
+            } else {
+                btn.style.backgroundColor = '#ff3333'; btn.style.color = '#fff'; btn.style.borderColor = '#ff3333';
+                await takeDamage(20, 'ERR: 語法錯誤 (SYNTAX ERROR)');
+            }
+        }
+
+        async function submitPuzzle() {
+            if (GAME.isProcessing || puzzleSelected.length === 0) return;
+            GAME.isProcessing = true; clearInterval(GAME.timer);
+
+            const userAns = puzzleSelected.join(' ');
+            if (userAns === GAME.currentQ.correct) {
+                await damageEnemy();
+            } else {
+                await takeDamage(20, 'ERR: 邏輯錯誤 (LOGIC ERROR)');
+            }
+        }
+
+        async function damageEnemy() {
+            GAME.enemyHp--;
+            if(!GAME.isEventChallenge) {
+                document.getElementById('enemy-hp').innerText = '█'.repeat(GAME.enemyHp);
+                document.getElementById('enemy-sprite').classList.add('shake');
+                document.getElementById('enemy-sprite').style.filter = 'drop-shadow(0 0 20px rgba(255, 0, 0, 0.8))';
+            }
+            
+            await showMessage('指令成功 (SUCCESS)', 'text-[#00ffcc]', 800);
+            
+            if(!GAME.isEventChallenge) {
+                document.getElementById('enemy-sprite').classList.remove('shake');
+                document.getElementById('enemy-sprite').style.filter = 'drop-shadow(0 0 10px rgba(0, 255, 204, 0.5))';
+            }
+
+            if (GAME.enemyHp <= 0) {
+                if (GAME.isEventChallenge) {
+                    await showMessage('破解成功！<br>獲得 1 個零件', 'text-blue-400', 1200);
+                    await addPart();
+                } else {
+                    await showMessage('目標摧毀 (DESTROYED)', 'text-yellow-400', 1000);
+                    // 一般戰鬥 30% 機率掉落零件
+                    if (Math.random() < 0.3) {
+                        await showMessage('掃描殘骸...<br>發現 1 個零件！', 'text-blue-400', 1200);
+                        await addPart();
+                    }
+                }
+                GAME.stage++; loadStage(); 
+            } else {
+                // Boss 戰未死，切換題目
+                setTimeout(() => {
+                    GAME.isProcessing = false; 
+                    if (LEVELS[GAME.stage].type === 'boss') {
+                        if(Math.random() > 0.5) {
+                            document.getElementById('puzzle-area').classList.add('hidden'); setupCombat();
+                        } else {
+                            document.getElementById('combat-area').classList.add('hidden'); setupPuzzle();
+                        }
+                    } else if (LEVELS[GAME.stage].type === 'combat') {
+                        setupCombat();
+                    } else {
+                        setupPuzzle();
+                    }
+                    // 扣血後補回一點時間
+                    GAME.timeLeft = Math.min(GAME.maxTime, GAME.timeLeft + (GAME.maxTime * 0.4));
+                    startTimer();
+                }, 200);
+            }
+        }
+
+        async function takeDamage(amount, msgText) {
+            GAME.hp -= amount; updateTopUI();
+            document.body.classList.add('shake');
+            document.getElementById('screen-game').style.boxShadow = 'inset 0 0 80px rgba(255,0,0,0.6)';
+            
+            await showMessage(msgText, 'text-red-500', 1200);
+            
+            document.body.classList.remove('shake');
+            document.getElementById('screen-game').style.boxShadow = '';
+
+            if (GAME.hp <= 0) {
+                gameOver(false);
+            } else {
+                if (GAME.isEventChallenge) {
+                    await showMessage('破解失敗，物資箱損毀...', 'text-gray-500', 1500);
+                    GAME.stage++; loadStage();
+                } else {
+                    // 解除鎖定並重置時間
+                    GAME.isProcessing = false;
+                    GAME.timeLeft = GAME.maxTime; 
+                    startTimer();
+                }
+            }
+        }
+
+        async function addPart() {
+            GAME.parts++;
+            if (GAME.parts >= 3) {
+                GAME.parts = 0; GAME.chips++; GAME.hp = Math.min(100, GAME.hp + 30);
+                updateTopUI();
+                await showMessage('系統修復！<br>HP +30<br>獲得晶片 +1', 'text-[#00ffcc]', 2000);
+            } else {
+                updateTopUI();
+            }
+        }
+
+        async function useChip() {
+            if (GAME.chips <= 0 || GAME.isProcessing) return;
+            if (LEVELS[GAME.stage].type === 'event' && !GAME.isEventChallenge) return;
+
+            GAME.chips--; updateTopUI();
+            GAME.isProcessing = true; clearInterval(GAME.timer);
+            
+            await showMessage('啟動破解晶片...<br>強行覆寫系統 (OVERRIDE)', 'text-yellow-400', 1500);
+            await damageEnemy();
+        }
+
+        function startTimer() {
+            clearInterval(GAME.timer);
+            const bar = document.getElementById('ui-timer-bar');
+            
+            GAME.timer = setInterval(async () => {
+                if (GAME.isProcessing) return;
+
+                GAME.timeLeft -= 0.1;
+                const percent = (GAME.timeLeft / GAME.maxTime) * 100;
+                bar.style.width = `${Math.max(0, percent)}%`;
+
+                if (percent < 30) bar.style.backgroundColor = '#ff3333';
+                else bar.style.backgroundColor = '#00ffcc';
+
+                if (GAME.timeLeft <= 0) {
+                    clearInterval(GAME.timer);
+                    GAME.isProcessing = true;
+                    await takeDamage(15, 'TIME OUT (連線超時)');
+                }
+            }, 100);
+        }
+
+        function gameOver(isWin) {
+            clearInterval(GAME.timer); showScreen('screen-end');
+            const title = document.getElementById('end-title');
+            const desc = document.getElementById('end-desc');
+            
+            if (isWin) {
+                title.innerText = '任務完成\n(MISSION ACCOMPLISHED)';
+                title.className = 'text-5xl sm:text-7xl font-bold text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.8)]';
+                desc.innerHTML = `幹得好，機體 ${GAME.player}！<br><br>母艦核心已成功奪回<br>剩餘晶片：${GAME.chips}<br>最終殘餘裝甲：${GAME.hp}%`;
+            } else {
+                title.innerText = '系統崩潰\n(SYSTEM FAILURE)';
+                title.className = 'text-5xl sm:text-7xl font-bold text-red-600 drop-shadow-[0_0_20px_rgba(220,38,38,0.8)] animate-pulse';
+                desc.innerHTML = `機體 ${GAME.player} 裝甲值歸零...<br><br>連線中斷。請重新訓練文法神經網路。`;
+            }
+        }
+    </script>
+</body>
+</html>
