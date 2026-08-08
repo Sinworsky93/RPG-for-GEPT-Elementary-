@@ -1,0 +1,52 @@
+{
+  "_notes": "Reading passages sourced from teaching notes (text kept unchanged). All questions below are newly written by Claude and do NOT reuse any wording from the original notes or from copyrighted test material. This file currently contains one pilot passage for review before the rest are processed.",
+  "passages": [
+    {
+      "id": "reading-001",
+      "title": "The Liquid Gold of Formosa: Taiwan's Craft Revolution",
+      "source": "Original/teaching material (Taiwan whisky industry)",
+      "paragraphs": {
+        "A": "While Taiwan has long consolidated its global reputation as a powerhouse of semiconductor manufacturing—an industry that accounts for approximately 15% of the island's economic output and constitutes more than one-third of its exports—there is a quiet diversification underway. Beyond the ubiquitous silicon chips that power the modern digital world, several of Taiwan's niche craft sectors are forging formidable international reputations. Among these, the premium spirits sector, particularly the production of high-quality single malt whisky, has emerged as an unexpected contender. In a global market historically dominated by traditional distilling powerhouses such as Scotland and Japan, Taiwanese producers are rapidly capturing international attention and challenging established hierarchies.",
+        "B": "Geographically, Taiwan is far from an intuitive location for whisky production. Characterized by a subtropical climate marked by intense heat, high humidity, and dramatic seasonal temperature fluctuations, the island's environment was traditionally viewed as a major impediment to the slow, delicate aging process required for spirits. However, at the Kavalan Distillery in northeastern Yilan County, these meteorological challenges were creatively re-engineered into distinct advantages. Rather than resisting the local climate, distillers chose to cooperate with it. The high ambient temperatures and humidity levels inside the maturation facilities drastically accelerate the interaction between the wood and the liquid, speeding up the maturation process and extracting deep, robust, and highly complex flavor profiles in a fraction of the time required in cooler climates.",
+        "C": "A cornerstone of this rapid-maturation success lies in sophisticated barrel management, exemplified by the proprietary STR process. STR, an acronym for shaving, toasting, and recharring, represents a highly controlled mechanical and thermal treatment of the wooden casks. Initially, the inner surface of the barrel is shaved slightly to eliminate undesirable, harsh compounds. This is followed by a precise toasting phase to preheat the wood and release deep woody aromas. Finally, a high-intensity recharring process deposits a fresh carbon layer inside the cask, which not only dictates the deep color of the final spirit but also infuses it with complex notes of caramel, toffee, and chocolate. This barrel manipulation is further enhanced by storing hundreds of thousands of casks in specialized warehouses where temperatures are allowed to climb as high as 40°C, maximizing the extraction of flavor compounds from American oak.",
+        "D": "The global breakthrough for Taiwanese spirits occurred in 2015, a decade after Kavalan's founding in 2005, when one of its flagship single malts was declared the world's best single malt whisky. This historic milestone marked a major turning point, transitioning the island from an obscure domestic producer to a global phenomenon. Following a major facility expansion in 2016, Taiwan's dominant producer increased its annual capacity to approximately 10 million bottles, placing it among the largest single malt distilleries globally. Today, these spirits are distributed in over 30 countries, with foreign sales accounting for roughly 40% of total revenue. Key international strongholds include Japan and South Korea, while Singapore remains a market of intense focus. Beyond this dominant player, the domestic landscape is diversifying, with distilleries like Omar Whisky gaining traction, bringing the total number of commercial homegrown distilleries on the island to four. This growth is further bolstered by a highly receptive domestic market where the absence of import tariffs on whisky stimulates diverse consumer exploration.",
+        "E": "The trajectory of Taiwan's whisky industry mirrors that of other emerging premium sectors on the island, such as specialty coffee and artisanal chocolate. Despite their biological and manufacturing differences, these boutique industries share nearly identical macroeconomic bottlenecks. Due to Taiwan's restricted land availability, high cost of labor, and relatively small production scales, competing on price with mass-market global giants is economically unviable. Consequently, Taiwanese producers have adopted a value-over-volume strategy, competing strictly on high-end quality, robust brand storytelling, and targeted marketing aimed at affluent consumers. Additionally, environmental threats from extreme weather anomalies—such as droughts, torrential rains, and typhoons—jeopardize raw crop consistency. To secure their future, these craft sectors must continuously cultivate international brand equity, relying on a combination of tourism, overseas exports, and exceptional craftsmanship to solidify Taiwan's identity as a hub for premium, high-value creations."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Reading Passage 1 has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below. Write the correct number, i-vii.",
+          "headings": [
+            "i. The origins of a global spirits rivalry",
+            "ii. Reinventing barrel treatment for faster maturation",
+            "iii. A climate once seen as unsuitable now used as an asset",
+            "iv. From unknown producer to internationally recognised brand",
+            "v. Shared struggles across Taiwan's boutique industries",
+            "vi. The rise of a lesser-known manufacturing sector",
+            "vii. Government incentives driving industry growth"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "vi" },
+            { "n": 2, "paragraph": "B", "answer": "iii" },
+            { "n": 3, "paragraph": "C", "answer": "ii" },
+            { "n": 4, "paragraph": "D", "answer": "iv" },
+            { "n": 5, "paragraph": "E", "answer": "v" }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 6, "statement": "Kavalan Distillery was established in 2005.", "answer": "TRUE" },
+            { "n": 7, "statement": "Taiwanese whisky producers mainly compete with large international brands by offering lower prices.", "answer": "FALSE" },
+            { "n": 8, "statement": "Singapore is currently the largest export market for Taiwanese whisky by revenue.", "answer": "NOT GIVEN" },
+            { "n": 9, "statement": "There are currently four commercial whisky distilleries operating in Taiwan.", "answer": "TRUE" },
+            { "n": 10, "statement": "Unpredictable weather events threaten the consistency of raw materials used by Taiwan's craft industries.", "answer": "TRUE" }
+          ]
+        }
+      ]
+    }
+  ]
+}
