@@ -391,6 +391,106 @@
           ]
         }
       ]
+    },
+    {
+      "id": "reading-009",
+      "title": "Escaping the Success Machine: From Workaholism to Human Connection",
+      "source": "Original/teaching material (psychology of work)",
+      "paragraphs": {
+        "A": "In contemporary society, high-achieving individuals, who are often lauded for their relentless drive, frequently expose themselves to insidious behavioral patterns. Chief among these is workaholism, a phenomenon widely misconstrued as a commendable work ethic. However, sociological research suggests that excessive labor is merely a secondary symptom. The primary impetus, which is far more profound, is an obsessive addiction to success. Seldom do we realize that the insatiable desire for recognition drives individuals to overwork. Success, defined as the attainment of merit accompanied by rewards, becomes a psychological necessity. Without this validation, strivers feel fully alive only during brief moments of professional triumph.",
+        "B": "This compulsive pursuit is not without its physiological foundations. Neurophysiological studies indicate that success triggers the release of dopamine, a neuromodulator intrinsically implicated in addictive behaviors. When individuals experience professional triumph, their brains are flooded with this chemical reward, prompting them to seek identical stimuli repeatedly. Because excellence is inherently relative, individuals must consistently outperform peers to secure these rewards. This competitive dynamic necessitates an ever-increasing investment of labor, which ultimately manifests as work addiction. Thus, the physiological mechanism reinforces the behavioral compulsion, trapping the individual in a self-perpetuating loop of unsustainable exertion.",
+        "C": "Behind this cycle lies a deeper psychological transformation: the tendency of high-achievers to reduce themselves to mere \"success machines.\" This self-objectification, which strips individuals of their fundamental humanity, constitutes a significant moral and psychological crisis. By viewing themselves solely through the lens of productivity and external accolades, individuals treat themselves as instruments of labor rather than complex human beings. This perspective, though efficient in generating professional output, compromises emotional well-being. Not until they confront this self-imposed objectification can they begin to reclaim their authentic selves, recognizing that human worth transcends economic utility and professional prestige.",
+        "D": "The consequences of this lifestyle are acutely detrimental to interpersonal relationships. Workaholics routinely exhibit dysfunctional behaviors, including defensiveness and the secretive checking of communications, which erode marital and parental bonds. In their quest to remain \"special\" rather than happy, they often sacrifice crucial domestic moments, leading to familial alienation. A critical distinction must be made between \"deal friends\"—who are instrumental to professional advancement—and \"real friends,\" whose value lies not in utility but in unconditional support. While the former are abundant in executive suites, the latter are desperately scarce among workaholics, exacerbating their emotional isolation.",
+        "E": "Ameliorating this condition requires a deliberate shift from professional achievement to human connection. Since work can never reciprocate affection, individuals must cultivate relationships with those who can love them back. This involves investing in companionate love with spouses and children, and establishing authentic, non-transactional friendships beyond professional utility. Furthermore, engaging in spiritual practices or exploring wisdom literature can provide a metaphysical grounding that shields individuals from performance pressure. Ultimately, work cannot substitute for genuine human intimacy, for human happiness is fundamentally contingent upon the depth and quality of our love relationships."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. How dopamine locks people into a cycle of overwork",
+            "ii. Treating oneself as a tool rather than a whole person",
+            "iii. Why hard work is often mistaken for something else entirely",
+            "iv. Two kinds of relationships and their different values",
+            "v. Rebuilding a sense of self through genuine relationships",
+            "vi. The link between income level and workaholism",
+            "vii. Why bonuses rarely change a workaholic's behaviour"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "iii" },
+            { "n": 2, "paragraph": "B", "answer": "i" },
+            { "n": 3, "paragraph": "C", "answer": "ii" },
+            { "n": 4, "paragraph": "D", "answer": "iv" },
+            { "n": 5, "paragraph": "E", "answer": "v" }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 6, "statement": "The passage argues that workaholism is best explained as a strong work ethic rather than an addiction.", "answer": "FALSE" },
+            { "n": 7, "statement": "The release of dopamine after professional success motivates people to seek the same experience again.", "answer": "TRUE" },
+            { "n": 8, "statement": "Because excellence is relative, individuals need to keep outperforming their peers to feel rewarded.", "answer": "TRUE" },
+            { "n": 9, "statement": "Workaholics typically have more \"real friends\" than \"deal friends.\"", "answer": "FALSE" },
+            { "n": 10, "statement": "The passage recommends replacing human relationships entirely with spiritual or religious practice.", "answer": "NOT GIVEN" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-010",
+      "title": "The Micro-World of Extreme Precision: The Global Semiconductor Race",
+      "source": "Original/teaching material (semiconductor industry)",
+      "paragraphs": {
+        "A": "Rarely in human history has any technology progressed at a pace as relentless as that of the semiconductor, which forms the bedrock of modern computing. This unprecedented expansion is governed by Moore's Law—a principle of economics rather than physics—predicting that the number of transistors on a single chip doubles approximately every couple of years. Today, these minuscule devices, which are far smaller than a coronavirus, are manufactured at a nanometer scale to undergird everything from household appliances to data centers. Underpinning this explosion of computing power is the transistor's ability to switch circuits on or off, generating the binary code of ones and zeros that facilitates digital communication.",
+        "B": "Although silicon is widely distributed throughout the Earth's crust, refining it to an extraordinary level of purity remains a formidable challenge. The manufacturing process is so sensitive that even a single atomic impurity can disrupt the functions of a circuit, rendering the entire wafer defective. Consequently, the production of these ultra-purified silicon wafers is highly concentrated, with only four specialized companies globally capable of manufacturing them at the requisite scale. It is not uncommon for chipmakers to guard their proprietary processes with extreme secrecy, as these formulas serve as the essential foundation for layering dozens of materials on top of the silicon base.",
+        "C": "Furthermore, the physical scale of microchip components means that humans are far too imprecise for manufacturing at the nanometer level. Consequently, fabricating these chips necessitates highly automated factories containing massive, specialized machinery. Among these tools, the extreme ultraviolet lithography machine, produced by the Dutch company ASML and costing upwards of $350 million, is arguably the most complex. To carve intricate transistors into silicon, this machine utilizes a powerful laser to strike falling tin droplets, creating a plasma that emits light at a wavelength of precisely 13.5 nanometers, which is then directed by the flattest mirrors ever made.",
+        "D": "The economic realities of manufacturing at the cutting edge have triggered a dramatic consolidation within the semiconductor industry. To establish a single state-of-the-art fabrication facility, a company must accumulate approximately $20 billion, making these factories some of the most expensive in human history. To make such astronomical investments financially viable, firms must achieve massive economies of scale by producing billions of units. This economic barrier has resulted in a market where only three companies can fabricate cutting-edge processor chips, with Taiwan's TSMC alone manufacturing about 90% of the world's most advanced processors.",
+        "E": "Finally, because the manufacturing process is so brutally complex, no single firm can secure a self-sufficient semiconductor supply chain without establishing international partnerships. Modern chip production relies on an intricate web of international suppliers, where a smartphone processor is typically manufactured in Taiwan using lithography tools from the Netherlands, Japan, and the United States, alongside high-purity chemicals from Japan. Although some critical raw materials are predominantly processed in a single nation, such as China producing 90% of the world's gallium and germanium, the global industry remains structurally interdependent, ensuring that geopolitical issues can immediately disrupt supply."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. A single economic principle behind decades of exponential growth",
+            "ii. The astronomical cost of staying at the cutting edge",
+            "iii. Why global politics can threaten chip supply overnight",
+            "iv. The extreme purity required at the material level",
+            "v. Machines built to work where human hands cannot",
+            "vi. A brief history of the transistor's invention",
+            "vii. Government subsidies driving the semiconductor race"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "i" },
+            { "n": 2, "paragraph": "B", "answer": "iv" },
+            { "n": 3, "paragraph": "C", "answer": "v" },
+            { "n": 4, "paragraph": "D", "answer": "ii" },
+            { "n": 5, "paragraph": "E", "answer": "iii" }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 6, "statement": "Moore's Law is a law of physics rather than a principle of economics.", "answer": "FALSE" },
+            { "n": 7, "statement": "A single atomic impurity can make an entire silicon wafer unusable.", "answer": "TRUE" },
+            { "n": 8, "statement": "ASML's extreme ultraviolet lithography machines cost less than $100 million each.", "answer": "FALSE" },
+            { "n": 9, "statement": "TSMC manufactures the majority of the world's most advanced processor chips.", "answer": "TRUE" },
+            { "n": 10, "statement": "China is the world's leading producer of extreme ultraviolet lithography machines.", "answer": "NOT GIVEN" }
+          ]
+        }
+      ]
+    }
+  ],
+  "_excluded": [
+    {
+      "reason": "copyright",
+      "note": "A full 3-passage, 40-question Academic Reading test found in Joanne's notes ('Developmental Tasks of Normal Adolescence', 'Bees (Ecological intelligence of bees)', 'A new stage in the study and teaching of history') was NOT processed. Unlike the 10 passages above, these read as verbatim genuine IELTS test content (plain textbook prose, pre-filled answer keys, well-known real passage titles) rather than original/AI-authored material, matching the same risk profile as the Cambridge excerpt found earlier in Weslyn's notes. Left out of the reusable bank pending manual confirmation of its source."
     }
   ]
 }
