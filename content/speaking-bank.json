@@ -8,7 +8,10 @@
         "What do you like about your hometown?",
         "What do you not like about it?",
         "How important is your hometown to you?",
-        "Do you think you will continue to live in your hometown?"
+        "Do you think you will continue to live in your hometown?",
+        "What's the difference between your hometown and other cities in your country?",
+        "Would you recommend your hometown to a foreign visitor?",
+        "Has your hometown changed much in recent years?"
       ]
     },
     {
@@ -17,7 +20,10 @@
         "Tell me about the kind of accommodation you live in.",
         "Does the place you live in have many amenities?",
         "Is there anything you would like to change about the place you live in?",
-        "Do you plan to live there for a long time?"
+        "Do you plan to live there for a long time?",
+        "How long have you lived in your current home?",
+        "What's your favourite room in your home?",
+        "Do you live with family or by yourself?"
       ]
     },
     {
@@ -27,7 +33,10 @@
         "What kind of jobs do people usually do in your country?",
         "What was your first job?",
         "Would you like to change your job in the future?",
-        "What do you like or dislike about your job?"
+        "What do you like or dislike about your job?",
+        "What subject are you studying, or what field do you work in?",
+        "Is your job or your study stressful?",
+        "What do you hope to be doing in five years' time?"
       ]
     },
     {
@@ -36,7 +45,10 @@
         "Do you enjoy shopping? Why or why not?",
         "How often do you go shopping?",
         "Do you prefer shopping alone or with friends? Why?",
-        "Do you plan ahead before you go shopping, or do you buy things on impulse?"
+        "Do you plan ahead before you go shopping, or do you buy things on impulse?",
+        "What kind of shops do you like visiting?",
+        "Do you enjoy shopping online?",
+        "Has the way you shop changed in recent years?"
       ]
     },
     {
@@ -45,7 +57,10 @@
         "Do you often eat with friends?",
         "What kind of food do you usually eat with your friends?",
         "Do you prefer eating at home or in restaurants with friends?",
-        "Has your taste in food changed since you were a child?"
+        "Has your taste in food changed since you were a child?",
+        "Do you enjoy cooking?",
+        "What's your favourite meal of the day?",
+        "Do you think it's important to eat healthily?"
       ]
     },
     {
@@ -54,7 +69,10 @@
         "What do you do in your free time?",
         "Do you have a busy social life?",
         "Do you lead an active life?",
-        "Would you like to change anything about your lifestyle?"
+        "Would you like to change anything about your lifestyle?",
+        "How much free time do you have during the week?",
+        "What did you enjoy doing in your free time as a child?",
+        "Do you prefer relaxing at home or going out?"
       ]
     },
     {
@@ -63,7 +81,10 @@
         "What types of sports are popular in your country?",
         "In your opinion, what are the benefits of playing a sport?",
         "Do you think old people can keep fit by playing sports or exercising?",
-        "Do you think famous sports stars make good role models for children?"
+        "Do you think famous sports stars make good role models for children?",
+        "Do you play any sports yourself?",
+        "Did you do much sport when you were a child?",
+        "Is it easy to do sports where you live?"
       ]
     },
     {
@@ -73,7 +94,10 @@
         "Do you like reading books? Why?",
         "Do you have many books at home?",
         "Do you prefer to buy books or borrow them?",
-        "What are the major benefits of reading?"
+        "What are the major benefits of reading?",
+        "What was the last book you read?",
+        "Did your parents encourage you to read as a child?",
+        "Do you read in paper form or on a screen?"
       ]
     },
     {
@@ -82,7 +106,10 @@
         "Do you like watching films?",
         "What kinds of movies do you like best?",
         "Do you like to watch movies alone or with your friends?",
-        "Would you like to be in a movie?"
+        "Would you like to be in a movie?",
+        "How often do you go to the cinema?",
+        "Do you prefer local films or foreign films?",
+        "What was the last film you watched?"
       ]
     },
     {
@@ -91,7 +118,10 @@
         "Do you use any apps or technology for cooking or ordering food?",
         "How do you usually plan your meals?",
         "Do you think technology makes healthy eating easier?",
-        "How has technology changed the way people shop for food?"
+        "How has technology changed the way people shop for food?",
+        "What's your favourite app?",
+        "How much time do you spend on your phone each day?",
+        "Do you think people rely too much on technology?"
       ]
     },
     {
@@ -100,7 +130,10 @@
         "Do you enjoy watching the news? Why or why not?",
         "How often do you watch TV?",
         "Is it okay to trust the things you see online and on TV news?",
-        "Do you think the contents of newspapers are reliable?"
+        "Do you think the contents of newspapers are reliable?",
+        "Where do you usually get your news from?",
+        "Do you follow international news or mainly local news?",
+        "Do you think social media is a reliable source of news?"
       ]
     },
     {
@@ -109,7 +142,10 @@
         "Do you think it is ever okay to tell a lie?",
         "Have you ever told a white lie to avoid hurting someone's feelings?",
         "How do you feel when someone lies to you?",
-        "Are you a person who always tells the truth?"
+        "Are you a person who always tells the truth?",
+        "Do you think honesty is important in friendships?",
+        "Is it ever kind to tell a lie?",
+        "Were you taught to always tell the truth as a child?"
       ]
     },
     {
@@ -118,7 +154,10 @@
         "Do you use any subscription services, such as streaming TV or music apps? Why or why not?",
         "What was the first subscription you ever signed up for?",
         "How do you usually pay for your subscriptions—monthly, yearly, or as a one-time payment?",
-        "Have you ever canceled a subscription? What was the reason?"
+        "Have you ever canceled a subscription? What was the reason?",
+        "Which streaming service do you use the most?",
+        "Do you think subscription services are good value for money?",
+        "Do you share subscriptions with family or friends?"
       ]
     },
     {
@@ -127,55 +166,58 @@
         "Do you often ask others for advice?",
         "Who do you usually ask when you need help?",
         "Have you ever gotten lost while travelling?",
-        "Do you think good friends are necessary in your life?"
+        "Do you think good friends are necessary in your life?",
+        "What's the best piece of advice you've ever received?",
+        "Do you find it easy to give advice to others?",
+        "Do you prefer to figure things out yourself or ask for help?"
       ]
     }
   ],
   "part2_cue_cards": [
-    "Describe your favourite city or a city you have visited that you like very much. You should say: what its name is and where it is, when you visited it, why you liked it, and the major attractions in this city.",
-    "Describe a piece of art or a drawing/painting that you like.",
-    "Describe an app or piece of technology that makes your life easier.",
-    "Describe a subscription service you use or have used. You should say: what the service is, how you found out about it, how often you use it, and explain how it has affected your life.",
-    "Describe your favourite shop. You should say: where it is, how often you go there, what it sells, and explain why you think it is a good shop.",
-    "Talk about a time when you were not allowed to use your phone.",
-    "Describe a time when technology helped you connect with someone.",
-    "Describe a house or apartment you would like to live in.",
-    "Describe a change that could improve your local area.",
-    "Describe a trip you took by public transport.",
-    "Describe a close friend you have known for a long time.",
-    "Describe a healthy dish you enjoy cooking.",
-    "Describe an important environmental problem in your local area or country.",
-    "Describe a person you know who lived alone abroad. You should say: who the person is, where and why they went abroad, how they adapted to living alone, and explain what you learned from their experience.",
-    "Describe a person who is often in the news, and who you would like to meet.",
-    "Describe a piece of work you did for your job or your studies that you felt very satisfied with.",
-    "Talk about a group project that you worked on.",
-    "Describe a healthy habit you want to develop.",
-    "Describe a movie about wild animals that you enjoyed.",
-    "Describe a food-related app or technology you find useful. You should say: what app/technology it is, how you use it, when you started using it, and explain why you find it helpful.",
-    "Describe a time when you received useful advice. You should say: who gave the advice, what the advice was, when you received it, and explain why it was useful.",
-    "Describe a successful businessman or a well-known person you know about. You should say: who they are, how they became successful, what they are known for, and explain why people admire them.",
-    "Describe something cultural that you do not like.",
-    "Describe a time when you felt very proud of something a family member did.",
-    "Describe a car journey you remember well.",
-    "Describe something you do not like in your daily life.",
-    "Describe a person who is good at learning and speaking new languages.",
-    "Describe a boring place.",
-    "Describe a time when you sent a message or an email to someone but received no reply for a long time.",
-    "Describe a family member you spend a lot of time with. You should say: who this person is, what you usually do together, what kind of person he/she is, and explain why you spend the most time with him/her.",
-    "Describe your experience of having your dream job. You should say: what your dream job is, how you got this job, what you do in this job, and explain how having your dream job has affected your life.",
-    "Describe a school subject you enjoyed learning when you were younger.",
-    "Describe a meal you enjoyed with friends. You should say: what the meal was, where you ate it, who you were with, what you talked about, and explain why you enjoyed that time.",
-    "Describe a time you looked for information from the internet.",
-    "Describe a time when you had to deal with a difficult relationship in an educational setting.",
-    "Describe an important conversation you had with someone.",
-    "Describe a helpful person.",
-    "Describe a meaningful object you have kept since your childhood.",
-    "Describe a restaurant where you paid attention to the nutritional information or ingredients of the food.",
-    "Describe a person you have recently met but would like to know better.",
-    "Describe an activity you would do when you are alone in your free time.",
-    "Describe a sport that interests you but you have never tried. You should say: where it is usually played, what kinds of people usually play it, why it interests you, and say if you think you will ever do this sport or not, and why.",
-    "Describe a book you have never read but would like to read.",
-    "Describe a workplace you have worked in or know about."
+    { "topic": "Describe your favourite city or a city you have visited that you like very much.", "points": ["what its name is and where it is", "when you visited it", "why you liked it", "and explain the major attractions in this city"] },
+    { "topic": "Describe a piece of art or a drawing/painting that you like.", "points": ["what it is", "where you saw it", "what it looks like", "and explain why you like it"] },
+    { "topic": "Describe an app or piece of technology that makes your life easier.", "points": ["what it is", "how you started using it", "how often you use it", "and explain why it makes your life easier"] },
+    { "topic": "Describe a subscription service you use or have used.", "points": ["what the service is", "how you found out about it", "how often you use it", "and explain how it has affected your life"] },
+    { "topic": "Describe your favourite shop.", "points": ["where it is", "how often you go there", "what it sells", "and explain why you think it is a good shop"] },
+    { "topic": "Talk about a time when you were not allowed to use your phone.", "points": ["when this happened", "where you were", "why you were not allowed to use it", "and explain how you felt about it"] },
+    { "topic": "Describe a time when technology helped you connect with someone.", "points": ["who you connected with", "what technology you used", "why you needed to connect with them", "and explain how it helped your relationship"] },
+    { "topic": "Describe a house or apartment you would like to live in.", "points": ["where it would be located", "what it would look like", "who you would live with", "and explain why you would like to live there"] },
+    { "topic": "Describe a change that could improve your local area.", "points": ["what the change is", "why it is needed", "how it could be achieved", "and explain how it would improve the area"] },
+    { "topic": "Describe a trip you took by public transport.", "points": ["where you went", "what form of transport you used", "who you were with", "and explain what happened during the trip"] },
+    { "topic": "Describe a close friend you have known for a long time.", "points": ["who this person is", "how you met", "what you usually do together", "and explain why your friendship has lasted"] },
+    { "topic": "Describe a healthy dish you enjoy cooking.", "points": ["what the dish is", "what ingredients it contains", "how you learned to make it", "and explain why you think it is healthy"] },
+    { "topic": "Describe an important environmental problem in your local area or country.", "points": ["what the problem is", "what causes it", "who is affected by it", "and explain what could be done to solve it"] },
+    { "topic": "Describe a person you know who lived alone abroad.", "points": ["who the person is", "where and why they went abroad", "how they adapted to living alone", "and explain what you learned from their experience"] },
+    { "topic": "Describe a person who is often in the news, and who you would like to meet.", "points": ["who this person is", "what they are known for", "why they are often in the news", "and explain why you would like to meet them"] },
+    { "topic": "Describe a piece of work you did for your job or your studies that you felt very satisfied with.", "points": ["what the work was", "when you did it", "what was difficult about it", "and explain why you felt satisfied with it"] },
+    { "topic": "Talk about a group project that you worked on.", "points": ["what the project was", "who you worked with", "what your role was", "and explain how the project turned out"] },
+    { "topic": "Describe a healthy habit you want to develop.", "points": ["what the habit is", "why you want to develop it", "how you plan to develop it", "and explain how it would benefit you"] },
+    { "topic": "Describe a movie about wild animals that you enjoyed.", "points": ["what the movie was called", "what it was about", "when you watched it", "and explain why you enjoyed it"] },
+    { "topic": "Describe a food-related app or technology you find useful.", "points": ["what app or technology it is", "how you use it", "when you started using it", "and explain why you find it helpful"] },
+    { "topic": "Describe a time when you received useful advice.", "points": ["who gave the advice", "what the advice was", "when you received it", "and explain why it was useful"] },
+    { "topic": "Describe a successful businessman or a well-known person you know about.", "points": ["who they are", "how they became successful", "what they are known for", "and explain why people admire them"] },
+    { "topic": "Describe something cultural that you do not like.", "points": ["what it is", "when you first encountered it", "why other people like it", "and explain why you personally dislike it"] },
+    { "topic": "Describe a time when you felt very proud of something a family member did.", "points": ["who the family member was", "what they did", "when this happened", "and explain why it made you feel proud"] },
+    { "topic": "Describe a car journey you remember well.", "points": ["where you were going", "who you were travelling with", "what happened during the journey", "and explain why you remember it so well"] },
+    { "topic": "Describe something you do not like in your daily life.", "points": ["what it is", "when you usually experience it", "why you dislike it", "and explain how you deal with it"] },
+    { "topic": "Describe a person who is good at learning and speaking new languages.", "points": ["who this person is", "how many languages they speak", "how they learned them", "and explain why you think they are good at languages"] },
+    { "topic": "Describe a boring place.", "points": ["where the place is", "when you went there", "what you did there", "and explain why you found it boring"] },
+    { "topic": "Describe a time when you sent a message or an email to someone but received no reply for a long time.", "points": ["who you sent it to", "what the message was about", "how long you waited for a reply", "and explain how you felt about it"] },
+    { "topic": "Describe a family member you spend a lot of time with.", "points": ["who this person is", "what you usually do together", "what kind of person he/she is", "and explain why you spend the most time with him/her"] },
+    { "topic": "Describe your experience of having your dream job.", "points": ["what your dream job is", "how you got this job", "what you do in this job", "and explain how having your dream job has affected your life"] },
+    { "topic": "Describe a school subject you enjoyed learning when you were younger.", "points": ["what the subject was", "who taught you", "what you learned in the class", "and explain why you enjoyed it"] },
+    { "topic": "Describe a meal you enjoyed with friends.", "points": ["what the meal was", "where you ate it", "who you were with", "and explain why you enjoyed that time"] },
+    { "topic": "Describe a time you looked for information from the internet.", "points": ["what information you were looking for", "why you needed it", "which websites or apps you used", "and explain whether you found what you needed"] },
+    { "topic": "Describe a time when you had to deal with a difficult relationship in an educational setting.", "points": ["who the relationship was with", "what made it difficult", "how you dealt with it", "and explain what you learned from the experience"] },
+    { "topic": "Describe an important conversation you had with someone.", "points": ["who you spoke with", "what the conversation was about", "where it took place", "and explain why it was important to you"] },
+    { "topic": "Describe a helpful person.", "points": ["who this person is", "how you know them", "what they did to help you", "and explain why you consider them helpful"] },
+    { "topic": "Describe a meaningful object you have kept since your childhood.", "points": ["what the object is", "how you got it", "why you have kept it", "and explain why it is meaningful to you"] },
+    { "topic": "Describe a restaurant where you paid attention to the nutritional information or ingredients of the food.", "points": ["where the restaurant is", "what kind of food it serves", "why you paid attention to the ingredients", "and explain how this affected your dining experience"] },
+    { "topic": "Describe a person you have recently met but would like to know better.", "points": ["who this person is", "where you met them", "what impressed you about them", "and explain why you would like to know them better"] },
+    { "topic": "Describe an activity you would do when you are alone in your free time.", "points": ["what the activity is", "how often you do it", "where you usually do it", "and explain why you enjoy doing it alone"] },
+    { "topic": "Describe a sport that interests you but you have never tried.", "points": ["where it is usually played", "what kinds of people usually play it", "why it interests you", "and say if you think you will ever try this sport, and why"] },
+    { "topic": "Describe a book you have never read but would like to read.", "points": ["what the book is called", "what it is about", "how you found out about it", "and explain why you would like to read it"] },
+    { "topic": "Describe a workplace you have worked in or know about.", "points": ["where it is", "what kind of work is done there", "what the atmosphere is like", "and explain whether you think it is a good place to work"] }
   ],
   "part3_discussion_sets": [
     {
