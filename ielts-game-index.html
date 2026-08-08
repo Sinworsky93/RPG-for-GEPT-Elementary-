@@ -86,6 +86,8 @@
   #enlargeOverlay .sheet{background:var(--panel);max-width:900px;margin:0 auto;border-radius:14px;padding:28px;position:relative;font-size:19px;line-height:1.85;}
   #enlargeOverlay .sheet p{font-size:19px;line-height:1.9;}
   #enlargeOverlay .closebtn{position:sticky;top:0;float:right;background:var(--ink);color:#fff;border:none;width:34px;height:34px;border-radius:999px;cursor:pointer;font-size:16px;margin-bottom:10px;}
+  #enlargeToolbar{float:right;clear:right;display:flex;gap:6px;margin:0 0 10px;}
+  #enlargeToolbar .enlarge-btn{background:var(--panel);}
 
   /* history / review */
   .hist-row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:9px 0;font-size:13.5px;flex-wrap:wrap;}
@@ -144,6 +146,7 @@
 <div id="enlargeOverlay" onclick="if(event.target===this) closeEnlarge()">
   <div class="sheet">
     <button class="closebtn" onclick="closeEnlarge()">✕</button>
+    <div id="enlargeToolbar"></div>
     <div id="enlargeContent" style="clear:both;"></div>
   </div>
 </div>
@@ -184,11 +187,39 @@ document.querySelectorAll('nav button').forEach(btn=>{
 
 /* ---------- enlarge (click-to-zoom a section) ---------- */
 function openEnlarge(html){
+  document.getElementById('enlargeToolbar').innerHTML = '';
   document.getElementById('enlargeContent').innerHTML = html;
   document.getElementById('enlargeOverlay').classList.add('active');
 }
+function openEnlargeLive(sourceId, withHighlighter){
+  const source = document.getElementById(sourceId);
+  if(!source) return;
+  const anchor = document.createElement('div');
+  anchor.id = sourceId+'__anchor';
+  anchor.style.display = 'none';
+  source.parentNode.insertBefore(anchor, source);
+  const content = document.getElementById('enlargeContent');
+  content.innerHTML = '';
+  content.appendChild(source);
+  const toolbar = document.getElementById('enlargeToolbar');
+  toolbar.innerHTML = withHighlighter
+    ? `<button type="button" class="enlarge-btn" title="標記螢光筆" onclick="highlightSelection()">🖍</button>
+       <button type="button" class="enlarge-btn" title="清除標記" onclick="clearHighlights()">🧹</button>`
+    : '';
+  const overlay = document.getElementById('enlargeOverlay');
+  overlay.dataset.liveSource = sourceId;
+  overlay.classList.add('active');
+}
 function closeEnlarge(){
-  document.getElementById('enlargeOverlay').classList.remove('active');
+  const overlay = document.getElementById('enlargeOverlay');
+  const liveId = overlay.dataset.liveSource;
+  if(liveId){
+    const source = document.getElementById(liveId);
+    const anchor = document.getElementById(liveId+'__anchor');
+    if(source && anchor && anchor.parentNode){ anchor.parentNode.insertBefore(source, anchor); anchor.remove(); }
+    delete overlay.dataset.liveSource;
+  }
+  overlay.classList.remove('active');
 }
 document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeEnlarge(); });
 function enlargeBtnHTML(sourceId, label){
@@ -405,7 +436,7 @@ function openPassage(i){
             <span id="readingTimerDisplay" style="font-weight:800;font-size:17px;color:var(--accent);white-space:nowrap;">${fmtTime(readingSecondsLeft)}</span>
             <button type="button" class="enlarge-btn" title="標記螢光筆" onclick="highlightSelection()">🖍</button>
             <button type="button" class="enlarge-btn" title="清除標記" onclick="clearHighlights()">🧹</button>
-            ${enlargeBtnHTML('passageTextOnly','放大文章')}
+            <button type="button" class="enlarge-btn" title="放大文章（仍可標記螢光筆）" onclick="openEnlargeLive('passageTextOnly', true)">⛶</button>
           </span>
         </div>
         <div id="passageTextOnly">${paragraphsHTML}</div>
@@ -658,29 +689,27 @@ function openTask1(i){
   const el = document.getElementById('writing-list');
   el.innerHTML = `
     <button class="backbtn" onclick="stopEssayTimer();renderWriting()">&larr; 返回寫作列表</button>
-    <div class="split">
-      <div class="passage-box">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
-          <h3 style="margin-top:0;"><span class="tag">${item.chart_type}</span></h3>
-          ${enlargeBtnHTML('chartOnly','放大圖表')}
-        </div>
-        <p>${item.prompt}</p>
-        <div id="chartOnly">${renderChart(item)}</div>
+    <div class="passage-box" style="margin-bottom:20px;position:static;max-height:none;">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+        <h3 style="margin-top:0;"><span class="tag">${item.chart_type}</span></h3>
+        ${enlargeBtnHTML('chartOnly','放大圖表')}
       </div>
-      <div class="qbox">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
-          <h4 style="margin-top:0;">你的報告</h4>
-          <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
-        </div>
-        <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。</p>
-        <textarea id="essayBox" rows="16"
-          autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
-          style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
-          placeholder="在這裡描述圖表…" oninput="updateWordCount(${minWords})"></textarea>
-        <div class="submitbar">
-          <span class="score" id="wordCount">0 / ${minWords} 字</span>
-          <button type="button" onclick="finishEssay(false)">完成並檢視</button>
-        </div>
+      <p>${item.prompt}</p>
+      <div id="chartOnly">${renderChart(item)}</div>
+    </div>
+    <div class="qbox">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
+        <h4 style="margin-top:0;">你的報告</h4>
+        <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
+      </div>
+      <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。</p>
+      <textarea id="essayBox" rows="14"
+        autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
+        style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
+        placeholder="在這裡描述圖表…" oninput="updateWordCount(${minWords})"></textarea>
+      <div class="submitbar">
+        <span class="score" id="wordCount">0 / ${minWords} 字</span>
+        <button type="button" onclick="finishEssay(false)">完成並檢視</button>
       </div>
     </div>
   `;
