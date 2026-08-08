@@ -1,9 +1,135 @@
 {
   "_notes": "Speaking prompts consolidated and de-duplicated from teaching notes across multiple students. Part 1/3 questions and Part 2 cue cards are short, formulaic IELTS-style prompts reused as-is (same reasoning as writing-bank.json).",
   "part1_topics": [
-    "Home / Hometown", "Accommodation", "Work or Study", "Shopping", "Food and Cooking",
-    "Free time / Leisure", "Sports", "Books and Reading", "Movies / Films", "Technology and Apps",
-    "News and Media", "Honesty", "Subscriptions and Streaming Services", "Advice"
+    {
+      "topic": "Home / Hometown",
+      "questions": [
+        "Where is your hometown?",
+        "What do you like about your hometown?",
+        "What do you not like about it?",
+        "How important is your hometown to you?",
+        "Do you think you will continue to live in your hometown?"
+      ]
+    },
+    {
+      "topic": "Accommodation",
+      "questions": [
+        "Tell me about the kind of accommodation you live in.",
+        "Does the place you live in have many amenities?",
+        "Is there anything you would like to change about the place you live in?",
+        "Do you plan to live there for a long time?"
+      ]
+    },
+    {
+      "topic": "Work or Study",
+      "questions": [
+        "Do you have a job right now, or are you a student?",
+        "What kind of jobs do people usually do in your country?",
+        "What was your first job?",
+        "Would you like to change your job in the future?",
+        "What do you like or dislike about your job?"
+      ]
+    },
+    {
+      "topic": "Shopping",
+      "questions": [
+        "Do you enjoy shopping? Why or why not?",
+        "How often do you go shopping?",
+        "Do you prefer shopping alone or with friends? Why?",
+        "Do you plan ahead before you go shopping, or do you buy things on impulse?"
+      ]
+    },
+    {
+      "topic": "Food and Cooking",
+      "questions": [
+        "Do you often eat with friends?",
+        "What kind of food do you usually eat with your friends?",
+        "Do you prefer eating at home or in restaurants with friends?",
+        "Has your taste in food changed since you were a child?"
+      ]
+    },
+    {
+      "topic": "Free time / Leisure",
+      "questions": [
+        "What do you do in your free time?",
+        "Do you have a busy social life?",
+        "Do you lead an active life?",
+        "Would you like to change anything about your lifestyle?"
+      ]
+    },
+    {
+      "topic": "Sports",
+      "questions": [
+        "What types of sports are popular in your country?",
+        "In your opinion, what are the benefits of playing a sport?",
+        "Do you think old people can keep fit by playing sports or exercising?",
+        "Do you think famous sports stars make good role models for children?"
+      ]
+    },
+    {
+      "topic": "Books and Reading",
+      "questions": [
+        "How often do you read?",
+        "Do you like reading books? Why?",
+        "Do you have many books at home?",
+        "Do you prefer to buy books or borrow them?",
+        "What are the major benefits of reading?"
+      ]
+    },
+    {
+      "topic": "Movies / Films",
+      "questions": [
+        "Do you like watching films?",
+        "What kinds of movies do you like best?",
+        "Do you like to watch movies alone or with your friends?",
+        "Would you like to be in a movie?"
+      ]
+    },
+    {
+      "topic": "Technology and Apps",
+      "questions": [
+        "Do you use any apps or technology for cooking or ordering food?",
+        "How do you usually plan your meals?",
+        "Do you think technology makes healthy eating easier?",
+        "How has technology changed the way people shop for food?"
+      ]
+    },
+    {
+      "topic": "News and Media",
+      "questions": [
+        "Do you enjoy watching the news? Why or why not?",
+        "How often do you watch TV?",
+        "Is it okay to trust the things you see online and on TV news?",
+        "Do you think the contents of newspapers are reliable?"
+      ]
+    },
+    {
+      "topic": "Honesty",
+      "questions": [
+        "Do you think it is ever okay to tell a lie?",
+        "Have you ever told a white lie to avoid hurting someone's feelings?",
+        "How do you feel when someone lies to you?",
+        "Are you a person who always tells the truth?"
+      ]
+    },
+    {
+      "topic": "Subscriptions and Streaming Services",
+      "questions": [
+        "Do you use any subscription services, such as streaming TV or music apps? Why or why not?",
+        "What was the first subscription you ever signed up for?",
+        "How do you usually pay for your subscriptions—monthly, yearly, or as a one-time payment?",
+        "Have you ever canceled a subscription? What was the reason?"
+      ]
+    },
+    {
+      "topic": "Advice",
+      "questions": [
+        "Do you often ask others for advice?",
+        "Who do you usually ask when you need help?",
+        "Have you ever gotten lost while travelling?",
+        "Do you think good friends are necessary in your life?"
+      ]
+    }
   ],
   "part2_cue_cards": [
     "Describe your favourite city or a city you have visited that you like very much. You should say: what its name is and where it is, when you visited it, why you liked it, and the major attractions in this city.",
