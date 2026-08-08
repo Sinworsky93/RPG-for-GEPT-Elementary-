@@ -172,6 +172,7 @@ async function init(){
   renderWriting();
   renderSpeaking();
   renderReview();
+  if(window.indexedDB){ purgeOldRecordings().then(renderReview); }
 }
 
 /* ---------- nav ---------- */
@@ -350,7 +351,32 @@ function renderReview(){
     html += `<div style="margin-top:10px;"><button class="smallbtn" onclick="clearAllWrong()">清空錯題本</button></div>`;
   }
 
+  html += `<div class="section-title">口說錄音（約 ${REC_RETENTION_DAYS} 天後自動清除）</div>`;
+  html += `<div id="recordingsSection"><div class="loading">載入錄音中…</div></div>`;
+
   el.innerHTML = html;
+  renderRecordingsSection();
+}
+
+async function renderRecordingsSection(){
+  const box = document.getElementById('recordingsSection');
+  if(!box) return;
+  if(!window.indexedDB){ box.innerHTML = '<div class="empty">此瀏覽器不支援本機錄音儲存。</div>'; return; }
+  const all = await getAllRecordings();
+  if(!all.length){ box.innerHTML = '<div class="empty">目前沒有錄音 — 到 Speaking 頁面錄一段題卡回答後會顯示在這裡。</div>'; return; }
+  all.sort((a,b)=> new Date(b.date) - new Date(a.date));
+  box.innerHTML = all.map(r=>{
+    const dt = new Date(r.date);
+    const dtStr = dt.toLocaleDateString()+' '+dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+    const daysLeft = Math.max(0, REC_RETENTION_DAYS - Math.floor((Date.now()-dt.getTime())/86400000));
+    const url = URL.createObjectURL(r.blob);
+    return `<div class="wrong-card">
+      <div style="font-weight:700;margin-bottom:4px;">${r.topic}</div>
+      <div class="hist-meta" style="margin-bottom:6px;">${dtStr} · 剩餘 ${daysLeft} 天</div>
+      <audio controls src="${url}" style="display:block;width:100%;margin-bottom:6px;"></audio>
+      <button class="smallbtn" onclick="deleteRecording(${r.id}).then(renderRecordingsSection)">刪除</button>
+    </div>`;
+  }).join('');
 }
 
 /* ---------- reading ---------- */
@@ -877,7 +903,7 @@ function cueCardHTML(card){
     ${usefulWordsHTML(card.useful_words)}
     <div style="font-size:12.5px;color:var(--sub);margin-bottom:4px;">You should say:</div>
     <ul style="margin:0 0 10px;padding-left:18px;">${card.points.map(p=>`<li>${p}</li>`).join('')}</ul>
-    <div id="recorderZone"></div>`;
+    <div id="recorderZone" data-topic="${card.topic.replace(/"/g,'&quot;')}"></div>`;
 }
 function nextCue(){
   const cards = state.speaking.part2_cue_cards;
@@ -886,12 +912,70 @@ function nextCue(){
   setupRecorder();
 }
 
-/* ---------- speech recording (MediaRecorder, works on mobile browsers over HTTPS) ---------- */
+/* ---------- speech recording (MediaRecorder + IndexedDB, ~7-day local retention) ---------- */
 let mediaRecorder = null, recordedChunks = [], currentStream = null;
+const REC_RETENTION_DAYS = 7;
+let recDBPromise = null;
+function openRecDB(){
+  if(recDBPromise) return recDBPromise;
+  recDBPromise = new Promise((resolve, reject)=>{
+    const req = indexedDB.open('ieltsRecordingsDB', 1);
+    req.onupgradeneeded = () => {
+      const db = req.result;
+      if(!db.objectStoreNames.contains('recordings')){
+        const store = db.createObjectStore('recordings', { keyPath:'id', autoIncrement:true });
+        store.createIndex('date', 'date');
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => reject(req.error);
+  });
+  return recDBPromise;
+}
+async function saveRecording(topic, blob){
+  try{
+    const db = await openRecDB();
+    return new Promise((resolve)=>{
+      const tx = db.transaction('recordings','readwrite');
+      tx.objectStore('recordings').add({ topic, blob, date: new Date().toISOString() });
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+    });
+  }catch(e){ return false; }
+}
+async function getAllRecordings(){
+  try{
+    const db = await openRecDB();
+    return new Promise((resolve)=>{
+      const tx = db.transaction('recordings','readonly');
+      const req = tx.objectStore('recordings').getAll();
+      req.onsuccess = () => resolve(req.result||[]);
+      req.onerror = () => resolve([]);
+    });
+  }catch(e){ return []; }
+}
+async function deleteRecording(id){
+  try{
+    const db = await openRecDB();
+    const tx = db.transaction('recordings','readwrite');
+    tx.objectStore('recordings').delete(id);
+  }catch(e){}
+}
+async function purgeOldRecordings(){
+  try{
+    const db = await openRecDB();
+    const all = await getAllRecordings();
+    const cutoff = Date.now() - REC_RETENTION_DAYS*24*60*60*1000;
+    const tx = db.transaction('recordings','readwrite');
+    const store = tx.objectStore('recordings');
+    all.forEach(r => { if(new Date(r.date).getTime() < cutoff) store.delete(r.id); });
+  }catch(e){}
+}
+
 function setupRecorder(){
   const zone = document.getElementById('recorderZone');
   if(!zone) return;
-  const supported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+  const supported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder && window.indexedDB);
   if(!supported){
     zone.innerHTML = `<div class="hist-meta">此瀏覽器不支援錄音功能。</div>`;
     return;
@@ -907,6 +991,8 @@ function setupRecorder(){
 async function toggleRecording(){
   const btn = document.getElementById('recBtn');
   const status = document.getElementById('recStatus');
+  const zone = document.getElementById('recorderZone');
+  const topic = zone ? zone.dataset.topic : '口說練習';
   if(mediaRecorder && mediaRecorder.state === 'recording'){
     mediaRecorder.stop();
     return;
@@ -920,14 +1006,15 @@ async function toggleRecording(){
   recordedChunks = [];
   mediaRecorder = new MediaRecorder(currentStream);
   mediaRecorder.ondataavailable = e => { if(e.data && e.data.size) recordedChunks.push(e.data); };
-  mediaRecorder.onstop = () => {
+  mediaRecorder.onstop = async () => {
     const blob = new Blob(recordedChunks, { type: 'audio/webm' });
     const url = URL.createObjectURL(blob);
     const pb = document.getElementById('recPlayback');
     if(pb) pb.innerHTML = `<audio controls src="${url}" style="display:block;margin-top:8px;"></audio>`;
     currentStream.getTracks().forEach(t=>t.stop());
     if(btn) btn.textContent = '🎙️ 重新錄音';
-    if(status) status.textContent = '錄音已保存於本次瀏覽（不會永久儲存）。';
+    const saved = await saveRecording(topic, blob);
+    if(status) status.textContent = saved ? `錄音已儲存在這台裝置上，約 ${REC_RETENTION_DAYS} 天後自動清除。` : '錄音暫存失敗，只能在這次瀏覽中播放。';
   };
   mediaRecorder.start();
   if(btn) btn.textContent = '⏹ 停止錄音';
