@@ -47,6 +47,350 @@
           ]
         }
       ]
+    },
+    {
+      "id": "reading-002",
+      "title": "The Mechanics of Human Connection: Demystifying the \"Supercommunicator\"",
+      "source": "Original/teaching material (communication psychology)",
+      "paragraphs": {
+        "A": "The long-held belief that interpersonal connection is an inherent, unalterable trait has been increasingly challenged by contemporary psychological research. The realization that effective communication is a structured cognitive skill, rather than an innate gift, often emerges during major organizational transitions. This phenomenon was notably experienced by Charles Duhigg, a Harvard Business School alumnus, who discovered that prestigious academic credentials did not automatically guarantee communicative efficacy in professional environments. Upon assuming a critical managerial role, Duhigg recognized a profound deficiency in his everyday interactions. Specifically, when subordinates presented workplace dilemmas, his default impulse was to formulate immediate, practical solutions, whereas his interlocutors actually sought emotional empathy. Not until he meticulously analyzed these systemic failures did he realize that human dialogue operates on distinct cognitive frequencies, which cannot be bypassed without causing interpersonal friction.",
+        "B": "To demystify these complex frequencies, researchers have categorized human dialogue into three primary dimensions: practical, emotional, and social. The first, the practical conversation, is highly task-oriented, focusing on pragmatic problem-solving, analytical tasks, and strategic decision-making. Conversely, the second dimension encompasses emotional conversations, which revolve entirely around the expression of feelings and vulnerabilities. In these sensitive instances, individuals do not seek logical remedies or plans; instead, they require active empathy to validate their subjective experiences. Finally, social conversations address social integration, status, and identity, wherein speakers signal their personal backgrounds—such as parental or professional roles—to frame their viewpoints. Here, the primary objective is by no means consensus, but rather a mutual acknowledgment of differing perspectives, which is highly essential for maintaining social cohesion.",
+        "C": "Communication failures frequently occur when interlocutors operate in discordant modes, a distressing phenomenon metaphorically described as \"two ships passing in the night\". To prevent this misalignment, psychologists have proposed the \"matching principle,\" which dictates that successful interaction requires participants to engage in the same type of conversation simultaneously. Seldom do mismatched dialogues—such as offering analytical advice to a colleague who is desperately seeking emotional solace—yield positive outcomes. Conversely, when speakers align their conversational mindsets, they foster an environment of trust and mutual comprehension, which in turn facilitates smoother transitions between different conversational modes as the meeting progresses.",
+        "D": "Identifying the active conversational mode requires acute perception, particularly during initial interactions. Although asking clarifying questions is highly beneficial, analyzing lexical choices is equally paramount. For instance, during a pragmatic discussion regarding corporate budgeting, a colleague might suddenly employ highly affective language, expressing intense anxiety about potential redundancies and staff layoffs. Such expressions, which explicitly signal an underlying emotional state, indicate that the dialogue has shifted from a practical dimension to an emotional one. If the manager validates this emotional concern by acknowledging the anxiety, the speaker feels heard and welcomed, subsequently becoming far more receptive to returning to a practical, analytical discussion about the quarterly numbers.",
+        "E": "Ultimately, the finest communicators are not born with an innate, magical talent. Rather, they are individuals who consciously allocate cognitive resources to understand how their linguistic choices influence others. The primary objective of dialogue is not to reach total agreement, but rather to establish a connection that can transcend ideological, geographical, and religious divides. This connection relies heavily on social reciprocity, a psychological mechanism where genuine curiosity triggers a reciprocal desire for mutual understanding. Fortunately, because these communicative techniques are skills rather than innate mysteries, any dedicated individual can cultivate them through systematic practice until they become deeply ingrained habits."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph, A-E, from the list of headings below.",
+          "headings": [
+            "i. Why business credentials do not guarantee interpersonal skill",
+            "ii. Reading conversational cues through word choice",
+            "iii. The consequences of mismatched conversational styles",
+            "iv. Three categories underlying everyday dialogue",
+            "v. Communication as a skill that can be deliberately developed",
+            "vi. The financial cost of workplace miscommunication",
+            "vii. Overcoming cultural barriers in international teams"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "i" },
+            { "n": 2, "paragraph": "B", "answer": "iv" },
+            { "n": 3, "paragraph": "C", "answer": "iii" },
+            { "n": 4, "paragraph": "D", "answer": "ii" },
+            { "n": 5, "paragraph": "E", "answer": "v" }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 6, "statement": "Charles Duhigg attended Harvard Business School.", "answer": "TRUE" },
+            { "n": 7, "statement": "Social conversations are primarily aimed at reaching consensus between speakers.", "answer": "FALSE" },
+            { "n": 8, "statement": "The \"two ships passing in the night\" metaphor describes a successful conversational outcome.", "answer": "FALSE" },
+            { "n": 9, "statement": "Analysing a speaker's word choice can help identify which conversational mode is active.", "answer": "TRUE" },
+            { "n": 10, "statement": "Duhigg's book on communication has been translated into more than ten languages.", "answer": "NOT GIVEN" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-003",
+      "title": "The Science of High-Efficiency Exercise for Modern Lifestyles",
+      "source": "Original/teaching material (exercise science)",
+      "paragraphs": {
+        "A": "As a new calendar year commences, many individuals make self-promises, commonly referred to as New Year's resolutions, which are aimed at introducing positive behavioral changes into their daily lives. However, as winter progresses into February, maintaining the necessary motivation to sustain these commitments becomes increasingly challenging. Cold weather and early morning darkness frequently deter people from outdoor activities such as running, leading many to feel physically out of shape. Consequently, individuals often seek ways to become more active but struggle to allocate sufficient time within their demanding schedules. This dilemma has sparked a growing scientific interest in identifying the minimum amount of physical activity required to maintain basic health.",
+        "B": "Generally, any amount of physical exertion is considered superior to complete inactivity. Health experts frequently advocate for \"structured exercise,\" which refers to planned, organized physical activities such as swimming or attending dedicated fitness classes. Despite the clear benefits of these activities, a declining proportion of the population meets official guidelines. For instance, the UK government previously recommended a minimum of thirty minutes of moderate exercise per day. Due to extremely low compliance rates among citizens, these official recommendations were subsequently downgraded. Under current governmental advice, individuals are encouraged to walk a minimum of ten thousand steps daily to sustain their health.",
+        "C": "For those unable to meet these standards, researchers are investigating how shorter, highly efficient sessions can be utilized. Dr. Zoe Saynor, a sports physiologist, recently analyzed the fitness levels of reporter James Gallagher, whose weekly exercise routine consisted solely of a single swimming session. According to Dr. Saynor, there is a fundamental trade-off when designing shorter workout routines: if individuals wish to reduce the duration of their exercise, they must compensate by increasing its intensity. For example, rather than maintaining a leisurely pace, a swimmer who usually completes a length in forty seconds should push themselves to complete it in thirty-five seconds. By putting in more effort and pushing physical limits, individuals can gain health benefits in a much shorter period of time.",
+        "D": "This high-intensity approach is particularly relevant for individuals with sedentary occupations that involve prolonged sitting and minimal physical exertion. Dr. Saynor suggests that office workers can integrate \"easy wins\" into their daily routines—simple, easily achievable actions that yield immediate health benefits. Examples of active travel include parking a vehicle further away from a destination, utilizing stairs instead of an elevator, or walking at a significantly faster pace. Scientific literature indicates that walking 5,000 steps at an accelerated pace can lead to measurable long-term health improvements. This method effectively provides \"more bang for your buck,\" an idiom reflecting the ability to achieve superior health outcomes without increasing the total time or effort expended."
+      },
+      "questions": [
+        {
+          "group": "1-4",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 1, "statement": "The UK government's current exercise guideline recommends a fixed daily step count.", "answer": "TRUE" },
+            { "n": 2, "statement": "James Gallagher exercises multiple times per week.", "answer": "FALSE" },
+            { "n": 3, "statement": "Increasing the intensity of a workout can allow people to shorten its duration while keeping the same benefits.", "answer": "TRUE" },
+            { "n": 4, "statement": "The passage states that outdoor running produces better fitness results than swimming.", "answer": "NOT GIVEN" }
+          ]
+        },
+        {
+          "group": "5-8",
+          "type": "sentence_completion",
+          "instructions": "Complete the sentences below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+          "items": [
+            { "n": 5, "prompt": "Planned activities such as swimming or fitness classes are described as ______ exercise.", "answer": "structured" },
+            { "n": 6, "prompt": "The UK's original guideline recommended at least ______ minutes of moderate exercise per day.", "answer": "thirty" },
+            { "n": 7, "prompt": "Dr. Saynor calls small, easily achievable actions built into daily routines ______.", "answer": "easy wins" },
+            { "n": 8, "prompt": "Walking 5,000 steps at a faster pace is linked to measurable ______ health improvements.", "answer": "long-term" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-004",
+      "title": "The Science of Persuasion: How Advertisers and Organisations Shape Human Behaviour",
+      "source": "Original/teaching material (behavioural science)",
+      "paragraphs": {
+        "A": "When people are faced with choices in unfamiliar situations, they frequently follow the lead of those they consider credible or knowledgeable. This decision-making process functions as a \"mental shortcut,\" allowing individuals to make quick choices and navigate uncertain times without extensive research. This tendency is not a newly acquired adult trait; humans begin adopting this pattern from an early age, first copying their parents and teachers to make sense of the world. Today, modern businesses capitalize on this deeply ingrained human habit through celebrity endorsements and professional recommendations, such as dentists endorsing toothpaste or elite athletes promoting specialized sportswear.",
+        "B": "In recent years, many major fast-food chains have replaced traditional counter staff with interactive touchscreen ordering machines. Interestingly, these businesses have reported a noticeable increase in revenue as a direct result. Behavioural science offers a compelling psychological explanation for this phenomenon. When interacting with human cashier staff, many customers experience an underlying anxiety of being \"judged\" for their eating choices, which frequently leads them to reject additional offers like extra fries or larger portions. Computers, however, eliminate this social pressure. Combined with the fact that touchscreen systems give customers more time to browse products visually, customers are far more inclined to accept automated \"upsell\" offers. Consequently, these digital prompts typically boost the average \"basket spend\"—the total money spent in a single transaction—by 25% to 30%.",
+        "C": "The application of behavioural science is not exclusive to commercial enterprises seeking higher profits; international organizations also employ these techniques to prompt positive social change. This approach is rooted in \"nudge theory,\" which suggests that human habits can be effectively altered through small, subtle prompts rather than strict mandates. For instance, in Tunisia, the United Nations World Food Programme designed an innovative campaign to encourage local citizens to eat meals together more frequently. Rather than relying on traditional public announcements, they decided to think outside the box by producing a creative TV drama series set entirely inside a restaurant. The organizers aimed to influence viewers through \"modelling\"—a psychological process where individuals learn, adapt, and alter their own actions by observing, imitating, and copying the emotional reactions and behaviours of relatable characters on screen."
+      },
+      "questions": [
+        {
+          "group": "1-3",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has three paragraphs, A-C. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. Public information campaigns as an alternative to nudging",
+            "ii. Turning entertainment into a tool for behaviour change",
+            "iii. Following others as an inborn decision-making shortcut",
+            "iv. Removing social pressure to increase spending",
+            "v. The financial risks of automation in retail"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "iii" },
+            { "n": 2, "paragraph": "B", "answer": "iv" },
+            { "n": 3, "paragraph": "C", "answer": "ii" }
+          ]
+        },
+        {
+          "group": "4-7",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 4, "statement": "People only start following the lead of others they consider credible once they become adults.", "answer": "FALSE" },
+            { "n": 5, "statement": "Touchscreen ordering systems have reduced the average spending per transaction at fast-food chains.", "answer": "FALSE" },
+            { "n": 6, "statement": "Nudge theory relies on strict rules rather than subtle suggestions to change behaviour.", "answer": "FALSE" },
+            { "n": 7, "statement": "The World Food Programme's Tunisia campaign used a television drama to encourage people to share meals.", "answer": "TRUE" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-005",
+      "title": "The Socio-Cultural Dynamics of the Contemporary \"Friendship Recession\"",
+      "source": "Original/teaching material (sociology)",
+      "paragraphs": {
+        "A": "While social scientists continuously struggle to quantify interpersonal bonds due to the heavily stigmatized nature of social isolation, the physiological hazards of extreme loneliness are incontrovertible. Not only is existing without intimate companions as detrimental to human longevity as smoking fifteen cigarettes daily, but it also severely compromises cognitive and emotional well-being. To conceptualize this burgeoning crisis—wherein individuals possess an acute deficit of trusted confidants during personal emergencies—scholar Daniel Cox coined the term \"friendship recession.\" Historically, human social structures maintained a tribal baseline consisting of twelve to fifteen associates, with three to four close companions constituting the ideal threshold for psychological stability. In contemporary society, however, an increasing proportion of the population operates well below this critical threshold, generating a profound structural void in informal support systems.",
+        "B": "Ancient intellectual traditions placed immense philosophical weight on interpersonal alliances, treating them as indispensable pillars of human flourishing. It was Aristotle who idealized friendship as the ultimate manifestation of social harmony, characterizing it as a relationship predicated on radical equality and completely devoid of transactional motives or mutual dependency. Unlike commercial exchanges or utilitarian affiliations, true companionship is sustained purely for its own sake. In the modern era, the severe erosion of traditional institutional anchors—namely religious participation, stable labor markets, and conventional familial structures—has drastically elevated the necessity of cultivating peer networks outside formal systems. These vital bonds are typically established through four principal avenues: geographical proximity during youth, occupational environments, voluntary or recreational endeavors, and digital platforms.",
+        "C": "Despite the escalating necessity for external social integration, several twenty-first-century socio-economic barriers actively impede the formation and maintenance of meaningful connections. Chief among these structural obstacles is geographical mobility, which frequently uproots career-minded individuals from their native communities, thereby stretching their existing social networks to a breaking point. Furthermore, modern parental obligations have intensified substantially, systematically squeezing out the temporal resources that adults previously allocated to peer socialization. This temporal deficit is further exacerbated by \"workism\"—a socio-cultural ethos wherein individual identity becomes deeply entangled with professional advancement, leaving minimal cognitive energy for non-utilitarian relationships. Finally, when marital unions or romantic partnerships dissolve, the couple-centric social circles that were constructed around them are often shattered as well.",
+        "D": "The demographic consequences of these societal shifts are particularly pronounced among male cohorts, revealing a drastic transformation in their emotional reliance patterns. Statistically, the proportion of young men reporting a complete absence of close friends has experienced a staggering fivefold surge, rising from a mere three percent in the 1990s to fifteen percent in contemporary assessments. Rarely in modern sociological research has an emotional support channel collapsed so rapidly; whereas forty-five percent of young men in 1990 prioritized turning to a close peer during personal crises, that figure has plummeted to twenty-two percent. This reliance has been largely superseded by parental support, with thirty-six percent of young men now relying primarily on their parents during moments of adversity. Beyond emotional isolation, this deficit restricts access to career opportunities and information networks that friends traditionally facilitate.",
+        "E": "Seldom did a global event expose the fragile architecture of human networks as starkly as the COVID-19 pandemic, which functioned as a diagnostic stress test for interpersonal resilience. Curiously, it was women, rather than men, who bore the brunt of this disruption, with more than half reporting that they had lost touch with at least some of their friends. Sociological analysis suggests that this gender disparity stems from structural differences in relational maintenance: female alliances rely heavily on regular face-to-face interaction and physical presence, whereas male interactions are more frequently mediated through shared activities, athletics, or screen-based technology. Consequently, when public health mandates prohibited physical gatherings, female networks suffered disproportionate degradation, underscoring how physical proximity underpins feminine social cohesion.",
+        "F": "Although an unchecked trajectory towards an atomized society presents a dystopian prospect of pervasive loneliness and compromised physical health, human beings remain fundamentally wired for social connection. A crucial lesson derived from contemporary sociological research is that friendship is not a self-sustaining flower that blooms spontaneously without intervention; rather, it resembles a meticulous woodworking project that demands deliberate carving, active cultivation, and continuous effort. Ultimately, avoiding total social atomization requires individuals to overcome the pervasive sense of shame associated with loneliness and display genuine vulnerability by openly expressing their need for companionship. Without this conscious effort to prioritize relational investment over economic productivity, modern societies risk exacerbating the profound health and social consequences of the friendship recession."
+      },
+      "questions": [
+        {
+          "group": "1-6",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has six paragraphs, A-F. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. The lasting cost of loneliness and a shrinking circle of confidants",
+            "ii. Ancient philosophy's view of friendship as free from self-interest",
+            "iii. Everyday pressures that leave little room for maintaining friendships",
+            "iv. A steep decline in young men's willingness to confide in peers",
+            "v. How a global crisis exposed differences in how men and women stay connected",
+            "vi. Friendship as something that must be actively built, not left to chance",
+            "vii. The rising financial cost of maintaining adult friendships",
+            "viii. Government policies aimed at reducing social isolation",
+            "ix. Why workplace friendships are replacing family ties"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "i" },
+            { "n": 2, "paragraph": "B", "answer": "ii" },
+            { "n": 3, "paragraph": "C", "answer": "iii" },
+            { "n": 4, "paragraph": "D", "answer": "iv" },
+            { "n": 5, "paragraph": "E", "answer": "v" },
+            { "n": 6, "paragraph": "F", "answer": "vi" }
+          ]
+        },
+        {
+          "group": "7-11",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 7, "statement": "Chronic loneliness has been compared to the health risk of smoking a certain number of cigarettes a day.", "answer": "TRUE" },
+            { "n": 8, "statement": "Aristotle valued friendship mainly for the practical benefits it provides.", "answer": "FALSE" },
+            { "n": 9, "statement": "The proportion of young men reporting no close friends has decreased since the 1990s.", "answer": "FALSE" },
+            { "n": 10, "statement": "During the COVID-19 pandemic, men reported losing touch with friends more than women did.", "answer": "FALSE" },
+            { "n": 11, "statement": "Government funding for community centres is identified as a key solution to the friendship recession.", "answer": "NOT GIVEN" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-006",
+      "title": "The Coagulated Legacy: A Historical and Biochemical Overview of Cheesemaking",
+      "source": "Original/teaching material (food history)",
+      "paragraphs": {
+        "A": "The dawn of cheesemaking is inextricably linked with the transition of early human societies from foraging to agriculture. As early as 8000 BCE, Neolithic farmers inhabiting the Fertile Crescent domesticated sheep and goats, utilizing them as a reliable source of fresh milk. However, in the absence of refrigeration, fresh milk left in ambient warmth would inevitably sour within hours. This acidic transformation, driven by the accumulation of lactic acids, prompted milk proteins to coagulate into soft curds. It was through the discovery of this natural coagulation that early farmers learned to separate the solid curd from the liquid whey, thereby creating a rudimentary form of cheese. Not only did this biochemical process yield a palatable, spreadable substance, but it also resolved a significant dietary bottleneck: the high concentration of lactose, a disaccharide sugar that remains exceedingly difficult for many human populations to digest.",
+        "B": "Beyond its immediate nutritional benefits, cheese represented an unprecedented survival strategy for Neolithic communities. By transforming highly perishable milk into a storable commodity, ancient societies successfully stockpiled essential proteins, fats, and minerals, which sustained them through harsh winters and periods of famine. Physical evidence of this early food technology persists in seventh-millennium BCE pottery fragments excavated in modern-day Turkey, which still retain chemical residues of ancient dairy lipids. As agricultural civilizations flourished and maritime networks expanded, cheese transcended its domestic origins. By the end of the Bronze Age, this preserved dairy product had evolved into a standard commodity in maritime trade routes across the eastern Mediterranean.",
+        "C": "In the densely populated urban centers of Mesopotamia, cheese was integrated into both administrative structures and sacred rituals. Indeed, some of the earliest clay tablets featuring cuneiform script contain administrative logs detailing cheese quotas, which were allocated to various socio-economic groups and religious ceremonies. Concurrently, technological innovations in cheesemaking emerged in Anatolia, where records document the utilization of rennet. This complex enzymatic byproduct, harvested from the stomachs of young ruminants, accelerated the coagulation process and allowed for a far more controlled precipitation of casein proteins. The widespread adoption of rennet facilitated the production of firmer, more durable cheeses, which were less prone to spoilage and far better suited for long-distance transport.",
+        "D": "As cheesemaking knowledge diffused globally, distinct regional adaptations arose, reflecting local climates and cultural preferences. Nomadic populations in Mongolia utilized yak milk to formulate sundried, durable wedges of byaslag, whereas Egyptian cheesemakers favored goat milk, straining the curd through specialized reed mats. In South Asia, where the use of animal rennet was often avoided, milk was coagulated using organic acids such as lemon juice or vinegar, resulting in a mild, versatile cheese known as paneer. Meanwhile, in Europe, the Greeks produced brined blocks of salty feta, alongside hard, gratable cheeses reminiscent of modern pecorino romano. Under the Roman Empire, this latter variety, dubbed caseus aridus or \"dry cheese,\" became an indispensable military ration. Seldom has any foodstuff played such a crucial geopolitical role: caseus aridus sustained nearly half a million Roman legionaries stationed along the empire's extensive frontiers.",
+        "E": "Following the decline of the Western Roman Empire, the epicenter of cheesemaking innovation shifted to the European countryside, particularly within the walls of Benedictine monasteries. Medieval monks, operating with a level of scientific curiosity and systematic trial, experimented with diverse milk sources, temperature variables, and aging techniques. Their meticulous efforts perfected many of the world's most celebrated varieties, including Parmesan, Roquefort, and various Swiss Alpine cheeses. The economic value of these products grew so immense that in the late fourteenth century, an armed conflict erupted when a neighboring state invaded the Gruyere highlands of Switzerland to seize control of the lucrative Alpine cheese trade. Although the Industrial Revolution eventually transitioned cheesemaking from pastoral monasteries to mechanized factories, the underlying biochemistry remains unchanged. Today, while global factories produce approximately 22 billion kilograms of cheese annually, artisan farms continue to employ the same traditional methods established by their Neolithic ancestors ten millennia ago."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. Turning a perishable liquid into a storage strategy",
+            "ii. How enzymes improved control over the cheesemaking process",
+            "iii. Climate-driven variety across cheesemaking cultures",
+            "iv. A chemical accident that solved a digestive problem",
+            "v. Monasteries as centres of culinary experimentation",
+            "vi. Cheese's symbolic role in early bureaucracy and religion",
+            "vii. The decline of pastoral cheesemaking after industrialisation"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "iv" },
+            { "n": 2, "paragraph": "B", "answer": "i" },
+            { "n": 3, "paragraph": "C", "answer": "vi" },
+            { "n": 4, "paragraph": "D", "answer": "iii" },
+            { "n": 5, "paragraph": "E", "answer": "v" }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 6, "statement": "Neolithic farmers deliberately invented cheese as a planned dietary innovation.", "answer": "FALSE" },
+            { "n": 7, "statement": "Archaeological evidence of dairy residue has been found in pottery from Turkey.", "answer": "TRUE" },
+            { "n": 8, "statement": "Rennet is obtained from the stomach lining of fully grown cattle.", "answer": "FALSE" },
+            { "n": 9, "statement": "Roman soldiers were forbidden from carrying cheese as part of their rations.", "answer": "FALSE" },
+            { "n": 10, "statement": "A war was fought over control of an Alpine cheese-producing region.", "answer": "TRUE" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-007",
+      "title": "The Mechanics and Motivations of the Flow State",
+      "source": "Original/teaching material (psychology of peak performance)",
+      "paragraphs": {
+        "A": "The intriguing phenomenon of \"flow\"—often characterized as a state of \"effortless effort\" where an individual feels propelled through an activity—represents a profound shift in human cognitive processing. During this state of rapt attention and total absorption, subjective time undergoes significant dilation; hours compress into mere minutes, or conversely, a freeze-frame effect may slow perception during critical moments. Additionally, intuition is heightened, exemplified by athletes who perceive targets as vastly magnified. Historically, the origin of flow traces back to the German writer Goethe, who employed the term \"rausch\" to signify an experience overflowing with joy. Although subsequent intellectual figures, such as Friedrich Nietzsche and William James, explored these psychological boundaries, it was Mihaly Csikszentmihalyi, a visionary researcher widely designated as the \"Godfather of Flow Psychology,\" who systematically investigated this altered state of consciousness. By interviewing diverse populations worldwide, Csikszentmihalyi established that individuals experience peak performance when their actions and decisions flow seamlessly from one to the next.",
+        "B": "To access this elusive state, individuals must meticulously orchestrate their biological and environmental prerequisites. Foremost among these is complete concentration, a condition that must be aligned with an individual's unique circadian physiology. While some operate as early risers whose cognitive faculties peak at dawn, others are night owls whose neurological systems awaken late in the evening. Regardless of these physiological variations, seldom do practitioners transition into flow without dedicating an uninterrupted block of ninety to one hundred and twenty minutes to their task. In our hyper-connected society, rigorous distraction management is indispensable. Empirical studies observing computer programmers reveal that if they are dislodged by a single external distraction—such as a text alert—it typically requires up to fifteen minutes of cognitive realignment to re-enter the state, provided they can recover it at all.",
+        "C": "Central to the facilitation of flow is the \"challenge-skills balance,\" which is universally hailed as the \"golden rule\" of peak performance. This principle dictates that human attention is captured most intensely when the perceived difficulty of a task slightly exceeds the individual's current capabilities. Consequently, cultivating flow requires individuals to become comfortable with being uncomfortable, stretching their capacities without causing their cognitive faculties to snap. Indeed, it is not impossible to execute complex tasks under these conditions, but it is rarely accomplished without some degree of cognitive discomfort, which forces the brain to suppress default analytical strain. Under normal circumstances, frowning muscles contract to signal that the brain is actively performing difficult calculations. In deep flow, however, these facial muscles are temporarily paralyzed, indicating that the individual has transitioned into a highly automated, high-efficiency \"robot mode\" where struggle is replaced by seamless execution.",
+        "D": "From a neurobiological perspective, sustaining this state depends heavily on the activation of specific neural pathways, predominantly driven by the release of dopamine, a neurotransmitter that heightens alertness and excitement. Researchers have mapped twenty-two distinct flow triggers, a substantial portion of which are explicitly structured to stimulate dopamine production. Exposure to novelty, unpredictability, and intellectual complexity naturally floods the brain with dopamine, as does the experience of awe, which provides a profound sense of perceptual vastness when looking at the night sky. Furthermore, minor cognitive milestones, such as solving a single clue in a crossword puzzle, trigger localized dopamine surges that immediately amplify pattern recognition, thereby facilitating subsequent correct answers. Crucially, risk-taking is not merely rewarded by dopamine after the fact; rather, the neurotransmitter is deployed proactively to drive the necessary motivation to navigate hazardous situations.",
+        "E": "Beyond neurobiological triggers, peak performance is fueled by a structured sequence of five intrinsic motivators, each biologically engineered to build upon the previous one. Curiosity, the foundational driver, provides \"focus for free,\" allowing individuals to pay attention without burning excessive calories. This curiosity is designed to evolve naturally into passion, which demands the integration of a broader purpose. This purpose, albeit widely celebrated as an altruistic contribution to society, functions from a peak performance perspective as an intensely self-serving psychological mechanism. Once a clear purpose is established, the human cognitive system naturally demands autonomy—the absolute freedom to pursue that mission. Ultimately, this autonomy drives the pursuit of mastery, which represents the continuous development of the sophisticated skills required to fulfill one's purpose exceptionally well.",
+        "F": "Ultimately, flow is not a solitary endeavor; a shared, collective version known as \"group flow\" allows teams and organizations to operate at their absolute best. Far from being a luxury reserved for elite performers, flow is universal to all humans, most mammals, and definitely all social mammals. Long-term studies indicate that individuals who score exceptionally high for overall well-being and life satisfaction are invariably those who have integrated the highest frequency of flow into their daily routines. While motivation serves to get individuals into the game of peak performance, and learning allows them to continue playing, it is creativity that enables them to steer. Flow, therefore, represents the ultimate psychological mechanism that amplifies all cognitive and creative results far beyond any reasonable expectation."
+      },
+      "questions": [
+        {
+          "group": "1-6",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has six paragraphs, A-F. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. Defining flow through cognitive time distortion and its history",
+            "ii. The environmental conditions required to enter flow",
+            "iii. Balancing task difficulty with ability as the \"golden rule\"",
+            "iv. The neurochemical reward system behind risk and focus",
+            "v. A step-by-step ladder of internal motivators",
+            "vi. Flow as a shared, collective experience across teams and species",
+            "vii. Why some athletes never experience flow",
+            "viii. Measuring flow through changes in facial expression",
+            "ix. The economic value of maintaining employee focus"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "i" },
+            { "n": 2, "paragraph": "B", "answer": "ii" },
+            { "n": 3, "paragraph": "C", "answer": "iii" },
+            { "n": 4, "paragraph": "D", "answer": "iv" },
+            { "n": 5, "paragraph": "E", "answer": "v" },
+            { "n": 6, "paragraph": "F", "answer": "vi" }
+          ]
+        },
+        {
+          "group": "7-11",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 7, "statement": "Csikszentmihalyi was the first person in history to describe the experience later called flow.", "answer": "FALSE" },
+            { "n": 8, "statement": "Most people can enter flow without dedicating an uninterrupted block of time to a task.", "answer": "FALSE" },
+            { "n": 9, "statement": "According to the passage, a task that is far beyond a person's current ability is ideal for triggering flow.", "answer": "FALSE" },
+            { "n": 10, "statement": "Facial frowning decreases when a person is in a state of deep flow.", "answer": "TRUE" },
+            { "n": 11, "statement": "Group flow has only ever been observed in human teams, not in other social species.", "answer": "FALSE" }
+          ]
+        },
+        {
+          "group": "12-15",
+          "type": "sentence_completion",
+          "instructions": "Complete the sentences below, based on Paragraph D. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+          "items": [
+            { "n": 12, "prompt": "Dopamine is described as a neurotransmitter that heightens ______ and excitement.", "answer": "alertness" },
+            { "n": 13, "prompt": "Small cognitive wins, like solving a crossword clue, amplify ______ recognition.", "answer": "pattern" },
+            { "n": 14, "prompt": "Dopamine is deployed proactively to build motivation for ______.", "answer": "risk-taking" },
+            { "n": 15, "prompt": "This motivation helps individuals navigate ______ situations safely.", "answer": "hazardous" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-008",
+      "title": "The Aqueducts and Thermae of Imperial Rome: Engineering, Utility, and Social Theater",
+      "source": "Original/teaching material (Roman engineering history)",
+      "paragraphs": {
+        "A": "Rome was characterized as a city of water, an urban marvel that eventually accommodated an unprecedented population of approximately one million inhabitants. To sustain such a massive metropolis, a highly sophisticated infrastructure of twelve aqueducts was progressively constructed over a span of five centuries. It was to accommodate this unprecedented concentration of humanity that Roman administrators constructed these networks, distributing water across the city's seven hills. By channeling water from elevated natural springs and distant rivers, engineers harnessed gravity to transport millions of gallons daily. Crucially, this abundance was not merely a matter of survival, but a fundamental pillar of public health. This vast supply allowed average citizens to experience standardized leisure and sanitation, which fostered a unified civic identity across Roman territories.",
+        "B": "The mechanical marvel of these aqueducts relied on precise calculations, as engineers had to maintain a continuous, gradual slope to ensure constant flow over vast distances. Where the rugged terrain flattened into low-lying plains, engineers propped up the water conduits on monumental stone arcades, towering structures that remain visible across the modern Italian landscape. A prime historical example is the Aqua Claudia, constructed in the middle of the first century CE, representing a pinnacle of Roman civil engineering. Frequently, newer conduits piggybacked on top of existing structures, such as the Aqua Anio Novus, built above the Aqua Claudia to optimize resources. That these systems possessed extraordinary durability is demonstrated by the Aqua Virgo, which was engineered by Agrippa in 19 BCE, and continues to supply water to the Trevi Fountain today, demonstrating a legacy of hydrological mastery spanning over two millennia.",
+        "C": "While the primary volume of incoming water was distributed to hundreds of public fountains to guarantee collective access, a substantial proportion was allocated for domestic and commercial purposes. Wealthy citizens could secure private water lines routed directly to their estates, albeit at a premium municipal tariff that only elite families could afford to sustain. In Ostia Antica, the luxurious House of Cupid and Psyche showcases this private indulgence, boasting an elegant interior fountain fed by an original lead pipe. Beyond residential estates, commercial enterprises likewise depended heavily on this municipal network. The fullonica, the Roman equivalent of an urban dry cleaner, required copious amounts of water to rinse garments after utilizing chemical agents, which controversially included collected urine for its ammonium content. Consequently, water became a valuable commodity that signified both high socio-economic status and industrial productivity.",
+        "D": "Despite the vital industrial and domestic applications of water, no aspect of Roman civilization was as quintessential as communal bath culture, which served as the social epicenter of the empire. The daily routine of Roman citizens was remarkably casual, with professional and administrative business typically concluding by midday. Immediately after a quick snack, most of the population would transfer to the local bathhouse to wash, socialize, and enhance their political and social visibility. These sprawling bath complexes, which were often located near administrative forums and bustling residential zones, were designed to host thousands of bathers simultaneously. The imperial bath complexes, some of which spanned over thirty acres—approximately the size of an average provincial Roman city—offered a multifaceted leisure experience. Within these venues, the frigidarium, a colossal unheated hall decorated with mosaics of Neptune, Amphitrite, and Scylla, provided a cool haven for relaxation and networking.",
+        "E": "A prime archaeological example is the Forum Baths of Ostia, sponsored by the Praetorian prefect Marcus Gavius Maximus. Beneath its aesthetic grandeur lay a revolutionary system of thermodynamic engineering facilitating a sequential sensory journey. Upon entering the apodyterium, the changing room where patrons undressed to bathe completely naked, individuals began their transition through rooms of varying temperatures. While the unheated frigidarium featured soaring ceilings to naturally maintain cooler air, the heated rooms grew progressively smaller and more intimate to prevent heat loss. To generate the necessary thermal intensity, the Romans devised the hypocaust, an underfloor heating system where slaves stoked roaring fires in subterranean furnaces. Not only did these subterranean fires heat the hollow spaces beneath the elevated floors, but they also directed hot air upwards through the walls via hollow clay bricks, known as tubuli. These chimneys were carefully concealed behind decorative marble panels to maintain an elegant interior aesthetic. In the caldarium, the final and hottest chamber, temperatures exceeded 110 degrees Fahrenheit, sustained by glass-insulated windows that prevented the vital heat from escaping.",
+        "F": "Communal bathing was ultimately a highly performative social theater where class distinctions were simultaneously dissolved and highlighted. Although all citizens bathed naked, social status was loudly broadcasted by the size of one's retinue; to be accompanied by a large entourage of personal slaves directly signaled immense political influence and wealth. In this vibrant environment, elites negotiated lucrative business deals and dinner invitations, while poorer citizens vied to secure patrons. Nevertheless, despite the Roman conviction that bathing was a therapeutic and hygienic medical practice, physical sanitation was frequently compromised. Archaeological evidence indicates that large pools, such as the open-air natatio, completely lacked modern chemical purification methods like chlorine. Consequently, it was not uncommon for affluent citizens to seek a more exclusive, hygienic, and personalized experience by visiting private, downsized bathhouses, such as the Baths of Buticosus, which restricted entry to select members and friends. Nonetheless, the bathhouse remained the undisputed heart of Roman civic life."
+      },
+      "questions": [
+        {
+          "group": "1-6",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has six paragraphs, A-F. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. How class status was displayed inside a supposedly equal space",
+            "ii. Managing water pressure and gradient across long distances",
+            "iii. From natural spring to a citywide distribution network",
+            "iv. Paid access to water for homes and businesses",
+            "v. A sequence of rooms designed around temperature",
+            "vi. The underground technology that powered the hottest room",
+            "vii. Hygiene concerns despite Rome's bathing culture",
+            "viii. The daily rhythm of work, bathing, and socialising",
+            "ix. Rival cities competing for control of springs"
+          ],
+          "items": [
+            { "n": 1, "paragraph": "A", "answer": "iii" },
+            { "n": 2, "paragraph": "B", "answer": "ii" },
+            { "n": 3, "paragraph": "C", "answer": "iv" },
+            { "n": 4, "paragraph": "D", "answer": "viii" },
+            { "n": 5, "paragraph": "E", "answer": "vi" },
+            { "n": 6, "paragraph": "F", "answer": "i" }
+          ]
+        },
+        {
+          "group": "7-11",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            { "n": 7, "statement": "All of the water carried by Rome's aqueducts was reserved for public fountains only.", "answer": "FALSE" },
+            { "n": 8, "statement": "Wealthy Roman families paid an extra fee to have water piped directly to their homes.", "answer": "TRUE" },
+            { "n": 9, "statement": "The Aqua Virgo no longer supplies any water in the present day.", "answer": "FALSE" },
+            { "n": 10, "statement": "The frigidarium had high ceilings partly in order to help keep the air inside cool.", "answer": "TRUE" },
+            { "n": 11, "statement": "Chlorine was used to purify the water in Rome's large public pools.", "answer": "FALSE" }
+          ]
+        },
+        {
+          "group": "12-15",
+          "type": "sentence_completion",
+          "instructions": "Complete the labels below, based on Paragraph E. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+          "items": [
+            { "n": 12, "prompt": "The changing room where bathers undressed before entering the baths was called the ______.", "answer": "apodyterium" },
+            { "n": 13, "prompt": "Underground fires heated the hollow space beneath the raised floor, known as the ______.", "answer": "hypocaust" },
+            { "n": 14, "prompt": "Hot air travelled upward through hollow clay bricks called ______, hidden behind marble panels.", "answer": "tubuli" },
+            { "n": 15, "prompt": "The final, hottest room, where temperatures exceeded 110°F, was called the ______.", "answer": "caldarium" }
+          ]
+        }
+      ]
     }
   ]
 }

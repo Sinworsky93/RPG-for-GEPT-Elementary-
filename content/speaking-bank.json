@@ -1,0 +1,122 @@
+{
+  "_notes": "Speaking prompts consolidated and de-duplicated from teaching notes across multiple students. Part 1/3 questions and Part 2 cue cards are short, formulaic IELTS-style prompts reused as-is (same reasoning as writing-bank.json).",
+  "part1_topics": [
+    "Home / Hometown", "Accommodation", "Work or Study", "Shopping", "Food and Cooking",
+    "Free time / Leisure", "Sports", "Books and Reading", "Movies / Films", "Technology and Apps",
+    "News and Media", "Honesty", "Subscriptions and Streaming Services", "Advice"
+  ],
+  "part2_cue_cards": [
+    "Describe your favourite city or a city you have visited that you like very much. You should say: what its name is and where it is, when you visited it, why you liked it, and the major attractions in this city.",
+    "Describe a piece of art or a drawing/painting that you like.",
+    "Describe an app or piece of technology that makes your life easier.",
+    "Describe a subscription service you use or have used. You should say: what the service is, how you found out about it, how often you use it, and explain how it has affected your life.",
+    "Describe your favourite shop. You should say: where it is, how often you go there, what it sells, and explain why you think it is a good shop.",
+    "Talk about a time when you were not allowed to use your phone.",
+    "Describe a time when technology helped you connect with someone.",
+    "Describe a house or apartment you would like to live in.",
+    "Describe a change that could improve your local area.",
+    "Describe a trip you took by public transport.",
+    "Describe a close friend you have known for a long time.",
+    "Describe a healthy dish you enjoy cooking.",
+    "Describe an important environmental problem in your local area or country.",
+    "Describe a person you know who lived alone abroad. You should say: who the person is, where and why they went abroad, how they adapted to living alone, and explain what you learned from their experience.",
+    "Describe a person who is often in the news, and who you would like to meet.",
+    "Describe a piece of work you did for your job or your studies that you felt very satisfied with.",
+    "Talk about a group project that you worked on.",
+    "Describe a healthy habit you want to develop.",
+    "Describe a movie about wild animals that you enjoyed.",
+    "Describe a food-related app or technology you find useful. You should say: what app/technology it is, how you use it, when you started using it, and explain why you find it helpful.",
+    "Describe a time when you received useful advice. You should say: who gave the advice, what the advice was, when you received it, and explain why it was useful.",
+    "Describe a successful businessman or a well-known person you know about. You should say: who they are, how they became successful, what they are known for, and explain why people admire them.",
+    "Describe something cultural that you do not like.",
+    "Describe a time when you felt very proud of something a family member did.",
+    "Describe a car journey you remember well.",
+    "Describe something you do not like in your daily life.",
+    "Describe a person who is good at learning and speaking new languages.",
+    "Describe a boring place.",
+    "Describe a time when you sent a message or an email to someone but received no reply for a long time.",
+    "Describe a family member you spend a lot of time with. You should say: who this person is, what you usually do together, what kind of person he/she is, and explain why you spend the most time with him/her.",
+    "Describe your experience of having your dream job. You should say: what your dream job is, how you got this job, what you do in this job, and explain how having your dream job has affected your life.",
+    "Describe a school subject you enjoyed learning when you were younger.",
+    "Describe a meal you enjoyed with friends. You should say: what the meal was, where you ate it, who you were with, what you talked about, and explain why you enjoyed that time.",
+    "Describe a time you looked for information from the internet.",
+    "Describe a time when you had to deal with a difficult relationship in an educational setting.",
+    "Describe an important conversation you had with someone.",
+    "Describe a helpful person.",
+    "Describe a meaningful object you have kept since your childhood.",
+    "Describe a restaurant where you paid attention to the nutritional information or ingredients of the food.",
+    "Describe a person you have recently met but would like to know better.",
+    "Describe an activity you would do when you are alone in your free time.",
+    "Describe a sport that interests you but you have never tried. You should say: where it is usually played, what kinds of people usually play it, why it interests you, and say if you think you will ever do this sport or not, and why.",
+    "Describe a book you have never read but would like to read.",
+    "Describe a workplace you have worked in or know about."
+  ],
+  "part3_discussion_sets": [
+    {
+      "theme": "Technology and Communication",
+      "questions": [
+        "Do you think technology has made communication between people easier or more difficult?",
+        "How has technology changed the way people shop for food?",
+        "Are there any disadvantages to using many subscription services at the same time?",
+        "In your opinion, will more things become 'subscription only' in the future? Why or why not?",
+        "Do you think technology makes life more complex? Should we simplify our lives by reducing our use of technology?"
+      ]
+    },
+    {
+      "theme": "Work and Career",
+      "questions": [
+        "Do you think job satisfaction is more important than salary when choosing a job?",
+        "What skills do you think are needed to get a good job these days?",
+        "What's the biggest difference between white collar and blue collar jobs?",
+        "How important is work-life balance to you?",
+        "Do you think people should change jobs often, or stay in one job for a long time?"
+      ]
+    },
+    {
+      "theme": "Environment and Society",
+      "questions": [
+        "What can governments do to encourage people to protect the environment?",
+        "Do you think individuals can make a real difference to environmental problems, or is it mainly the responsibility of governments and large companies?",
+        "How can governments improve living quality in crowded cities?",
+        "What are the negative aspects of living in a crowded city?"
+      ]
+    },
+    {
+      "theme": "Media, Fame, and News",
+      "questions": [
+        "Do you think the content in newspapers is reliable?",
+        "Is it necessary for people to keep up with international news?",
+        "What kinds of famous people are usually in the news in your country?",
+        "Do famous people have a responsibility to society?",
+        "How does media attention affect the private lives of famous people?"
+      ]
+    },
+    {
+      "theme": "Friendship and Advice",
+      "questions": [
+        "Do you think good friends are necessary in life?",
+        "Why is advice from experienced people valuable?",
+        "How do people decide whether to follow advice?",
+        "Do you often ask others for advice? Who do you usually ask?"
+      ]
+    },
+    {
+      "theme": "Food and Lifestyle",
+      "questions": [
+        "Should schools teach children about healthy eating?",
+        "Is fast food always unhealthy?",
+        "What role does food play in different cultures?",
+        "Do you think modern society pays too much attention to food?"
+      ]
+    },
+    {
+      "theme": "Honesty and Trust",
+      "questions": [
+        "Do you think it is ever okay to tell a lie?",
+        "How does lying affect trust between people?",
+        "Are there cultural differences in attitudes towards lying?",
+        "How can people rebuild trust after a lie is discovered?"
+      ]
+    }
+  ]
+}
