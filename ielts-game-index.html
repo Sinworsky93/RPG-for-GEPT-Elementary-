@@ -461,9 +461,12 @@ function renderReadingList(){
   el.innerHTML = state.reading.passages.map((p,i)=>{
     const qcount = p.questions.reduce((s,g)=>s+g.items.length,0);
     const best = bestReadingScore(p.title);
+    const passageKey = p.id || p.title;
+    const hasDraft = !best && !!loadReadingAnswers(passageKey);
     const doneBadge = best ? `<span class="badge" style="background:#e6f6ec;color:var(--good);">✓ 最佳 ${best.score}/${best.total}</span>` : '';
+    const draftBadge = hasDraft ? `<span class="badge" style="background:#fff3d6;color:var(--warn);">📝 進行中，點擊繼續</span>` : '';
     return `<div class="card" onclick="openPassage(${i})">
-      <span class="badge">第 ${i+1} 篇</span>${doneBadge}
+      <span class="badge">第 ${i+1} 篇</span>${doneBadge}${draftBadge}
       <h3>${p.title}</h3>
       <p>${Object.keys(p.paragraphs).length} 段落．${qcount} 題</p>
     </div>`;
@@ -545,7 +548,7 @@ function openPassage(i){
         <div id="passageTextOnly">${paragraphsHTML}</div>
       </div>
       <div class="qbox">
-        <form id="qform">${qgroupsHTML}</form>
+        <form id="qform" onchange="saveReadingAnswers()" oninput="saveReadingAnswers()">${qgroupsHTML}</form>
         <div class="submitbar">
           <span class="score" id="scoreDisplay"></span>
           <button type="button" onclick="gradePassage(false)">對答案</button>
@@ -553,6 +556,7 @@ function openPassage(i){
       </div>
     </div>
   `;
+  restoreReadingAnswers(passageKey);
   startReadingTimer();
 }
 
@@ -576,6 +580,48 @@ function closePassage(){
   renderReadingList();
   document.getElementById('reading-test').style.display='none';
   document.getElementById('reading-list').style.display='block';
+}
+
+/* ---------- reading in-progress answer autosave (so an accidental exit isn't lost) ---------- */
+function readingDraftKey(passageKey){ return `readingDraft_${passageKey}`; }
+function saveReadingAnswers(){
+  if(!state.currentPassage) return;
+  const key = state.currentPassage.id || state.currentPassage.title;
+  const form = document.getElementById('qform');
+  if(!form) return;
+  const answers = {};
+  form.querySelectorAll('select[data-n]').forEach(sel=>{ if(sel.value) answers[sel.dataset.n] = sel.value; });
+  form.querySelectorAll('input[type=text][data-n]').forEach(inp=>{ if(inp.value) answers[inp.dataset.n] = inp.value; });
+  const seen = new Set();
+  form.querySelectorAll('input[type=radio][data-n]').forEach(r=>{
+    if(seen.has(r.dataset.n)) return;
+    const checked = form.querySelector('input[name=q'+r.dataset.n+']:checked');
+    if(checked){ answers[r.dataset.n] = checked.value; seen.add(r.dataset.n); }
+  });
+  try{
+    if(Object.keys(answers).length){ localStorage.setItem(readingDraftKey(key), JSON.stringify(answers)); }
+    else localStorage.removeItem(readingDraftKey(key));
+  }catch(e){}
+}
+function loadReadingAnswers(key){
+  try{ return JSON.parse(localStorage.getItem(readingDraftKey(key)) || 'null'); }catch(e){ return null; }
+}
+function clearReadingAnswers(key){
+  try{ localStorage.removeItem(readingDraftKey(key)); }catch(e){}
+}
+function restoreReadingAnswers(passageKey){
+  const answers = loadReadingAnswers(passageKey);
+  if(!answers) return;
+  const form = document.getElementById('qform');
+  if(!form) return;
+  Object.entries(answers).forEach(([n, val])=>{
+    const sel = form.querySelector(`select[data-n="${n}"]`);
+    if(sel){ sel.value = val; return; }
+    const radio = form.querySelector(`input[type=radio][name=q${n}][value="${val}"]`);
+    if(radio){ radio.checked = true; return; }
+    const inp = form.querySelector(`input[type=text][data-n="${n}"]`);
+    if(inp) inp.value = val;
+  });
 }
 
 function gradePassage(autoSubmitted){
@@ -629,6 +675,7 @@ function gradePassage(autoSubmitted){
   addWrongAnswers(wrongItems);
   syncToBackend('reading_score', { title: passageTitle, score: correct, total });
   wrongItems.forEach(w => syncToBackend('wrong_answer', w));
+  if(state.currentPassage){ clearReadingAnswers(state.currentPassage.id || state.currentPassage.title); }
 }
 
 /* ---------- chart rendering helpers ---------- */
@@ -765,9 +812,20 @@ function renderChart(item){
 function renderWriting(){
   const el = document.getElementById('writing-list');
   if(!state.writing){ el.innerHTML='<div class="empty">找不到 writing-bank.json</div>'; return; }
+  const draftTag = `<span class="tag" style="background:#fff3d6;color:#8a6400;">📝 草稿，點擊繼續</span>`;
   let html = '<div class="section-title">Task 1－學術類（點選題目查看圖表並開始寫作）</div>';
-  html += (state.writing.task1_academic||[]).map((t,i)=>
-    `<div class="prompt-item" style="cursor:pointer;" onclick="openTask1(${i})"><span class="tag">${t.chart_type}</span>${t.prompt}</div>`).join('');
+  const chartTypeNames = { line:'折線圖', bar:'長條圖', pie:'圓餅圖', table:'表格', process:'流程圖', map:'地圖比較' };
+  const chartTypeOrder = ['line','bar','pie','table','process','map'];
+  const task1Items = (state.writing.task1_academic||[]).map((t,i)=>({ t, i }));
+  chartTypeOrder.forEach(ct=>{
+    const group = task1Items.filter(x=>x.t.chart_type===ct);
+    if(!group.length) return;
+    html += `<div class="section-title" style="font-size:13px;color:var(--sub);margin-top:16px;">${chartTypeNames[ct]||ct}</div>`;
+    html += group.map(({t,i})=>{
+      const hasDraft = !!loadEssayDraft({ kind:'task1', i });
+      return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask1(${i})">${hasDraft?draftTag:''}${t.prompt}</div>`;
+    }).join('');
+  });
 
   html += '<div class="section-title">Task 2－作文（點選題目開始寫作）</div>';
   const cats = state.writing.task2_essay || {};
@@ -776,7 +834,8 @@ function renderWriting(){
     html += `<div class="section-title" style="font-size:13px;color:var(--sub);margin-top:16px;">${catNames[cat]||cat.replace(/_/g,' ')}</div>`;
     html += prompts.map((p,pi)=>{
       const text = typeof p === 'string' ? p : p.prompt;
-      return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask2('${cat}',${pi})">${text}</div>`;
+      const hasDraft = !!loadEssayDraft({ kind:'task2', cat, i:pi });
+      return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask2('${cat}',${pi})">${hasDraft?draftTag:''}${text}</div>`;
     }).join('');
   });
   el.innerHTML = html;
