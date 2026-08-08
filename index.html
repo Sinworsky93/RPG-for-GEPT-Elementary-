@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -6,14 +6,29 @@
     <title>GEPT-CORE: 核心突破</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=VT323&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-    
+
     <style>
         body {
             font-family: 'VT323', 'Noto Sans TC', monospace;
-            background-color: #0a0a0c;
+            background-color: #000;
+            background-image:
+                radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+                radial-gradient(2px 2px at 60px 120px, #0ff, transparent),
+                radial-gradient(1.5px 1.5px at 100px 60px, #f0f, transparent),
+                radial-gradient(1.5px 1.5px at 160px 140px, #ff0, transparent),
+                radial-gradient(2px 2px at 200px 20px, #fff, transparent),
+                radial-gradient(1.5px 1.5px at 240px 100px, #0ff, transparent);
+            background-repeat: repeat;
+            background-size: 260px 200px;
+            animation: starDrift 60s linear infinite;
             color: #00ffcc;
             letter-spacing: 1px;
             user-select: none;
+        }
+
+        @keyframes starDrift {
+            from { background-position: 0 0; }
+            to { background-position: -260px 200px; }
         }
 
         .crt::before {
@@ -27,6 +42,32 @@
             pointer-events: none;
         }
 
+        .arcade-frame {
+            animation: neonCycle 6s linear infinite;
+        }
+
+        @keyframes neonCycle {
+            0%   { border-color: #00ffcc; box-shadow: 0 0 30px rgba(0,255,204,0.5), inset 0 0 20px rgba(0,255,204,0.15); }
+            25%  { border-color: #ff00ff; box-shadow: 0 0 30px rgba(255,0,255,0.5), inset 0 0 20px rgba(255,0,255,0.15); }
+            50%  { border-color: #ffee00; box-shadow: 0 0 30px rgba(255,238,0,0.5), inset 0 0 20px rgba(255,238,0,0.15); }
+            75%  { border-color: #39ff14; box-shadow: 0 0 30px rgba(57,255,20,0.5), inset 0 0 20px rgba(57,255,20,0.15); }
+            100% { border-color: #00ffcc; box-shadow: 0 0 30px rgba(0,255,204,0.5), inset 0 0 20px rgba(0,255,204,0.15); }
+        }
+
+        .title-neon {
+            background: linear-gradient(90deg, #00ffcc, #ff00ff, #ffee00, #39ff14, #00ffcc);
+            background-size: 400% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: titleFlow 4s linear infinite, pulseGlow 2s ease-in-out infinite;
+        }
+        @keyframes titleFlow { to { background-position: -400% center; } }
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(0,255,204,0.7)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255,0,255,0.8)); }
+        }
+
         .shake {
             animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
         }
@@ -36,6 +77,29 @@
             20%, 80% { transform: translate3d(4px, 0, 0); }
             30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
             40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        .msg-pop {
+            animation: popIn 0.35s cubic-bezier(.34,1.56,.64,1);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.4) rotate(-5deg); opacity: 0; }
+            60% { transform: scale(1.15) rotate(2deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+
+        .warp-overlay {
+            position: absolute; inset: 0; z-index: 15; pointer-events: none;
+            background: repeating-conic-gradient(from 0deg, rgba(0,255,204,0.25) 0deg 8deg, transparent 8deg 16deg);
+            opacity: 0;
+        }
+        .warp-active {
+            animation: warpBurst 0.6s ease-out;
+        }
+        @keyframes warpBurst {
+            0% { opacity: 0; transform: scale(0.3) rotate(0deg); }
+            40% { opacity: 1; }
+            100% { opacity: 0; transform: scale(2.5) rotate(180deg); }
         }
 
         .btn-pixel {
@@ -60,16 +124,16 @@
             box-shadow: none;
             cursor: not-allowed;
         }
-        
+
         .enemy-sprite { filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.5)); }
     </style>
 </head>
 <body class="flex items-center justify-center h-screen overflow-hidden m-0">
-    <div class="crt relative w-full max-w-4xl h-[95vh] sm:h-[85vh] bg-gray-900 border-4 border-[#00ffcc] p-4 flex flex-col shadow-[0_0_30px_rgba(0,255,204,0.3)] overflow-hidden">
-        
+    <div class="crt arcade-frame relative w-full max-w-4xl h-[95vh] sm:h-[85vh] bg-gray-900 border-4 p-4 flex flex-col shadow-[0_0_30px_rgba(0,255,204,0.3)] overflow-hidden">
+
         <!-- 系統開始畫面 -->
         <div id="screen-start" class="flex-1 flex flex-col items-center justify-center text-center space-y-8 z-10">
-            <h1 class="text-6xl sm:text-8xl font-bold animate-pulse text-[#00ffcc] drop-shadow-[0_0_10px_#00ffcc]">GEPT-CORE</h1>
+            <h1 class="text-6xl sm:text-8xl font-bold title-neon">GEPT-CORE</h1>
             <p class="text-2xl text-teal-300">>> 終端機連線中... 載入初級英檢資料庫...</p>
             <div class="w-full max-w-sm space-y-6">
                 <input type="text" id="player-name" placeholder="輸入機器人型號 (Name)" class="w-full bg-black border-2 border-[#00ffcc] text-[#00ffcc] p-3 focus:outline-none focus:bg-gray-800 text-center text-3xl placeholder-teal-700 uppercase">
@@ -78,7 +142,9 @@
         </div>
 
         <!-- 遊戲主畫面 -->
-        <div id="screen-game" class="hidden flex-1 flex flex-col z-10">
+        <div id="screen-game" class="hidden flex-1 flex flex-col z-10 relative">
+            <div id="warp-overlay" class="warp-overlay"></div>
+
             <!-- 頂部資訊列 -->
             <div class="flex justify-between items-end border-b-2 border-teal-800 pb-2 mb-4 text-xl sm:text-2xl font-sans">
                 <div>
@@ -89,10 +155,11 @@
                     </div>
                 </div>
                 <div class="text-right leading-tight">
-                    作弊晶片 (HACK): <span id="ui-chips" class="font-bold text-yellow-400 text-3xl">3</span> 
+                    積分 (SCORE): <span id="ui-score" class="font-bold text-green-400 text-2xl">0</span><br>
+                    作弊晶片 (HACK): <span id="ui-chips" class="font-bold text-yellow-400 text-3xl">3</span>
                     <button onclick="useChip()" id="btn-chip" class="ml-2 text-lg border-2 border-yellow-600 bg-yellow-900 text-yellow-400 px-2 py-0 hover:bg-yellow-700 disabled:opacity-50 transition">自動作答</button><br>
                     機體零件 (PARTS): <span id="ui-parts" class="font-bold text-blue-400 text-2xl">0</span>/3<br>
-                    <span class="text-gray-400 text-lg">迷宮深度: <span id="ui-stage">1</span>/<span id="ui-max-stage">5</span></span>
+                    <span class="text-gray-400 text-lg">迷宮深度: <span id="ui-stage">1</span>/<span id="ui-max-stage">10</span></span>
                 </div>
             </div>
 
@@ -119,18 +186,18 @@
             </div>
 
             <!-- 操作面板 -->
-            <div class="h-72 sm:h-80 bg-black border-4 border-teal-700 p-4 flex flex-col relative font-sans">
-                
+            <div class="min-h-[16rem] max-h-[45vh] sm:max-h-[42vh] bg-black border-4 border-teal-700 p-4 flex flex-col relative font-sans overflow-y-auto">
+
                 <!-- 突發狀況區塊 -->
                 <div id="event-area" class="hidden flex-1 flex flex-col items-center justify-center space-y-6">
                     <p id="event-text" class="text-2xl text-blue-300 text-center leading-relaxed"></p>
-                    <div id="event-options" class="flex gap-6 w-full justify-center"></div>
+                    <div id="event-options" class="flex flex-wrap gap-4 w-full justify-center"></div>
                 </div>
 
                 <!-- 選擇題 (戰鬥) 區塊 -->
                 <div id="combat-area" class="hidden flex-1 flex-col">
                     <p id="combat-q" class="text-2xl sm:text-3xl mb-4 text-center text-teal-100"></p>
-                    <div id="combat-options" class="grid grid-cols-2 gap-4 flex-1"></div>
+                    <div id="combat-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 flex-1"></div>
                 </div>
 
                 <!-- 重組題 (解謎) 區塊 -->
@@ -155,19 +222,139 @@
         // --- 題庫：結合 GEPT 講義 W1-W14 與練習題 ---
         const Q_COMBAT = [
             { q: "My father's brother is my ______.", opt: ["uncle", "aunt", "cousin", "sister"], ans: 0 },
+            { q: "My mother's mother is my ______.", opt: ["grandmother", "grandfather", "aunt", "niece"], ans: 0 },
+            { q: "My brother's daughter is my ______.", opt: ["niece", "nephew", "cousin", "sister"], ans: 0 },
+            { q: "My uncle's son is my ______.", opt: ["cousin", "brother", "nephew", "uncle"], ans: 0 },
+            { q: "This is ______ pencil. It is red.", opt: ["I", "me", "my", "mine"], ans: 2 },
+            { q: "Those shoes are ______. They are not mine.", opt: ["her", "she", "hers", "he"], ans: 2 },
             { q: "The library is very ______, so I like to read and study there.", opt: ["formal", "busy", "thirsty", "quiet"], ans: 3 },
-            { q: "If it ______ tomorrow, we will stay at home.", opt: ["rain", "rained", "raining", "rains"], ans: 3 },
-            { q: "Look! The birds ______ in the sky.", opt: ["fly", "flies", "are flying", "is flying"], ans: 2 },
-            { q: "The bank is ______ the school and the park.", opt: ["between", "among", "under", "behind"], ans: 0 },
-            { q: "______ do you go to the movies? — About twice a month.", opt: ["How long", "How much", "How often", "How many"], ans: 2 },
-            { q: "He is tired, ______ he goes to bed early.", opt: ["but", "or", "so", "because"], ans: 2 },
             { q: "Where ______ you last night? I called you three times.", opt: ["are", "is", "was", "were"], ans: 3 },
+            { q: "My parents ______ not at home now.", opt: ["is", "am", "are", "be"], ans: 2 },
+            { q: "______ your brother a doctor?", opt: ["Is", "Are", "Do", "Does"], ans: 0 },
+            { q: "There ______ many people at the park yesterday.", opt: ["was", "were", "is", "are"], ans: 1 },
+            { q: "I ______ very tired after the long trip.", opt: ["am", "is", "are", "be"], ans: 0 },
+            { q: "______ they students at your school?", opt: ["Is", "Are", "Do", "Does"], ans: 1 },
+            { q: "It ______ very hot today.", opt: ["is", "are", "am", "be"], ans: 0 },
+            { q: "My sister and I ______ good friends.", opt: ["is", "am", "are", "be"], ans: 2 },
+            { q: "He usually ______ to school by bus.", opt: ["go", "goes", "going", "went"], ans: 1 },
+            { q: "My mother ______ dinner every evening.", opt: ["cook", "cooks", "cooking", "cooked"], ans: 1 },
+            { q: "______ do you go to the movies? — About twice a month.", opt: ["How long", "How much", "How often", "How many"], ans: 2 },
+            { q: "I ______ never late for class.", opt: ["am", "is", "are", "be"], ans: 0 },
+            { q: "The shop ______ at nine o'clock every day.", opt: ["open", "opens", "opening", "opened"], ans: 1 },
+            { q: "She always ______ her homework before dinner.", opt: ["do", "does", "did", "doing"], ans: 1 },
+            { q: "We ______ TV together on weekends.", opt: ["watch", "watches", "watching", "watched"], ans: 0 },
+            { q: "My father ______ coffee every morning.", opt: ["drink", "drinks", "drank", "drinking"], ans: 1 },
+            { q: "Look! The birds ______ in the sky.", opt: ["fly", "flies", "are flying", "is flying"], ans: 2 },
+            { q: "Please be quiet. The baby ______.", opt: ["sleep", "sleeps", "is sleeping", "are sleeping"], ans: 2 },
+            { q: "Listen! Someone ______ the door.", opt: ["knock", "knocks", "is knocking", "knocked"], ans: 2 },
+            { q: "Right now, my brother ______ his bike in the park.", opt: ["ride", "rides", "is riding", "rode"], ans: 2 },
+            { q: "We ______ for the bus at the moment.", opt: ["wait", "waits", "are waiting", "waited"], ans: 2 },
+            { q: "Look at the sky! It ______ to rain.", opt: ["start", "starts", "is starting", "started"], ans: 2 },
             { q: "He didn't ______ his homework last night.", opt: ["do", "does", "did", "doing"], ans: 0 },
-            { q: "I have ______ money. Let's buy some drinks.", opt: ["many", "a few", "a little", "few"], ans: 2 },
+            { q: "I ______ to the zoo with my family last Sunday.", opt: ["go", "goes", "went", "going"], ans: 2 },
+            { q: "She ______ a beautiful dress for the party.", opt: ["buy", "buys", "bought", "buying"], ans: 2 },
+            { q: "They ______ soccer in the park yesterday afternoon.", opt: ["play", "plays", "played", "playing"], ans: 2 },
+            { q: "We ______ a wonderful movie last night.", opt: ["see", "sees", "saw", "seeing"], ans: 2 },
+            { q: "My grandfather ______ me an interesting story last week.", opt: ["tell", "tells", "told", "telling"], ans: 2 },
+            { q: "The train ______ late this morning.", opt: ["arrive", "arrives", "arrived", "arriving"], ans: 2 },
+            { q: "I ______ my keys somewhere in the house.", opt: ["lose", "loses", "lost", "losing"], ans: 2 },
+            { q: "She ______ to the radio while doing her homework.", opt: ["listen", "listens", "listened", "listening"], ans: 2 },
+            { q: "He ______ his bicycle to school yesterday.", opt: ["ride", "rides", "rode", "riding"], ans: 2 },
+            { q: "When I called her, she ______ dinner.", opt: ["cook", "cooks", "was cooking", "cooked"], ans: 2 },
+            { q: "It ______ heavily when we left home.", opt: ["rain", "rains", "was raining", "rained"], ans: 2 },
+            { q: "What ______ you doing at eight last night?", opt: ["was", "were", "are", "is"], ans: 1 },
+            { q: "While we ______ TV, the phone rang.", opt: ["watch", "watches", "were watching", "watched"], ans: 2 },
+            { q: "If it ______ tomorrow, we will stay at home.", opt: ["rain", "rained", "raining", "rains"], ans: 3 },
+            { q: "I think it ______ sunny tomorrow.", opt: ["will be", "is", "was", "be"], ans: 0 },
+            { q: "We ______ to the beach this weekend if the weather is nice.", opt: ["go", "goes", "went", "are going"], ans: 3 },
+            { q: "If you study hard, you ______ pass the test.", opt: ["will", "would", "are", "do"], ans: 0 },
+            { q: "She ______ visit her grandparents next month.", opt: ["is", "will", "was", "did"], ans: 1 },
+            { q: "Look at those dark clouds! It ______ rain soon.", opt: ["is going to", "was going to", "will has", "is"], ans: 0 },
             { q: "______ you swim? — Yes, I can.", opt: ["Do", "Are", "Can", "Is"], ans: 2 },
+            { q: "You ______ finish your homework before you watch TV.", opt: ["must", "can", "may", "could"], ans: 0 },
+            { q: "______ I open the window? It's hot in here.", opt: ["Can", "Am", "Do", "Are"], ans: 0 },
+            { q: "You look tired. You ______ go to bed early.", opt: ["should", "must", "can", "may"], ans: 0 },
+            { q: "We ______ finish the project by Friday.", opt: ["have to", "has to", "having to", "had"], ans: 0 },
+            { q: "He is sick, so he ______ see a doctor.", opt: ["has to", "have to", "having to", "had"], ans: 0 },
+            { q: "______ I help you with your bags?", opt: ["Shall", "Do", "Am", "Is"], ans: 0 },
+            { q: "You ______ eat so much candy. It's bad for your teeth.", opt: ["shouldn't", "couldn't", "wouldn't", "isn't"], ans: 0 },
+            { q: "______ I borrow your pen for a minute?", opt: ["May", "Am", "Do", "Are"], ans: 0 },
+            { q: "Everyone ______ wear a seatbelt in the car.", opt: ["must", "can", "may", "could"], ans: 0 },
+            { q: "This book is ______ than that one.", opt: ["interesting", "more interesting", "most interesting", "interestinger"], ans: 1 },
+            { q: "She is the ______ student in our class.", opt: ["tall", "taller", "tallest", "more tall"], ans: 2 },
+            { q: "My brother is ______ than me.", opt: ["old", "older", "oldest", "more old"], ans: 1 },
+            { q: "This is the ______ movie I have ever seen.", opt: ["good", "better", "best", "goodest"], ans: 2 },
+            { q: "Today is ______ than yesterday.", opt: ["hot", "hotter", "hottest", "more hot"], ans: 1 },
+            { q: "Of all the students, Amy runs the ______.", opt: ["fast", "faster", "fastest", "more fast"], ans: 2 },
+            { q: "This question is ______ than the last one.", opt: ["easy", "easier", "easiest", "more easy"], ans: 1 },
+            { q: "This is ______ building in the city.", opt: ["tall", "taller", "the tallest", "more tall"], ans: 2 },
+            { q: "The bank is ______ the school and the park.", opt: ["between", "among", "under", "behind"], ans: 0 },
+            { q: "The cat is sleeping ______ the table.", opt: ["on", "in", "at", "under"], ans: 3 },
+            { q: "There is a picture ______ the wall.", opt: ["on", "in", "at", "under"], ans: 0 },
+            { q: "My house is ______ the corner of the street.", opt: ["on", "in", "at", "under"], ans: 2 },
+            { q: "Put the book ______ the shelf, please.", opt: ["on", "in", "at", "under"], ans: 0 },
+            { q: "There are many fish ______ the river.", opt: ["on", "in", "at", "under"], ans: 1 },
+            { q: "My birthday is ______ June.", opt: ["on", "in", "at", "for"], ans: 1 },
+            { q: "We usually have dinner ______ seven o'clock.", opt: ["on", "in", "at", "for"], ans: 2 },
+            { q: "I was born ______ 2005.", opt: ["on", "in", "at", "for"], ans: 1 },
+            { q: "She always goes jogging ______ Monday morning.", opt: ["on", "in", "at", "for"], ans: 0 },
+            { q: "The shop is closed ______ night.", opt: ["on", "in", "at", "for"], ans: 2 },
+            { q: "______ is your sister? — She is ten.", opt: ["How old", "How many", "How much", "How long"], ans: 0 },
+            { q: "______ do you go to the dentist? — Twice a year.", opt: ["How often", "How long", "How much", "How many"], ans: 0 },
+            { q: "______ does this bag cost? — It costs 500 dollars.", opt: ["How much", "How many", "How long", "How often"], ans: 0 },
+            { q: "______ brothers do you have? — I have two.", opt: ["How many", "How much", "How long", "How often"], ans: 0 },
+            { q: "______ is the museum from here? — It's about two kilometers.", opt: ["How far", "How long", "How much", "How many"], ans: 0 },
+            { q: "______ did you stay in Taipei? — For one week.", opt: ["How long", "How far", "How much", "How many"], ans: 0 },
+            { q: "______ is your favorite color? — Blue.", opt: ["What", "Who", "When", "Where"], ans: 0 },
+            { q: "______ is coming to the party tonight? — My cousin.", opt: ["Who", "What", "When", "Where"], ans: 0 },
+            { q: "______ does the movie start? — At seven thirty.", opt: ["When", "Where", "Who", "What"], ans: 0 },
+            { q: "______ is my umbrella? — It's next to the door.", opt: ["Where", "When", "Who", "What"], ans: 0 },
+            { q: "He is tired, ______ he goes to bed early.", opt: ["but", "or", "so", "because"], ans: 2 },
+            { q: "I like tea, ______ I don't like coffee.", opt: ["and", "but", "so", "because"], ans: 1 },
+            { q: "She was late ______ the bus didn't come on time.", opt: ["and", "but", "so", "because"], ans: 3 },
+            { q: "Do you want tea ______ coffee?", opt: ["and", "but", "so", "or"], ans: 3 },
+            { q: "It was raining, ______ we stayed inside.", opt: ["and", "but", "so", "because"], ans: 2 },
+            { q: "He studied hard, ______ he passed the exam.", opt: ["and", "but", "so", "because"], ans: 2 },
+            { q: "I have ______ money. Let's buy some drinks.", opt: ["many", "a few", "a little", "few"], ans: 2 },
+            { q: "There are ______ apples left in the basket.", opt: ["much", "a little", "a few", "any"], ans: 2 },
+            { q: "There isn't ______ milk in the fridge.", opt: ["many", "few", "much", "a few"], ans: 2 },
+            { q: "How ______ students are there in your class?", opt: ["much", "many", "little", "few"], ans: 1 },
+            { q: "She has ______ friends in this city because she just moved here.", opt: ["much", "many", "a few", "a little"], ans: 2 },
+            { q: "We need ______ sugar for this cake.", opt: ["many", "few", "a little", "a few"], ans: 2 },
+            { q: "There are ______ books on the desk.", opt: ["much", "a little", "some", "any"], ans: 2 },
+            { q: "Are there ______ eggs in the fridge?", opt: ["much", "many", "a little", "any"], ans: 1 },
+            { q: "There ______ a park near my house.", opt: ["is", "are", "am", "be"], ans: 0 },
+            { q: "______ there any water in the bottle?", opt: ["Is", "Are", "Am", "Do"], ans: 0 },
+            { q: "There ______ twenty students in our class.", opt: ["is", "are", "am", "be"], ans: 1 },
+            { q: "______ there a post office near here?", opt: ["Is", "Are", "Am", "Do"], ans: 0 },
+            { q: "Harry Potter is a famous book. It ______ by a great writer.", opt: ["writes", "wrote", "is written", "was written"], ans: 3 },
+            { q: "This bridge ______ built one hundred years ago.", opt: ["is", "was", "are", "were"], ans: 1 },
+            { q: "English ______ spoken in many countries.", opt: ["is", "was", "are", "were"], ans: 0 },
+            { q: "The windows ______ cleaned every week.", opt: ["is", "was", "are", "were"], ans: 2 },
+            { q: "My bike ______ stolen last night.", opt: ["is", "was", "are", "were"], ans: 1 },
+            { q: "______ you like pizza? — Yes, I do.", opt: ["Do", "Does", "Are", "Is"], ans: 0 },
+            { q: "______ your sister like dancing? — Yes, she does.", opt: ["Do", "Does", "Are", "Is"], ans: 1 },
+            { q: "______ you a student? — Yes, I am.", opt: ["Do", "Does", "Are", "Is"], ans: 2 },
+            { q: "______ he finish his homework yet? — No, not yet.", opt: ["Did", "Does", "Do", "Was"], ans: 0 },
+            { q: "______ they at home now? — No, they are at school.", opt: ["Do", "Does", "Are", "Is"], ans: 2 },
+            { q: "______ she like the gift? — Yes, she loved it.", opt: ["Did", "Does", "Do", "Was"], ans: 0 },
             { q: "The box is ______ heavy for the boy to carry.", opt: ["very", "so", "too", "enough"], ans: 2 },
+            { q: "This shirt is ______ small for me.", opt: ["too", "enough", "so", "very"], ans: 0 },
+            { q: "She is not tall ______ to reach the top shelf.", opt: ["too", "enough", "so", "very"], ans: 1 },
+            { q: "The soup was ______ hot that I couldn't drink it.", opt: ["too", "enough", "so", "very"], ans: 2 },
+            { q: "I enjoy ______ books in my free time.", opt: ["read", "reads", "reading", "to read"], ans: 2 },
+            { q: "She wants ______ a doctor in the future.", opt: ["be", "is", "being", "to be"], ans: 3 },
+            { q: "We decided ______ a picnic this weekend.", opt: ["have", "has", "having", "to have"], ans: 3 },
+            { q: "He is good at ______ the piano.", opt: ["play", "plays", "playing", "to play"], ans: 2 },
+            { q: "______ your shoes before you come in.", opt: ["Take off", "Takes off", "Taking off", "Took off"], ans: 0 },
+            { q: "______ noise! The baby is sleeping.", opt: ["Don't make", "Doesn't make", "Not make", "Didn't make"], ans: 0 },
+            { q: "______ careful when you cross the street.", opt: ["Be", "Is", "Are", "Was"], ans: 0 },
             { q: "It usually ______ me twenty minutes to walk to school.", opt: ["spends", "takes", "costs", "pays"], ans: 1 },
-            { q: "Harry Potter is a famous book. It ______ by a great writer.", opt: ["writes", "wrote", "is written", "was written"], ans: 3 }
+            { q: "This math problem is very ______. I can't solve it.", opt: ["easy", "difficult", "cheap", "quiet"], ans: 1 },
+            { q: "The weather today is ______. We should bring an umbrella.", opt: ["sunny", "rainy", "dry", "hot"], ans: 1 },
+            { q: "My grandmother is very ______. She always helps her neighbors.", opt: ["kind", "lazy", "rude", "angry"], ans: 0 },
+            { q: "The soup smells ______. I can't wait to eat it.", opt: ["terrible", "delicious", "dirty", "boring"], ans: 1 },
+            { q: "He was ______ when he lost his wallet.", opt: ["happy", "excited", "upset", "proud"], ans: 2 }
         ];
 
         const Q_PUZZLE = [
@@ -178,22 +365,55 @@
             { hint: "提示：你昨天去哪裡了？", words: ["where", "did", "you", "go", "yesterday"], correct: "where did you go yesterday" },
             { hint: "提示：我該怎麼去郵局？", words: ["how", "can", "I", "get", "to", "the", "post", "office"], correct: "how can I get to the post office" },
             { hint: "提示：我無話可說。", words: ["I", "have", "nothing", "to", "say"], correct: "I have nothing to say" },
-            { hint: "提示：這些男孩是我的兄弟。", words: ["these", "boys", "are", "my", "brothers"], correct: "these boys are my brothers" }
+            { hint: "提示：這些男孩是我的兄弟。", words: ["these", "boys", "are", "my", "brothers"], correct: "these boys are my brothers" },
+            { hint: "提示：你多久看一次電影？", words: ["how", "often", "do", "you", "watch", "movies"], correct: "how often do you watch movies" },
+            { hint: "提示：我媽媽正在煮晚餐。", words: ["my", "mother", "is", "cooking", "dinner"], correct: "my mother is cooking dinner" },
+            { hint: "提示：這是我看過最好的電影。", words: ["this", "is", "the", "best", "movie", "I", "have", "seen"], correct: "this is the best movie I have seen" },
+            { hint: "提示：你可以借我一支筆嗎？", words: ["can", "you", "lend", "me", "a", "pen"], correct: "can you lend me a pen" },
+            { hint: "提示：圖書館裡有很多書。", words: ["there", "are", "many", "books", "in", "the", "library"], correct: "there are many books in the library" },
+            { hint: "提示：他昨天很晚才到家。", words: ["he", "got", "home", "very", "late", "yesterday"], correct: "he got home very late yesterday" },
+            { hint: "提示：這件外套對我來說太小了。", words: ["this", "jacket", "is", "too", "small", "for", "me"], correct: "this jacket is too small for me" },
+            { hint: "提示：我姐姐比我高。", words: ["my", "sister", "is", "taller", "than", "me"], correct: "my sister is taller than me" },
+            { hint: "提示：你為什麼遲到了？", words: ["why", "were", "you", "late"], correct: "why were you late" },
+            { hint: "提示：請把音樂關小聲一點。", words: ["please", "turn", "down", "the", "music"], correct: "please turn down the music" },
+            { hint: "提示：我們上禮拜去海邊玩了。", words: ["we", "went", "to", "the", "beach", "last", "week"], correct: "we went to the beach last week" },
+            { hint: "提示：你必須在睡覺前刷牙。", words: ["you", "must", "brush", "your", "teeth", "before", "bed"], correct: "you must brush your teeth before bed" },
+            { hint: "提示：這隻狗看起來很友善。", words: ["this", "dog", "looks", "very", "friendly"], correct: "this dog looks very friendly" },
+            { hint: "提示：車站離這裡有多遠？", words: ["how", "far", "is", "the", "station", "from", "here"], correct: "how far is the station from here" },
+            { hint: "提示：我爸爸每天早上喝咖啡。", words: ["my", "father", "drinks", "coffee", "every", "morning"], correct: "my father drinks coffee every morning" },
+            { hint: "提示：窗戶是被誰打破的？", words: ["who", "broke", "the", "window"], correct: "who broke the window" },
+            { hint: "提示：如果明天下雨，我們就待在家。", words: ["if", "it", "rains", "tomorrow", "we", "will", "stay", "home"], correct: "if it rains tomorrow we will stay home" },
+            { hint: "提示：這棟大樓是這城市最高的。", words: ["this", "building", "is", "the", "tallest", "in", "the", "city"], correct: "this building is the tallest in the city" },
+            { hint: "提示：她正在等公車。", words: ["she", "is", "waiting", "for", "the", "bus"], correct: "she is waiting for the bus" },
+            { hint: "提示：我上個月去了台北。", words: ["I", "went", "to", "Taipei", "last", "month"], correct: "I went to Taipei last month" },
+            { hint: "提示：這個問題比上一題簡單。", words: ["this", "question", "is", "easier", "than", "the", "last", "one"], correct: "this question is easier than the last one" },
+            { hint: "提示：你昨晚在做什麼？", words: ["what", "were", "you", "doing", "last", "night"], correct: "what were you doing last night" },
+            { hint: "提示：別在圖書館裡大聲說話。", words: ["don't", "talk", "loudly", "in", "the", "library"], correct: "don't talk loudly in the library" },
+            { hint: "提示：我奶奶告訴我一個有趣的故事。", words: ["my", "grandmother", "told", "me", "an", "interesting", "story"], correct: "my grandmother told me an interesting story" },
+            { hint: "提示：冰箱裡有一些牛奶。", words: ["there", "is", "some", "milk", "in", "the", "fridge"], correct: "there is some milk in the fridge" },
+            { hint: "提示：你今天早上幾點起床的？", words: ["what", "time", "did", "you", "get", "up", "this", "morning"], correct: "what time did you get up this morning" },
+            { hint: "提示：這件事讓我覺得非常驚訝。", words: ["this", "made", "me", "feel", "very", "surprised"], correct: "this made me feel very surprised" }
         ];
 
-        // 迷宮關卡設定 (濃縮為 5 關：迷宮守衛 -> 雷射解謎 -> 事件 -> 強力守衛 -> 王)
+        // 迷宮關卡設定 (10 關：巡邏無人機 -> 雷射閘門 -> 物資箱 -> 重裝守衛 -> 資料鎖 -> 補給站 -> 精英衛兵 -> 加密閘門 -> 護衛統帥 -> 母艦核心)
         const LEVELS = [
-            { type: 'combat', name: '巡邏無人機 (Drone)', sprite: '🛸', hp: 2, time: 25 },
-            { type: 'puzzle', name: '雷射閘門 (Laser Gate)', sprite: '⚡', hp: 1, time: 40 },
-            { type: 'event',  name: '廢棄物資箱 (Cargo)', sprite: '📦', hp: 0, time: 0 },
-            { type: 'combat', name: '重裝守衛 (Guard)', sprite: '🤖', hp: 3, time: 20 },
-            { type: 'boss',   name: '母艦核心 (MAINFRAME)', sprite: '👁️', hp: 4, time: 15 }
+            { type: 'combat', name: '巡邏無人機 (Drone)',      sprite: '🛸', hp: 2, time: 25 },
+            { type: 'puzzle', name: '雷射閘門 (Laser Gate)',    sprite: '⚡', hp: 1, time: 40 },
+            { type: 'event',  name: '廢棄物資箱 (Cargo)',       sprite: '📦', hp: 0, time: 0 },
+            { type: 'combat', name: '重裝守衛 (Guard)',         sprite: '🤖', hp: 3, time: 22 },
+            { type: 'puzzle', name: '資料鎖 (Data Lock)',       sprite: '🔒', hp: 2, time: 35 },
+            { type: 'event',  name: '補給站 (Supply Cache)',    sprite: '🎁', hp: 0, time: 0 },
+            { type: 'combat', name: '精英衛兵 (Elite Sentry)',  sprite: '👾', hp: 3, time: 20 },
+            { type: 'puzzle', name: '加密閘門 (Cipher Gate)',   sprite: '🧩', hp: 2, time: 32 },
+            { type: 'combat', name: '護衛統帥 (Commander)',     sprite: '🦾', hp: 4, time: 18 },
+            { type: 'boss',   name: '母艦核心 (MAINFRAME)',     sprite: '👁️', hp: 5, time: 15 }
         ];
 
         let GAME = {
-            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0,
+            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0,
             enemyHp: 0, isProcessing: false, isEventChallenge: false,
-            timer: null, timeLeft: 0, maxTime: 10, currentQ: null
+            timer: null, timeLeft: 0, maxTime: 10, currentQ: null,
+            combatQueue: [], puzzleQueue: []
         };
 
         let puzzleSelected = [];
@@ -204,13 +424,38 @@
             document.getElementById(id).classList.remove('hidden');
         }
 
+        // --- 洗牌抽題：確保同一次遊戲中，題目在抽完整個題庫前不會重複 ---
+        function shuffleArray(source) {
+            const arr = [...source];
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+            }
+            return arr;
+        }
+
+        function drawQuestion(queueKey, source) {
+            if (!GAME[queueKey] || GAME[queueKey].length === 0) {
+                GAME[queueKey] = shuffleArray(source);
+            }
+            return GAME[queueKey].pop();
+        }
+
+        function playWarpTransition() {
+            const el = document.getElementById('warp-overlay');
+            if (!el) return;
+            el.classList.remove('warp-active');
+            void el.offsetWidth;
+            el.classList.add('warp-active');
+        }
+
         async function showMessage(text, colorClass, duration = 1200) {
             const msgEl = document.getElementById('sys-message');
             const textEl = document.getElementById('sys-message-text');
             msgEl.classList.remove('hidden');
             textEl.innerHTML = text;
-            textEl.className = `text-4xl sm:text-5xl font-bold text-center px-4 leading-relaxed tracking-widest font-sans ${colorClass}`;
-            
+            textEl.className = `text-4xl sm:text-5xl font-bold text-center px-4 leading-relaxed tracking-widest font-sans msg-pop ${colorClass}`;
+
             return new Promise(resolve => {
                 setTimeout(() => { msgEl.classList.add('hidden'); resolve(); }, duration);
             });
@@ -219,10 +464,11 @@
         function startGame() {
             const nameInput = document.getElementById('player-name').value.trim();
             if (nameInput) GAME.player = nameInput.toUpperCase();
-            
-            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0;
+
+            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0;
+            GAME.combatQueue = []; GAME.puzzleQueue = [];
             document.getElementById('ui-max-stage').innerText = LEVELS.length;
-            
+
             updateTopUI();
             showScreen('screen-game');
             loadStage();
@@ -232,6 +478,7 @@
             document.getElementById('ui-name').innerText = `[${GAME.player}]`;
             document.getElementById('ui-hp').innerText = Math.max(0, GAME.hp);
             document.getElementById('ui-hp-bar').style.width = `${Math.max(0, GAME.hp)}%`;
+            document.getElementById('ui-score').innerText = GAME.score;
             document.getElementById('ui-chips').innerText = GAME.chips;
             document.getElementById('ui-parts').innerText = GAME.parts;
             document.getElementById('ui-stage').innerText = Math.min(GAME.stage + 1, LEVELS.length);
@@ -244,6 +491,8 @@
                 return;
             }
 
+            if (GAME.stage > 0) playWarpTransition();
+
             // 重置所有狀態 (修復之前卡住的 Bug)
             GAME.isProcessing = false;
             GAME.isEventChallenge = false;
@@ -251,21 +500,21 @@
 
             const level = LEVELS[GAME.stage];
             GAME.enemyHp = level.hp;
-            
+
             document.getElementById('enemy-name').innerText = level.name;
             document.getElementById('enemy-sprite').innerText = level.sprite;
-            
+
             document.getElementById('combat-area').classList.add('hidden');
             document.getElementById('puzzle-area').classList.add('hidden');
             document.getElementById('event-area').classList.add('hidden');
-            
+
             document.getElementById('timer-container').style.visibility = 'visible';
             document.getElementById('enemy-hp-container').style.visibility = 'visible';
             document.getElementById('enemy-hp').innerText = '█'.repeat(GAME.enemyHp);
 
             let currentType = level.type;
             if (currentType === 'event') {
-                setupEvent(); return; 
+                setupEvent(); return;
             }
             if (currentType === 'boss') {
                 currentType = Math.random() > 0.5 ? 'combat' : 'puzzle';
@@ -280,15 +529,15 @@
         }
 
         function setupEvent() {
-            document.getElementById('timer-container').style.visibility = 'hidden'; 
+            document.getElementById('timer-container').style.visibility = 'hidden';
             document.getElementById('enemy-hp-container').style.visibility = 'hidden';
             document.getElementById('event-area').classList.remove('hidden');
-            
+
             document.getElementById('event-text').innerHTML = "偵測到廢棄物資箱。<br>是否嘗試回答問題破解防火牆，以取得【機體零件】？<br><span class='text-sm text-gray-400'>(集滿3個零件可恢復HP並獲得晶片)</span>";
 
             const optDiv = document.getElementById('event-options');
             optDiv.innerHTML = '';
-            
+
             const btnHack = document.createElement('button');
             btnHack.className = 'btn-pixel px-6 py-3 text-xl font-sans';
             btnHack.innerText = '嘗試破解 (HACK)';
@@ -296,11 +545,11 @@
                 if(GAME.isProcessing) return;
                 document.getElementById('event-area').classList.add('hidden');
                 document.getElementById('timer-container').style.visibility = 'visible';
-                
+
                 GAME.enemyHp = 1; GAME.isEventChallenge = true;
                 if(Math.random() > 0.5) setupCombat(); else setupPuzzle();
-                
-                GAME.maxTime = 20; GAME.timeLeft = 20; 
+
+                GAME.maxTime = 20; GAME.timeLeft = 20;
                 startTimer();
             };
 
@@ -316,9 +565,9 @@
 
         function setupCombat() {
             document.getElementById('combat-area').classList.remove('hidden');
-            document.getElementById('combat-options').innerHTML = ''; 
-            
-            GAME.currentQ = Q_COMBAT[Math.floor(Math.random() * Q_COMBAT.length)];
+            document.getElementById('combat-options').innerHTML = '';
+
+            GAME.currentQ = drawQuestion('combatQueue', Q_COMBAT);
             document.getElementById('combat-q').innerText = GAME.currentQ.q;
 
             GAME.currentQ.opt.forEach((opt, idx) => {
@@ -332,11 +581,11 @@
 
         function setupPuzzle() {
             document.getElementById('puzzle-area').classList.remove('hidden');
-            GAME.currentQ = Q_PUZZLE[Math.floor(Math.random() * Q_PUZZLE.length)];
+            GAME.currentQ = drawQuestion('puzzleQueue', Q_PUZZLE);
             document.getElementById('puzzle-hint').innerText = GAME.currentQ.hint;
 
             // 隨機打亂單字
-            puzzlePool = [...GAME.currentQ.words].sort(() => Math.random() - 0.5);
+            puzzlePool = shuffleArray(GAME.currentQ.words);
             puzzleSelected = [];
             renderPuzzleUI();
         }
@@ -377,7 +626,7 @@
 
             if (idx === GAME.currentQ.ans) {
                 btn.style.backgroundColor = '#00ffcc'; btn.style.color = '#000';
-                await damageEnemy();
+                await damageEnemy(10);
             } else {
                 btn.style.backgroundColor = '#ff3333'; btn.style.color = '#fff'; btn.style.borderColor = '#ff3333';
                 await takeDamage(20, 'ERR: 語法錯誤 (SYNTAX ERROR)');
@@ -390,22 +639,26 @@
 
             const userAns = puzzleSelected.join(' ');
             if (userAns === GAME.currentQ.correct) {
-                await damageEnemy();
+                await damageEnemy(15);
             } else {
                 await takeDamage(20, 'ERR: 邏輯錯誤 (LOGIC ERROR)');
             }
         }
 
-        async function damageEnemy() {
+        async function damageEnemy(points = 10) {
             GAME.enemyHp--;
+            if (points > 0) {
+                GAME.score += points;
+            }
             if(!GAME.isEventChallenge) {
                 document.getElementById('enemy-hp').innerText = '█'.repeat(GAME.enemyHp);
                 document.getElementById('enemy-sprite').classList.add('shake');
                 document.getElementById('enemy-sprite').style.filter = 'drop-shadow(0 0 20px rgba(255, 0, 0, 0.8))';
             }
-            
+            updateTopUI();
+
             await showMessage('指令成功 (SUCCESS)', 'text-[#00ffcc]', 800);
-            
+
             if(!GAME.isEventChallenge) {
                 document.getElementById('enemy-sprite').classList.remove('shake');
                 document.getElementById('enemy-sprite').style.filter = 'drop-shadow(0 0 10px rgba(0, 255, 204, 0.5))';
@@ -423,11 +676,11 @@
                         await addPart();
                     }
                 }
-                GAME.stage++; loadStage(); 
+                GAME.stage++; loadStage();
             } else {
                 // Boss 戰未死，切換題目
                 setTimeout(() => {
-                    GAME.isProcessing = false; 
+                    GAME.isProcessing = false;
                     if (LEVELS[GAME.stage].type === 'boss') {
                         if(Math.random() > 0.5) {
                             document.getElementById('puzzle-area').classList.add('hidden'); setupCombat();
@@ -450,9 +703,9 @@
             GAME.hp -= amount; updateTopUI();
             document.body.classList.add('shake');
             document.getElementById('screen-game').style.boxShadow = 'inset 0 0 80px rgba(255,0,0,0.6)';
-            
+
             await showMessage(msgText, 'text-red-500', 1200);
-            
+
             document.body.classList.remove('shake');
             document.getElementById('screen-game').style.boxShadow = '';
 
@@ -465,7 +718,7 @@
                 } else {
                     // 解除鎖定並重置時間
                     GAME.isProcessing = false;
-                    GAME.timeLeft = GAME.maxTime; 
+                    GAME.timeLeft = GAME.maxTime;
                     startTimer();
                 }
             }
@@ -488,15 +741,15 @@
 
             GAME.chips--; updateTopUI();
             GAME.isProcessing = true; clearInterval(GAME.timer);
-            
+
             await showMessage('啟動破解晶片...<br>強行覆寫系統 (OVERRIDE)', 'text-yellow-400', 1500);
-            await damageEnemy();
+            await damageEnemy(0);
         }
 
         function startTimer() {
             clearInterval(GAME.timer);
             const bar = document.getElementById('ui-timer-bar');
-            
+
             GAME.timer = setInterval(async () => {
                 if (GAME.isProcessing) return;
 
@@ -519,15 +772,15 @@
             clearInterval(GAME.timer); showScreen('screen-end');
             const title = document.getElementById('end-title');
             const desc = document.getElementById('end-desc');
-            
+
             if (isWin) {
                 title.innerText = '任務完成\n(MISSION ACCOMPLISHED)';
                 title.className = 'text-5xl sm:text-7xl font-bold text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.8)]';
-                desc.innerHTML = `幹得好，機體 ${GAME.player}！<br><br>母艦核心已成功奪回<br>剩餘晶片：${GAME.chips}<br>最終殘餘裝甲：${GAME.hp}%`;
+                desc.innerHTML = `幹得好，機體 ${GAME.player}！<br><br>母艦核心已成功奪回<br>最終積分：${GAME.score}<br>剩餘晶片：${GAME.chips}<br>最終殘餘裝甲：${GAME.hp}%`;
             } else {
                 title.innerText = '系統崩潰\n(SYSTEM FAILURE)';
                 title.className = 'text-5xl sm:text-7xl font-bold text-red-600 drop-shadow-[0_0_20px_rgba(220,38,38,0.8)] animate-pulse';
-                desc.innerHTML = `機體 ${GAME.player} 裝甲值歸零...<br><br>連線中斷。請重新訓練文法神經網路。`;
+                desc.innerHTML = `機體 ${GAME.player} 裝甲值歸零...<br><br>最終積分：${GAME.score}<br>連線中斷。請重新訓練文法神經網路。`;
             }
         }
     </script>
