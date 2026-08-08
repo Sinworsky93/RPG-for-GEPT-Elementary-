@@ -142,7 +142,7 @@
         </div>
 
         <!-- 遊戲主畫面 -->
-        <div id="screen-game" class="hidden flex-1 flex flex-col z-10 relative">
+        <div id="screen-game" class="hidden flex-1 flex flex-col z-10 relative min-h-0">
             <div id="warp-overlay" class="warp-overlay"></div>
 
             <!-- 頂部資訊列 -->
@@ -164,10 +164,10 @@
             </div>
 
             <!-- 第一人稱敵人視角區 -->
-            <div class="flex-1 flex flex-col items-center justify-center relative mb-2">
+            <div class="flex-1 min-h-0 flex flex-col items-center justify-center relative mb-2 overflow-hidden">
                 <div class="text-center mb-4">
-                    <h2 id="enemy-name" class="text-3xl sm:text-4xl font-bold text-red-500 mb-4 tracking-widest uppercase font-sans"></h2>
-                    <div id="enemy-sprite" class="text-7xl sm:text-9xl mb-4 animate-bounce enemy-sprite select-none">🛸</div>
+                    <h2 id="enemy-name" class="text-2xl sm:text-4xl font-bold text-red-500 mb-2 sm:mb-4 tracking-widest uppercase font-sans"></h2>
+                    <div id="enemy-sprite" class="text-6xl sm:text-9xl mb-2 sm:mb-4 animate-bounce enemy-sprite select-none">🛸</div>
                     <div class="text-xl font-sans" id="enemy-hp-container">
                         防護盾 (SHIELD): <br>
                         <span id="enemy-hp" class="text-blue-400 text-3xl font-bold tracking-widest"></span>
