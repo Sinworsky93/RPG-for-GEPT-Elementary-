@@ -1,105 +1,1322 @@
 {
   "_notes": "Task prompts consolidated and de-duplicated from teaching notes across multiple students. These are short, formulaic IELTS-style task instructions (not long-form creative writing), so they are reused as-is rather than rewritten — unlike the Reading passages, there is no separate 'question' to redesign here.",
   "task1_academic": [
-    { "id": "w1-01", "chart_type": "line", "prompt": "The line graph below shows the oil production and consumption in China between 1982 and 2006. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "chart": { "unit": "million barrels/day", "labels": ["1982","1986","1990","1994","1998","2002","2006"],
-        "series": [ { "name": "Production", "values": [2.1,3,3,3,3.3,3.4,3.5] }, { "name": "Consumption", "values": [1.9,1.9,2,3.6,4,5,6.3] } ] } },
-    { "id": "w1-02", "chart_type": "line", "prompt": "The line graph below shows the percentage of people using the Internet in five regions of the world between 2000 and 2020. Write a report for a university lecturer describing the information shown below.",
-      "chart": { "unit": "%", "labels": ["2000","2005","2010","2015","2020"],
-        "series": [ { "name": "North America", "values": [43,68,77,87,92] }, { "name": "Europe", "values": [15,45,60,75,87] }, { "name": "Asia", "values": [3,10,22,40,58] }, { "name": "Africa", "values": [1,2,7,18,32] }, { "name": "South America", "values": [4,16,35,55,70] } ] } },
-    { "id": "w1-03", "chart_type": "line", "prompt": "The line graph shows the percentages of Australian exports to four countries. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
-      "chart": { "unit": "% of total exports", "labels": ["1990","1995","2000","2005","2010"],
-        "series": [ { "name": "Japan", "values": [25,22,18,15,12] }, { "name": "China", "values": [3,5,10,20,32] }, { "name": "USA", "values": [10,9,8,7,6] }, { "name": "UK", "values": [8,7,6,5,4] } ] } },
-    { "id": "w1-04", "chart_type": "line", "prompt": "The graph shows the average height of men from four countries between 1775 and 1975.",
-      "chart": { "unit": "cm", "labels": ["1775","1825","1875","1925","1975"],
-        "series": [ { "name": "Netherlands", "values": [167,168,169,175,183] }, { "name": "USA", "values": [171,172,171,173,178] }, { "name": "Japan", "values": [155,156,157,160,168] }, { "name": "France", "values": [166,167,168,170,175] } ] } },
-    { "id": "w1-05", "chart_type": "line", "prompt": "The line graph below shows the cost of four types of bread for 800 grams in one European country from 2001 to 2007.",
-      "chart": { "unit": "currency units", "labels": ["2001","2002","2003","2004","2005","2006","2007"],
-        "series": [ { "name": "White", "values": [1.2,1.3,1.3,1.4,1.5,1.5,1.6] }, { "name": "Wholemeal", "values": [1.5,1.6,1.7,1.7,1.8,1.9,2.0] }, { "name": "Rye", "values": [1.8,1.9,1.9,2.0,2.1,2.2,2.3] }, { "name": "Sourdough", "values": [2.2,2.3,2.5,2.6,2.8,3.0,3.2] } ] } },
-    { "id": "w1-06", "chart_type": "line", "prompt": "The chart below shows the percentage of money spent on advertising in five types of media in France from 2010 and projected spending to 2040. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. You should write at least 150 words.",
-      "chart": { "unit": "%", "labels": ["2010","2020","2030","2040"],
-        "series": [ { "name": "Television", "values": [36,45,39,37] }, { "name": "Newspaper", "values": [34,25,14,10] }, { "name": "Internet", "values": [4,15,30,47] }, { "name": "Radio", "values": [10,9,5,4] }, { "name": "Magazines", "values": [14,6,5,3] } ] } },
-    { "id": "w1-07", "chart_type": "bar", "prompt": "The bar graph shows the total manufacturing production in percentages for Asia, Europe, and the rest of the world across five different years from 1840 to 2000.",
-      "chart": { "unit": "%", "labels": ["1840","1880","1920","1960","2000"],
-        "series": [ { "name": "Asia", "values": [50,30,20,25,45] }, { "name": "Europe", "values": [40,45,50,37.5,28] }, { "name": "Rest of world", "values": [10,25,30,38.5,32] } ] } },
-    { "id": "w1-08", "chart_type": "bar", "prompt": "The bar chart provides information about how often people in the USA ate fast food from 2003 to 2013.",
-      "chart": { "unit": "times per month", "labels": ["2003","2006","2009","2013"],
-        "series": [ { "name": "Average fast food visits", "values": [8,9,11,14] } ] } },
-    { "id": "w1-09", "chart_type": "bar", "prompt": "The chart below shows sales of three categories of magazine in a particular region over five weeks.",
-      "chart": { "unit": "copies sold ('000)", "labels": ["Week 1","Week 2","Week 3","Week 4","Week 5"],
-        "series": [ { "name": "Fashion", "values": [120,135,110,140,150] }, { "name": "Sports", "values": [90,95,100,85,105] }, { "name": "Tech", "values": [60,70,75,80,95] } ] } },
-    { "id": "w1-10", "chart_type": "bar", "prompt": "The bar chart below shows the number of students who chose certain university subjects in 2005.",
-      "chart": { "unit": "number of students", "labels": ["Engineering","Business","Arts","Science","Medicine"],
-        "series": [ { "name": "Students", "values": [1200,1500,900,1100,700] } ] } },
-    { "id": "w1-11", "chart_type": "bar", "prompt": "The bar chart displays the proportion of internet users, by age group, who shopped online in Canada in 2014 and 2018.",
-      "chart": { "unit": "%", "labels": ["15-25","26-35","35-45","45-55","55-65","65+"],
-        "series": [ { "name": "2014", "values": [20,31,28,22,11,5] }, { "name": "2018", "values": [22,33,38,27,17,11] } ] } },
-    { "id": "w1-12", "chart_type": "table", "prompt": "The table shows the proportions of residents living in four types of accommodation across different regions of a city in the UK.",
-      "chart": { "unit": "%", "rowLabel": "Region", "columns": ["Detached","Semi-detached","Terraced","Flat"],
-        "rows": [ { "label": "North", "values": [25,35,30,10] }, { "label": "South", "values": [15,25,20,40] }, { "label": "East", "values": [20,30,35,15] }, { "label": "West", "values": [18,32,28,22] } ] } },
-    { "id": "w1-13", "chart_type": "table", "prompt": "The table below shows how the percentage of British adults who use the Internet changed over a five-year period.",
-      "chart": { "unit": "%", "rowLabel": "Year", "columns": ["Adults using the Internet"],
-        "rows": [ { "label": "2010", "values": [70] }, { "label": "2011", "values": [75] }, { "label": "2012", "values": [80] }, { "label": "2013", "values": [85] }, { "label": "2014", "values": [88] } ] } },
-    { "id": "w1-14", "chart_type": "table", "prompt": "The table below shows the production of milk annually in four countries in 1990, 2000 and 2010. Summarise the information by selecting and reporting the main features, and make comparisons where relevant. You should write at least 150 words.",
-      "chart": { "unit": "million tonnes", "rowLabel": "Country", "columns": ["1990","2000","2010"],
-        "rows": [ { "label": "Country A", "values": [10,14,18] }, { "label": "Country B", "values": [8,9,11] }, { "label": "Country C", "values": [15,16,17] }, { "label": "Country D", "values": [5,8,13] } ] } },
-    { "id": "w1-15", "chart_type": "pie", "prompt": "The charts show the sales of new cars in Australia in 1994, 2004 and 2014.",
-      "chart": { "unit": "%", "pies": [
-        { "year": "1994", "labels": ["Domestic","Japanese","European","Other"], "values": [45,35,15,5] },
-        { "year": "2004", "labels": ["Domestic","Japanese","European","Other"], "values": [30,40,20,10] },
-        { "year": "2014", "labels": ["Domestic","Japanese","European","Other"], "values": [15,35,30,20] }
-      ] } },
-    { "id": "w1-16", "chart_type": "process", "prompt": "The diagram below shows the process of growing and preparing pineapples and pineapple products.",
-      "chart": { "steps": [
-        "Plant the pineapple crown (approx. 26 cm)",
-        "Grow for 7 months, then apply ethylene",
-        "Grow for a further 5 months until ripe (30 cm, 2 kg)",
-        "Sort ripe pineapples by size: small / medium / large",
-        "Small: crown removed, sliced, made into extract and juice",
-        "Medium: cut in half, sliced, canned",
-        "Large: coated in wax, stacked in layers, exported by ship"
-      ] } },
-    { "id": "w1-17", "chart_type": "process", "prompt": "The diagram below shows the process of producing milk and milk-related products, from raw milk collected from cows to the finished products sold in supermarkets and shops.",
-      "chart": { "steps": [
-        "Cows graze in the field",
-        "Milking machine collects milk (twice a day)",
-        "Raw milk moved to refrigerated storage",
-        "Milk tanker delivers milk to the dairy daily",
-        "Split: some milk made into cheese, cream and butter",
-        "Remainder pasteurised and packaged as bottled milk",
-        "Products distributed to supermarkets, shops and convenience stores"
-      ] } },
-    { "id": "w1-18", "chart_type": "map", "prompt": "The diagrams below compare the layout of a typical Japanese office and a typical American office.",
-      "chart": { "columns": ["Typical Japanese Office","Typical American Office"],
-        "rows": [
-          ["Open-plan desks arranged in rows facing each other", "Individual cubicles separated by partitions"],
-          ["Manager's desk at the front, facing all staff", "Manager in a separate private office"],
-          ["No partitions between desks", "Shared break room in the corner"],
-          ["Shared meeting table in the centre", "Individual meeting rooms along one wall"]
-        ] } },
-    { "id": "w1-19", "chart_type": "pie", "prompt": "The chart below shows a comparison of different kinds of energy production in France in 1995 and 2005.",
-      "chart": { "unit": "%", "pies": [
-        { "year": "1995", "labels": ["Coal","Gas","Petro","Nuclear","Other"], "values": [29.80,29.63,29.27,6.40,4.90] },
-        { "year": "2005", "labels": ["Coal","Gas","Petro","Nuclear","Other"], "values": [30.93,30.31,19.55,10.10,9.10] }
-      ] } },
-    { "id": "w1-20", "chart_type": "line", "prompt": "The graph below shows the percentage of the Australian workforce in five industries between 1962 and 2012. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "chart": { "unit": "%", "labels": ["1962","1972","1982","1992","2002","2012"],
+    {
+      "id": "w1-01",
+      "chart_type": "process",
+      "prompt": "The diagram shows the process by which milk and related products are produced.",
+      "chart": {
+        "steps": [
+          "Cows graze in the field",
+          "Milking machine collects milk (twice a day)",
+          "Raw milk moved to refrigerated storage",
+          "Milk tanker delivers milk to the dairy daily",
+          "Split: some milk made into cheese, cream and butter",
+          "Remainder pasteurised and packaged as bottled milk",
+          "Products distributed to supermarkets, shops and convenience stores"
+        ]
+      }
+    },
+    {
+      "id": "w1-02",
+      "chart_type": "line",
+      "prompt": "The line graph shows the percentages of Australian exports to four countries from 1990 to 2012. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
+      "chart": {
+        "unit": "% of total exports",
+        "labels": [
+          "1990",
+          "1995",
+          "2000",
+          "2005",
+          "2012"
+        ],
         "series": [
-          { "name": "Services", "values": [53,58,65,72,76,79] },
-          { "name": "Manufacturing", "values": [27,25,21,16,12,11] },
-          { "name": "Agriculture", "values": [11,9,8,6,4,3] },
-          { "name": "Construction", "values": [8,8,8,8,9,10] },
-          { "name": "Mining", "values": [2,3,3,3,3,4] }
-        ] } },
-    { "id": "w1-21", "chart_type": "process", "prompt": "The diagrams below show how geothermal energy is used to produce electricity.",
-      "chart": { "steps": [
-        "Cold water is pumped down an injection well into hot underground rock",
-        "The water is heated by the surrounding rock and turns into steam",
-        "The steam rises back up through a production well",
-        "The steam drives a turbine connected to a generator, producing electricity",
-        "Electricity is transmitted to homes and businesses via power lines",
-        "The cooled water/steam is condensed and pumped back underground to be reheated, forming a continuous cycle"
-      ] } }
+          {
+            "name": "Japan",
+            "values": [
+              25,
+              22,
+              18,
+              15,
+              11
+            ]
+          },
+          {
+            "name": "China",
+            "values": [
+              3,
+              5,
+              10,
+              20,
+              35
+            ]
+          },
+          {
+            "name": "USA",
+            "values": [
+              10,
+              9,
+              8,
+              7,
+              6
+            ]
+          },
+          {
+            "name": "UK",
+            "values": [
+              8,
+              7,
+              6,
+              5,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-03",
+      "chart_type": "table",
+      "prompt": "The table below gives information on internet use in six categories by age group. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "%",
+        "rowLabel": "Age group",
+        "columns": [
+          "Email",
+          "Social media",
+          "Online shopping",
+          "News",
+          "Online banking",
+          "Gaming"
+        ],
+        "rows": [
+          {
+            "label": "16-24",
+            "values": [
+              62,
+              88,
+              55,
+              40,
+              45,
+              70
+            ]
+          },
+          {
+            "label": "25-44",
+            "values": [
+              80,
+              65,
+              72,
+              55,
+              68,
+              35
+            ]
+          },
+          {
+            "label": "45-64",
+            "values": [
+              75,
+              38,
+              58,
+              62,
+              60,
+              15
+            ]
+          },
+          {
+            "label": "65+",
+            "values": [
+              55,
+              15,
+              30,
+              58,
+              35,
+              5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-04",
+      "chart_type": "line",
+      "prompt": "The graph below gives information about the percentage of the population in 4 Asian countries living in cities from 1970 to 2020, with predictions for 2030 and 2040.",
+      "chart": {
+        "unit": "%",
+        "labels": [
+          "1970",
+          "1980",
+          "1990",
+          "2000",
+          "2010",
+          "2020",
+          "2030 (pred.)",
+          "2040 (pred.)"
+        ],
+        "series": [
+          {
+            "name": "Japan",
+            "values": [
+              53,
+              60,
+              63,
+              65,
+              67,
+              69,
+              72,
+              75
+            ]
+          },
+          {
+            "name": "South Korea",
+            "values": [
+              41,
+              57,
+              74,
+              80,
+              83,
+              81,
+              83,
+              85
+            ]
+          },
+          {
+            "name": "China",
+            "values": [
+              17,
+              19,
+              26,
+              36,
+              47,
+              60,
+              68,
+              75
+            ]
+          },
+          {
+            "name": "India",
+            "values": [
+              20,
+              23,
+              26,
+              28,
+              31,
+              34,
+              40,
+              47
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-05",
+      "chart_type": "process",
+      "prompt": "The diagram below shows how geothermal energy is used to produce electricity.",
+      "chart": {
+        "steps": [
+          "Cold water is pumped down the injection well, 4.5km underground",
+          "The water passes through the geothermal zone of hot rocks and is heated",
+          "Hot water is pumped back up through the production well",
+          "The hot water/steam passes into the condenser",
+          "Steam drives the turbine, which powers the generator to produce electricity",
+          "Electricity is transmitted via pylons to homes and businesses"
+        ]
+      }
+    },
+    {
+      "id": "w1-06",
+      "chart_type": "pie",
+      "prompt": "The chart below shows a comparison of different kinds of energy production in France in 1995 and 2005.",
+      "chart": {
+        "unit": "%",
+        "pies": [
+          {
+            "year": "1995",
+            "labels": [
+              "Coal",
+              "Gas",
+              "Petro",
+              "Nuclear",
+              "Other"
+            ],
+            "values": [
+              29.8,
+              29.63,
+              29.27,
+              6.4,
+              4.9
+            ]
+          },
+          {
+            "year": "2005",
+            "labels": [
+              "Coal",
+              "Gas",
+              "Petro",
+              "Nuclear",
+              "Other"
+            ],
+            "values": [
+              30.93,
+              30.31,
+              19.55,
+              10.1,
+              9.1
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-07",
+      "chart_type": "line",
+      "prompt": "The graph below shows the percentage of the Australian workforce in five industries between 1962 and 2012. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "%",
+        "labels": [
+          "1962",
+          "1972",
+          "1982",
+          "1992",
+          "2002",
+          "2012"
+        ],
+        "series": [
+          {
+            "name": "Services",
+            "values": [
+              53,
+              58,
+              65,
+              72,
+              76,
+              79
+            ]
+          },
+          {
+            "name": "Manufacturing",
+            "values": [
+              27,
+              25,
+              21,
+              16,
+              12,
+              11
+            ]
+          },
+          {
+            "name": "Agriculture",
+            "values": [
+              11,
+              9,
+              8,
+              6,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "Construction",
+            "values": [
+              8,
+              8,
+              8,
+              8,
+              9,
+              10
+            ]
+          },
+          {
+            "name": "Mining",
+            "values": [
+              2,
+              3,
+              3,
+              3,
+              3,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-08",
+      "chart_type": "table",
+      "prompt": "The table below shows a survey on secondary school attendance in a European country between 2000 and 2009.",
+      "chart": {
+        "unit": "%",
+        "rowLabel": "School type",
+        "columns": [
+          "2000",
+          "2005",
+          "2009"
+        ],
+        "rows": [
+          {
+            "label": "Specialist Schools",
+            "values": [
+              12,
+              11,
+              10
+            ]
+          },
+          {
+            "label": "Grammar Schools",
+            "values": [
+              24,
+              19,
+              12
+            ]
+          },
+          {
+            "label": "Voluntary-controlled Schools",
+            "values": [
+              52,
+              38,
+              20
+            ]
+          },
+          {
+            "label": "Community Schools",
+            "values": [
+              12,
+              32,
+              58
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-09",
+      "chart_type": "line",
+      "prompt": "The graph below shows the unemployment rates in the UK, the rest of Europe and Japan, 1993-2007. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "%",
+        "labels": [
+          "1993",
+          "1995",
+          "1997",
+          "1999",
+          "2001",
+          "2003",
+          "2005",
+          "2007"
+        ],
+        "series": [
+          {
+            "name": "UK",
+            "values": [
+              11,
+              10,
+              8,
+              6,
+              5,
+              5,
+              5,
+              6
+            ]
+          },
+          {
+            "name": "EU",
+            "values": [
+              9,
+              10,
+              11.5,
+              10,
+              8.5,
+              9,
+              8.5,
+              7.8
+            ]
+          },
+          {
+            "name": "Japan",
+            "values": [
+              2,
+              3,
+              3,
+              3,
+              5,
+              6,
+              5,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-10",
+      "chart_type": "line",
+      "prompt": "The charts below show the changes in ownership of electrical appliances and amount of time doing housework in households in one country between 1920 and 2019. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "% of households (top) / hours per week (bottom)",
+        "labels": [
+          "1920",
+          "1940",
+          "1960",
+          "1980",
+          "2000",
+          "2019"
+        ],
+        "series": [
+          {
+            "name": "Washing machine (%)",
+            "values": [
+              40,
+              60,
+              68,
+              62,
+              68,
+              73
+            ]
+          },
+          {
+            "name": "Refrigerator (%)",
+            "values": [
+              2,
+              55,
+              90,
+              100,
+              100,
+              100
+            ]
+          },
+          {
+            "name": "Vacuum cleaner (%)",
+            "values": [
+              32,
+              50,
+              68,
+              95,
+              100,
+              100
+            ]
+          },
+          {
+            "name": "Housework hrs/week",
+            "values": [
+              50,
+              35,
+              20,
+              15,
+              15,
+              10
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-11",
+      "chart_type": "process",
+      "prompt": "The diagram below shows how tomato ketchup is made.",
+      "chart": {
+        "steps": [
+          "Tomatoes are picked and put in baskets",
+          "Good and bad tomatoes are sorted",
+          "Tomatoes are sent to the factory by truck",
+          "Talk, seeds and skin are removed",
+          "Sorted tomatoes are collected in a container",
+          "Tomatoes are crushed",
+          "Sugar, vinegar and salt are added",
+          "Mixture is boiled",
+          "Mixture is left to stand for two hours",
+          "Ketchup is poured into containers",
+          "Bottles are labelled",
+          "Bottles go through quality control",
+          "Bottles are packed into boxes",
+          "Boxes are delivered to supermarkets by truck",
+          "Ketchup is sold and eaten with hamburgers and fries"
+        ]
+      }
+    },
+    {
+      "id": "w1-12",
+      "chart_type": "process",
+      "prompt": "The diagram below shows how recycled paper is made. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "steps": [
+          "Used paper is collected and moved along a conveyor belt to make pulp",
+          "Water and chemicals are added to break the paper down into pulp",
+          "The pulp is filtered to remove ink, separating cleaned pulp from ink and unfiltered pulp",
+          "The pulp is cleaned using air, water and soap",
+          "Water and chemicals are added again, and heated rollers press the pulp into sheets on a conveyor belt",
+          "The finished recycled paper is produced"
+        ]
+      }
+    },
+    {
+      "id": "w1-13",
+      "chart_type": "process",
+      "prompt": "The diagram below shows the life cycle of the female mosquito.",
+      "chart": {
+        "steps": [
+          "Week 1: Eggs are laid",
+          "Week 2: First larval stage",
+          "Week 3: Second larval stage",
+          "Week 4: Third larval stage",
+          "Week 5: Fourth larval stage",
+          "Week 6: Pupal stage",
+          "Weeks 7-8: Adult mosquito emerges (the female mosquito's total lifespan is 6 to 8 weeks)"
+        ]
+      }
+    },
+    {
+      "id": "w1-14",
+      "chart_type": "map",
+      "prompt": "The maps below show Hunderstone town at present and a proposed plan for it.",
+      "chart": {
+        "columns": [
+          "Hunderstone — Now",
+          "Hunderstone — Proposed Plan"
+        ],
+        "rows": [
+          [
+            "An air field is located next to the railway",
+            "The air field is replaced by a new industrial estate"
+          ],
+          [
+            "A roundabout connects the A2 to the town centre ring road",
+            "The roundabout is redesigned to also connect to a new A4 road"
+          ],
+          [
+            "A gas station sits near the roundabout",
+            "The gas station remains, now closer to the new A4"
+          ],
+          [
+            "The build-up area ring road leads directly to the town centre",
+            "A new route diverts around the industrial estate before reaching the town centre"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "w1-15",
+      "chart_type": "map",
+      "prompt": "The map below is of the town of Garlsdon (population 65,000). A new supermarket (S) is planned for the town. The map shows two possible sites for the supermarket.",
+      "chart": {
+        "columns": [
+          "Site S1",
+          "Site S2"
+        ],
+        "rows": [
+          [
+            "Located on the edge of the countryside, near the railway line",
+            "Located inside the town centre, in the no-traffic zone"
+          ],
+          [
+            "12 km from Hindon (population 10,000)",
+            "16 km from Bransdon (population 15,000)"
+          ],
+          [
+            "Surrounded by housing and industry on the approach roads",
+            "Surrounded by the town's housing and industrial areas"
+          ],
+          [
+            "Further from Cransdon (25 km, population 29,000)",
+            "Closer to the main roads leading to Cransdon"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "w1-16",
+      "chart_type": "line",
+      "prompt": "The graph below gives information about international migration to the UK, 1999-2008.",
+      "chart": {
+        "unit": "thousands",
+        "labels": [
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003",
+          "2004",
+          "2005",
+          "2006",
+          "2007",
+          "2008"
+        ],
+        "series": [
+          {
+            "name": "Immigration",
+            "values": [
+              450,
+              460,
+              480,
+              510,
+              515,
+              580,
+              590,
+              595,
+              555,
+              590
+            ]
+          },
+          {
+            "name": "Emigration",
+            "values": [
+              290,
+              320,
+              310,
+              360,
+              360,
+              345,
+              400,
+              340,
+              320,
+              425
+            ]
+          },
+          {
+            "name": "Net migration",
+            "values": [
+              165,
+              160,
+              170,
+              150,
+              145,
+              245,
+              205,
+              195,
+              235,
+              165
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-17",
+      "chart_type": "table",
+      "prompt": "The table below highlights data on the number of travellers using three major British airports between 1998 and 2003.",
+      "chart": {
+        "unit": "million travellers/year",
+        "rowLabel": "Airport",
+        "columns": [
+          "1998",
+          "1999",
+          "2000",
+          "2001",
+          "2002",
+          "2003"
+        ],
+        "rows": [
+          {
+            "label": "Heathrow",
+            "values": [
+              27.2,
+              36.4,
+              48.2,
+              37.1,
+              33.2,
+              45.6
+            ]
+          },
+          {
+            "label": "Gatwick",
+            "values": [
+              36.5,
+              41.9,
+              44.4,
+              47.3,
+              51.1,
+              69.3
+            ]
+          },
+          {
+            "label": "Stansted",
+            "values": [
+              17.3,
+              26.6,
+              39.9,
+              43.3,
+              43.3,
+              43.3
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-18",
+      "chart_type": "pie",
+      "prompt": "The pie charts below show exports between the US and Vietnam.",
+      "chart": {
+        "unit": "$million",
+        "pies": [
+          {
+            "year": "Vietnam to US",
+            "labels": [
+              "Coffee",
+              "Fruit and vegetables",
+              "Seafood",
+              "Rice",
+              "Garments",
+              "Other"
+            ],
+            "values": [
+              23,
+              16,
+              4.4,
+              4.3,
+              2,
+              2
+            ]
+          },
+          {
+            "year": "US to Vietnam",
+            "labels": [
+              "Aircraft parts",
+              "Other",
+              "Machinery",
+              "Fertiliser",
+              "Cotton",
+              "Cars"
+            ],
+            "values": [
+              72,
+              35,
+              30.5,
+              16.5,
+              12,
+              6
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-19",
+      "chart_type": "bar",
+      "prompt": "The chart below shows the donation given to six different types of charity by one company from 2012 to 2014. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "$ thousand",
+        "labels": [
+          "Social welfare",
+          "Education",
+          "Environment",
+          "Health",
+          "Wildlife",
+          "Arts"
+        ],
+        "series": [
+          {
+            "name": "2012",
+            "values": [
+              22,
+              8,
+              8,
+              6,
+              3,
+              2.5
+            ]
+          },
+          {
+            "name": "2013",
+            "values": [
+              16,
+              6,
+              4.5,
+              7,
+              4,
+              3
+            ]
+          },
+          {
+            "name": "2014",
+            "values": [
+              24,
+              7.5,
+              7,
+              9,
+              5,
+              4
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-20",
+      "chart_type": "map",
+      "prompt": "The 2 maps show the changes that took place in the town of Felixstowe between 1967 and 2001. Summarise the information by selecting the main features and make comparisons where relevant.",
+      "chart": {
+        "columns": [
+          "Felixstowe — 1967",
+          "Felixstowe — 2001"
+        ],
+        "rows": [
+          [
+            "Golf course, farmland and shops along the High Street",
+            "Golf course remains; farmland replaced by apartments and a swimming pool/tennis courts"
+          ],
+          [
+            "A hotel and cafe near the pier and marina",
+            "A hotel and cafe remain, now beside a car park"
+          ],
+          [
+            "Dunes protect the beach along the coast",
+            "Dunes are reduced; wind turbines are installed offshore"
+          ],
+          [
+            "A fish market sits near the sea",
+            "A private beach and public beach now divide the coastline"
+          ]
+        ]
+      }
+    },
+    {
+      "id": "w1-21",
+      "chart_type": "line",
+      "prompt": "The graph below gives information about the number of jobs in four sectors of the economy in the US between 1960 and 2020. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "millions of jobs",
+        "labels": [
+          "1960",
+          "1980",
+          "2000",
+          "2020"
+        ],
+        "series": [
+          {
+            "name": "Manufacturing",
+            "values": [
+              15,
+              20,
+              17,
+              13
+            ]
+          },
+          {
+            "name": "Agriculture",
+            "values": [
+              6,
+              3,
+              3,
+              2
+            ]
+          },
+          {
+            "name": "Retail",
+            "values": [
+              5,
+              9,
+              13,
+              16
+            ]
+          },
+          {
+            "name": "Healthcare",
+            "values": [
+              2,
+              5,
+              10,
+              15.5
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-22",
+      "chart_type": "line",
+      "prompt": "The graph below shows the number of enquiries received by the Tourist Information Office in one city over a six-month period in 2011. Summarize the information by selecting and reporting the main features and make comparisons where relevant.",
+      "chart": {
+        "unit": "number of enquiries",
+        "labels": [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun"
+        ],
+        "series": [
+          {
+            "name": "In person",
+            "values": [
+              450,
+              600,
+              950,
+              1250,
+              1550,
+              1900
+            ]
+          },
+          {
+            "name": "By letter/email",
+            "values": [
+              750,
+              700,
+              700,
+              500,
+              320,
+              320
+            ]
+          },
+          {
+            "name": "By telephone",
+            "values": [
+              900,
+              800,
+              1000,
+              1000,
+              1400,
+              1600
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-23",
+      "chart_type": "pie",
+      "prompt": "The charts below show the percentage of water used for different purposes in six areas of the world. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "%",
+        "pies": [
+          {
+            "year": "North America",
+            "labels": [
+              "Industrial",
+              "Agricultural",
+              "Domestic"
+            ],
+            "values": [
+              48,
+              39,
+              13
+            ]
+          },
+          {
+            "year": "South America",
+            "labels": [
+              "Industrial",
+              "Agricultural",
+              "Domestic"
+            ],
+            "values": [
+              10,
+              71,
+              19
+            ]
+          },
+          {
+            "year": "Europe",
+            "labels": [
+              "Industrial",
+              "Agricultural",
+              "Domestic"
+            ],
+            "values": [
+              32,
+              53,
+              15
+            ]
+          },
+          {
+            "year": "Africa",
+            "labels": [
+              "Industrial",
+              "Agricultural",
+              "Domestic"
+            ],
+            "values": [
+              9,
+              84,
+              7
+            ]
+          },
+          {
+            "year": "Central Asia",
+            "labels": [
+              "Industrial",
+              "Agricultural",
+              "Domestic"
+            ],
+            "values": [
+              5,
+              88,
+              7
+            ]
+          },
+          {
+            "year": "South East Asia",
+            "labels": [
+              "Industrial",
+              "Agricultural",
+              "Domestic"
+            ],
+            "values": [
+              12,
+              81,
+              7
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-24",
+      "chart_type": "bar",
+      "prompt": "The graph below shows female unemployment rates in each country of the United Kingdom in 2013 and 2014. Summarize the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "%",
+        "labels": [
+          "England",
+          "Wales",
+          "Scotland",
+          "Northern Ireland"
+        ],
+        "series": [
+          {
+            "name": "2013",
+            "values": [
+              6.8,
+              5.4,
+              6.1,
+              5.6
+            ]
+          },
+          {
+            "name": "2014",
+            "values": [
+              6.5,
+              5.0,
+              6.7,
+              4.6
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-25",
+      "chart_type": "bar",
+      "prompt": "The chart below shows the number of films produced by five countries in three years. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "number of films",
+        "labels": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "series": [
+          {
+            "name": "2007",
+            "values": [
+              88,
+              48,
+              7,
+              16,
+              10
+            ]
+          },
+          {
+            "name": "2008",
+            "values": [
+              87,
+              50,
+              15,
+              10,
+              10
+            ]
+          },
+          {
+            "name": "2009",
+            "values": [
+              80,
+              70,
+              19,
+              14,
+              11
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-26",
+      "chart_type": "process",
+      "prompt": "The diagram below shows how glass is recycled. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "steps": [
+          "Glass bottles are collected in a recycle bin",
+          "A truck transports the bottles to a treatment plant",
+          "Bottles are washed and sterilised",
+          "Glass is crushed and melted",
+          "Melted glass is shaped in a moulding machine into new bottles",
+          "New bottles are delivered by truck to supermarkets for sale"
+        ]
+      }
+    },
+    {
+      "id": "w1-27",
+      "chart_type": "bar",
+      "prompt": "The bar chart below shows the percentage of Australian men and women in different age groups who did regular physical activity in 2010.",
+      "chart": {
+        "unit": "%",
+        "labels": [
+          "15 to 24",
+          "25 to 34",
+          "35 to 44",
+          "45 to 54",
+          "55 to 64",
+          "65 and over"
+        ],
+        "series": [
+          {
+            "name": "Male",
+            "values": [
+              53,
+              42,
+              39,
+              43,
+              45,
+              47
+            ]
+          },
+          {
+            "name": "Female",
+            "values": [
+              48,
+              49,
+              52,
+              53,
+              53,
+              47
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-28",
+      "chart_type": "bar",
+      "prompt": "The chart below shows the number of girls per 100 boys enrolled in different levels of school education, comparing developing and developed countries in 1990 and 1998.",
+      "chart": {
+        "unit": "girls per 100 boys",
+        "labels": [
+          "Primary (Developing)",
+          "Primary (Developed)",
+          "Secondary (Developing)",
+          "Secondary (Developed)",
+          "Tertiary (Developing)",
+          "Tertiary (Developed)"
+        ],
+        "series": [
+          {
+            "name": "1990",
+            "values": [
+              83,
+              95,
+              72,
+              98,
+              66,
+              105
+            ]
+          },
+          {
+            "name": "1998",
+            "values": [
+              87,
+              96,
+              82,
+              99,
+              75,
+              112
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-29",
+      "chart_type": "line",
+      "prompt": "The graph below shows different sources of air pollutants in the UK from 1990 to 2005. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "unit": "million tonnes",
+        "labels": [
+          "1990",
+          "1993",
+          "1996",
+          "1999",
+          "2002",
+          "2005"
+        ],
+        "series": [
+          {
+            "name": "Total air pollutants",
+            "values": [
+              7,
+              6,
+              5,
+              4,
+              3.9,
+              3.1
+            ]
+          },
+          {
+            "name": "Industry",
+            "values": [
+              5.5,
+              5,
+              3,
+              2.5,
+              2.2,
+              2.0
+            ]
+          },
+          {
+            "name": "Households",
+            "values": [
+              0.9,
+              0.85,
+              0.5,
+              0.6,
+              0.4,
+              0.15
+            ]
+          },
+          {
+            "name": "Transport",
+            "values": [
+              0.8,
+              0.8,
+              0.7,
+              0.6,
+              0.8,
+              1.0
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "w1-30",
+      "chart_type": "process",
+      "prompt": "The diagrams below show the life cycle of the silkworm and the stages in the production of silk cloth. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": {
+        "steps": [
+          "Life cycle: an egg hatches into a silkworm larva after about 10 days",
+          "The larva feeds on mulberry leaves for 4-6 weeks",
+          "The larva spins itself into a cocoon of silk thread over 3-8 days",
+          "After about 16 days inside the cocoon, the silkworm emerges as a moth, which lays new eggs",
+          "Silk production: cocoons are selected",
+          "Cocoons are boiled in water to loosen the silk thread",
+          "The thread (300-900m long per cocoon) is unwound",
+          "Threads from several cocoons are twisted together",
+          "The twisted thread is dyed and woven into silk cloth"
+        ]
+      }
+    }
   ],
   "task2_essay": {
     "education": [
@@ -113,7 +1330,9 @@
       "Some people believe that children should not be allowed to use smartphones until they become teenagers. To what extent do you agree or disagree?",
       "Some people believe online education is more effective than traditional classroom learning, while others disagree. Discuss both views and give your own opinion.",
       "Some people think that the government should provide free education to students in university. To what extent do you agree or disagree?",
-      "Some people say that television is useful for education, while others say it is useful only for entertainment. Discuss both views and give your own opinion."
+      "Some people say that television is useful for education, while others say it is useful only for entertainment. Discuss both views and give your own opinion.",
+      "Some people believe that studying at university or college is the best route to a successful career, while others believe that it is better to get a job straight after school. Discuss both views and give your opinion.",
+      "Many university students want to learn about different subjects in addition to their main subjects. Others feel it is important to give all their time and attention to studying for their qualification. Discuss both views and give your opinion."
     ],
     "environment": [
       "Individuals can do nothing to improve the environment; only governments and large companies can make a difference. To what extent do you agree or disagree?",
@@ -138,7 +1357,15 @@
       "In many societies, there is a growing emphasis on individualism, with people prioritising their personal goals and desires over collective interests. Is this a positive or negative development?",
       "Living in a country where you have to speak a foreign language can cause serious social problems, as well as practical problems. To what extent do you agree or disagree with this statement?",
       "In some countries, more and more people are becoming interested in finding out about the history of the house or building they live in. What are the reasons for this? How can people research this?",
-      "Rich countries often give money to poorer countries, but it does not solve poverty. Therefore, developed countries should give other types of help to the poor countries rather than financial aid. To what extent do you agree or disagree?"
+      "Rich countries often give money to poorer countries, but it does not solve poverty. Therefore, developed countries should give other types of help to the poor countries rather than financial aid. To what extent do you agree or disagree?",
+      "In some countries, many people suffer from health problems due to eating too much fast food. It is, therefore, necessary for governments to impose a higher tax on this kind of food. Do you agree or disagree?",
+      "Nowadays, most countries can improve the standard of living through economic development, but some social values are lost as a result. Do you think the advantages of this phenomenon outweigh the disadvantages?",
+      "Nowadays, celebrities are more famous for their glamour and wealth than for their achievements, and this has set a bad example for young children. To what extent do you agree or disagree?",
+      "The average standard of people's health is likely to be lower in the future than it is now. To what extent do you agree or disagree with this statement?",
+      "Some people say that the main environmental problem of our time is the loss of particular species of plants and animals. Others say that there are more important environmental problems. Discuss both these views and give your own opinion.",
+      "In some cultures, children are often told that they can achieve anything if they try hard enough. What are the advantages and disadvantages of giving children this message?",
+      "One problem faced by almost every large city is traffic congestion. What do you think the causes are? What solutions can you suggest?",
+      "In some countries owning a home rather than renting one is very important for people. Why might this be the case? Do you think this is a positive or negative situation?"
     ],
     "work_economy": [
       "Some people think that job satisfaction is more important than job security, while others think a permanent job is more important. Discuss both views and give your own opinion.",
@@ -148,7 +1375,10 @@
       "In many countries, young people change jobs every few years. What are the reasons for this? Do the advantages outweigh the disadvantages?",
       "Some people believe that employers should not be concerned about the way their employees dress, but should focus on the quality of their work. To what extent do you agree or disagree?",
       "Employers should give their staff at least a 4-week holiday a year to make employees better at their jobs. To what extent do you agree or disagree?",
-      "The working week should be shorter and workers should have a longer weekend. Do you agree or disagree? Give reasons for your answer and include any relevant examples from your own knowledge or experience."
+      "The working week should be shorter and workers should have a longer weekend. Do you agree or disagree? Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+      "Whether or not someone achieves their aims is mostly a question of luck. To what extent do you agree or disagree?",
+      "Some people believe that professionals, such as doctors and engineers, should be required to work in the country where they did their training. Others believe that they should be free to work in another country if they wish. Discuss both these views and give your own opinion.",
+      "It is important for people to take risks, both in their professional lives and their personal lives. Do you think the advantages of taking risks outweigh the disadvantages?"
     ],
     "media_technology": [
       "Some believe technology makes communication easier, while others think it harms real relationships. Discuss both views and give your opinion.",
@@ -156,7 +1386,9 @@
       "Some people think news has no connection to people's lives, so it is a waste of time to read newspapers or watch television news programs. To what extent do you agree or disagree?",
       "Some people think that zoos are cruel and should be closed down. Others believe zoos can be useful in protecting wild animals. Discuss both views and give your opinion.",
       "Some people think that family is the most important influence on young adults. Others believe that friends have a greater influence. Discuss both views and give your opinion.",
-      "The most important aim of science should be to improve people's lives. To what extent do you agree or disagree?"
+      "The most important aim of science should be to improve people's lives. To what extent do you agree or disagree?",
+      "Some people believe that it is best to accept a bad situation, such as an unsatisfactory job or shortage of money. Others argue that it is better to try and improve such situations. Discuss both these views and give your own opinion.",
+      "Some people think that it is more beneficial to take part in sports which are played in teams, like football, while other people think that taking part in individual sports, like tennis or swimming, is better. Discuss both views and give your own opinion."
     ]
   }
 }
