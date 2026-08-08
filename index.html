@@ -145,6 +145,11 @@
         <div id="screen-game" class="hidden flex-1 flex flex-col z-10 relative min-h-0">
             <div id="warp-overlay" class="warp-overlay"></div>
 
+            <!-- 系統訊息疊加層（蓋住整個遊戲畫面，訊息再長都放得下） -->
+            <div id="sys-message" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-90 hidden z-30 border-2 border-teal-500 p-4 overflow-y-auto">
+                <h2 id="sys-message-text" class="text-3xl sm:text-5xl font-bold text-center leading-relaxed font-sans"></h2>
+            </div>
+
             <!-- 頂部資訊列 -->
             <div class="flex justify-between items-end border-b-2 border-teal-800 pb-2 mb-4 text-xl sm:text-2xl font-sans">
                 <div>
@@ -172,11 +177,6 @@
                         防護盾 (SHIELD): <br>
                         <span id="enemy-hp" class="text-blue-400 text-3xl font-bold tracking-widest"></span>
                     </div>
-                </div>
-
-                <!-- 系統訊息疊加層 -->
-                <div id="sys-message" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-90 hidden z-20 border-2 border-teal-500">
-                    <h2 id="sys-message-text" class="text-4xl sm:text-5xl font-bold text-center px-4 leading-relaxed font-sans"></h2>
                 </div>
             </div>
 
@@ -221,140 +221,140 @@
     <script>
         // --- 題庫：結合 GEPT 講義 W1-W14 與練習題 ---
         const Q_COMBAT = [
-            { q: "My father's brother is my ______.", opt: ["uncle", "aunt", "cousin", "sister"], ans: 0 },
-            { q: "My mother's mother is my ______.", opt: ["grandmother", "grandfather", "aunt", "niece"], ans: 0 },
-            { q: "My brother's daughter is my ______.", opt: ["niece", "nephew", "cousin", "sister"], ans: 0 },
-            { q: "My uncle's son is my ______.", opt: ["cousin", "brother", "nephew", "uncle"], ans: 0 },
-            { q: "This is ______ pencil. It is red.", opt: ["I", "me", "my", "mine"], ans: 2 },
-            { q: "Those shoes are ______. They are not mine.", opt: ["her", "she", "hers", "he"], ans: 2 },
-            { q: "The library is very ______, so I like to read and study there.", opt: ["formal", "busy", "thirsty", "quiet"], ans: 3 },
-            { q: "Where ______ you last night? I called you three times.", opt: ["are", "is", "was", "were"], ans: 3 },
-            { q: "My parents ______ not at home now.", opt: ["is", "am", "are", "be"], ans: 2 },
-            { q: "______ your brother a doctor?", opt: ["Is", "Are", "Do", "Does"], ans: 0 },
-            { q: "There ______ many people at the park yesterday.", opt: ["was", "were", "is", "are"], ans: 1 },
-            { q: "I ______ very tired after the long trip.", opt: ["am", "is", "are", "be"], ans: 0 },
-            { q: "______ they students at your school?", opt: ["Is", "Are", "Do", "Does"], ans: 1 },
-            { q: "It ______ very hot today.", opt: ["is", "are", "am", "be"], ans: 0 },
-            { q: "My sister and I ______ good friends.", opt: ["is", "am", "are", "be"], ans: 2 },
-            { q: "He usually ______ to school by bus.", opt: ["go", "goes", "going", "went"], ans: 1 },
-            { q: "My mother ______ dinner every evening.", opt: ["cook", "cooks", "cooking", "cooked"], ans: 1 },
-            { q: "______ do you go to the movies? — About twice a month.", opt: ["How long", "How much", "How often", "How many"], ans: 2 },
-            { q: "I ______ never late for class.", opt: ["am", "is", "are", "be"], ans: 0 },
-            { q: "The shop ______ at nine o'clock every day.", opt: ["open", "opens", "opening", "opened"], ans: 1 },
-            { q: "She always ______ her homework before dinner.", opt: ["do", "does", "did", "doing"], ans: 1 },
-            { q: "We ______ TV together on weekends.", opt: ["watch", "watches", "watching", "watched"], ans: 0 },
-            { q: "My father ______ coffee every morning.", opt: ["drink", "drinks", "drank", "drinking"], ans: 1 },
-            { q: "Look! The birds ______ in the sky.", opt: ["fly", "flies", "are flying", "is flying"], ans: 2 },
-            { q: "Please be quiet. The baby ______.", opt: ["sleep", "sleeps", "is sleeping", "are sleeping"], ans: 2 },
-            { q: "Listen! Someone ______ the door.", opt: ["knock", "knocks", "is knocking", "knocked"], ans: 2 },
-            { q: "Right now, my brother ______ his bike in the park.", opt: ["ride", "rides", "is riding", "rode"], ans: 2 },
-            { q: "We ______ for the bus at the moment.", opt: ["wait", "waits", "are waiting", "waited"], ans: 2 },
-            { q: "Look at the sky! It ______ to rain.", opt: ["start", "starts", "is starting", "started"], ans: 2 },
-            { q: "He didn't ______ his homework last night.", opt: ["do", "does", "did", "doing"], ans: 0 },
-            { q: "I ______ to the zoo with my family last Sunday.", opt: ["go", "goes", "went", "going"], ans: 2 },
-            { q: "She ______ a beautiful dress for the party.", opt: ["buy", "buys", "bought", "buying"], ans: 2 },
-            { q: "They ______ soccer in the park yesterday afternoon.", opt: ["play", "plays", "played", "playing"], ans: 2 },
-            { q: "We ______ a wonderful movie last night.", opt: ["see", "sees", "saw", "seeing"], ans: 2 },
-            { q: "My grandfather ______ me an interesting story last week.", opt: ["tell", "tells", "told", "telling"], ans: 2 },
-            { q: "The train ______ late this morning.", opt: ["arrive", "arrives", "arrived", "arriving"], ans: 2 },
-            { q: "I ______ my keys somewhere in the house.", opt: ["lose", "loses", "lost", "losing"], ans: 2 },
-            { q: "She ______ to the radio while doing her homework.", opt: ["listen", "listens", "listened", "listening"], ans: 2 },
-            { q: "He ______ his bicycle to school yesterday.", opt: ["ride", "rides", "rode", "riding"], ans: 2 },
-            { q: "When I called her, she ______ dinner.", opt: ["cook", "cooks", "was cooking", "cooked"], ans: 2 },
-            { q: "It ______ heavily when we left home.", opt: ["rain", "rains", "was raining", "rained"], ans: 2 },
-            { q: "What ______ you doing at eight last night?", opt: ["was", "were", "are", "is"], ans: 1 },
-            { q: "While we ______ TV, the phone rang.", opt: ["watch", "watches", "were watching", "watched"], ans: 2 },
-            { q: "If it ______ tomorrow, we will stay at home.", opt: ["rain", "rained", "raining", "rains"], ans: 3 },
-            { q: "I think it ______ sunny tomorrow.", opt: ["will be", "is", "was", "be"], ans: 0 },
-            { q: "We ______ to the beach this weekend if the weather is nice.", opt: ["go", "goes", "went", "are going"], ans: 3 },
-            { q: "If you study hard, you ______ pass the test.", opt: ["will", "would", "are", "do"], ans: 0 },
-            { q: "She ______ visit her grandparents next month.", opt: ["is", "will", "was", "did"], ans: 1 },
-            { q: "Look at those dark clouds! It ______ rain soon.", opt: ["is going to", "was going to", "will has", "is"], ans: 0 },
-            { q: "______ you swim? — Yes, I can.", opt: ["Do", "Are", "Can", "Is"], ans: 2 },
-            { q: "You ______ finish your homework before you watch TV.", opt: ["must", "can", "may", "could"], ans: 0 },
-            { q: "______ I open the window? It's hot in here.", opt: ["Can", "Am", "Do", "Are"], ans: 0 },
-            { q: "You look tired. You ______ go to bed early.", opt: ["should", "must", "can", "may"], ans: 0 },
-            { q: "We ______ finish the project by Friday.", opt: ["have to", "has to", "having to", "had"], ans: 0 },
-            { q: "He is sick, so he ______ see a doctor.", opt: ["has to", "have to", "having to", "had"], ans: 0 },
-            { q: "______ I help you with your bags?", opt: ["Shall", "Do", "Am", "Is"], ans: 0 },
-            { q: "You ______ eat so much candy. It's bad for your teeth.", opt: ["shouldn't", "couldn't", "wouldn't", "isn't"], ans: 0 },
-            { q: "______ I borrow your pen for a minute?", opt: ["May", "Am", "Do", "Are"], ans: 0 },
-            { q: "Everyone ______ wear a seatbelt in the car.", opt: ["must", "can", "may", "could"], ans: 0 },
-            { q: "This book is ______ than that one.", opt: ["interesting", "more interesting", "most interesting", "interestinger"], ans: 1 },
-            { q: "She is the ______ student in our class.", opt: ["tall", "taller", "tallest", "more tall"], ans: 2 },
-            { q: "My brother is ______ than me.", opt: ["old", "older", "oldest", "more old"], ans: 1 },
-            { q: "This is the ______ movie I have ever seen.", opt: ["good", "better", "best", "goodest"], ans: 2 },
-            { q: "Today is ______ than yesterday.", opt: ["hot", "hotter", "hottest", "more hot"], ans: 1 },
-            { q: "Of all the students, Amy runs the ______.", opt: ["fast", "faster", "fastest", "more fast"], ans: 2 },
-            { q: "This question is ______ than the last one.", opt: ["easy", "easier", "easiest", "more easy"], ans: 1 },
-            { q: "This is ______ building in the city.", opt: ["tall", "taller", "the tallest", "more tall"], ans: 2 },
-            { q: "The bank is ______ the school and the park.", opt: ["between", "among", "under", "behind"], ans: 0 },
-            { q: "The cat is sleeping ______ the table.", opt: ["on", "in", "at", "under"], ans: 3 },
-            { q: "There is a picture ______ the wall.", opt: ["on", "in", "at", "under"], ans: 0 },
-            { q: "My house is ______ the corner of the street.", opt: ["on", "in", "at", "under"], ans: 2 },
-            { q: "Put the book ______ the shelf, please.", opt: ["on", "in", "at", "under"], ans: 0 },
-            { q: "There are many fish ______ the river.", opt: ["on", "in", "at", "under"], ans: 1 },
-            { q: "My birthday is ______ June.", opt: ["on", "in", "at", "for"], ans: 1 },
-            { q: "We usually have dinner ______ seven o'clock.", opt: ["on", "in", "at", "for"], ans: 2 },
-            { q: "I was born ______ 2005.", opt: ["on", "in", "at", "for"], ans: 1 },
-            { q: "She always goes jogging ______ Monday morning.", opt: ["on", "in", "at", "for"], ans: 0 },
-            { q: "The shop is closed ______ night.", opt: ["on", "in", "at", "for"], ans: 2 },
-            { q: "______ is your sister? — She is ten.", opt: ["How old", "How many", "How much", "How long"], ans: 0 },
-            { q: "______ do you go to the dentist? — Twice a year.", opt: ["How often", "How long", "How much", "How many"], ans: 0 },
-            { q: "______ does this bag cost? — It costs 500 dollars.", opt: ["How much", "How many", "How long", "How often"], ans: 0 },
-            { q: "______ brothers do you have? — I have two.", opt: ["How many", "How much", "How long", "How often"], ans: 0 },
-            { q: "______ is the museum from here? — It's about two kilometers.", opt: ["How far", "How long", "How much", "How many"], ans: 0 },
-            { q: "______ did you stay in Taipei? — For one week.", opt: ["How long", "How far", "How much", "How many"], ans: 0 },
-            { q: "______ is your favorite color? — Blue.", opt: ["What", "Who", "When", "Where"], ans: 0 },
-            { q: "______ is coming to the party tonight? — My cousin.", opt: ["Who", "What", "When", "Where"], ans: 0 },
-            { q: "______ does the movie start? — At seven thirty.", opt: ["When", "Where", "Who", "What"], ans: 0 },
-            { q: "______ is my umbrella? — It's next to the door.", opt: ["Where", "When", "Who", "What"], ans: 0 },
-            { q: "He is tired, ______ he goes to bed early.", opt: ["but", "or", "so", "because"], ans: 2 },
-            { q: "I like tea, ______ I don't like coffee.", opt: ["and", "but", "so", "because"], ans: 1 },
-            { q: "She was late ______ the bus didn't come on time.", opt: ["and", "but", "so", "because"], ans: 3 },
-            { q: "Do you want tea ______ coffee?", opt: ["and", "but", "so", "or"], ans: 3 },
-            { q: "It was raining, ______ we stayed inside.", opt: ["and", "but", "so", "because"], ans: 2 },
-            { q: "He studied hard, ______ he passed the exam.", opt: ["and", "but", "so", "because"], ans: 2 },
-            { q: "I have ______ money. Let's buy some drinks.", opt: ["many", "a few", "a little", "few"], ans: 2 },
-            { q: "There are ______ apples left in the basket.", opt: ["much", "a little", "a few", "any"], ans: 2 },
-            { q: "There isn't ______ milk in the fridge.", opt: ["many", "few", "much", "a few"], ans: 2 },
-            { q: "How ______ students are there in your class?", opt: ["much", "many", "little", "few"], ans: 1 },
-            { q: "She has ______ friends in this city because she just moved here.", opt: ["much", "many", "a few", "a little"], ans: 2 },
-            { q: "We need ______ sugar for this cake.", opt: ["many", "few", "a little", "a few"], ans: 2 },
-            { q: "There are ______ books on the desk.", opt: ["much", "a little", "some", "any"], ans: 2 },
-            { q: "Are there ______ eggs in the fridge?", opt: ["much", "many", "a little", "any"], ans: 1 },
-            { q: "There ______ a park near my house.", opt: ["is", "are", "am", "be"], ans: 0 },
-            { q: "______ there any water in the bottle?", opt: ["Is", "Are", "Am", "Do"], ans: 0 },
-            { q: "There ______ twenty students in our class.", opt: ["is", "are", "am", "be"], ans: 1 },
-            { q: "______ there a post office near here?", opt: ["Is", "Are", "Am", "Do"], ans: 0 },
-            { q: "Harry Potter is a famous book. It ______ by a great writer.", opt: ["writes", "wrote", "is written", "was written"], ans: 3 },
-            { q: "This bridge ______ built one hundred years ago.", opt: ["is", "was", "are", "were"], ans: 1 },
-            { q: "English ______ spoken in many countries.", opt: ["is", "was", "are", "were"], ans: 0 },
-            { q: "The windows ______ cleaned every week.", opt: ["is", "was", "are", "were"], ans: 2 },
-            { q: "My bike ______ stolen last night.", opt: ["is", "was", "are", "were"], ans: 1 },
-            { q: "______ you like pizza? — Yes, I do.", opt: ["Do", "Does", "Are", "Is"], ans: 0 },
-            { q: "______ your sister like dancing? — Yes, she does.", opt: ["Do", "Does", "Are", "Is"], ans: 1 },
-            { q: "______ you a student? — Yes, I am.", opt: ["Do", "Does", "Are", "Is"], ans: 2 },
-            { q: "______ he finish his homework yet? — No, not yet.", opt: ["Did", "Does", "Do", "Was"], ans: 0 },
-            { q: "______ they at home now? — No, they are at school.", opt: ["Do", "Does", "Are", "Is"], ans: 2 },
-            { q: "______ she like the gift? — Yes, she loved it.", opt: ["Did", "Does", "Do", "Was"], ans: 0 },
-            { q: "The box is ______ heavy for the boy to carry.", opt: ["very", "so", "too", "enough"], ans: 2 },
-            { q: "This shirt is ______ small for me.", opt: ["too", "enough", "so", "very"], ans: 0 },
-            { q: "She is not tall ______ to reach the top shelf.", opt: ["too", "enough", "so", "very"], ans: 1 },
-            { q: "The soup was ______ hot that I couldn't drink it.", opt: ["too", "enough", "so", "very"], ans: 2 },
-            { q: "I enjoy ______ books in my free time.", opt: ["read", "reads", "reading", "to read"], ans: 2 },
-            { q: "She wants ______ a doctor in the future.", opt: ["be", "is", "being", "to be"], ans: 3 },
-            { q: "We decided ______ a picnic this weekend.", opt: ["have", "has", "having", "to have"], ans: 3 },
-            { q: "He is good at ______ the piano.", opt: ["play", "plays", "playing", "to play"], ans: 2 },
-            { q: "______ your shoes before you come in.", opt: ["Take off", "Takes off", "Taking off", "Took off"], ans: 0 },
-            { q: "______ noise! The baby is sleeping.", opt: ["Don't make", "Doesn't make", "Not make", "Didn't make"], ans: 0 },
-            { q: "______ careful when you cross the street.", opt: ["Be", "Is", "Are", "Was"], ans: 0 },
-            { q: "It usually ______ me twenty minutes to walk to school.", opt: ["spends", "takes", "costs", "pays"], ans: 1 },
-            { q: "This math problem is very ______. I can't solve it.", opt: ["easy", "difficult", "cheap", "quiet"], ans: 1 },
-            { q: "The weather today is ______. We should bring an umbrella.", opt: ["sunny", "rainy", "dry", "hot"], ans: 1 },
-            { q: "My grandmother is very ______. She always helps her neighbors.", opt: ["kind", "lazy", "rude", "angry"], ans: 0 },
-            { q: "The soup smells ______. I can't wait to eat it.", opt: ["terrible", "delicious", "dirty", "boring"], ans: 1 },
-            { q: "He was ______ when he lost his wallet.", opt: ["happy", "excited", "upset", "proud"], ans: 2 }
+            { q: "My father's brother is my ______.", opt: ["uncle", "aunt", "cousin", "sister"], ans: 0, tip: "father's brother（爸爸的兄弟）＝ uncle（伯父/叔叔/舅舅）。" },
+            { q: "My mother's mother is my ______.", opt: ["grandmother", "grandfather", "aunt", "niece"], ans: 0, tip: "mother's mother（媽媽的媽媽）＝ grandmother（奶奶/外婆）。" },
+            { q: "My brother's daughter is my ______.", opt: ["niece", "nephew", "cousin", "sister"], ans: 0, tip: "brother's daughter（哥哥/弟弟的女兒）＝ niece（姪女）。" },
+            { q: "My uncle's son is my ______.", opt: ["cousin", "brother", "nephew", "uncle"], ans: 0, tip: "uncle's son（叔叔的兒子）＝ cousin（表/堂兄弟姊妹）。" },
+            { q: "This is ______ pencil. It is red.", opt: ["I", "me", "my", "mine"], ans: 2, tip: "名詞前要用所有格 my（我的），不能用 I/me/mine。" },
+            { q: "Those shoes are ______. They are not mine.", opt: ["her", "she", "hers", "he"], ans: 2, tip: "be 動詞後單獨使用要用所有格代名詞 hers（她的），不加名詞的 her。" },
+            { q: "The library is very ______, so I like to read and study there.", opt: ["formal", "busy", "thirsty", "quiet"], ans: 3, tip: "圖書館要安靜看書，所以用 quiet（安靜的）。" },
+            { q: "Where ______ you last night? I called you three times.", opt: ["are", "is", "was", "were"], ans: 3, tip: "last night 是過去式，you 對應的 be 動詞用 were。" },
+            { q: "My parents ______ not at home now.", opt: ["is", "am", "are", "be"], ans: 2, tip: "parents 是複數，be 動詞要用 are。" },
+            { q: "______ your brother a doctor?", opt: ["Is", "Are", "Do", "Does"], ans: 0, tip: "your brother 是單數第三人稱，問句用 Is 開頭。" },
+            { q: "There ______ many people at the park yesterday.", opt: ["was", "were", "is", "are"], ans: 1, tip: "yesterday 是過去式，many people 複數用 were。" },
+            { q: "I ______ very tired after the long trip.", opt: ["am", "is", "are", "be"], ans: 0, tip: "主詞 I 搭配 be 動詞要用 am。" },
+            { q: "______ they students at your school?", opt: ["Is", "Are", "Do", "Does"], ans: 1, tip: "they 是複數，問句用 Are 開頭。" },
+            { q: "It ______ very hot today.", opt: ["is", "are", "am", "be"], ans: 0, tip: "主詞 it 搭配 be 動詞要用 is。" },
+            { q: "My sister and I ______ good friends.", opt: ["is", "am", "are", "be"], ans: 2, tip: "My sister and I 是複數主詞，要用 are。" },
+            { q: "He usually ______ to school by bus.", opt: ["go", "goes", "going", "went"], ans: 1, tip: "主詞是第三人稱單數 he，現在式動詞要加 s，go→goes。" },
+            { q: "My mother ______ dinner every evening.", opt: ["cook", "cooks", "cooking", "cooked"], ans: 1, tip: "mother 是第三人稱單數，現在式動詞要加 s。" },
+            { q: "______ do you go to the movies? — About twice a month.", opt: ["How long", "How much", "How often", "How many"], ans: 2, tip: "問頻率（一個月兩次）要用 How often（多久一次）。" },
+            { q: "I ______ never late for class.", opt: ["am", "is", "are", "be"], ans: 0, tip: "主詞 I 搭配 be 動詞用 am，never 放在 be 動詞後面。" },
+            { q: "The shop ______ at nine o'clock every day.", opt: ["open", "opens", "opening", "opened"], ans: 1, tip: "shop 是第三人稱單數，現在式動詞要加 s。" },
+            { q: "She always ______ her homework before dinner.", opt: ["do", "does", "did", "doing"], ans: 1, tip: "she 是第三人稱單數，助動詞 do 要變 does。" },
+            { q: "We ______ TV together on weekends.", opt: ["watch", "watches", "watching", "watched"], ans: 0, tip: "主詞 we 是複數，現在式動詞不用加 s。" },
+            { q: "My father ______ coffee every morning.", opt: ["drink", "drinks", "drank", "drinking"], ans: 1, tip: "father 是第三人稱單數，動詞要加 s，drink→drinks。" },
+            { q: "Look! The birds ______ in the sky.", opt: ["fly", "flies", "are flying", "is flying"], ans: 2, tip: "Look! 表示現在正在發生的動作，要用現在進行式 are flying。" },
+            { q: "Please be quiet. The baby ______.", opt: ["sleep", "sleeps", "is sleeping", "are sleeping"], ans: 2, tip: "baby 是單數，現在進行式要用 is + Ving。" },
+            { q: "Listen! Someone ______ the door.", opt: ["knock", "knocks", "is knocking", "knocked"], ans: 2, tip: "Listen! 表示現在正在發生，Someone 單數用 is + Ving。" },
+            { q: "Right now, my brother ______ his bike in the park.", opt: ["ride", "rides", "is riding", "rode"], ans: 2, tip: "Right now 表示此刻正在做的事，用現在進行式 is riding。" },
+            { q: "We ______ for the bus at the moment.", opt: ["wait", "waits", "are waiting", "waited"], ans: 2, tip: "at the moment（此刻）要用現在進行式，we 複數用 are。" },
+            { q: "Look at the sky! It ______ to rain.", opt: ["start", "starts", "is starting", "started"], ans: 2, tip: "看到現在的跡象要用現在進行式，it 用 is + Ving。" },
+            { q: "He didn't ______ his homework last night.", opt: ["do", "does", "did", "doing"], ans: 0, tip: "didn't 後面動詞要用原形 do，不能再加 did/does。" },
+            { q: "I ______ to the zoo with my family last Sunday.", opt: ["go", "goes", "went", "going"], ans: 2, tip: "last Sunday 是過去式，go 的過去式是 went。" },
+            { q: "She ______ a beautiful dress for the party.", opt: ["buy", "buys", "bought", "buying"], ans: 2, tip: "過去式句子，buy 的過去式是不規則變化 bought。" },
+            { q: "They ______ soccer in the park yesterday afternoon.", opt: ["play", "plays", "played", "playing"], ans: 2, tip: "yesterday afternoon 是過去式，play 加 ed 變 played。" },
+            { q: "We ______ a wonderful movie last night.", opt: ["see", "sees", "saw", "seeing"], ans: 2, tip: "last night 是過去式，see 的過去式是不規則變化 saw。" },
+            { q: "My grandfather ______ me an interesting story last week.", opt: ["tell", "tells", "told", "telling"], ans: 2, tip: "last week 是過去式，tell 的過去式是不規則變化 told。" },
+            { q: "The train ______ late this morning.", opt: ["arrive", "arrives", "arrived", "arriving"], ans: 2, tip: "this morning（已過去的這個早上）用過去式，arrive 加 ed。" },
+            { q: "I ______ my keys somewhere in the house.", opt: ["lose", "loses", "lost", "losing"], ans: 2, tip: "描述已發生的事用過去式，lose 的過去式是不規則變化 lost。" },
+            { q: "She ______ to the radio while doing her homework.", opt: ["listen", "listens", "listened", "listening"], ans: 2, tip: "描述過去做的事用過去式，listen 加 ed 變 listened。" },
+            { q: "He ______ his bicycle to school yesterday.", opt: ["ride", "rides", "rode", "riding"], ans: 2, tip: "yesterday 是過去式，ride 的過去式是不規則變化 rode。" },
+            { q: "When I called her, she ______ dinner.", opt: ["cook", "cooks", "was cooking", "cooked"], ans: 2, tip: "過去某時間正在做的事，用過去進行式 was/were + Ving。" },
+            { q: "It ______ heavily when we left home.", opt: ["rain", "rains", "was raining", "rained"], ans: 2, tip: "過去某時間正在進行的動作，it 用 was + Ving。" },
+            { q: "What ______ you doing at eight last night?", opt: ["was", "were", "are", "is"], ans: 1, tip: "過去進行式主詞 you 對應的 be 動詞是 were。" },
+            { q: "While we ______ TV, the phone rang.", opt: ["watch", "watches", "were watching", "watched"], ans: 2, tip: "while 子句表示過去正在進行的動作，we 用 were + Ving。" },
+            { q: "If it ______ tomorrow, we will stay at home.", opt: ["rain", "rained", "raining", "rains"], ans: 3, tip: "條件句 if 子句描述未來，仍要用現在式，it 加 s 變 rains。" },
+            { q: "I think it ______ sunny tomorrow.", opt: ["will be", "is", "was", "be"], ans: 0, tip: "tomorrow 是未來式，要用 will + 原形動詞 be。" },
+            { q: "We ______ to the beach this weekend if the weather is nice.", opt: ["go", "goes", "went", "are going"], ans: 3, tip: "表示已計劃好的未來安排，可用現在進行式 are going。" },
+            { q: "If you study hard, you ______ pass the test.", opt: ["will", "would", "are", "do"], ans: 0, tip: "if 子句的主要子句用 will + 原形動詞，表示未來結果。" },
+            { q: "She ______ visit her grandparents next month.", opt: ["is", "will", "was", "did"], ans: 1, tip: "next month 是未來式，要用 will + 原形動詞。" },
+            { q: "Look at those dark clouds! It ______ rain soon.", opt: ["is going to", "was going to", "will has", "is"], ans: 0, tip: "看到現在的跡象（烏雲）預測未來，用 be going to。" },
+            { q: "______ you swim? — Yes, I can.", opt: ["Do", "Are", "Can", "Is"], ans: 2, tip: "問「會不會」某項能力，要用助動詞 Can。" },
+            { q: "You ______ finish your homework before you watch TV.", opt: ["must", "can", "may", "could"], ans: 0, tip: "表示強制必須做的事，用 must（必須）。" },
+            { q: "______ I open the window? It's hot in here.", opt: ["Can", "Am", "Do", "Are"], ans: 0, tip: "請求許可「我可以⋯嗎」用 Can 開頭。" },
+            { q: "You look tired. You ______ go to bed early.", opt: ["should", "must", "can", "may"], ans: 0, tip: "給建議「你應該⋯」用 should。" },
+            { q: "We ______ finish the project by Friday.", opt: ["have to", "has to", "having to", "had"], ans: 0, tip: "主詞 we 用 have to 表示必須，第三人稱單數才用 has to。" },
+            { q: "He is sick, so he ______ see a doctor.", opt: ["has to", "have to", "having to", "had"], ans: 0, tip: "主詞 he 是第三人稱單數，have to 要變成 has to。" },
+            { q: "______ I help you with your bags?", opt: ["Shall", "Do", "Am", "Is"], ans: 0, tip: "主動提議幫忙「我來⋯好嗎」常用 Shall I ...?" },
+            { q: "You ______ eat so much candy. It's bad for your teeth.", opt: ["shouldn't", "couldn't", "wouldn't", "isn't"], ans: 0, tip: "勸告不要做某事「你不應該⋯」用 shouldn't。" },
+            { q: "______ I borrow your pen for a minute?", opt: ["May", "Am", "Do", "Are"], ans: 0, tip: "禮貌地請求許可，用 May I ...?" },
+            { q: "Everyone ______ wear a seatbelt in the car.", opt: ["must", "can", "may", "could"], ans: 0, tip: "表示規定、義務「每個人都必須」用 must。" },
+            { q: "This book is ______ than that one.", opt: ["interesting", "more interesting", "most interesting", "interestinger"], ans: 1, tip: "interesting 音節較長，比較級要加 more，不能加 er。" },
+            { q: "She is the ______ student in our class.", opt: ["tall", "taller", "tallest", "more tall"], ans: 2, tip: "最高級前面要加 the，tall 加 est 變 tallest。" },
+            { q: "My brother is ______ than me.", opt: ["old", "older", "oldest", "more old"], ans: 1, tip: "比較兩者用比較級，old 加 er 變 older。" },
+            { q: "This is the ______ movie I have ever seen.", opt: ["good", "better", "best", "goodest"], ans: 2, tip: "good 是不規則變化，最高級是 best，不是 goodest。" },
+            { q: "Today is ______ than yesterday.", opt: ["hot", "hotter", "hottest", "more hot"], ans: 1, tip: "hot 是短母音+子音結尾，比較級要重複子音再加 er，變 hotter。" },
+            { q: "Of all the students, Amy runs the ______.", opt: ["fast", "faster", "fastest", "more fast"], ans: 2, tip: "of all（在所有裡面）要用最高級，fast 加 est 變 fastest。" },
+            { q: "This question is ______ than the last one.", opt: ["easy", "easier", "easiest", "more easy"], ans: 1, tip: "easy 結尾 y 變 i 再加 er，變 easier。" },
+            { q: "This is ______ building in the city.", opt: ["tall", "taller", "the tallest", "more tall"], ans: 2, tip: "in the city 表示範圍最⋯，要用最高級 the tallest。" },
+            { q: "The bank is ______ the school and the park.", opt: ["between", "among", "under", "behind"], ans: 0, tip: "位於兩者之間用 between A and B。" },
+            { q: "The cat is sleeping ______ the table.", opt: ["on", "in", "at", "under"], ans: 3, tip: "在桌子下面用介系詞 under。" },
+            { q: "There is a picture ______ the wall.", opt: ["on", "in", "at", "under"], ans: 0, tip: "貼/掛在牆面上用 on the wall。" },
+            { q: "My house is ______ the corner of the street.", opt: ["on", "in", "at", "under"], ans: 2, tip: "在街角這種「點狀位置」習慣用 at the corner。" },
+            { q: "Put the book ______ the shelf, please.", opt: ["on", "in", "at", "under"], ans: 0, tip: "放在架子「表面上」用 on the shelf。" },
+            { q: "There are many fish ______ the river.", opt: ["on", "in", "at", "under"], ans: 1, tip: "魚在河「裡面」游，用介系詞 in。" },
+            { q: "My birthday is ______ June.", opt: ["on", "in", "at", "for"], ans: 1, tip: "月份前面要用介系詞 in。" },
+            { q: "We usually have dinner ______ seven o'clock.", opt: ["on", "in", "at", "for"], ans: 2, tip: "確切時刻（幾點幾分）前面要用 at。" },
+            { q: "I was born ______ 2005.", opt: ["on", "in", "at", "for"], ans: 1, tip: "年份前面要用介系詞 in。" },
+            { q: "She always goes jogging ______ Monday morning.", opt: ["on", "in", "at", "for"], ans: 0, tip: "星期加上早上/下午/晚上，習慣仍用 on，如 on Monday morning。" },
+            { q: "The shop is closed ______ night.", opt: ["on", "in", "at", "for"], ans: 2, tip: "at night（晚上）是固定用法。" },
+            { q: "______ is your sister? — She is ten.", opt: ["How old", "How many", "How much", "How long"], ans: 0, tip: "問年紀要用 How old。" },
+            { q: "______ do you go to the dentist? — Twice a year.", opt: ["How often", "How long", "How much", "How many"], ans: 0, tip: "回答是頻率（一年兩次），問句要用 How often。" },
+            { q: "______ does this bag cost? — It costs 500 dollars.", opt: ["How much", "How many", "How long", "How often"], ans: 0, tip: "問價錢（不可數）要用 How much。" },
+            { q: "______ brothers do you have? — I have two.", opt: ["How many", "How much", "How long", "How often"], ans: 0, tip: "brothers 是可數名詞複數，要用 How many。" },
+            { q: "______ is the museum from here? — It's about two kilometers.", opt: ["How far", "How long", "How much", "How many"], ans: 0, tip: "問距離遠近要用 How far。" },
+            { q: "______ did you stay in Taipei? — For one week.", opt: ["How long", "How far", "How much", "How many"], ans: 0, tip: "回答是一段時間長度，問句要用 How long。" },
+            { q: "______ is your favorite color? — Blue.", opt: ["What", "Who", "When", "Where"], ans: 0, tip: "問「什麼」東西（顏色）用 What。" },
+            { q: "______ is coming to the party tonight? — My cousin.", opt: ["Who", "What", "When", "Where"], ans: 0, tip: "問「誰」要來，用 Who。" },
+            { q: "______ does the movie start? — At seven thirty.", opt: ["When", "Where", "Who", "What"], ans: 0, tip: "問「什麼時候」用 When。" },
+            { q: "______ is my umbrella? — It's next to the door.", opt: ["Where", "When", "Who", "What"], ans: 0, tip: "問東西「在哪裡」用 Where。" },
+            { q: "He is tired, ______ he goes to bed early.", opt: ["but", "or", "so", "because"], ans: 2, tip: "前後是因果關係（累了所以早睡），用 so（所以）。" },
+            { q: "I like tea, ______ I don't like coffee.", opt: ["and", "but", "so", "because"], ans: 1, tip: "前後語意相反（喜歡茶但不喜歡咖啡），用 but（但是）。" },
+            { q: "She was late ______ the bus didn't come on time.", opt: ["and", "but", "so", "because"], ans: 3, tip: "後面是原因（公車沒準時來），用 because（因為）。" },
+            { q: "Do you want tea ______ coffee?", opt: ["and", "but", "so", "or"], ans: 3, tip: "在兩個選項中選一個，用 or（或者）。" },
+            { q: "It was raining, ______ we stayed inside.", opt: ["and", "but", "so", "because"], ans: 2, tip: "前面是原因、後面是結果，用 so（所以）。" },
+            { q: "He studied hard, ______ he passed the exam.", opt: ["and", "but", "so", "because"], ans: 2, tip: "用功讀書所以通過考試，是因果關係，用 so。" },
+            { q: "I have ______ money. Let's buy some drinks.", opt: ["many", "a few", "a little", "few"], ans: 2, tip: "money 是不可數名詞，「一點點」要用 a little。" },
+            { q: "There are ______ apples left in the basket.", opt: ["much", "a little", "a few", "any"], ans: 2, tip: "apples 是可數名詞複數，「一些」要用 a few。" },
+            { q: "There isn't ______ milk in the fridge.", opt: ["many", "few", "much", "a few"], ans: 2, tip: "milk 是不可數名詞，否定句常搭配 much。" },
+            { q: "How ______ students are there in your class?", opt: ["much", "many", "little", "few"], ans: 1, tip: "students 是可數名詞複數，要用 many。" },
+            { q: "She has ______ friends in this city because she just moved here.", opt: ["much", "many", "a few", "a little"], ans: 2, tip: "friends 是可數名詞複數，「不多的一些」用 a few。" },
+            { q: "We need ______ sugar for this cake.", opt: ["many", "few", "a little", "a few"], ans: 2, tip: "sugar 是不可數名詞，「一點點」要用 a little。" },
+            { q: "There are ______ books on the desk.", opt: ["much", "a little", "some", "any"], ans: 2, tip: "肯定句中表示「一些」，可數複數用 some。" },
+            { q: "Are there ______ eggs in the fridge?", opt: ["much", "many", "a little", "any"], ans: 1, tip: "疑問句中 eggs 是可數複數，用 many 詢問數量。" },
+            { q: "There ______ a park near my house.", opt: ["is", "are", "am", "be"], ans: 0, tip: "There is + 單數名詞（a park）。" },
+            { q: "______ there any water in the bottle?", opt: ["Is", "Are", "Am", "Do"], ans: 0, tip: "water 是不可數名詞，視為單數，用 Is there。" },
+            { q: "There ______ twenty students in our class.", opt: ["is", "are", "am", "be"], ans: 1, tip: "There are + 複數名詞（twenty students）。" },
+            { q: "______ there a post office near here?", opt: ["Is", "Are", "Am", "Do"], ans: 0, tip: "a post office 是單數，用 Is there。" },
+            { q: "Harry Potter is a famous book. It ______ by a great writer.", opt: ["writes", "wrote", "is written", "was written"], ans: 3, tip: "書「被」某人寫，是過去式被動語態 was written。" },
+            { q: "This bridge ______ built one hundred years ago.", opt: ["is", "was", "are", "were"], ans: 1, tip: "one hundred years ago 是過去式，被動語態用 was + p.p.。" },
+            { q: "English ______ spoken in many countries.", opt: ["is", "was", "are", "were"], ans: 0, tip: "描述現在普遍事實，被動語態用 is + p.p.。" },
+            { q: "The windows ______ cleaned every week.", opt: ["is", "was", "are", "were"], ans: 2, tip: "windows 是複數，被動語態要用 are + p.p.。" },
+            { q: "My bike ______ stolen last night.", opt: ["is", "was", "are", "were"], ans: 1, tip: "last night 是過去式，被動語態用 was + p.p.。" },
+            { q: "______ you like pizza? — Yes, I do.", opt: ["Do", "Does", "Are", "Is"], ans: 0, tip: "主詞 you，一般動詞問句用 Do 開頭。" },
+            { q: "______ your sister like dancing? — Yes, she does.", opt: ["Do", "Does", "Are", "Is"], ans: 1, tip: "sister 是第三人稱單數，一般動詞問句用 Does。" },
+            { q: "______ you a student? — Yes, I am.", opt: ["Do", "Does", "Are", "Is"], ans: 2, tip: "be 動詞的問句，you 對應 Are。" },
+            { q: "______ he finish his homework yet? — No, not yet.", opt: ["Did", "Does", "Do", "Was"], ans: 0, tip: "yet 常用於過去式問句，he 用 Did 開頭。" },
+            { q: "______ they at home now? — No, they are at school.", opt: ["Do", "Does", "Are", "Is"], ans: 2, tip: "be 動詞問句，they 對應 Are。" },
+            { q: "______ she like the gift? — Yes, she loved it.", opt: ["Did", "Does", "Do", "Was"], ans: 0, tip: "回答是過去式 loved，問句要用 Did。" },
+            { q: "The box is ______ heavy for the boy to carry.", opt: ["very", "so", "too", "enough"], ans: 2, tip: "too + 形容詞 + for sb + to V，表示「太⋯以致於不能」。" },
+            { q: "This shirt is ______ small for me.", opt: ["too", "enough", "so", "very"], ans: 0, tip: "too + 形容詞，表示「太⋯」的負面意思。" },
+            { q: "She is not tall ______ to reach the top shelf.", opt: ["too", "enough", "so", "very"], ans: 1, tip: "形容詞 + enough + to V，enough 要放在形容詞後面。" },
+            { q: "The soup was ______ hot that I couldn't drink it.", opt: ["too", "enough", "so", "very"], ans: 2, tip: "so + 形容詞 + that 子句，表示「太⋯以致於」。" },
+            { q: "I enjoy ______ books in my free time.", opt: ["read", "reads", "reading", "to read"], ans: 2, tip: "enjoy 後面要接動名詞 Ving。" },
+            { q: "She wants ______ a doctor in the future.", opt: ["be", "is", "being", "to be"], ans: 3, tip: "want 後面要接不定詞 to V。" },
+            { q: "We decided ______ a picnic this weekend.", opt: ["have", "has", "having", "to have"], ans: 3, tip: "decide 後面要接不定詞 to V。" },
+            { q: "He is good at ______ the piano.", opt: ["play", "plays", "playing", "to play"], ans: 2, tip: "be good at 後面要接動名詞 Ving。" },
+            { q: "______ your shoes before you come in.", opt: ["Take off", "Takes off", "Taking off", "Took off"], ans: 0, tip: "祈使句用原形動詞開頭，Take off（脫掉）。" },
+            { q: "______ noise! The baby is sleeping.", opt: ["Don't make", "Doesn't make", "Not make", "Didn't make"], ans: 0, tip: "否定祈使句用 Don't + 原形動詞。" },
+            { q: "______ careful when you cross the street.", opt: ["Be", "Is", "Are", "Was"], ans: 0, tip: "祈使句用原形動詞開頭，be 動詞的原形是 Be。" },
+            { q: "It usually ______ me twenty minutes to walk to school.", opt: ["spends", "takes", "costs", "pays"], ans: 1, tip: "It takes sb + 時間 + to V，是固定用法。" },
+            { q: "This math problem is very ______. I can't solve it.", opt: ["easy", "difficult", "cheap", "quiet"], ans: 1, tip: "解不出來表示題目很難，用 difficult（困難的）。" },
+            { q: "The weather today is ______. We should bring an umbrella.", opt: ["sunny", "rainy", "dry", "hot"], ans: 1, tip: "要帶傘表示天氣是 rainy（下雨的）。" },
+            { q: "My grandmother is very ______. She always helps her neighbors.", opt: ["kind", "lazy", "rude", "angry"], ans: 0, tip: "常常幫助鄰居表示個性 kind（親切的）。" },
+            { q: "The soup smells ______. I can't wait to eat it.", opt: ["terrible", "delicious", "dirty", "boring"], ans: 1, tip: "迫不及待想吃表示聞起來 delicious（美味的）。" },
+            { q: "He was ______ when he lost his wallet.", opt: ["happy", "excited", "upset", "proud"], ans: 2, tip: "弄丟錢包會感到 upset（沮喪的）。" }
         ];
 
         // 單字題庫：涵蓋 GEPT 初級常見生活單字（家庭、學校、場所、動詞、形容詞、易混淆單字）
@@ -406,7 +406,47 @@
             { q: "'mistake' 的意思是？", opt: ["訊息", "記憶", "方法", "錯誤"], ans: 3 },
             { q: "'traffic' 的意思是？", opt: ["旅行", "交通", "運輸", "麻煩"], ans: 1 },
             { q: "'difference' 的意思是？", opt: ["距離", "方向", "不同；差異", "決定"], ans: 2 },
-            { q: "'quality' 的意思是？", opt: ["數量", "問題", "隊伍", "品質"], ans: 3 }
+            { q: "'quality' 的意思是？", opt: ["數量", "問題", "隊伍", "品質"], ans: 3 },
+            { q: "This singer is very popular; almost every teenager in Taiwan knows her songs. 'popular' 的意思是？", opt: ["受歡迎的", "昂貴的", "古老的", "危險的"], ans: 0 },
+            { q: "These two bags look similar, but one is much more expensive than the other. 'similar' 的意思是？", opt: ["相似的", "便宜的", "破舊的", "巨大的"], ans: 0 },
+            { q: "This sofa is so comfortable that I always fall asleep on it after dinner. 'comfortable' 的意思是？", opt: ["昂貴的", "舒適的", "堅硬的", "狹窄的"], ans: 1 },
+            { q: "Living near the MRT station is very convenient for people who work downtown. 'convenient' 的意思是？", opt: ["困難的", "方便的", "擁擠的", "遙遠的"], ans: 1 },
+            { q: "It is necessary to bring an umbrella because it might rain this afternoon. 'necessary' 的意思是？", opt: ["必要的", "多餘的", "禁止的", "免費的"], ans: 0 },
+            { q: "Is it possible to finish this report before Friday if we work together? 'possible' 的意思是？", opt: ["不可能的", "可能的", "確定的", "困難的"], ans: 1 },
+            { q: "Sorry, this seat is not available; someone already reserved it for the concert. 'available' 的意思是？", opt: ["昂貴的", "損壞的", "可取得的", "禁止的"], ans: 2 },
+            { q: "Our school held an international food festival with dishes from ten countries. 'international' 的意思是？", opt: ["國際的", "國內的", "傳統的", "私人的"], ans: 0 },
+            { q: "My grandmother taught me how to cook several traditional dishes from her hometown. 'traditional' 的意思是？", opt: ["現代的", "傳統的", "昂貴的", "簡單的"], ans: 1 },
+            { q: "The city built a modern library with computers and comfortable reading rooms. 'modern' 的意思是？", opt: ["古老的", "現代的", "傳統的", "簡陋的"], ans: 1 },
+            { q: "Try to stay positive even when things don't go the way you planned. 'positive' 的意思是？", opt: ["正面的", "負面的", "中立的", "複雜的"], ans: 0 },
+            { q: "Too much negative news on TV can make people feel worried and tired. 'negative' 的意思是？", opt: ["正面的", "負面的", "積極的", "樂觀的"], ans: 1 },
+            { q: "Air pollution in big cities is getting worse because of heavy traffic. 'pollution' 的意思是？", opt: ["污染", "資源", "天氣", "景色"], ans: 0 },
+            { q: "We should recycle plastic bottles instead of throwing them into the trash can. 'recycle' 的意思是？", opt: ["丟棄", "購買", "回收", "製造"], ans: 2 },
+            { q: "Every weekend, my sister works as a volunteer at the animal shelter downtown. 'volunteer' 的意思是？", opt: ["顧客", "志工", "老闆", "專家"], ans: 1 },
+            { q: "The new park brings the whole community together for exercise and picnics. 'community' 的意思是？", opt: ["社區", "公司", "學校", "政府"], ans: 0 },
+            { q: "Taking off your shoes before entering a house is a common custom here. 'custom' 的意思是？", opt: ["習俗", "法律", "課程", "比賽"], ans: 0 },
+            { q: "Thousands of people gather in the park every year for the lantern festival. 'festival' 的意思是？", opt: ["節慶", "考試", "會議", "競賽"], ans: 0 },
+            { q: "I was disappointed when our trip to the beach was cancelled because of rain. 'disappointed' 的意思是？", opt: ["興奮的", "失望的", "驕傲的", "害怕的"], ans: 1 },
+            { q: "He felt embarrassed after he called his teacher 'Mom' in front of the class. 'embarrassed' 的意思是？", opt: ["自豪的", "尷尬的", "放鬆的", "滿意的"], ans: 1 },
+            { q: "After weeks of practice, she felt confident about her speech contest tomorrow. 'confident' 的意思是？", opt: ["緊張的", "害羞的", "有信心的", "懶惰的"], ans: 2 },
+            { q: "My grandfather is still very active; he goes hiking every single weekend. 'active' 的意思是？", opt: ["活躍的", "安靜的", "疲累的", "害羞的"], ans: 0 },
+            { q: "Her small bakery became so successful that she opened three more stores. 'successful' 的意思是？", opt: ["失敗的", "成功的", "普通的", "貧窮的"], ans: 1 },
+            { q: "Students should respect their teachers and listen carefully during class. 'respect' 的意思是？", opt: ["尊重", "抱怨", "懷疑", "忽略"], ans: 0 },
+            { q: "As the team leader, she is responsible for organizing all the meetings. 'responsible' 的意思是？", opt: ["粗心的", "負責任的", "懶惰的", "害怕的"], ans: 1 },
+            { q: "My coach always tries to encourage us, even after we lose a game. 'encourage' 的意思是？", opt: ["批評", "鼓勵", "拒絕", "懲罰"], ans: 1 },
+            { q: "It took him five years of hard training to achieve his Olympic dream. 'achieve' 的意思是？", opt: ["放棄", "達成", "忘記", "延遲"], ans: 1 },
+            { q: "The children were so energetic that they kept running around the playground. 'energetic' 的意思是？", opt: ["疲累的", "精力充沛的", "安靜的", "害羞的"], ans: 1 },
+            { q: "After the ten-kilometer race, all the runners looked completely exhausted. 'exhausted' 的意思是？", opt: ["精力充沛的", "精疲力盡的", "開心的", "緊張的"], ans: 1 },
+            { q: "The customer was satisfied with the service, so she left a good review. 'satisfied' 的意思是？", opt: ["生氣的", "滿意的", "失望的", "困惑的"], ans: 1 },
+            { q: "My brother recently moved to Taipei to start his new job at a bank. 'recently' 的意思是？", opt: ["最近", "很久以前", "從不", "總是"], ans: 0 },
+            { q: "Nowadays, many people prefer shopping online instead of going to the mall. 'nowadays' 的意思是？", opt: ["過去", "現今", "未來", "偶爾"], ans: 1 },
+            { q: "According to the weather report, it will be sunny for the whole weekend. 'according' 的意思是？", opt: ["根據", "除了", "儘管", "因為"], ans: 0 },
+            { q: "I love all fruits, especially watermelon, because it's sweet and refreshing. 'especially' 的意思是？", opt: ["尤其", "很少", "從不", "偶爾"], ans: 0 },
+            { q: "I thought the movie would be boring, but it was actually quite exciting. 'actually' 的意思是？", opt: ["也許", "事實上", "可能", "似乎"], ans: 1 },
+            { q: "Please read the following instructions carefully before you start the test. 'following' 的意思是？", opt: ["之前的", "接下來的", "相同的", "過去的"], ans: 1 },
+            { q: "The average student in this class studies about two hours every night. 'average' 的意思是？", opt: ["最高的", "平均的", "最低的", "特別的"], ans: 1 },
+            { q: "Losing your keys is a common problem, so always keep a spare one. 'common' 的意思是？", opt: ["罕見的", "常見的", "昂貴的", "危險的"], ans: 1 },
+            { q: "We decided to buy vegetables from the local farmers' market this weekend. 'local' 的意思是？", opt: ["外國的", "當地的", "國際的", "遙遠的"], ans: 1 },
+            { q: "Smoking is not allowed in most public places, such as parks and stations. 'public' 的意思是？", opt: ["私人的", "公共的", "秘密的", "個人的"], ans: 1 }
         ];
 
         const Q_PUZZLE = [
@@ -464,12 +504,37 @@
         let GAME = {
             player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0,
             enemyHp: 0, isProcessing: false, isEventChallenge: false,
-            timer: null, timeLeft: 0, maxTime: 10, currentQ: null,
+            timer: null, timeLeft: 0, maxTime: 10, currentQ: null, currentQType: null,
             combatQueue: [], puzzleQueue: [], vocabQueue: []
         };
 
         let puzzleSelected = [];
         let puzzlePool = [];
+
+        // --- 老師後台紀錄：把這裡換成你自己的 Google 試算表 Web App 網址 ---
+        // 還沒設定的話留空字串就好，遊戲照樣正常運作，只是不會記錄錯題。
+        const SHEET_WEBHOOK_URL = "";
+
+        function logAnswer(type, question, userAnswer, correctAnswer) {
+            if (!SHEET_WEBHOOK_URL) return;
+            try {
+                fetch(SHEET_WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'text/plain' },
+                    body: JSON.stringify({
+                        player: GAME.player,
+                        stage: GAME.stage + 1,
+                        type: type,
+                        question: question,
+                        userAnswer: userAnswer,
+                        correctAnswer: correctAnswer
+                    })
+                }).catch(() => {});
+            } catch (e) {
+                // 記錄失敗也不能影響遊戲進行
+            }
+        }
 
         function showScreen(id) {
             ['screen-start', 'screen-game', 'screen-end'].forEach(s => document.getElementById(s).classList.add('hidden'));
@@ -506,7 +571,7 @@
             const textEl = document.getElementById('sys-message-text');
             msgEl.classList.remove('hidden');
             textEl.innerHTML = text;
-            textEl.className = `text-4xl sm:text-5xl font-bold text-center px-4 leading-relaxed tracking-widest font-sans msg-pop ${colorClass}`;
+            textEl.className = `text-3xl sm:text-5xl font-bold text-center px-2 leading-relaxed tracking-widest font-sans msg-pop ${colorClass}`;
 
             return new Promise(resolve => {
                 setTimeout(() => { msgEl.classList.add('hidden'); resolve(); }, duration);
@@ -623,6 +688,7 @@
             document.getElementById('combat-area').classList.remove('hidden');
             document.getElementById('combat-options').innerHTML = '';
 
+            GAME.currentQType = queueKey === 'vocabQueue' ? 'vocab' : 'grammar';
             GAME.currentQ = drawQuestion(queueKey, source);
             document.getElementById('combat-q').innerText = GAME.currentQ.q;
 
@@ -637,6 +703,7 @@
 
         function setupPuzzle() {
             document.getElementById('puzzle-area').classList.remove('hidden');
+            GAME.currentQType = 'puzzle';
             GAME.currentQ = drawQuestion('puzzleQueue', Q_PUZZLE);
             document.getElementById('puzzle-hint').innerText = GAME.currentQ.hint;
 
@@ -685,7 +752,16 @@
                 await damageEnemy(10);
             } else {
                 btn.style.backgroundColor = '#ff3333'; btn.style.color = '#fff'; btn.style.borderColor = '#ff3333';
-                await takeDamage(20, 'ERR: 語法錯誤 (SYNTAX ERROR)');
+                const correctOpt = GAME.currentQ.opt[GAME.currentQ.ans];
+                logAnswer(GAME.currentQType, GAME.currentQ.q, GAME.currentQ.opt[idx], correctOpt);
+
+                let msg = 'ERR: 語法錯誤 (SYNTAX ERROR)';
+                let duration = 1200;
+                if (GAME.currentQ.tip) {
+                    msg += `<br><span class="text-lg sm:text-xl text-teal-200 normal-case tracking-normal block mt-2">正確答案: ${correctOpt}<br>${GAME.currentQ.tip}</span>`;
+                    duration = 2600;
+                }
+                await takeDamage(20, msg, duration);
             }
         }
 
@@ -697,6 +773,7 @@
             if (userAns === GAME.currentQ.correct) {
                 await damageEnemy(15);
             } else {
+                logAnswer('puzzle', GAME.currentQ.hint, userAns, GAME.currentQ.correct);
                 await takeDamage(20, 'ERR: 邏輯錯誤 (LOGIC ERROR)');
             }
         }
@@ -759,12 +836,12 @@
             }
         }
 
-        async function takeDamage(amount, msgText) {
+        async function takeDamage(amount, msgText, duration = 1200) {
             GAME.hp -= amount; updateTopUI();
             document.body.classList.add('shake');
             document.getElementById('screen-game').style.boxShadow = 'inset 0 0 80px rgba(255,0,0,0.6)';
 
-            await showMessage(msgText, 'text-red-500', 1200);
+            await showMessage(msgText, 'text-red-500', duration);
 
             document.body.classList.remove('shake');
             document.getElementById('screen-game').style.boxShadow = '';
@@ -823,6 +900,11 @@
                 if (GAME.timeLeft <= 0) {
                     clearInterval(GAME.timer);
                     GAME.isProcessing = true;
+                    if (GAME.currentQ) {
+                        const qText = GAME.currentQType === 'puzzle' ? GAME.currentQ.hint : GAME.currentQ.q;
+                        const correctText = GAME.currentQType === 'puzzle' ? GAME.currentQ.correct : GAME.currentQ.opt[GAME.currentQ.ans];
+                        logAnswer(GAME.currentQType, qText, '(逾時未作答)', correctText);
+                    }
                     await takeDamage(15, 'TIME OUT (連線超時)');
                 }
             }, 100);
