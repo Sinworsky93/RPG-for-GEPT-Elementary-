@@ -76,7 +76,30 @@
           ["Manager's desk at the front, facing all staff", "Manager in a separate private office"],
           ["No partitions between desks", "Shared break room in the corner"],
           ["Shared meeting table in the centre", "Individual meeting rooms along one wall"]
-        ] } }
+        ] } },
+    { "id": "w1-19", "chart_type": "pie", "prompt": "The chart below shows a comparison of different kinds of energy production in France in 1995 and 2005.",
+      "chart": { "unit": "%", "pies": [
+        { "year": "1995", "labels": ["Coal","Gas","Petro","Nuclear","Other"], "values": [29.80,29.63,29.27,6.40,4.90] },
+        { "year": "2005", "labels": ["Coal","Gas","Petro","Nuclear","Other"], "values": [30.93,30.31,19.55,10.10,9.10] }
+      ] } },
+    { "id": "w1-20", "chart_type": "line", "prompt": "The graph below shows the percentage of the Australian workforce in five industries between 1962 and 2012. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+      "chart": { "unit": "%", "labels": ["1962","1972","1982","1992","2002","2012"],
+        "series": [
+          { "name": "Services", "values": [53,58,65,72,76,79] },
+          { "name": "Manufacturing", "values": [27,25,21,16,12,11] },
+          { "name": "Agriculture", "values": [11,9,8,6,4,3] },
+          { "name": "Construction", "values": [8,8,8,8,9,10] },
+          { "name": "Mining", "values": [2,3,3,3,3,4] }
+        ] } },
+    { "id": "w1-21", "chart_type": "process", "prompt": "The diagrams below show how geothermal energy is used to produce electricity.",
+      "chart": { "steps": [
+        "Cold water is pumped down an injection well into hot underground rock",
+        "The water is heated by the surrounding rock and turns into steam",
+        "The steam rises back up through a production well",
+        "The steam drives a turbine connected to a generator, producing electricity",
+        "Electricity is transmitted to homes and businesses via power lines",
+        "The cooled water/steam is condensed and pumped back underground to be reheated, forming a continuous cycle"
+      ] } }
   ],
   "task2_essay": {
     "education": [
@@ -124,7 +147,8 @@
       "Some people believe that young people should choose the jobs that they want, but other people think they should be more realistic and think more about their future. Discuss both views and give your own opinion.",
       "In many countries, young people change jobs every few years. What are the reasons for this? Do the advantages outweigh the disadvantages?",
       "Some people believe that employers should not be concerned about the way their employees dress, but should focus on the quality of their work. To what extent do you agree or disagree?",
-      "Employers should give their staff at least a 4-week holiday a year to make employees better at their jobs. To what extent do you agree or disagree?"
+      "Employers should give their staff at least a 4-week holiday a year to make employees better at their jobs. To what extent do you agree or disagree?",
+      "The working week should be shorter and workers should have a longer weekend. Do you agree or disagree? Give reasons for your answer and include any relevant examples from your own knowledge or experience."
     ],
     "media_technology": [
       "Some believe technology makes communication easier, while others think it harms real relationships. Discuss both views and give your opinion.",
