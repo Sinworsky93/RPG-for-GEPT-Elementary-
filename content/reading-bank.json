@@ -27,11 +27,31 @@
             "vii. Government incentives driving industry growth"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "vi" },
-            { "n": 2, "paragraph": "B", "answer": "iii" },
-            { "n": 3, "paragraph": "C", "answer": "ii" },
-            { "n": 4, "paragraph": "D", "answer": "iv" },
-            { "n": 5, "paragraph": "E", "answer": "v" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "vi"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "iii"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "ii"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "iv"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "v"
+            }
           ]
         },
         {
@@ -39,11 +59,31 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 6, "statement": "Kavalan Distillery was established in 2005.", "answer": "TRUE" },
-            { "n": 7, "statement": "Taiwanese whisky producers mainly compete with large international brands by offering lower prices.", "answer": "FALSE" },
-            { "n": 8, "statement": "Singapore is currently the largest export market for Taiwanese whisky by revenue.", "answer": "NOT GIVEN" },
-            { "n": 9, "statement": "There are currently four commercial whisky distilleries operating in Taiwan.", "answer": "TRUE" },
-            { "n": 10, "statement": "Unpredictable weather events threaten the consistency of raw materials used by Taiwan's craft industries.", "answer": "TRUE" }
+            {
+              "n": 6,
+              "statement": "Kavalan Distillery was established in 2005.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 7,
+              "statement": "Taiwanese whisky producers mainly compete with large international brands by offering lower prices.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "Singapore is currently the largest export market for Taiwanese whisky by revenue.",
+              "answer": "NOT GIVEN"
+            },
+            {
+              "n": 9,
+              "statement": "There are currently four commercial whisky distilleries operating in Taiwan.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 10,
+              "statement": "Unpredictable weather events threaten the consistency of raw materials used by Taiwan's craft industries.",
+              "answer": "TRUE"
+            }
           ]
         }
       ]
@@ -74,11 +114,31 @@
             "vii. Overcoming cultural barriers in international teams"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "i" },
-            { "n": 2, "paragraph": "B", "answer": "iv" },
-            { "n": 3, "paragraph": "C", "answer": "iii" },
-            { "n": 4, "paragraph": "D", "answer": "ii" },
-            { "n": 5, "paragraph": "E", "answer": "v" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "i"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "iv"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iii"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "ii"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "v"
+            }
           ]
         },
         {
@@ -86,11 +146,31 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 6, "statement": "Charles Duhigg attended Harvard Business School.", "answer": "TRUE" },
-            { "n": 7, "statement": "Social conversations are primarily aimed at reaching consensus between speakers.", "answer": "FALSE" },
-            { "n": 8, "statement": "The \"two ships passing in the night\" metaphor describes a successful conversational outcome.", "answer": "FALSE" },
-            { "n": 9, "statement": "Analysing a speaker's word choice can help identify which conversational mode is active.", "answer": "TRUE" },
-            { "n": 10, "statement": "Duhigg's book on communication has been translated into more than ten languages.", "answer": "NOT GIVEN" }
+            {
+              "n": 6,
+              "statement": "Charles Duhigg attended Harvard Business School.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 7,
+              "statement": "Social conversations are primarily aimed at reaching consensus between speakers.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "The \"two ships passing in the night\" metaphor describes a successful conversational outcome.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "Analysing a speaker's word choice can help identify which conversational mode is active.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 10,
+              "statement": "Duhigg's book on communication has been translated into more than ten languages.",
+              "answer": "NOT GIVEN"
+            }
           ]
         }
       ]
@@ -111,10 +191,26 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 1, "statement": "The UK government's current exercise guideline recommends a fixed daily step count.", "answer": "TRUE" },
-            { "n": 2, "statement": "James Gallagher exercises multiple times per week.", "answer": "FALSE" },
-            { "n": 3, "statement": "Increasing the intensity of a workout can allow people to shorten its duration while keeping the same benefits.", "answer": "TRUE" },
-            { "n": 4, "statement": "The passage states that outdoor running produces better fitness results than swimming.", "answer": "NOT GIVEN" }
+            {
+              "n": 1,
+              "statement": "The UK government's current exercise guideline recommends a fixed daily step count.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 2,
+              "statement": "James Gallagher exercises multiple times per week.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 3,
+              "statement": "Increasing the intensity of a workout can allow people to shorten its duration while keeping the same benefits.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 4,
+              "statement": "The passage states that outdoor running produces better fitness results than swimming.",
+              "answer": "NOT GIVEN"
+            }
           ]
         },
         {
@@ -122,10 +218,26 @@
           "type": "sentence_completion",
           "instructions": "Complete the sentences below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
           "items": [
-            { "n": 5, "prompt": "Planned activities such as swimming or fitness classes are described as ______ exercise.", "answer": "structured" },
-            { "n": 6, "prompt": "The UK's original guideline recommended at least ______ minutes of moderate exercise per day.", "answer": "thirty" },
-            { "n": 7, "prompt": "Dr. Saynor calls small, easily achievable actions built into daily routines ______.", "answer": "easy wins" },
-            { "n": 8, "prompt": "Walking 5,000 steps at a faster pace is linked to measurable ______ health improvements.", "answer": "long-term" }
+            {
+              "n": 5,
+              "prompt": "Planned activities such as swimming or fitness classes are described as ______ exercise.",
+              "answer": "structured"
+            },
+            {
+              "n": 6,
+              "prompt": "The UK's original guideline recommended at least ______ minutes of moderate exercise per day.",
+              "answer": "thirty"
+            },
+            {
+              "n": 7,
+              "prompt": "Dr. Saynor calls small, easily achievable actions built into daily routines ______.",
+              "answer": "easy wins"
+            },
+            {
+              "n": 8,
+              "prompt": "Walking 5,000 steps at a faster pace is linked to measurable ______ health improvements.",
+              "answer": "long-term"
+            }
           ]
         }
       ]
@@ -152,9 +264,21 @@
             "v. The financial risks of automation in retail"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "iii" },
-            { "n": 2, "paragraph": "B", "answer": "iv" },
-            { "n": 3, "paragraph": "C", "answer": "ii" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "iii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "iv"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "ii"
+            }
           ]
         },
         {
@@ -162,10 +286,26 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 4, "statement": "People only start following the lead of others they consider credible once they become adults.", "answer": "FALSE" },
-            { "n": 5, "statement": "Touchscreen ordering systems have reduced the average spending per transaction at fast-food chains.", "answer": "FALSE" },
-            { "n": 6, "statement": "Nudge theory relies on strict rules rather than subtle suggestions to change behaviour.", "answer": "FALSE" },
-            { "n": 7, "statement": "The World Food Programme's Tunisia campaign used a television drama to encourage people to share meals.", "answer": "TRUE" }
+            {
+              "n": 4,
+              "statement": "People only start following the lead of others they consider credible once they become adults.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 5,
+              "statement": "Touchscreen ordering systems have reduced the average spending per transaction at fast-food chains.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 6,
+              "statement": "Nudge theory relies on strict rules rather than subtle suggestions to change behaviour.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 7,
+              "statement": "The World Food Programme's Tunisia campaign used a television drama to encourage people to share meals.",
+              "answer": "TRUE"
+            }
           ]
         }
       ]
@@ -199,12 +339,36 @@
             "ix. Why workplace friendships are replacing family ties"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "i" },
-            { "n": 2, "paragraph": "B", "answer": "ii" },
-            { "n": 3, "paragraph": "C", "answer": "iii" },
-            { "n": 4, "paragraph": "D", "answer": "iv" },
-            { "n": 5, "paragraph": "E", "answer": "v" },
-            { "n": 6, "paragraph": "F", "answer": "vi" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "i"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "ii"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iii"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "iv"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "v"
+            },
+            {
+              "n": 6,
+              "paragraph": "F",
+              "answer": "vi"
+            }
           ]
         },
         {
@@ -212,11 +376,31 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 7, "statement": "Chronic loneliness has been compared to the health risk of smoking a certain number of cigarettes a day.", "answer": "TRUE" },
-            { "n": 8, "statement": "Aristotle valued friendship mainly for the practical benefits it provides.", "answer": "FALSE" },
-            { "n": 9, "statement": "The proportion of young men reporting no close friends has decreased since the 1990s.", "answer": "FALSE" },
-            { "n": 10, "statement": "During the COVID-19 pandemic, men reported losing touch with friends more than women did.", "answer": "FALSE" },
-            { "n": 11, "statement": "Government funding for community centres is identified as a key solution to the friendship recession.", "answer": "NOT GIVEN" }
+            {
+              "n": 7,
+              "statement": "Chronic loneliness has been compared to the health risk of smoking a certain number of cigarettes a day.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 8,
+              "statement": "Aristotle valued friendship mainly for the practical benefits it provides.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "The proportion of young men reporting no close friends has decreased since the 1990s.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "During the COVID-19 pandemic, men reported losing touch with friends more than women did.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 11,
+              "statement": "Government funding for community centres is identified as a key solution to the friendship recession.",
+              "answer": "NOT GIVEN"
+            }
           ]
         }
       ]
@@ -247,11 +431,31 @@
             "vii. The decline of pastoral cheesemaking after industrialisation"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "iv" },
-            { "n": 2, "paragraph": "B", "answer": "i" },
-            { "n": 3, "paragraph": "C", "answer": "vi" },
-            { "n": 4, "paragraph": "D", "answer": "iii" },
-            { "n": 5, "paragraph": "E", "answer": "v" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "iv"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "i"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "vi"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "iii"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "v"
+            }
           ]
         },
         {
@@ -259,11 +463,31 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 6, "statement": "Neolithic farmers deliberately invented cheese as a planned dietary innovation.", "answer": "FALSE" },
-            { "n": 7, "statement": "Archaeological evidence of dairy residue has been found in pottery from Turkey.", "answer": "TRUE" },
-            { "n": 8, "statement": "Rennet is obtained from the stomach lining of fully grown cattle.", "answer": "FALSE" },
-            { "n": 9, "statement": "Roman soldiers were forbidden from carrying cheese as part of their rations.", "answer": "FALSE" },
-            { "n": 10, "statement": "A war was fought over control of an Alpine cheese-producing region.", "answer": "TRUE" }
+            {
+              "n": 6,
+              "statement": "Neolithic farmers deliberately invented cheese as a planned dietary innovation.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 7,
+              "statement": "Archaeological evidence of dairy residue has been found in pottery from Turkey.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 8,
+              "statement": "Rennet is obtained from the stomach lining of fully grown cattle.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "Roman soldiers were forbidden from carrying cheese as part of their rations.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "A war was fought over control of an Alpine cheese-producing region.",
+              "answer": "TRUE"
+            }
           ]
         }
       ]
@@ -297,12 +521,36 @@
             "ix. The economic value of maintaining employee focus"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "i" },
-            { "n": 2, "paragraph": "B", "answer": "ii" },
-            { "n": 3, "paragraph": "C", "answer": "iii" },
-            { "n": 4, "paragraph": "D", "answer": "iv" },
-            { "n": 5, "paragraph": "E", "answer": "v" },
-            { "n": 6, "paragraph": "F", "answer": "vi" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "i"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "ii"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iii"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "iv"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "v"
+            },
+            {
+              "n": 6,
+              "paragraph": "F",
+              "answer": "vi"
+            }
           ]
         },
         {
@@ -310,11 +558,31 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 7, "statement": "Csikszentmihalyi was the first person in history to describe the experience later called flow.", "answer": "FALSE" },
-            { "n": 8, "statement": "Most people can enter flow without dedicating an uninterrupted block of time to a task.", "answer": "FALSE" },
-            { "n": 9, "statement": "According to the passage, a task that is far beyond a person's current ability is ideal for triggering flow.", "answer": "FALSE" },
-            { "n": 10, "statement": "Facial frowning decreases when a person is in a state of deep flow.", "answer": "TRUE" },
-            { "n": 11, "statement": "Group flow has only ever been observed in human teams, not in other social species.", "answer": "FALSE" }
+            {
+              "n": 7,
+              "statement": "Csikszentmihalyi was the first person in history to describe the experience later called flow.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "Most people can enter flow without dedicating an uninterrupted block of time to a task.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "According to the passage, a task that is far beyond a person's current ability is ideal for triggering flow.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "Facial frowning decreases when a person is in a state of deep flow.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 11,
+              "statement": "Group flow has only ever been observed in human teams, not in other social species.",
+              "answer": "FALSE"
+            }
           ]
         },
         {
@@ -322,10 +590,26 @@
           "type": "sentence_completion",
           "instructions": "Complete the sentences below, based on Paragraph D. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
           "items": [
-            { "n": 12, "prompt": "Dopamine is described as a neurotransmitter that heightens ______ and excitement.", "answer": "alertness" },
-            { "n": 13, "prompt": "Small cognitive wins, like solving a crossword clue, amplify ______ recognition.", "answer": "pattern" },
-            { "n": 14, "prompt": "Dopamine is deployed proactively to build motivation for ______.", "answer": "risk-taking" },
-            { "n": 15, "prompt": "This motivation helps individuals navigate ______ situations safely.", "answer": "hazardous" }
+            {
+              "n": 12,
+              "prompt": "Dopamine is described as a neurotransmitter that heightens ______ and excitement.",
+              "answer": "alertness"
+            },
+            {
+              "n": 13,
+              "prompt": "Small cognitive wins, like solving a crossword clue, amplify ______ recognition.",
+              "answer": "pattern"
+            },
+            {
+              "n": 14,
+              "prompt": "Dopamine is deployed proactively to build motivation for ______.",
+              "answer": "risk-taking"
+            },
+            {
+              "n": 15,
+              "prompt": "This motivation helps individuals navigate ______ situations safely.",
+              "answer": "hazardous"
+            }
           ]
         }
       ]
@@ -359,12 +643,36 @@
             "ix. Rival cities competing for control of springs"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "iii" },
-            { "n": 2, "paragraph": "B", "answer": "ii" },
-            { "n": 3, "paragraph": "C", "answer": "iv" },
-            { "n": 4, "paragraph": "D", "answer": "viii" },
-            { "n": 5, "paragraph": "E", "answer": "vi" },
-            { "n": 6, "paragraph": "F", "answer": "i" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "iii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "ii"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iv"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "viii"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "vi"
+            },
+            {
+              "n": 6,
+              "paragraph": "F",
+              "answer": "i"
+            }
           ]
         },
         {
@@ -372,11 +680,31 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 7, "statement": "All of the water carried by Rome's aqueducts was reserved for public fountains only.", "answer": "FALSE" },
-            { "n": 8, "statement": "Wealthy Roman families paid an extra fee to have water piped directly to their homes.", "answer": "TRUE" },
-            { "n": 9, "statement": "The Aqua Virgo no longer supplies any water in the present day.", "answer": "FALSE" },
-            { "n": 10, "statement": "The frigidarium had high ceilings partly in order to help keep the air inside cool.", "answer": "TRUE" },
-            { "n": 11, "statement": "Chlorine was used to purify the water in Rome's large public pools.", "answer": "FALSE" }
+            {
+              "n": 7,
+              "statement": "All of the water carried by Rome's aqueducts was reserved for public fountains only.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "Wealthy Roman families paid an extra fee to have water piped directly to their homes.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 9,
+              "statement": "The Aqua Virgo no longer supplies any water in the present day.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "The frigidarium had high ceilings partly in order to help keep the air inside cool.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 11,
+              "statement": "Chlorine was used to purify the water in Rome's large public pools.",
+              "answer": "FALSE"
+            }
           ]
         },
         {
@@ -384,10 +712,26 @@
           "type": "sentence_completion",
           "instructions": "Complete the labels below, based on Paragraph E. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
           "items": [
-            { "n": 12, "prompt": "The changing room where bathers undressed before entering the baths was called the ______.", "answer": "apodyterium" },
-            { "n": 13, "prompt": "Underground fires heated the hollow space beneath the raised floor, known as the ______.", "answer": "hypocaust" },
-            { "n": 14, "prompt": "Hot air travelled upward through hollow clay bricks called ______, hidden behind marble panels.", "answer": "tubuli" },
-            { "n": 15, "prompt": "The final, hottest room, where temperatures exceeded 110°F, was called the ______.", "answer": "caldarium" }
+            {
+              "n": 12,
+              "prompt": "The changing room where bathers undressed before entering the baths was called the ______.",
+              "answer": "apodyterium"
+            },
+            {
+              "n": 13,
+              "prompt": "Underground fires heated the hollow space beneath the raised floor, known as the ______.",
+              "answer": "hypocaust"
+            },
+            {
+              "n": 14,
+              "prompt": "Hot air travelled upward through hollow clay bricks called ______, hidden behind marble panels.",
+              "answer": "tubuli"
+            },
+            {
+              "n": 15,
+              "prompt": "The final, hottest room, where temperatures exceeded 110°F, was called the ______.",
+              "answer": "caldarium"
+            }
           ]
         }
       ]
@@ -418,11 +762,31 @@
             "vii. Why bonuses rarely change a workaholic's behaviour"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "iii" },
-            { "n": 2, "paragraph": "B", "answer": "i" },
-            { "n": 3, "paragraph": "C", "answer": "ii" },
-            { "n": 4, "paragraph": "D", "answer": "iv" },
-            { "n": 5, "paragraph": "E", "answer": "v" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "iii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "i"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "ii"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "iv"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "v"
+            }
           ]
         },
         {
@@ -430,11 +794,31 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 6, "statement": "The passage argues that workaholism is best explained as a strong work ethic rather than an addiction.", "answer": "FALSE" },
-            { "n": 7, "statement": "The release of dopamine after professional success motivates people to seek the same experience again.", "answer": "TRUE" },
-            { "n": 8, "statement": "Because excellence is relative, individuals need to keep outperforming their peers to feel rewarded.", "answer": "TRUE" },
-            { "n": 9, "statement": "Workaholics typically have more \"real friends\" than \"deal friends.\"", "answer": "FALSE" },
-            { "n": 10, "statement": "The passage recommends replacing human relationships entirely with spiritual or religious practice.", "answer": "NOT GIVEN" }
+            {
+              "n": 6,
+              "statement": "The passage argues that workaholism is best explained as a strong work ethic rather than an addiction.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 7,
+              "statement": "The release of dopamine after professional success motivates people to seek the same experience again.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 8,
+              "statement": "Because excellence is relative, individuals need to keep outperforming their peers to feel rewarded.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 9,
+              "statement": "Workaholics typically have more \"real friends\" than \"deal friends.\"",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "The passage recommends replacing human relationships entirely with spiritual or religious practice.",
+              "answer": "NOT GIVEN"
+            }
           ]
         }
       ]
@@ -465,11 +849,31 @@
             "vii. Government subsidies driving the semiconductor race"
           ],
           "items": [
-            { "n": 1, "paragraph": "A", "answer": "i" },
-            { "n": 2, "paragraph": "B", "answer": "iv" },
-            { "n": 3, "paragraph": "C", "answer": "v" },
-            { "n": 4, "paragraph": "D", "answer": "ii" },
-            { "n": 5, "paragraph": "E", "answer": "iii" }
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "i"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "iv"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "v"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "ii"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "iii"
+            }
           ]
         },
         {
@@ -477,11 +881,567 @@
           "type": "true_false_not_given",
           "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
           "items": [
-            { "n": 6, "statement": "Moore's Law is a law of physics rather than a principle of economics.", "answer": "FALSE" },
-            { "n": 7, "statement": "A single atomic impurity can make an entire silicon wafer unusable.", "answer": "TRUE" },
-            { "n": 8, "statement": "ASML's extreme ultraviolet lithography machines cost less than $100 million each.", "answer": "FALSE" },
-            { "n": 9, "statement": "TSMC manufactures the majority of the world's most advanced processor chips.", "answer": "TRUE" },
-            { "n": 10, "statement": "China is the world's leading producer of extreme ultraviolet lithography machines.", "answer": "NOT GIVEN" }
+            {
+              "n": 6,
+              "statement": "Moore's Law is a law of physics rather than a principle of economics.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 7,
+              "statement": "A single atomic impurity can make an entire silicon wafer unusable.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 8,
+              "statement": "ASML's extreme ultraviolet lithography machines cost less than $100 million each.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "TSMC manufactures the majority of the world's most advanced processor chips.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 10,
+              "statement": "China is the world's leading producer of extreme ultraviolet lithography machines.",
+              "answer": "NOT GIVEN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-011",
+      "title": "The Neurochemical Trap: How Sugar Manipulates Brain Activity",
+      "source": "Original/teaching material (neuroscience of sugar)",
+      "paragraphs": {
+        "A": "Sugar, chemically classified as a carbohydrate, encompasses various molecular structures such as glucose, fructose, and starch, which are prevalent in daily sustenance. While some dietary sources are natural, it is added sugars, hidden in processed foods like sauces and yogurt, that pose unrecognized health challenges. When these carbohydrates contact the human tongue, they stimulate specialized sweet-taste receptors. These receptors immediately transmit electrochemical impulses to the brain stem, initiating a sensory journey that bifurcates into the forebrain and the cerebral cortex, where the sweet sensation is consciously perceived.",
+        "B": "At the core of this cognitive processing lies the reward system, a complex network of chemical and electrical pathways that regulates decision-making by subconsciously evaluating whether an action warrants repetition. The primary neurotransmitter modulating this network is dopamine, which is concentrated in dense receptor clusters within the forebrain. When humans engage in activities necessary for evolutionary survival, such as consuming nutritious food or socialising, dopamine levels spike. Not only does this chemical surge produce a rewarding sensation, but it also reinforces beneficial behaviours, thereby ensuring that early ancestors would repeatedly seek out diverse nutrients essential for survival.",
+        "C": "Under normal circumstances, the brain's reward mechanism exhibits a highly adaptive feature: habituation. If an individual consumes the same balanced meal consecutively, the dopamine spike progressively diminishes until it levels out entirely. This evolutionary adaptation serves two critical functions: first, it enables organisms to detect decomposed, potentially toxic sustenance; second, it encourages dietary diversity, which guarantees the absorption of a comprehensive range of nutrients. However, when an individual consumes sugar-dense foods, this habituation process is conspicuously absent. Instead, dopamine release fails to level out, meaning that high sugar intake continuously triggers a rewarding sensation, mimicking the neurological pathways of addictive substances.",
+        "D": "Furthermore, the physiological response to sugar is not restricted solely to the oral cavity, for the gastrointestinal tract also possesses specialised sugar receptors. Unlike their lingual counterparts, it is not uncommon for these gut receptors to remain unperceived, as they do not generate conscious taste sensations; instead, they function as metabolic sensors. They transmit signals to the central nervous system to regulate physiological processes, such as determining satiety or stimulating the pancreas to secrete insulin to manage elevated blood glucose levels. Thus, the gut-brain axis plays a secondary but critical role in managing sugar intake, though it can easily be overwhelmed by excessive dietary sugar.",
+        "E": "The chronic overactivation of the brain's reward pathways by sugar precipitates a series of adverse neurochemical adaptations. While occasional indulgence in a moderate portion of dessert poses no substantial threat to neurological health, the persistent overconsumption of sugar causes dopamine receptors to enter a state of overdrive. This state eventually results in a diminished neurological response to sugar, a phenomenon known as increased tolerance. Consequently, individuals lose behavioural control and experience intense cravings, which mirror the addictive states induced by substances like nicotine or alcohol, both of which violently flood the forebrain with dopamine."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph, A-E, from the list of headings below.",
+          "headings": [
+            "i. Why sugar receptors are not confined to the mouth",
+            "ii. The neurological process that keeps a habit rewarding",
+            "iii. From a fixed treat to compulsive craving",
+            "iv. Two competing categories of sugar and their entry into the brain",
+            "v. How the brain normally learns to stop craving repeated meals",
+            "vi. The chemical messenger that decides what is worth repeating",
+            "vii. Sugar substitutes and their effect on insulin production"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "iv"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "vi"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "v"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "i"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "iii"
+            }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 6,
+              "statement": "Added sugars are typically found in foods that are not obviously sweet, such as sauces.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 7,
+              "statement": "Dopamine receptors are spread evenly throughout the forebrain.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "The habituation process disappears almost completely when a person repeatedly eats high-sugar foods.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 9,
+              "statement": "Gut sugar receptors trigger a conscious taste sensation similar to receptors on the tongue.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "Long-term excessive sugar consumption can produce cravings comparable to those caused by nicotine or alcohol.",
+              "answer": "TRUE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-012",
+      "title": "The Geopolitical and Ecological Cost of the Monoculture Banana Empire",
+      "source": "Original/teaching material (economic history)",
+      "paragraphs": {
+        "A": "First domesticated in Southeast Asia thousands of years ago, the banana reached the Americas in the early 1500s, where enslaved African populations cultivated the fruit on modest plots adjacent to vast sugar plantations. For centuries, this crop remained a highly localised commodity, possessing little resemblance to the familiar yellow varieties found in supermarket aisles today. However, the late nineteenth century witnessed a radical commercial shift as merchants from New Orleans and New England, originally searching the Caribbean for coconuts, began experimenting with banana imports. They focused their commercial efforts on a specific cultivar known as the 'Gros Michel', which they purchased directly from Afro-Caribbean smallholders. It was this particular variety, possessing an exceptionally thick skin that rendered it ideal for long-distance maritime shipping, that transformed the banana into an affordable, year-round staple endorsed by North American medical doctors.",
+        "B": "As bananas became a highly lucrative business, U.S. fruit companies sought to secure direct ownership of land rather than relying on independent Caribbean farmers. To facilitate this expansion, banana moguls aggressively lobbied and bribed government officials in Central America, even funding military coups to establish compliant political allies. Seldom did these corporations hesitate to manipulate local governance; in December 1910, Manuel Bonilla, the exiled former leader of Honduras, boarded a yacht in New Orleans with heavily armed accomplices. Financed by a prominent American banana merchant, Bonilla set sail to reclaim power by force. Upon reinstating his regime, Bonilla rewarded his benefactor with extensive land concessions, demonstrating how corporate interests compromised national sovereignty.",
+        "C": "By the 1930s, the United Fruit Company had established an unprecedented corporate hegemony across the region, earning the moniker 'El Pulpo'—the Octopus—due to its pervasive, far-reaching influence. This single corporation acquired over forty percent of Guatemala's arable land. To accommodate massive production, the enterprise engineered extensive environmental changes, felling pristine rainforests in Costa Rica, Colombia, Guatemala, Honduras, and Panama to establish plantations. To sustain this export network, the company built extensive railroads, ports, and towns, which attracted thousands of migrant labourers with the promise of relatively high-paying employment. Throughout these vast corporate territories, plantations grew exclusively the Gros Michel cultivar.",
+        "D": "Although these densely packed, uniform plantations maximised corporate profits, their complete lack of biological diversity created a highly volatile ecological scenario. Cultivating a genetic monoculture left the entire regional industry ripe for devastating disease epidemics. This vulnerability culminated in the 1910s when a soil-borne fungus, the pathogen responsible for 'Panama Disease', began to level Gros Michel plantations across Central America. The very infrastructure built to facilitate rapid export served as a highly efficient vector, as pathogens easily hitched a ride on workers' boots, railroad cars, and steamships. Deeming containment not unfeasible but financially undesirable, companies simply abandoned infected plantations, leaving thousands of labourers jobless, and felling extensive new tracts of rainforest to establish replacement fields.",
+        "E": "Following World War II, the entrenched dictatorships with which United Fruit had partnered yielded to democratically elected governments that advocated for progressive land reform. In Guatemala, President Jacobo Arbenz, a reformist leader, tried to buy back uncultivated corporate land to redistribute it to landless farmers. Arbenz offered a price based on the company's own tax records, where United Fruit had systematically underreported the land's actual valuation to evade taxes. In retaliation, the corporation launched hostile propaganda campaigns and mobilised its deep connections within the United States government. Citing fears of communism, the CIA orchestrated the overthrow of the democratically elected Arbenz in 1954. Simultaneously, Honduran workers organised historic strikes, forcing the corporation to formally recognise a new labour union.",
+        "F": "Compelled by escalating political resistance and the rising economic costs of constantly fleeing Panama Disease, United Fruit finally transitioned from Gros Michel to the disease-resistant Cavendish banana in the early 1960s. While the Cavendish possessed resistance to the original pathogen, it was by no means a permanent ecological solution. Today, although the rechristened Chiquita has lost its political stranglehold, the contemporary banana industry is not without hazards. Because Cavendish farms still operate as uniform monocultures lacking biological diversity, they remain highly susceptible to emerging pathogens. To protect these crops, growers rely on the frequent application of toxic chemical pesticides, which pose severe risks to farmworkers and ecosystems."
+      },
+      "questions": [
+        {
+          "group": "1-6",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph, A-F, from the list of headings below.",
+          "headings": [
+            "i. Corporate expansion through political interference",
+            "ii. From a local African-Caribbean crop to a mass-market product",
+            "iii. A modern industry still dependent on chemicals despite a variety change",
+            "iv. Land reform, a coup, and union recognition",
+            "v. Rapid corporate growth and its environmental footprint",
+            "vi. A single-variety plantation system creates a disease risk",
+            "vii. The complete disappearance of the banana trade after 1960",
+            "viii. Scientists engineered a permanently disease-proof banana"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "ii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "i"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "v"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "vi"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "iv"
+            },
+            {
+              "n": 6,
+              "paragraph": "F",
+              "answer": "iii"
+            }
+          ]
+        },
+        {
+          "group": "7-11",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 7,
+              "statement": "The Gros Michel variety was favoured for export partly because of its thick skin.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 8,
+              "statement": "Manuel Bonilla's attempt to retake power in Honduras received no outside financial support.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "United Fruit Company owned plantation land in only one Central American country.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "Panama Disease spread partly because of the transport infrastructure built by the fruit companies.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 11,
+              "statement": "The Cavendish banana is completely immune to all plant diseases.",
+              "answer": "FALSE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-013",
+      "title": "The Complexity and Evolving Reception of Homer's Odyssey",
+      "source": "Original/teaching material (classical literature)",
+      "paragraphs": {
+        "A": "The Odyssey, which has historically eluded successful cinematic adaptation, represents far more than a simplistic sequence of heroic exploits. To many, it remains a surprisingly sophisticated psychological epic. Rather than merely chronicling the physical perils of Odysseus, the narrative meticulously interrogates the profound complexities of human identity, the essence of masculinity, and the arduous process of maturation experienced by his son, Telemachus. Consequently, viewing this ancient masterpiece as a straightforward adventure story is to fundamentally misunderstand its intricate structure.",
+        "B": "Understanding the origins of this epic requires an appreciation of ancient oral tradition. Originating from a fluid bardic culture, the poem, comprised of interlocking and formulaic tales, was sung by performing bards around campfires and dining halls. Each performance varied dynamically depending on audience reception, rendering the oral text inherently unstable. Modern scholars frequently underestimate the cognitive sophistication of these ancient, non-literate audiences. Had we preserved a primarily oral culture, we would undoubtedly comprehend how oral emphases could resonate with a precision that literate societies largely miss.",
+        "C": "The transition from oral performance to a stabilised written text occurred gradually, likely beginning around the eighth century BCE. However, the codification was not instantaneous; evidence suggests the text was continuously altered and refined until the fifth century BCE. Despite the passage of millennia, the intellectual engagement with the text remains remarkably consistent. It is not uncommon for modern readers to employ analytical strategies identical to those used by the highly learned commentators of third-century BCE Alexandria, who analysed the poem's historical and cultural layers with immense care.",
+        "D": "Because the text is deeply rooted in an ancient socio-cultural context, translations are inevitably subjective interpretations. Translators must constantly engage in a contemporary dialogue with the epic, making choices that can either illuminate or obscure historical realities. For instance, Emily Wilson's recent translation—notably the first English rendering by a woman—confronts the institution of slavery head-on by translating the Greek terms directly as 'slaves'. Conversely, pre-1950s translations consistently opted for the euphemism 'serving girls', thereby distorting the true social status of Penelope's household workers.",
+        "E": "Furthermore, translators must grapple with profound lexical ambiguity, epitomised by the epic's opening adjective, polytropos. Translators have long struggled with whether to render this term as 'wily', 'ingenious', 'much-turned', or even 'untrustworthy'. Such linguistic challenges demonstrate that no translation should be treated as absolute gospel. Instead, academic readers are encouraged to view translations as interpretive experiments, interrogating the specific motivations and choices of the translator to uncover the multifaceted layers of Homer's enduring legacy."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph, A-E, from the list of headings below.",
+          "headings": [
+            "i. A single Greek word that resists a single English translation",
+            "ii. More than an adventure story: an exploration of identity",
+            "iii. How a story told aloud changed with every retelling",
+            "iv. Word choice reveals how translators treat slavery in the text",
+            "v. From spoken performance to a fixed, edited written version",
+            "vi. Why film directors have avoided adapting the epic",
+            "vii. The scholarly tradition of analysing the poem across centuries"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "ii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "iii"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "v"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "iv"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "i"
+            }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 6,
+              "statement": "Film adaptations of the Odyssey have generally been very successful.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 7,
+              "statement": "Every oral performance of the epic used exactly the same wording.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "The written text of the epic was finalised as soon as it was first written down.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "Emily Wilson was the first woman to translate the Odyssey into English.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 10,
+              "statement": "All modern scholars agree on a single correct translation of the word 'polytropos'.",
+              "answer": "FALSE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-014",
+      "title": "The Science of Muscle Elongation: How Stretching Modifies the Human Body",
+      "source": "Original/teaching material (exercise physiology)",
+      "paragraphs": {
+        "A": "For athletes preparing for physical competition, stretching represents an almost universal pre-game ritual, predominantly performed to avoid debilitating injuries such as muscle strains and tears. Broadly speaking, this practice is categorised into two distinct modalities: dynamic stretching, which entails controlled movements that engage a spectrum of muscles throughout their motion, and static stretching, where a specific posture is held to keep targeted muscles at a fixed length and tension. While the layperson often conceptualises a stretching muscle as analogous to an elongating rubber band, the physiological reality is far more complex. Muscles are comprised of highly diverse tissue types that interact dynamically to form a sophisticated, multi-layered viscoelastic material.",
+        "B": "To comprehend the mechanics of stretching, one must distinguish between simple elastic substances and viscoelastic biological structures. Pure rubber is strictly elastic, meaning it resists external deformation and immediately returns to its original shape. Conversely, muscle is viscoelastic, undergoing physical modifications under the stress of being stretched. On a macro scale, a static hamstring stretch pulls on the protective connective tissues surrounding the muscle fibres, as well as the tendons connecting the muscle to bone. These structures contain elastic proteins, such as collagen and elastin, which slightly elongate over the duration of the stretch. It is not uncommon for these tissues to retain their strength at longer lengths, allowing athletes to maximise their range of motion.",
+        "C": "At the micro-level, skeletal muscle fibres are comprised of millions of sarcomeres, which function as the smallest contracting units of muscle tissue. These sarcomeres contain long, fibrous proteins that relax to elongate fibres or contract to shorten them, pulling on tendons to generate force. Unlike an elastic band, a muscle's resistance to elongation decreases with each subsequent thirty-second stretch. While this enhanced flexibility diminishes the likelihood of sustaining certain injuries, the effect is entirely transient, disappearing within ten minutes without continuous physical engagement. Seldom does this temporary flexibility persist unless subsequent exercise elevates the muscle's temperature to sustain the elongation.",
+        "D": "Achieving permanent structural changes in flexibility requires a more rigorous, sustained intervention. For skeletal muscles, lasting physical modification is achieved only through the acquisition of additional sarcomeres, which are added or subtracted depending on the frequency of muscle utilisation. To stimulate this adaptation, researchers advocate for a comprehensive regimen of at least ten minutes daily, sustained for approximately two months. Because holding a single stretch indefinitely is hazardous, it is recommended that individuals partition their stretching into multiple shorter intervals. Furthermore, frequent stretching alters neurological signalling; as the brain's pain threshold is elevated, individuals can stretch progressively further.",
+        "E": "Despite these benefits, stretching is not a risk-free endeavour, nor is it universally applicable. Indeed, it is not impossible for over-enthusiastic individuals to stretch excessively, which can destabilise joints and lead to dangerous ranges of motion. Moreover, stretching is unlikely to prevent injuries in sports where muscle tears are uncommon. Long-distance running, which involves a highly restricted joint motion, serves as a prime example where pre-activity stretching does not significantly mitigate the sport's most common injuries. Ultimately, different lifestyles demand distinct forms of mobility, and no single stretching protocol is versatile enough to accommodate every athletic scenario."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph, A-E, from the list of headings below.",
+          "headings": [
+            "i. Why stretching does not suit every sport",
+            "ii. The lasting method for genuinely increasing flexibility",
+            "iii. Two types of stretching and a flawed popular comparison",
+            "iv. A temporary gain in flexibility that soon fades",
+            "v. How connective tissue responds to being pulled",
+            "vi. Rubber bands are more effective than human muscle",
+            "vii. Dynamic stretching carries greater injury risk than static stretching"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "iii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "v"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iv"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "ii"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "i"
+            }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 6,
+              "statement": "Dynamic stretching involves holding one fixed position for an extended period.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 7,
+              "statement": "Muscle tissue returns to its original shape immediately after being stretched, just like rubber.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "The flexibility gained from a single stretch normally disappears within about ten minutes.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 9,
+              "statement": "Experts recommend holding one continuous stretch for ten minutes rather than breaking it into shorter sessions.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "Stretching before running has little effect on preventing the injuries most common to that sport.",
+              "answer": "TRUE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-015",
+      "title": "The Somatovisceral Symbiosis: Mapping the Interplay Between Neural Architecture and Bodily Homeostasis",
+      "source": "Original/teaching material (neuroscience)",
+      "paragraphs": {
+        "A": "Not only does the human central nervous system process external environmental stimuli, but it also functions as the supreme economic governor of the internal physiological landscape. At the core of this complex economy lies a fundamental bi-directional architecture: what occurs within somatic tissues directly recalibrates cerebral operations, whereas cognitive and affective states exert an immediate influence on peripheral organ systems. For centuries, Western medicine conceptualised the mind and body as discrete entities; however, modern neurobiology demonstrates that the brain constantly monitors visceral conditions to maintain internal equilibrium. Through a continuous feedback loop, neural circuits synthesise biochemical and bioelectric inputs, enabling the organism to initiate adaptive responses long before conscious awareness intervenes.",
+        "B": "From an evolutionary standpoint, the emergence of a centralised neural apparatus represented a watershed moment in organismic complexity. Although ancestral organisms flourished without centralised cerebral processing—successfully managing their biological economy through localised reflex arcs—the eventual development of the brain conferred a paramount evolutionary advantage: the capacity to construct dynamic neural maps of the internal milieu. These internal representations allow the brain to portray the structural integrity and moment-to-moment state of somatic tissues. Consider, for instance, the homeostatic reaction triggered by excessive dietary sodium intake. As systemic water levels diminish, peripheral osmotic sensors fire frantically to signal a subterranean hydration deficit. This crisis is rapidly translated into the conscious sensation of thirst, compelling the individual to seek water.",
+        "C": "It is precisely through this somatic mediation that transient emotional states manifest as concrete visceral phenomena. The familiar sensation of 'butterflies' in the stomach during romantic attraction, or the sudden flushing of facial capillaries amidst social embarrassment, provides empirical evidence of neural-somatic integration. These reactions are not mere symbolic metaphors, but rather the visible domain of a continuous internal exchange. The brain creates high-resolution somatic maps that monitor both internal organ performance and peripheral sensory encounters. Because the body constantly brokers the relationship between the external world and internal neural centres, perceptual experience is inherently embodied rather than disembodied.",
+        "D": "Pulmonary ventilation, which operates under both voluntary and involuntary neural pathways, occupies a uniquely strategic position within the somatovisceral architecture. Unlike cardiac contractions or gastrointestinal motility—processes that function entirely outside conscious control—respiration can be seamlessly shifted from autonomic maintenance to conscious modulation. Under baseline conditions, the brainstem automatically maintains respiratory rate without conscious oversight. However, individuals retain the cognitive capacity to deliberately alter their breathing depth and rhythm. By deliberately slowing the respiratory cadence, conscious intent can override sympathetic fight-or-flight cascades, thereby restoring systemic equilibrium.",
+        "E": "Physical movement serves as perhaps the most transformative catalyst for cognitive and structural cerebral optimisation. Indeed, it is not uncommon for even brief bouts of physical exertion—such as a ten-minute walk—to facilitate a significant neurochemical cascade, bathing the brain in dopamine, serotonin, noradrenaline, and endorphins. Beyond immediate mood-boosting neurotransmission, physical activity triggers the release of vital growth factors that enhance the structural integrity of neural circuits. Specifically, these molecular agents stimulate neurogenesis and synaptic strengthening within two crucial brain regions: the hippocampus, which underpins long-term memory consolidation, and the prefrontal cortex, which governs executive focus and attentional shifting.",
+        "F": "Neuroplasticity, the intrinsic capacity of the brain to structurally modify its architecture in response to environmental stimulation and life experiences, fundamentally dismantles the outdated paradigm that cerebral development ceases after early childhood. Historic biological dogma postulated that the adult brain was a fixed, static organ incapable of meaningful structural alteration. Modern neuroimaging, however, reveals a highly dynamic organ that continually reorganises its synaptic connections in response to physical movement, cognitive challenges, and behavioural interventions. By cultivating deep somatic awareness and leveraging targeted practices—such as controlled respiration and regular physical activity—individuals can actively harness the mind-body connection to adapt, recover, and build cognitive resilience in the face of adversarial circumstances."
+      },
+      "questions": [
+        {
+          "group": "1-6",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph, A-F, from the list of headings below.",
+          "headings": [
+            "i. Breathing's unusual position between automatic and conscious control",
+            "ii. Physical exercise strengthens brain regions linked to memory and focus",
+            "iii. The brain as a constant monitor and manager of the body",
+            "iv. Emotions expressed as physical bodily sensations",
+            "v. Why organisms without a brain could still regulate their internal state",
+            "vi. Old assumptions about a fixed adult brain are overturned",
+            "vii. Heart rate can be consciously controlled in the same way as breathing",
+            "viii. Ancient physicians first discovered the cause of thirst"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "iii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "v"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iv"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "i"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "ii"
+            },
+            {
+              "n": 6,
+              "paragraph": "F",
+              "answer": "vi"
+            }
+          ]
+        },
+        {
+          "group": "7-11",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 7,
+              "statement": "Organisms without a centralised brain were entirely unable to regulate their internal biological state.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 8,
+              "statement": "Heart rate and digestion can be consciously controlled in the same way as breathing.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 9,
+              "statement": "Physical exercise can trigger the release of growth factors that strengthen the hippocampus and prefrontal cortex.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 10,
+              "statement": "A short walk of about ten minutes can raise levels of chemicals such as dopamine and serotonin.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 11,
+              "statement": "Modern neuroimaging research supports the older belief that the adult brain cannot meaningfully reorganise itself.",
+              "answer": "FALSE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-016",
+      "title": "The Riddle of the Cranium: From Ancient Trepanation to Modern Neurology",
+      "source": "Original/teaching material (medical science)",
+      "paragraphs": {
+        "A": "In ancient Greece, cranial discomfort was perceived as a formidable affliction, driving victims to pray for relief from Asclepius, the Greek god of medicine. If the debilitating pain persisted, a medical practitioner would execute the most prevalent remedy of the era, known as trepanation. This hazardous technique, which involved drilling a small aperture into the skull to drain ostensibly infected blood, was not without severe consequences, often substituting the temporary headache with a more permanent, detrimental condition. Although modern clinicians do not resort to power tools, this ancient ailment is still not entirely comprehended.",
+        "B": "In contemporary medicine, headaches are systematically divided into two distinct categories: primary and secondary. Secondary headaches are indicative of an underlying bodily disorder, and it is not uncommon for their triggers to span from dehydration and caffeine withdrawal to cardiovascular diseases and neck trauma. Indeed, practitioners have identified over 150 diagnosable types, all with differing potential causes, symptoms, and treatments. Conversely, primary headaches, which represent approximately half of all reported cases, are not symptomatic of a separate physiological injury; rather, they constitute the condition itself.",
+        "C": "To comprehend secondary headaches, one may examine a sinus infection. The sinuses comprise a network of cavities located behind the forehead, nose, and upper cheeks. When these cavities undergo infection, the body's immune response escalates the regional temperature to destroy bacteria, inflaming the cavities well past their usual size. Consequently, the engorged sinuses exert pressure on the cranial blood vessels and musculature, stimulating pain receptors called nociceptors. Not only does this prompt the brain to release inflammatory neuropeptides, but it also causes the blood vessels to swell, culminating in a throbbing sensation.",
+        "D": "Unlike secondary headaches, the precise etiology of primary headaches remains elusive. Researchers continue to investigate potential triggers for the three main types: recurring migraines, excruciating cluster headaches, and tension headaches. Tension headaches, the most common type, are characterised by a squeezing sensation around the cranium. Although stress and hormonal fluctuations are frequently reported as triggers, they fail to align perfectly with the symptoms. For instance, dehydration causes the frontal lobe to shrink away from the skull, creating forehead swelling that contradicts the pain location of tension headaches, leaving these primary conditions unresolved.",
+        "E": "Addressing these conditions, which severely diminish quality of life, requires distinct clinical strategies. Tension headaches and secondary cases are manageable through over-the-counter anti-inflammatory pharmaceuticals, while proactive avoidance of triggers like dehydration and stress is highly recommended. However, migraines—which can persist for up to three days and trigger optical hallucinations known as auras—and cluster headaches, which cause burning pain behind one eye along with a drooping eyelid, present a far greater challenge. Regrettably, a universally reliable treatment for these severe primary conditions is yet to be discovered, though pharmacologists and neurologists remain dedicated to resolving these neurological mysteries."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph, A-E, from the list of headings below.",
+          "headings": [
+            "i. An ancient, dangerous cure for head pain",
+            "ii. Two broad categories of headache and their many triggers",
+            "iii. How an infection in facial cavities produces pain",
+            "iv. Types of primary headache whose exact cause is still unknown",
+            "v. Different treatment approaches depending on severity",
+            "vi. Trepanation is still practised in modern hospitals",
+            "vii. Secondary headaches make up the majority of all cases"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "i"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "ii"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iii"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "iv"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "v"
+            }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 6,
+              "statement": "Trepanation reliably cured patients of their headaches in ancient Greece.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 7,
+              "statement": "Primary headaches account for roughly half of all reported headache cases.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 8,
+              "statement": "Sinus infections cause pain by putting pressure on blood vessels and muscles around the skull.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 9,
+              "statement": "The exact cause of tension headaches has been definitively established by researchers.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 10,
+              "statement": "Cluster headaches can cause a drooping eyelid and burning pain behind one eye.",
+              "answer": "TRUE"
+            }
           ]
         }
       ]

@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>IELTS Practice</title>
 <style>
   :root{
@@ -14,13 +14,13 @@
   *{box-sizing:border-box}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);}
   header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
-  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;}
-  header h1{font-size:18px;margin:0;font-weight:700;letter-spacing:.3px;}
-  nav{display:flex;gap:4px;}
-  nav button{border:none;background:transparent;color:var(--sub);font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;cursor:pointer;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;flex-wrap:wrap;gap:6px;}
+  header h1{font-size:16px;margin:0;font-weight:700;letter-spacing:.3px;white-space:nowrap;}
+  nav{display:flex;gap:2px;flex-wrap:wrap;}
+  nav button{border:none;background:transparent;color:var(--sub);font-size:13px;font-weight:600;padding:7px 10px;border-radius:8px;cursor:pointer;white-space:nowrap;}
   nav button.active{background:var(--accent);color:var(--accent-ink);}
-  main{max-width:960px;margin:0 auto;padding:24px 20px 80px;}
+  main{max-width:960px;margin:0 auto;padding:20px 16px 80px;}
   .view{display:none;} .view.active{display:block;}
 
   /* list cards */
@@ -34,74 +34,119 @@
   .backbtn{background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;font-size:14px;margin-bottom:14px;padding:0;}
   .split{display:grid;grid-template-columns:1fr;gap:20px;}
   @media(min-width:860px){.split{grid-template-columns:1.1fr 1fr;}}
-  .passage-box, .qbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;}
-  .passage-box{max-height:78vh;overflow-y:auto;position:sticky;top:76px;}
-  .passage-box h2{font-size:21px;margin-top:0;}
-  .passage-box p{line-height:1.8;font-size:16.5px;}
+  .passage-box, .qbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;}
+  .passage-box{max-height:78vh;overflow-y:auto;}
+  @media(min-width:860px){.passage-box{position:sticky;top:66px;}}
+  .passage-box h2{font-size:19px;margin-top:0;}
+  .passage-box p{line-height:1.8;font-size:16px;}
   .para-label{font-weight:800;color:var(--accent);margin-right:6px;}
+  mark.hl{background:#fff59d;padding:0 1px;border-radius:2px;cursor:pointer;}
+  mark.hl:hover{background:#ffe066;}
   .qgroup{margin-bottom:26px;}
   .qgroup h4{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--sub);margin:0 0 4px;}
   .qgroup .instr{font-size:14px;color:var(--sub);margin-bottom:12px;font-style:italic;}
   .heading-list{background:var(--chip);border-radius:8px;padding:12px 16px;font-size:15px;line-height:1.8;margin-bottom:12px;}
-  .qitem{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:15.5px;flex-wrap:wrap;}
+  .qitem{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:15px;flex-wrap:wrap;}
   .qitem .qn{font-weight:700;color:var(--sub);min-width:22px;}
   .qitem select, .qitem input[type=text]{border:1px solid var(--line);border-radius:6px;padding:7px 9px;font-size:15px;}
-  .tfng label{display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:14.5px;cursor:pointer;}
-  .qstatement{flex:1;min-width:220px;}
+  .tfng label{display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:14px;cursor:pointer;}
+  .qstatement{flex:1;min-width:200px;}
   .result{font-size:12px;font-weight:700;margin-left:4px;}
   .result.correct{color:var(--good);}
   .result.wrong{color:var(--bad);}
-  .submitbar{background:var(--panel);border-top:1px solid var(--line);padding:14px 0;margin-top:10px;display:flex;align-items:center;justify-content:space-between;}
+  .submitbar{background:var(--panel);border-top:1px solid var(--line);padding:14px 0;margin-top:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
   .submitbar button{background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;}
   .score{font-weight:800;font-size:15px;}
+  table{max-width:100%;}
+  .scrollx{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 
   /* writing/speaking */
   .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
   .chip-row span{background:var(--chip);color:var(--accent);font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;}
   .section-title{font-size:16px;font-weight:800;margin:22px 0 10px;text-transform:capitalize;}
-  .prompt-item{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:8px;font-size:15.5px;line-height:1.65;}
+  .prompt-item{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:8px;font-size:15px;line-height:1.65;}
   .prompt-item .tag{font-size:11px;font-weight:700;color:#fff;background:#8b98ab;padding:1px 7px;border-radius:5px;margin-right:8px;}
   .cue-card{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:18px;font-size:15px;line-height:1.75;margin-bottom:10px;}
-  .flipbtn{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:16px;}
+  .flipbtn{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:16px;margin-right:8px;}
   .part3set{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
   .part3set h4{margin:0 0 8px;font-size:14px;color:var(--accent);}
   .part3set ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;}
   .loading, .empty{color:var(--sub);padding:40px 0;text-align:center;font-size:14px;}
+  .word-chip{background:var(--chip);color:var(--accent);font-size:12px;font-weight:600;padding:3px 9px;border-radius:999px;display:inline-block;margin:2px 4px 2px 0;}
+  .useful-words{margin:8px 0 12px;}
+  .useful-words .lbl{font-size:11px;color:var(--sub);text-transform:uppercase;letter-spacing:.05em;margin-right:6px;}
+  .smallbtn{background:none;border:1px solid var(--line);color:var(--sub);font-size:12px;font-weight:600;padding:5px 10px;border-radius:7px;cursor:pointer;}
+  .smallbtn:hover{border-color:var(--accent);color:var(--accent);}
+
+  /* enlarge (magnifier) */
+  .enlarge-btn{background:none;border:1px solid var(--line);color:var(--sub);width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:14px;flex-shrink:0;}
+  .enlarge-btn:hover{border-color:var(--accent);color:var(--accent);}
+  #enlargeOverlay{display:none;position:fixed;inset:0;background:rgba(20,24,33,.72);z-index:100;padding:24px;overflow-y:auto;}
+  #enlargeOverlay.active{display:block;}
+  #enlargeOverlay .sheet{background:var(--panel);max-width:900px;margin:0 auto;border-radius:14px;padding:28px;position:relative;font-size:19px;line-height:1.85;}
+  #enlargeOverlay .sheet p{font-size:19px;line-height:1.9;}
+  #enlargeOverlay .closebtn{position:sticky;top:0;float:right;background:var(--ink);color:#fff;border:none;width:34px;height:34px;border-radius:999px;cursor:pointer;font-size:16px;margin-bottom:10px;}
+
+  /* history / review */
+  .hist-row{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding:9px 0;font-size:13.5px;flex-wrap:wrap;}
+  .hist-row:last-child{border-bottom:none;}
+  .hist-meta{color:var(--sub);font-size:12px;}
+  .wrong-card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin-bottom:8px;font-size:13.5px;}
+  .wrong-card .yr{color:var(--bad);}
+  .wrong-card .cr{color:var(--good);}
+
+  /* recording */
+  .rec-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;}
+  audio{max-width:100%;}
+
+  @media(max-width:600px){
+    header h1{font-size:14px;}
+    nav button{font-size:12px;padding:6px 8px;}
+    .passage-box p{font-size:15px;}
+    #enlargeOverlay{padding:10px;}
+    #enlargeOverlay .sheet{padding:16px;font-size:17px;}
+    #enlargeOverlay .sheet p{font-size:17px;}
+  }
 </style>
 </head>
 <body>
 <header>
   <div class="wrap">
     <h1>📘 IELTS Practice</h1>
-    <div style="display:flex;align-items:center;gap:16px;">
-      <nav>
-        <button data-tab="reading" class="active">Reading</button>
-        <button data-tab="writing">Writing</button>
-        <button data-tab="speaking">Speaking</button>
-      </nav>
-      <div class="zoomctrl" style="display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:8px;padding:2px;">
-        <button onclick="adjustZoom(-0.1)" title="Zoom out" style="border:none;background:none;width:26px;height:26px;font-weight:800;color:var(--sub);cursor:pointer;border-radius:6px;">−</button>
-        <span id="zoomLevel" style="font-size:12px;color:var(--sub);width:38px;text-align:center;">100%</span>
-        <button onclick="adjustZoom(0.1)" title="Zoom in" style="border:none;background:none;width:26px;height:26px;font-weight:800;color:var(--sub);cursor:pointer;border-radius:6px;">+</button>
-      </div>
-    </div>
+    <nav>
+      <button data-tab="reading" class="active">閱讀 Reading</button>
+      <button data-tab="writing">寫作 Writing</button>
+      <button data-tab="speaking">口說 Speaking</button>
+      <button data-tab="review">複習 Review</button>
+    </nav>
   </div>
 </header>
 
 <main>
   <section id="view-reading" class="view active">
-    <div id="reading-list"><div class="loading">Loading reading bank…</div></div>
+    <div id="reading-list"><div class="loading">閱讀題庫載入中…</div></div>
     <div id="reading-test" style="display:none;"></div>
   </section>
 
   <section id="view-writing" class="view">
-    <div id="writing-list"><div class="loading">Loading writing bank…</div></div>
+    <div id="writing-list"><div class="loading">寫作題庫載入中…</div></div>
   </section>
 
   <section id="view-speaking" class="view">
-    <div id="speaking-list"><div class="loading">Loading speaking bank…</div></div>
+    <div id="speaking-list"><div class="loading">口說題庫載入中…</div></div>
+  </section>
+
+  <section id="view-review" class="view">
+    <div id="review-list"></div>
   </section>
 </main>
+
+<div id="enlargeOverlay" onclick="if(event.target===this) closeEnlarge()">
+  <div class="sheet">
+    <button class="closebtn" onclick="closeEnlarge()">✕</button>
+    <div id="enlargeContent" style="clear:both;"></div>
+  </div>
+</div>
 
 <script>
 const state = { reading: null, writing: null, speaking: null, currentPassage: null };
@@ -123,6 +168,7 @@ async function init(){
   renderReadingList();
   renderWriting();
   renderSpeaking();
+  renderReview();
 }
 
 /* ---------- nav ---------- */
@@ -132,8 +178,149 @@ document.querySelectorAll('nav button').forEach(btn=>{
     btn.classList.add('active');
     document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
     document.getElementById('view-'+btn.dataset.tab).classList.add('active');
+    if(btn.dataset.tab==='review') renderReview();
   });
 });
+
+/* ---------- enlarge (click-to-zoom a section) ---------- */
+function openEnlarge(html){
+  document.getElementById('enlargeContent').innerHTML = html;
+  document.getElementById('enlargeOverlay').classList.add('active');
+}
+function closeEnlarge(){
+  document.getElementById('enlargeOverlay').classList.remove('active');
+}
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeEnlarge(); });
+function enlargeBtnHTML(sourceId, label){
+  label = label || 'Enlarge';
+  return `<button type="button" class="enlarge-btn" title="${label}" onclick="openEnlarge(document.getElementById('${sourceId}').innerHTML)">⛶</button>`;
+}
+
+/* ---------- highlighter (螢光筆) for reading passages ---------- */
+function loadPassageHighlights(){
+  try{ return JSON.parse(localStorage.getItem('ieltsHighlights')||'{}'); }catch(e){ return {}; }
+}
+function savePassageHighlights(){
+  if(!state.currentPassage) return;
+  const key = state.currentPassage.id || state.currentPassage.title;
+  const box = document.getElementById('passageTextOnly');
+  if(!box) return;
+  const all = loadPassageHighlights();
+  all[key] = box.innerHTML;
+  try{ localStorage.setItem('ieltsHighlights', JSON.stringify(all)); }catch(e){}
+}
+function unwrapHighlight(mark){
+  const parent = mark.parentNode;
+  while(mark.firstChild) parent.insertBefore(mark.firstChild, mark);
+  parent.removeChild(mark);
+  savePassageHighlights();
+}
+function highlightSelection(){
+  const sel = window.getSelection();
+  if(!sel || !sel.rangeCount || sel.isCollapsed) return;
+  const range = sel.getRangeAt(0);
+  const container = document.getElementById('passageTextOnly');
+  if(!container || !container.contains(range.commonAncestorContainer)) return;
+  const mark = document.createElement('mark');
+  mark.className = 'hl';
+  mark.onclick = function(e){ e.stopPropagation(); unwrapHighlight(mark); };
+  try{
+    range.surroundContents(mark);
+  }catch(e){
+    const frag = range.extractContents();
+    mark.appendChild(frag);
+    range.insertNode(mark);
+  }
+  sel.removeAllRanges();
+  savePassageHighlights();
+}
+function clearHighlights(){
+  if(!state.currentPassage) return;
+  const key = state.currentPassage.id || state.currentPassage.title;
+  const all = loadPassageHighlights();
+  delete all[key];
+  try{ localStorage.setItem('ieltsHighlights', JSON.stringify(all)); }catch(e){}
+  const box = document.getElementById('passageTextOnly');
+  if(box) box.innerHTML = Object.entries(state.currentPassage.paragraphs).map(([label,text])=>
+    `<p><span class="para-label">${label}</span>${text}</p>`).join('');
+}
+
+/* ---------- local history / progress tracking ---------- */
+function loadHistory(){
+  try{ return JSON.parse(localStorage.getItem('ieltsHistory')||'[]'); }catch(e){ return []; }
+}
+function saveHistoryEntry(entry){
+  const h = loadHistory();
+  entry.date = new Date().toISOString();
+  h.unshift(entry);
+  try{ localStorage.setItem('ieltsHistory', JSON.stringify(h.slice(0,200))); }catch(e){}
+}
+function loadWrongBank(){
+  try{ return JSON.parse(localStorage.getItem('ieltsWrongAnswers')||'[]'); }catch(e){ return []; }
+}
+function addWrongAnswers(items){
+  if(!items.length) return;
+  const bank = loadWrongBank();
+  const stamped = items.map(it=>({...it, date:new Date().toISOString()}));
+  const merged = stamped.concat(bank).slice(0,300);
+  try{ localStorage.setItem('ieltsWrongAnswers', JSON.stringify(merged)); }catch(e){}
+}
+function clearWrongAnswer(idx){
+  const bank = loadWrongBank();
+  bank.splice(idx,1);
+  try{ localStorage.setItem('ieltsWrongAnswers', JSON.stringify(bank)); }catch(e){}
+  renderReview();
+}
+function clearHistory(){
+  if(!confirm('確定要清除所有成績紀錄嗎？此操作無法復原。')) return;
+  try{ localStorage.removeItem('ieltsHistory'); }catch(e){}
+  renderReview();
+}
+function clearAllWrong(){
+  if(!confirm('確定要清空整個錯題本嗎？此操作無法復原。')) return;
+  try{ localStorage.removeItem('ieltsWrongAnswers'); }catch(e){}
+  renderReview();
+}
+
+function renderReview(){
+  const el = document.getElementById('review-list');
+  const hist = loadHistory();
+  const wrong = loadWrongBank();
+
+  let html = '<div class="section-title">成績紀錄</div>';
+  if(!hist.length){
+    html += '<div class="empty">目前還沒有練習紀錄 — 完成一篇閱讀或寫作練習後，紀錄會顯示在這裡。</div>';
+  } else {
+    html += '<div class="qbox">';
+    html += hist.slice(0,40).map(h=>{
+      const dt = new Date(h.date);
+      const dtStr = dt.toLocaleDateString()+' '+dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+      let right = '';
+      if(h.type==='reading') right = `<span class="score">${h.score} / ${h.total}</span>`;
+      else if(h.type==='writing') right = `<span class="score">${h.checksPassed} / ${h.checksTotal} 項通過</span>`;
+      return `<div class="hist-row">
+        <span><span class="badge">${h.type==='reading'?'閱讀':'寫作'}</span>${h.title}</span>
+        <span style="display:flex;align-items:center;gap:10px;">${right}<span class="hist-meta">${dtStr}</span></span>
+      </div>`;
+    }).join('');
+    html += `</div><div style="margin-top:10px;"><button class="smallbtn" onclick="clearHistory()">清除紀錄</button></div>`;
+  }
+
+  html += '<div class="section-title">錯題本（閱讀）</div>';
+  if(!wrong.length){
+    html += '<div class="empty">目前沒有錯題 — 閱讀測驗答錯的題目會自動加入這裡，方便之後複習。</div>';
+  } else {
+    html += wrong.map((w,i)=>`<div class="wrong-card">
+        <div style="font-weight:700;margin-bottom:4px;">${w.passageTitle} <span class="hist-meta">第 ${w.n} 題</span></div>
+        <div style="margin-bottom:4px;">${w.text}</div>
+        <div>你的答案：<span class="yr">${w.yourAnswer||'（未作答）'}</span> &nbsp;·&nbsp; 正確答案：<span class="cr">${w.correctAnswer}</span></div>
+        <button class="smallbtn" style="margin-top:6px;" onclick="clearWrongAnswer(${i})">移除</button>
+      </div>`).join('');
+    html += `<div style="margin-top:10px;"><button class="smallbtn" onclick="clearAllWrong()">清空錯題本</button></div>`;
+  }
+
+  el.innerHTML = html;
+}
 
 /* ---------- reading ---------- */
 function renderReadingList(){
@@ -142,21 +329,28 @@ function renderReadingList(){
   el.innerHTML = state.reading.passages.map((p,i)=>{
     const qcount = p.questions.reduce((s,g)=>s+g.items.length,0);
     return `<div class="card" onclick="openPassage(${i})">
-      <span class="badge">Passage ${i+1}</span>
+      <span class="badge">第 ${i+1} 篇</span>
       <h3>${p.title}</h3>
-      <p>${Object.keys(p.paragraphs).length} paragraphs · ${qcount} questions</p>
+      <p>${Object.keys(p.paragraphs).length} 段落．${qcount} 題</p>
     </div>`;
   }).join('');
 }
 
+let readingTimerId = null;
+let readingSecondsLeft = 0;
+
 function openPassage(i){
+  stopReadingTimer();
   state.currentPassage = state.reading.passages[i];
   document.getElementById('reading-list').style.display='none';
   const test = document.getElementById('reading-test');
   test.style.display='block';
   const p = state.currentPassage;
+  readingSecondsLeft = 15*60;
 
-  const paragraphsHTML = Object.entries(p.paragraphs).map(([label,text])=>
+  const passageKey = p.id || p.title;
+  const savedHL = loadPassageHighlights()[passageKey];
+  const paragraphsHTML = savedHL || Object.entries(p.paragraphs).map(([label,text])=>
     `<p><span class="para-label">${label}</span>${text}</p>`).join('');
 
   const qgroupsHTML = p.questions.map((g,gi)=>{
@@ -168,7 +362,7 @@ function openPassage(i){
           const val = h.split('.')[0].trim();
           return `<option value="${val}">${val}</option>`;
         }).join('');
-        return `<div class="qitem">
+        return `<div class="qitem" data-type="matching_headings" data-text="Paragraph ${it.paragraph}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">Paragraph ${it.paragraph}</span>
           <select data-group="${gi}" data-n="${it.n}" data-answer="${it.answer}">
@@ -178,7 +372,7 @@ function openPassage(i){
         </div>`;
       }).join('');
     } else if(g.type === 'true_false_not_given'){
-      inner += g.items.map(it=>`<div class="qitem">
+      inner += g.items.map(it=>`<div class="qitem" data-type="true_false_not_given" data-text="${it.statement.replace(/"/g,'&quot;')}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">${it.statement}</span>
           <span class="tfng">
@@ -187,7 +381,7 @@ function openPassage(i){
           <span class="result" id="res-${it.n}"></span>
         </div>`).join('');
     } else if(g.type === 'sentence_completion'){
-      inner += g.items.map(it=>`<div class="qitem">
+      inner += g.items.map(it=>`<div class="qitem" data-type="sentence_completion" data-text="${it.prompt.replace(/"/g,'&quot;')}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">${it.prompt}</span>
           <input type="text" placeholder="answer" data-n="${it.n}" data-answer="${it.answer}" style="width:140px;">
@@ -202,21 +396,46 @@ function openPassage(i){
   }).join('');
 
   test.innerHTML = `
-    <button class="backbtn" onclick="closePassage()">&larr; Back to Reading list</button>
+    <button class="backbtn" onclick="stopReadingTimer();closePassage()">&larr; 返回閱讀列表</button>
     <div class="split">
       <div class="passage-box">
-        <h2>${p.title}</h2>
-        ${paragraphsHTML}
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+          <h2 style="margin-top:0;">${p.title}</h2>
+          <span style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+            <span id="readingTimerDisplay" style="font-weight:800;font-size:17px;color:var(--accent);white-space:nowrap;">${fmtTime(readingSecondsLeft)}</span>
+            <button type="button" class="enlarge-btn" title="標記螢光筆" onclick="highlightSelection()">🖍</button>
+            <button type="button" class="enlarge-btn" title="清除標記" onclick="clearHighlights()">🧹</button>
+            ${enlargeBtnHTML('passageTextOnly','放大文章')}
+          </span>
+        </div>
+        <div id="passageTextOnly">${paragraphsHTML}</div>
       </div>
       <div class="qbox">
         <form id="qform">${qgroupsHTML}</form>
         <div class="submitbar">
           <span class="score" id="scoreDisplay"></span>
-          <button type="button" onclick="gradePassage()">Check Answers</button>
+          <button type="button" onclick="gradePassage(false)">對答案</button>
         </div>
       </div>
     </div>
   `;
+  startReadingTimer();
+}
+
+function startReadingTimer(){
+  readingTimerId = setInterval(()=>{
+    readingSecondsLeft--;
+    const d2 = document.getElementById('readingTimerDisplay');
+    if(d2) d2.textContent = fmtTime(Math.max(0,readingSecondsLeft));
+    if(readingSecondsLeft <= 60 && d2) d2.style.color = 'var(--bad)';
+    if(readingSecondsLeft <= 0){
+      gradePassage(true);
+    }
+  }, 1000);
+}
+
+function stopReadingTimer(){
+  if(readingTimerId){ clearInterval(readingTimerId); readingTimerId = null; }
 }
 
 function closePassage(){
@@ -224,14 +443,23 @@ function closePassage(){
   document.getElementById('reading-list').style.display='block';
 }
 
-function gradePassage(){
+function gradePassage(autoSubmitted){
+  stopReadingTimer();
   const form = document.getElementById('qform');
   let correct=0, total=0;
+  const wrongItems = [];
+  const passageTitle = state.currentPassage ? state.currentPassage.title : '';
+
   form.querySelectorAll('select[data-answer]').forEach(sel=>{
     total++;
     const res = document.getElementById('res-'+sel.dataset.n);
+    const qitem = sel.closest('.qitem');
+    const qtext = qitem ? qitem.dataset.text : '';
     if(sel.value && sel.value.toLowerCase()===sel.dataset.answer.toLowerCase()){ correct++; res.textContent='✓'; res.className='result correct'; }
-    else { res.textContent='✗ ('+sel.dataset.answer+')'; res.className='result wrong'; }
+    else {
+      res.textContent='✗ ('+sel.dataset.answer+')'; res.className='result wrong';
+      wrongItems.push({passageTitle, n:sel.dataset.n, text:qtext, yourAnswer:sel.value, correctAnswer:sel.dataset.answer});
+    }
   });
   const seen = new Set();
   form.querySelectorAll('input[type=radio][data-answer]').forEach(r=>{
@@ -239,17 +467,31 @@ function gradePassage(){
     const checked = form.querySelector('input[name=q'+r.dataset.n+']:checked');
     total++; seen.add(r.dataset.n);
     const res = document.getElementById('res-'+r.dataset.n);
+    const qitem = r.closest('.qitem');
+    const qtext = qitem ? qitem.dataset.text : '';
     if(checked && checked.value===r.dataset.answer){ correct++; res.textContent='✓'; res.className='result correct'; }
-    else { res.textContent='✗ ('+r.dataset.answer+')'; res.className='result wrong'; }
+    else {
+      res.textContent='✗ ('+r.dataset.answer+')'; res.className='result wrong';
+      wrongItems.push({passageTitle, n:r.dataset.n, text:qtext, yourAnswer:checked?checked.value:'', correctAnswer:r.dataset.answer});
+    }
   });
   form.querySelectorAll('input[type=text][data-answer]').forEach(inp=>{
     total++;
     const res = document.getElementById('res-'+inp.dataset.n);
+    const qitem = inp.closest('.qitem');
+    const qtext = qitem ? qitem.dataset.text : '';
     const norm = s => (s||'').trim().toLowerCase();
     if(norm(inp.value)===norm(inp.dataset.answer)){ correct++; res.textContent='✓'; res.className='result correct'; }
-    else { res.textContent='✗ ('+inp.dataset.answer+')'; res.className='result wrong'; }
+    else {
+      res.textContent='✗ ('+inp.dataset.answer+')'; res.className='result wrong';
+      wrongItems.push({passageTitle, n:inp.dataset.n, text:qtext, yourAnswer:inp.value, correctAnswer:inp.dataset.answer});
+    }
   });
-  document.getElementById('scoreDisplay').textContent = `Score: ${correct} / ${total}`;
+  const scoreEl = document.getElementById('scoreDisplay');
+  scoreEl.textContent = (autoSubmitted ? "⏰ 時間到 — " : '') + `分數：${correct} / ${total}`;
+
+  saveHistoryEntry({ type:'reading', title: passageTitle, score: correct, total });
+  addWrongAnswers(wrongItems);
 }
 
 /* ---------- chart rendering helpers ---------- */
@@ -263,7 +505,6 @@ function svgLineChart(chart){
   const x = i => padL + (W-padL-padR) * (i/(n-1));
   const y = v => H-padB - (H-padT-padB) * ((v-min)/(max-min || 1));
   let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">`;
-  // horizontal gridlines with value labels
   const gridSteps = 4;
   for(let g=0; g<=gridSteps; g++){
     const v = min + (max-min)*g/gridSteps;
@@ -346,12 +587,12 @@ function svgPieSet(chart){
 }
 
 function htmlTable(chart){
-  let html = `<table style="width:100%;border-collapse:collapse;font-size:13px;">
+  let html = `<div class="scrollx"><table style="width:100%;border-collapse:collapse;font-size:13px;">
     <tr><th style="text-align:left;border-bottom:2px solid var(--line);padding:6px;">${chart.rowLabel||''}</th>${chart.columns.map(c=>`<th style="text-align:right;border-bottom:2px solid var(--line);padding:6px;">${c}</th>`).join('')}</tr>`;
   chart.rows.forEach(r=>{
     html += `<tr><td style="padding:6px;border-bottom:1px solid var(--line);font-weight:600;">${r.label}</td>${r.values.map(v=>`<td style="text-align:right;padding:6px;border-bottom:1px solid var(--line);">${v}</td>`).join('')}</tr>`;
   });
-  html += '</table>';
+  html += '</table></div>';
   if(chart.unit) html += `<div style="font-size:11px;color:var(--sub);margin-top:6px;">Unit: ${chart.unit}</div>`;
   return html;
 }
@@ -361,11 +602,11 @@ function processSteps(chart){
 }
 
 function mapCompare(chart){
-  let html = `<table style="width:100%;border-collapse:collapse;font-size:13px;"><tr>${chart.columns.map(c=>`<th style="text-align:left;border-bottom:2px solid var(--line);padding:6px;color:var(--accent);">${c}</th>`).join('')}</tr>`;
+  let html = `<div class="scrollx"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr>${chart.columns.map(c=>`<th style="text-align:left;border-bottom:2px solid var(--line);padding:6px;color:var(--accent);">${c}</th>`).join('')}</tr>`;
   chart.rows.forEach(r=>{
     html += `<tr>${r.map(cell=>`<td style="padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top;">${cell}</td>`).join('')}</tr>`;
   });
-  html += '</table>';
+  html += '</table></div>';
   return html;
 }
 
@@ -387,18 +628,18 @@ function renderChart(item){
 function renderWriting(){
   const el = document.getElementById('writing-list');
   if(!state.writing){ el.innerHTML='<div class="empty">找不到 writing-bank.json</div>'; return; }
-  let html = '<div class="section-title">Task 1 — Academic (click a prompt to see the chart and write)</div>';
+  let html = '<div class="section-title">Task 1－學術類（點選題目查看圖表並開始寫作）</div>';
   html += (state.writing.task1_academic||[]).map((t,i)=>
     `<div class="prompt-item" style="cursor:pointer;" onclick="openTask1(${i})"><span class="tag">${t.chart_type}</span>${t.prompt}</div>`).join('');
 
-  html += '<div class="section-title">Task 2 — Essay (click a prompt to write)</div>';
+  html += '<div class="section-title">Task 2－作文（點選題目開始寫作）</div>';
   const cats = state.writing.task2_essay || {};
-  let idx = 0;
+  const catNames = { education:'教育', environment:'環境', society_government:'社會與政府', work_economy:'工作與經濟', media_technology:'媒體與科技' };
   Object.entries(cats).forEach(([cat, prompts])=>{
-    html += `<div class="section-title" style="font-size:13px;color:var(--sub);margin-top:16px;">${cat.replace(/_/g,' ')}</div>`;
-    html += prompts.map(p=>{
-      const myIdx = idx++;
-      return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask2('${cat}',${prompts.indexOf(p)})">${p}</div>`;
+    html += `<div class="section-title" style="font-size:13px;color:var(--sub);margin-top:16px;">${catNames[cat]||cat.replace(/_/g,' ')}</div>`;
+    html += prompts.map((p,pi)=>{
+      const text = typeof p === 'string' ? p : p.prompt;
+      return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask2('${cat}',${pi})">${text}</div>`;
     }).join('');
   });
   el.innerHTML = html;
@@ -406,36 +647,39 @@ function renderWriting(){
 
 let essayTimerId = null;
 let essaySecondsLeft = 0;
-let taskCtx = null; // { kind:'task1'|'task2', cat, i, minWords, durationMin }
+let taskCtx = null; // { kind:'task1'|'task2', cat, i, minWords, durationMin, modelAnswer }
 
 function openTask1(i){
   stopEssayTimer();
   const item = state.writing.task1_academic[i];
   const minWords = 150, durationMin = 20;
-  taskCtx = { kind:'task1', i, minWords, durationMin };
+  taskCtx = { kind:'task1', i, minWords, durationMin, modelAnswer: item.model_answer, promptText: item.prompt };
   essaySecondsLeft = durationMin*60;
   const el = document.getElementById('writing-list');
   el.innerHTML = `
-    <button class="backbtn" onclick="stopEssayTimer();renderWriting()">&larr; Back to Writing list</button>
+    <button class="backbtn" onclick="stopEssayTimer();renderWriting()">&larr; 返回寫作列表</button>
     <div class="split">
       <div class="passage-box">
-        <h3 style="margin-top:0;"><span class="tag">${item.chart_type}</span></h3>
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+          <h3 style="margin-top:0;"><span class="tag">${item.chart_type}</span></h3>
+          ${enlargeBtnHTML('chartOnly','放大圖表')}
+        </div>
         <p>${item.prompt}</p>
-        ${renderChart(item)}
+        <div id="chartOnly">${renderChart(item)}</div>
       </div>
       <div class="qbox">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
-          <h4 style="margin-top:0;">Your report</h4>
+          <h4 style="margin-top:0;">你的報告</h4>
           <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
         </div>
-        <p style="color:var(--sub);font-size:13px;">Write at least ${minWords} words. Spend about ${durationMin} minutes — the timer will auto-submit when it reaches 0.</p>
+        <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。</p>
         <textarea id="essayBox" rows="16"
           autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
           style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
-          placeholder="Describe the chart here…" oninput="updateWordCount(${minWords})"></textarea>
+          placeholder="在這裡描述圖表…" oninput="updateWordCount(${minWords})"></textarea>
         <div class="submitbar">
-          <span class="score" id="wordCount">0 / ${minWords} words</span>
-          <button type="button" onclick="finishEssay(false)">Finish &amp; Review</button>
+          <span class="score" id="wordCount">0 / ${minWords} 字</span>
+          <button type="button" onclick="finishEssay(false)">完成並檢視</button>
         </div>
       </div>
     </div>
@@ -445,26 +689,28 @@ function openTask1(i){
 
 function openTask2(cat, i){
   stopEssayTimer();
-  const prompt = state.writing.task2_essay[cat][i];
+  const raw = state.writing.task2_essay[cat][i];
+  const prompt = typeof raw === 'string' ? raw : raw.prompt;
+  const modelAnswer = typeof raw === 'string' ? null : raw.model_answer;
   const el = document.getElementById('writing-list');
   const minWords = 250, durationMin = 40;
-  taskCtx = { kind:'task2', cat, i, minWords, durationMin };
+  taskCtx = { kind:'task2', cat, i, minWords, durationMin, modelAnswer, promptText: prompt };
   essaySecondsLeft = durationMin*60;
   el.innerHTML = `
-    <button class="backbtn" onclick="stopEssayTimer();renderWriting()">&larr; Back to Writing list</button>
+    <button class="backbtn" onclick="stopEssayTimer();renderWriting()">&larr; 返回寫作列表</button>
     <div class="qbox">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
         <h3 style="margin-top:0;">${prompt}</h3>
         <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
       </div>
-      <p style="color:var(--sub);font-size:13px;">Write at least ${minWords} words. Spend about ${durationMin} minutes — the timer will auto-submit when it reaches 0.</p>
+      <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。</p>
       <textarea id="essayBox" rows="16"
         autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
         style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
-        placeholder="Start writing your essay here…" oninput="updateWordCount(${minWords})"></textarea>
+        placeholder="在這裡開始寫作文…" oninput="updateWordCount(${minWords})"></textarea>
       <div class="submitbar">
-        <span class="score" id="wordCount">0 / ${minWords} words</span>
-        <button type="button" onclick="finishEssay(false)">Finish &amp; Review</button>
+        <span class="score" id="wordCount">0 / ${minWords} 字</span>
+        <button type="button" onclick="finishEssay(false)">完成並檢視</button>
       </div>
     </div>
   `;
@@ -498,8 +744,13 @@ function updateWordCount(min){
   const text = box.value.trim();
   const words = text.length ? text.split(/\s+/).length : 0;
   const el = document.getElementById('wordCount');
-  el.textContent = `${words} / ${min} words`;
+  el.textContent = `${words} / ${min} 字`;
   el.style.color = words>=min ? 'var(--good)' : 'var(--sub)';
+}
+
+function toggleModelAnswer(){
+  const box = document.getElementById('modelAnswerBox');
+  if(box) box.style.display = box.style.display==='none' ? 'block' : 'none';
 }
 
 function finishEssay(autoSubmitted){
@@ -518,83 +769,141 @@ function finishEssay(autoSubmitted){
   const hasNumbers = /\d/.test(text);
 
   const checks = ctx.kind === 'task1' ? [
-    { label: `At least ${minWords} words`, pass: words>=minWords, detail: `${words} words written` },
-    { label: 'At least 2 paragraphs (overview + details)', pass: paragraphs>=2, detail: `${paragraphs} paragraph(s) detected` },
-    { label: 'Includes specific figures/data from the chart', pass: hasNumbers, detail: hasNumbers ? 'Numbers found in your report' : 'No numbers detected' },
-    { label: 'Uses comparison/reporting language', pass: linkersUsed.length>=1, detail: linkersUsed.length ? `Found: ${linkersUsed.join(', ')}` : 'None detected' }
+    { label: `至少 ${minWords} 字`, pass: words>=minWords, detail: `已寫 ${words} 字` },
+    { label: '至少 2 段（總覽＋細節）', pass: paragraphs>=2, detail: `偵測到 ${paragraphs} 段` },
+    { label: '包含圖表中的具體數據', pass: hasNumbers, detail: hasNumbers ? '報告中有找到數字' : '未偵測到數字' },
+    { label: '使用比較／報告用語', pass: linkersUsed.length>=1, detail: linkersUsed.length ? `已使用：${linkersUsed.join(', ')}` : '未偵測到' }
   ] : [
-    { label: `At least ${minWords} words`, pass: words>=minWords, detail: `${words} words written` },
-    { label: 'At least 4 paragraphs (intro / body / body / conclusion)', pass: paragraphs>=4, detail: `${paragraphs} paragraph(s) detected` },
-    { label: 'Uses linking words to connect ideas', pass: linkersUsed.length>=2, detail: linkersUsed.length ? `Found: ${linkersUsed.join(', ')}` : 'None detected' }
+    { label: `至少 ${minWords} 字`, pass: words>=minWords, detail: `已寫 ${words} 字` },
+    { label: '至少 4 段（前言／論述／論述／結論）', pass: paragraphs>=4, detail: `偵測到 ${paragraphs} 段` },
+    { label: '使用連接詞串連論點', pass: linkersUsed.length>=2, detail: linkersUsed.length ? `已使用：${linkersUsed.join(', ')}` : '未偵測到' }
   ];
+  const checksPassed = checks.filter(c=>c.pass).length;
+
+  const modelAnswerHTML = ctx.modelAnswer ? `
+      <div class="qgroup">
+        <h4>範文參考</h4>
+        <div class="instr">這只是其中一種高分寫法，並非唯一正確答案 — 請把它當作結構和用字的參考，不要逐字背誦。</div>
+        <button type="button" class="smallbtn" onclick="toggleModelAnswer()">顯示／隱藏範文</button>
+        <div id="modelAnswerBox" style="display:none;white-space:pre-wrap;font-size:13.5px;line-height:1.75;background:var(--chip);border-radius:8px;padding:14px;margin-top:10px;">${ctx.modelAnswer.replace(/</g,'&lt;')}</div>
+      </div>` : '';
 
   const el = document.getElementById('writing-list');
   el.innerHTML = `
-    <button class="backbtn" onclick="renderWriting()">&larr; Back to Writing list</button>
+    <button class="backbtn" onclick="renderWriting()">&larr; 返回寫作列表</button>
     <div class="qbox">
-      <h3 style="margin-top:0;">${autoSubmitted ? "⏰ Time's up — auto-submitted" : 'Review'}</h3>
+      <h3 style="margin-top:0;">${autoSubmitted ? "⏰ 時間到 — 已自動送出" : '檢視結果'}</h3>
       <div class="qgroup">
-        <h4>Structure self-check</h4>
-        <div class="instr">This is a mechanical check (word count / paragraphs / linking words), not a real IELTS band score — a human or an AI marker is still needed to judge grammar, coherence and task response.</div>
+        <h4>結構自我檢查</h4>
+        <div class="instr">這只是機械式檢查（字數／段落／連接詞），不是真正的雅思分數 — 文法、連貫性與題目回應仍需要老師或 AI 批改。</div>
         ${checks.map(c=>`<div class="qitem"><span class="result ${c.pass?'correct':'wrong'}" style="font-size:15px;">${c.pass?'✓':'✗'}</span><span class="qstatement">${c.label} <span style="color:var(--sub);">— ${c.detail}</span></span></div>`).join('')}
       </div>
       <div class="qgroup">
-        <h4>Your essay</h4>
-        <div style="white-space:pre-wrap;font-size:13.5px;line-height:1.7;background:var(--chip);border-radius:8px;padding:14px;">${text ? text.replace(/</g,'&lt;') : '<span style="color:var(--sub);">(nothing written)</span>'}</div>
+        <h4>你的作文</h4>
+        <div style="white-space:pre-wrap;font-size:13.5px;line-height:1.7;background:var(--chip);border-radius:8px;padding:14px;">${text ? text.replace(/</g,'&lt;') : '<span style="color:var(--sub);">（尚未作答）</span>'}</div>
       </div>
+      ${modelAnswerHTML}
     </div>
   `;
+
+  saveHistoryEntry({
+    type:'writing',
+    title: (ctx.kind==='task1' ? 'Task 1：' : 'Task 2：') + (ctx.promptText||'').slice(0,70) + ((ctx.promptText||'').length>70?'…':''),
+    checksPassed, checksTotal: checks.length
+  });
 }
 
 /* ---------- speaking ---------- */
 let cueIndex = 0;
+function usefulWordsHTML(words){
+  if(!words || !words.length) return '';
+  return `<div class="useful-words"><span class="lbl">實用詞彙</span>${words.map(w=>`<span class="word-chip">${w}</span>`).join('')}</div>`;
+}
+
 function renderSpeaking(){
   const el = document.getElementById('speaking-list');
   if(!state.speaking){ el.innerHTML='<div class="empty">找不到 speaking-bank.json</div>'; return; }
-  let html = '<div class="section-title">Part 1 — Pick a topic</div>';
+  let html = '<div class="section-title">Part 1－選擇主題</div>';
   html += `<div class="chip-row" id="p1chips">${(state.speaking.part1_topics||[]).map((t,i)=>`<span onclick="showPart1(${i})" style="cursor:pointer;">${t.topic}</span>`).join('')}</div>`;
   html += `<div id="p1questions"></div>`;
 
-  html += '<div class="section-title">Part 2 — Cue Cards</div>';
-  html += `<button class="flipbtn" onclick="nextCue()">🎴 Draw a random cue card</button>`;
+  html += '<div class="section-title">Part 2－題卡</div>';
+  html += `<button class="flipbtn" onclick="nextCue()">🎴 隨機抽一張題卡</button>`;
   html += `<div class="cue-card" id="cueCard">${cueCardHTML(state.speaking.part2_cue_cards[0])}</div>`;
 
-  html += '<div class="section-title">Part 3 — Discussion Sets</div>';
+  html += '<div class="section-title">Part 3－延伸討論</div>';
   html += (state.speaking.part3_discussion_sets||[]).map(s=>
-    `<div class="part3set"><h4>${s.theme}</h4><ul>${s.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`).join('');
+    `<div class="part3set"><h4>${s.theme}</h4>${usefulWordsHTML(s.useful_words)}<ul>${s.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`).join('');
 
   el.innerHTML = html;
+  setupRecorder();
 }
 function showPart1(i){
   const t = state.speaking.part1_topics[i];
   document.getElementById('p1questions').innerHTML =
-    `<div class="part3set"><h4>${t.topic}</h4><ul>${t.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`;
+    `<div class="part3set"><h4>${t.topic}</h4>${usefulWordsHTML(t.useful_words)}<ul>${t.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`;
 }
 function cueCardHTML(card){
   return `<div style="font-weight:700;margin-bottom:8px;">${card.topic}</div>
+    ${usefulWordsHTML(card.useful_words)}
     <div style="font-size:12.5px;color:var(--sub);margin-bottom:4px;">You should say:</div>
-    <ul style="margin:0;padding-left:18px;">${card.points.map(p=>`<li>${p}</li>`).join('')}</ul>`;
+    <ul style="margin:0 0 10px;padding-left:18px;">${card.points.map(p=>`<li>${p}</li>`).join('')}</ul>
+    <div id="recorderZone"></div>`;
 }
 function nextCue(){
   const cards = state.speaking.part2_cue_cards;
   cueIndex = Math.floor(Math.random()*cards.length);
   document.getElementById('cueCard').innerHTML = cueCardHTML(cards[cueIndex]);
+  setupRecorder();
 }
 
-/* ---------- zoom control ---------- */
-let zoomLevel = 1;
-function adjustZoom(delta){
-  zoomLevel = Math.min(1.6, Math.max(0.8, Math.round((zoomLevel+delta)*10)/10));
-  document.body.style.zoom = zoomLevel;
-  document.getElementById('zoomLevel').textContent = Math.round(zoomLevel*100)+'%';
-  try{ localStorage.setItem('ieltsZoom', zoomLevel); }catch(e){}
+/* ---------- speech recording (MediaRecorder, works on mobile browsers over HTTPS) ---------- */
+let mediaRecorder = null, recordedChunks = [], currentStream = null;
+function setupRecorder(){
+  const zone = document.getElementById('recorderZone');
+  if(!zone) return;
+  const supported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder);
+  if(!supported){
+    zone.innerHTML = `<div class="hist-meta">此瀏覽器不支援錄音功能。</div>`;
+    return;
+  }
+  zone.innerHTML = `
+    <div class="rec-row">
+      <button type="button" class="smallbtn" id="recBtn" onclick="toggleRecording()">🎙️ 開始錄音</button>
+      <span id="recStatus" class="hist-meta"></span>
+    </div>
+    <div id="recPlayback"></div>
+  `;
 }
-(function initZoom(){
+async function toggleRecording(){
+  const btn = document.getElementById('recBtn');
+  const status = document.getElementById('recStatus');
+  if(mediaRecorder && mediaRecorder.state === 'recording'){
+    mediaRecorder.stop();
+    return;
+  }
   try{
-    const saved = parseFloat(localStorage.getItem('ieltsZoom'));
-    if(saved && saved>=0.8 && saved<=1.6){ zoomLevel = saved; document.body.style.zoom = zoomLevel; document.getElementById('zoomLevel').textContent = Math.round(zoomLevel*100)+'%'; }
-  }catch(e){}
-})();
+    currentStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+  }catch(e){
+    if(status) status.textContent = '麥克風權限被拒絕。';
+    return;
+  }
+  recordedChunks = [];
+  mediaRecorder = new MediaRecorder(currentStream);
+  mediaRecorder.ondataavailable = e => { if(e.data && e.data.size) recordedChunks.push(e.data); };
+  mediaRecorder.onstop = () => {
+    const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+    const url = URL.createObjectURL(blob);
+    const pb = document.getElementById('recPlayback');
+    if(pb) pb.innerHTML = `<audio controls src="${url}" style="display:block;margin-top:8px;"></audio>`;
+    currentStream.getTracks().forEach(t=>t.stop());
+    if(btn) btn.textContent = '🎙️ 重新錄音';
+    if(status) status.textContent = '錄音已保存於本次瀏覽（不會永久儲存）。';
+  };
+  mediaRecorder.start();
+  if(btn) btn.textContent = '⏹ 停止錄音';
+  if(status) status.textContent = '錄音中…';
+}
 
 init();
 </script>
