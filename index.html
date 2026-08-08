@@ -126,6 +126,39 @@
         }
 
         .enemy-sprite { filter: drop-shadow(0 0 10px rgba(0, 255, 204, 0.5)); }
+
+        .laser-shot {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 6px;
+            height: 45%;
+            background: linear-gradient(to top, transparent, #00ffcc 40%, #ffffff);
+            box-shadow: 0 0 14px 4px rgba(0,255,204,0.9);
+            transform: translateX(-50%) scaleY(0);
+            transform-origin: bottom;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 15;
+            border-radius: 4px;
+        }
+        .laser-shot.firing {
+            animation: laserFire 0.28s ease-out forwards;
+        }
+        @keyframes laserFire {
+            0%   { transform: translateX(-50%) scaleY(0); opacity: 1; }
+            55%  { transform: translateX(-50%) scaleY(1); opacity: 1; }
+            100% { transform: translateX(-50%) scaleY(1); opacity: 0; }
+        }
+
+        .combo-pop {
+            animation: comboPop 0.4s cubic-bezier(.34,1.56,.64,1);
+        }
+        @keyframes comboPop {
+            0% { transform: scale(0.5); opacity: 0; }
+            60% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(1); opacity: 1; }
+        }
     </style>
 </head>
 <body class="flex items-center justify-center h-screen overflow-hidden m-0">
@@ -160,7 +193,9 @@
                     </div>
                 </div>
                 <div class="text-right leading-tight">
-                    積分 (SCORE): <span id="ui-score" class="font-bold text-green-400 text-2xl">0</span><br>
+                    <button id="btn-mute" onclick="toggleMute()" class="text-xl mr-1 align-middle" title="靜音開關">🔊</button>
+                    積分 (SCORE): <span id="ui-score" class="font-bold text-green-400 text-2xl">0</span>
+                    <span id="ui-combo" class="hidden ml-1 text-pink-400 font-bold text-lg align-middle"></span><br>
                     作弊晶片 (HACK): <span id="ui-chips" class="font-bold text-yellow-400 text-3xl">3</span>
                     <button onclick="useChip()" id="btn-chip" class="ml-2 text-lg border-2 border-yellow-600 bg-yellow-900 text-yellow-400 px-2 py-0 hover:bg-yellow-700 disabled:opacity-50 transition">自動作答</button><br>
                     機體零件 (PARTS): <span id="ui-parts" class="font-bold text-blue-400 text-2xl">0</span>/3<br>
@@ -170,6 +205,7 @@
 
             <!-- 第一人稱敵人視角區 -->
             <div class="flex-1 min-h-0 flex flex-col items-center justify-center relative mb-2 overflow-hidden">
+                <div id="laser-shot" class="laser-shot"></div>
                 <div class="text-center mb-4">
                     <h2 id="enemy-name" class="text-2xl sm:text-4xl font-bold text-red-500 mb-2 sm:mb-4 tracking-widest uppercase font-sans"></h2>
                     <div id="enemy-sprite" class="text-6xl sm:text-9xl mb-2 sm:mb-4 animate-bounce enemy-sprite select-none">🛸</div>
@@ -502,7 +538,7 @@
         ];
 
         let GAME = {
-            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0,
+            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0, combo: 0,
             enemyHp: 0, isProcessing: false, isEventChallenge: false,
             timer: null, timeLeft: 0, maxTime: 10, currentQ: null, currentQType: null,
             combatQueue: [], puzzleQueue: [], vocabQueue: []
@@ -510,6 +546,60 @@
 
         let puzzleSelected = [];
         let puzzlePool = [];
+
+        // --- 8-bit 音效系統（用瀏覽器內建的 Web Audio API 即時生成，不需要任何音檔） ---
+        let audioCtx = null;
+        let muted = localStorage.getItem('geptCoreMuted') === '1';
+
+        function ensureAudio() {
+            if (!audioCtx) {
+                try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { audioCtx = null; }
+            }
+            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
+        }
+
+        function toggleMute() {
+            muted = !muted;
+            localStorage.setItem('geptCoreMuted', muted ? '1' : '0');
+            document.getElementById('btn-mute').textContent = muted ? '🔇' : '🔊';
+        }
+        document.getElementById('btn-mute').textContent = muted ? '🔇' : '🔊';
+
+        function beep(freq, duration, type = 'square', startGain = 0.15, glideTo = null, delay = 0) {
+            if (muted || !audioCtx) return;
+            const t0 = audioCtx.currentTime + delay;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, t0);
+            if (glideTo) osc.frequency.exponentialRampToValueAtTime(glideTo, t0 + duration);
+            gain.gain.setValueAtTime(startGain, t0);
+            gain.gain.exponentialRampToValueAtTime(0.0001, t0 + duration);
+            osc.connect(gain); gain.connect(audioCtx.destination);
+            osc.start(t0);
+            osc.stop(t0 + duration + 0.02);
+        }
+
+        function sfxShoot() { beep(900, 0.14, 'square', 0.12, 180); }
+        function sfxCorrect() { beep(660, 0.12, 'square', 0.15, 1320); }
+        function sfxWrong() { beep(180, 0.32, 'sawtooth', 0.18, 55); }
+        function sfxClick() { beep(500, 0.04, 'square', 0.06); }
+        function sfxCombo(tier) { beep(440 + tier * 110, 0.14, 'square', 0.18, (440 + tier * 110) * 2); }
+        function sfxLevelUp() { [523, 659, 784, 1047].forEach((f, i) => beep(f, 0.16, 'square', 0.15, null, i * 0.09)); }
+        function sfxWin() { [523, 659, 784, 1047, 1319].forEach((f, i) => beep(f, 0.2, 'square', 0.16, null, i * 0.12)); }
+        function sfxLose() { [392, 349, 311, 262].forEach((f, i) => beep(f, 0.4, 'sawtooth', 0.15, null, i * 0.2)); }
+
+        function fireLaser() {
+            const laser = document.getElementById('laser-shot');
+            if (!laser) return;
+            laser.classList.remove('firing');
+            void laser.offsetWidth;
+            laser.classList.add('firing');
+        }
+
+        function wait(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
 
         // --- 老師後台紀錄：把這裡換成你自己的 Google 試算表 Web App 網址 ---
         // 還沒設定的話留空字串就好，遊戲照樣正常運作，只是不會記錄錯題。
@@ -579,10 +669,11 @@
         }
 
         function startGame() {
+            ensureAudio();
             const nameInput = document.getElementById('player-name').value.trim();
             if (nameInput) GAME.player = nameInput.toUpperCase();
 
-            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0;
+            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0; GAME.combo = 0;
             GAME.combatQueue = []; GAME.puzzleQueue = []; GAME.vocabQueue = [];
             document.getElementById('ui-max-stage').innerText = LEVELS.length;
 
@@ -600,6 +691,22 @@
             document.getElementById('ui-parts').innerText = GAME.parts;
             document.getElementById('ui-stage').innerText = Math.min(GAME.stage + 1, LEVELS.length);
             document.getElementById('btn-chip').disabled = GAME.chips <= 0;
+
+            const comboEl = document.getElementById('ui-combo');
+            if (GAME.combo >= 2) {
+                const mult = comboMultiplier(GAME.combo);
+                comboEl.textContent = mult > 1 ? `🔥COMBO x${GAME.combo} (${mult}x分數)` : `COMBO x${GAME.combo}`;
+                comboEl.classList.remove('hidden');
+            } else {
+                comboEl.classList.add('hidden');
+            }
+        }
+
+        function comboMultiplier(combo) {
+            if (combo >= 8) return 3;
+            if (combo >= 5) return 2;
+            if (combo >= 3) return 1.5;
+            return 1;
         }
 
         function loadStage() {
@@ -724,6 +831,7 @@
                 btn.innerText = word;
                 btn.onclick = () => {
                     if(GAME.isProcessing) return;
+                    sfxClick();
                     puzzlePool.splice(idx, 1); puzzleSelected.push(word);
                     renderPuzzleUI();
                 };
@@ -736,6 +844,7 @@
                 btn.innerText = word;
                 btn.onclick = () => {
                     if(GAME.isProcessing) return;
+                    sfxClick();
                     puzzleSelected.splice(idx, 1); puzzlePool.push(word);
                     renderPuzzleUI();
                 };
@@ -751,6 +860,8 @@
                 btn.style.backgroundColor = '#00ffcc'; btn.style.color = '#000';
                 await damageEnemy(10);
             } else {
+                sfxWrong();
+                GAME.combo = 0; updateTopUI();
                 btn.style.backgroundColor = '#ff3333'; btn.style.color = '#fff'; btn.style.borderColor = '#ff3333';
                 const correctOpt = GAME.currentQ.opt[GAME.currentQ.ans];
                 logAnswer(GAME.currentQType, GAME.currentQ.q, GAME.currentQ.opt[idx], correctOpt);
@@ -773,6 +884,8 @@
             if (userAns === GAME.currentQ.correct) {
                 await damageEnemy(15);
             } else {
+                sfxWrong();
+                GAME.combo = 0; updateTopUI();
                 logAnswer('puzzle', GAME.currentQ.hint, userAns, GAME.currentQ.correct);
                 await takeDamage(20, 'ERR: 邏輯錯誤 (LOGIC ERROR)');
             }
@@ -780,13 +893,31 @@
 
         async function damageEnemy(points = 10) {
             GAME.enemyHp--;
+
             if (points > 0) {
-                GAME.score += points;
+                const oldTier = comboMultiplier(GAME.combo);
+                GAME.combo++;
+                const mult = comboMultiplier(GAME.combo);
+                GAME.score += Math.round(points * mult);
+                if (mult > oldTier) {
+                    sfxCombo(GAME.combo);
+                    const comboEl = document.getElementById('ui-combo');
+                    comboEl.classList.remove('combo-pop');
+                    void comboEl.offsetWidth;
+                    comboEl.classList.add('combo-pop');
+                }
             }
-            if(!GAME.isEventChallenge) {
+
+            if (!GAME.isEventChallenge) {
+                fireLaser();
+                sfxShoot();
+                await wait(180);
                 document.getElementById('enemy-hp').innerText = '█'.repeat(GAME.enemyHp);
                 document.getElementById('enemy-sprite').classList.add('shake');
                 document.getElementById('enemy-sprite').style.filter = 'drop-shadow(0 0 20px rgba(255, 0, 0, 0.8))';
+                sfxCorrect();
+            } else {
+                sfxCorrect();
             }
             updateTopUI();
 
@@ -798,6 +929,7 @@
             }
 
             if (GAME.enemyHp <= 0) {
+                sfxLevelUp();
                 if (GAME.isEventChallenge) {
                     await showMessage('破解成功！<br>獲得 1 個零件', 'text-blue-400', 1200);
                     await addPart();
@@ -900,6 +1032,8 @@
                 if (GAME.timeLeft <= 0) {
                     clearInterval(GAME.timer);
                     GAME.isProcessing = true;
+                    sfxWrong();
+                    GAME.combo = 0; updateTopUI();
                     if (GAME.currentQ) {
                         const qText = GAME.currentQType === 'puzzle' ? GAME.currentQ.hint : GAME.currentQ.q;
                         const correctText = GAME.currentQType === 'puzzle' ? GAME.currentQ.correct : GAME.currentQ.opt[GAME.currentQ.ans];
@@ -912,6 +1046,7 @@
 
         function gameOver(isWin) {
             clearInterval(GAME.timer); showScreen('screen-end');
+            if (isWin) sfxWin(); else sfxLose();
             const title = document.getElementById('end-title');
             const desc = document.getElementById('end-desc');
 
