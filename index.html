@@ -357,6 +357,58 @@
             { q: "He was ______ when he lost his wallet.", opt: ["happy", "excited", "upset", "proud"], ans: 2 }
         ];
 
+        // 單字題庫：涵蓋 GEPT 初級常見生活單字（家庭、學校、場所、動詞、形容詞、易混淆單字）
+        const Q_VOCAB = [
+            { q: "'library' 的意思是？", opt: ["圖書館", "醫院", "超市", "公園"], ans: 0 },
+            { q: "'hospital' 的意思是？", opt: ["學校", "醫院", "餐廳", "工廠"], ans: 1 },
+            { q: "'restaurant' 的意思是？", opt: ["餐廳", "麵包店", "銀行", "車站"], ans: 0 },
+            { q: "'airport' 的意思是？", opt: ["港口", "車站", "機場", "飯店"], ans: 2 },
+            { q: "'umbrella' 的意思是？", opt: ["雨傘", "毛巾", "毯子", "枕頭"], ans: 0 },
+            { q: "'refrigerator' 的意思是？", opt: ["烤箱", "洗衣機", "冰箱", "冷氣機"], ans: 2 },
+            { q: "'neighbor' 的意思是？", opt: ["陌生人", "客人", "鄰居", "同學"], ans: 2 },
+            { q: "'holiday' 的意思是？", opt: ["平日", "假期", "週末", "生日"], ans: 1 },
+            { q: "'weather' 的意思是？", opt: ["季節", "天氣", "方向", "顏色"], ans: 1 },
+            { q: "'schedule' 的意思是？", opt: ["字典", "日曆", "時間表", "筆記本"], ans: 2 },
+            { q: "'stranger' 的意思是？", opt: ["朋友", "鄰居", "老師", "陌生人"], ans: 3 },
+            { q: "'address' 的意思是？", opt: ["地址", "姓名", "號碼", "訊息"], ans: 0 },
+            { q: "'instrument' 的意思是？", opt: ["家具", "樂器", "交通工具", "蔬菜"], ans: 1 },
+            { q: "'customer' 的意思是？", opt: ["老闆", "服務生", "顧客", "司機"], ans: 2 },
+            { q: "'towel' 的意思是？", opt: ["雨傘", "毯子", "襪子", "毛巾"], ans: 3 },
+            { q: "'borrow' 的意思是？", opt: ["借（入）", "借（出）", "歸還", "購買"], ans: 0 },
+            { q: "'arrive' 的意思是？", opt: ["離開", "到達", "等待", "停留"], ans: 1 },
+            { q: "'invite' 的意思是？", opt: ["拒絕", "邀請", "同意", "承諾"], ans: 1 },
+            { q: "'repair' 的意思是？", opt: ["打破", "建造", "修理", "打掃"], ans: 2 },
+            { q: "'discover' 的意思是？", opt: ["遺失", "隱藏", "忘記", "發現"], ans: 3 },
+            { q: "'complain' 的意思是？", opt: ["稱讚", "抱怨", "同意", "感謝"], ans: 1 },
+            { q: "'celebrate' 的意思是？", opt: ["取消", "避免", "慶祝", "忽略"], ans: 2 },
+            { q: "'improve' 的意思是？", opt: ["改善", "停止", "遺忘", "拒絕"], ans: 0 },
+            { q: "'protect' 的意思是？", opt: ["攻擊", "保護", "損害", "忽視"], ans: 1 },
+            { q: "'explain' 的意思是？", opt: ["隱藏", "質疑", "解釋", "猜測"], ans: 2 },
+            { q: "'dangerous' 的意思是？", opt: ["安全的", "舒適的", "危險的", "方便的"], ans: 2 },
+            { q: "'crowded' 的意思是？", opt: ["空的", "擁擠的", "安靜的", "寬的"], ans: 1 },
+            { q: "'nervous' 的意思是？", opt: ["放鬆的", "緊張的", "有自信的", "無聊的"], ans: 1 },
+            { q: "'polite' 的意思是？", opt: ["粗魯的", "害羞的", "懶惰的", "有禮貌的"], ans: 3 },
+            { q: "'honest' 的意思是？", opt: ["不誠實的", "自私的", "誠實的", "粗心的"], ans: 2 },
+            { q: "'patient' 的意思是？", opt: ["沒耐心的", "生氣的", "緊張的", "有耐心的"], ans: 3 },
+            { q: "'wonderful' 的意思是？", opt: ["很糟的", "普通的", "無聊的", "極好的"], ans: 3 },
+            { q: "'careful' 的意思是？", opt: ["粗心的", "小心的", "勇敢的", "好奇的"], ans: 1 },
+            { q: "'curious' 的意思是？", opt: ["好奇的", "無聊的", "疲累的", "生氣的"], ans: 0 },
+            { q: "'generous' 的意思是？", opt: ["小氣的", "嫉妒的", "驕傲的", "慷慨的"], ans: 3 },
+            { q: "'suddenly' 的意思是？", opt: ["慢慢地", "最後", "通常", "突然地"], ans: 3 },
+            { q: "'probably' 的意思是？", opt: ["必定地", "從不", "可能地", "總是"], ans: 2 },
+            { q: "'carefully' 的意思是？", opt: ["粗心地", "快速地", "小心地", "大聲地"], ans: 2 },
+            { q: "'immediately' 的意思是？", opt: ["最終", "很少", "偶爾", "立刻"], ans: 3 },
+            { q: "'environment' 的意思是？", opt: ["設備", "實驗", "環境", "娛樂"], ans: 2 },
+            { q: "'exercise' 的意思是？", opt: ["經驗", "考試", "表達", "運動；練習"], ans: 3 },
+            { q: "'experience' 的意思是？", opt: ["花費", "藉口", "經驗", "交換"], ans: 2 },
+            { q: "'information' 的意思是？", opt: ["指示", "邀請函", "資訊", "想像力"], ans: 2 },
+            { q: "'decision' 的意思是？", opt: ["方向", "討論", "決定", "描述"], ans: 2 },
+            { q: "'mistake' 的意思是？", opt: ["訊息", "記憶", "方法", "錯誤"], ans: 3 },
+            { q: "'traffic' 的意思是？", opt: ["旅行", "交通", "運輸", "麻煩"], ans: 1 },
+            { q: "'difference' 的意思是？", opt: ["距離", "方向", "不同；差異", "決定"], ans: 2 },
+            { q: "'quality' 的意思是？", opt: ["數量", "問題", "隊伍", "品質"], ans: 3 }
+        ];
+
         const Q_PUZZLE = [
             { hint: "提示：你妹妹幾歲？", words: ["how", "old", "is", "your", "sister"], correct: "how old is your sister" },
             { hint: "提示：袋子裡有一些蘋果。", words: ["there", "are", "some", "apples", "in", "the", "bag"], correct: "there are some apples in the bag" },
@@ -395,25 +447,25 @@
             { hint: "提示：這件事讓我覺得非常驚訝。", words: ["this", "made", "me", "feel", "very", "surprised"], correct: "this made me feel very surprised" }
         ];
 
-        // 迷宮關卡設定 (10 關：巡邏無人機 -> 雷射閘門 -> 物資箱 -> 重裝守衛 -> 資料鎖 -> 補給站 -> 精英衛兵 -> 加密閘門 -> 護衛統帥 -> 母艦核心)
+        // 迷宮關卡設定 (10 關，其中 3 關是單字題關卡，hp 加總 = 6，保證每輪遊戲至少考 6 題單字)
         const LEVELS = [
-            { type: 'combat', name: '巡邏無人機 (Drone)',      sprite: '🛸', hp: 2, time: 25 },
-            { type: 'puzzle', name: '雷射閘門 (Laser Gate)',    sprite: '⚡', hp: 1, time: 40 },
-            { type: 'event',  name: '廢棄物資箱 (Cargo)',       sprite: '📦', hp: 0, time: 0 },
-            { type: 'combat', name: '重裝守衛 (Guard)',         sprite: '🤖', hp: 3, time: 22 },
-            { type: 'puzzle', name: '資料鎖 (Data Lock)',       sprite: '🔒', hp: 2, time: 35 },
-            { type: 'event',  name: '補給站 (Supply Cache)',    sprite: '🎁', hp: 0, time: 0 },
-            { type: 'combat', name: '精英衛兵 (Elite Sentry)',  sprite: '👾', hp: 3, time: 20 },
-            { type: 'puzzle', name: '加密閘門 (Cipher Gate)',   sprite: '🧩', hp: 2, time: 32 },
-            { type: 'combat', name: '護衛統帥 (Commander)',     sprite: '🦾', hp: 4, time: 18 },
-            { type: 'boss',   name: '母艦核心 (MAINFRAME)',     sprite: '👁️', hp: 5, time: 15 }
+            { type: 'combat', name: '巡邏無人機 (Drone)',        sprite: '🛸', hp: 2, time: 25 },
+            { type: 'vocab',  name: '語言掃描器 (Lexicon Scan)', sprite: '📡', hp: 2, time: 25 },
+            { type: 'puzzle', name: '雷射閘門 (Laser Gate)',      sprite: '⚡', hp: 1, time: 40 },
+            { type: 'event',  name: '廢棄物資箱 (Cargo)',         sprite: '📦', hp: 0, time: 0 },
+            { type: 'combat', name: '重裝守衛 (Guard)',           sprite: '🤖', hp: 3, time: 22 },
+            { type: 'vocab',  name: '詞彙解碼器 (Vocab Decoder)', sprite: '🔤', hp: 2, time: 25 },
+            { type: 'event',  name: '補給站 (Supply Cache)',      sprite: '🎁', hp: 0, time: 0 },
+            { type: 'puzzle', name: '加密閘門 (Cipher Gate)',     sprite: '🧩', hp: 2, time: 32 },
+            { type: 'vocab',  name: '語意屏障 (Semantic Wall)',   sprite: '🈯', hp: 2, time: 25 },
+            { type: 'boss',   name: '母艦核心 (MAINFRAME)',       sprite: '👁️', hp: 5, time: 15 }
         ];
 
         let GAME = {
             player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0,
             enemyHp: 0, isProcessing: false, isEventChallenge: false,
             timer: null, timeLeft: 0, maxTime: 10, currentQ: null,
-            combatQueue: [], puzzleQueue: []
+            combatQueue: [], puzzleQueue: [], vocabQueue: []
         };
 
         let puzzleSelected = [];
@@ -466,7 +518,7 @@
             if (nameInput) GAME.player = nameInput.toUpperCase();
 
             GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0;
-            GAME.combatQueue = []; GAME.puzzleQueue = [];
+            GAME.combatQueue = []; GAME.puzzleQueue = []; GAME.vocabQueue = [];
             document.getElementById('ui-max-stage').innerText = LEVELS.length;
 
             updateTopUI();
@@ -517,10 +569,11 @@
                 setupEvent(); return;
             }
             if (currentType === 'boss') {
-                currentType = Math.random() > 0.5 ? 'combat' : 'puzzle';
+                currentType = ['combat', 'puzzle', 'vocab'][Math.floor(Math.random() * 3)];
             }
 
-            if (currentType === 'combat') setupCombat();
+            if (currentType === 'combat') setupCombat('combatQueue', Q_COMBAT);
+            else if (currentType === 'vocab') setupCombat('vocabQueue', Q_VOCAB);
             else setupPuzzle();
 
             GAME.maxTime = level.time;
@@ -547,7 +600,10 @@
                 document.getElementById('timer-container').style.visibility = 'visible';
 
                 GAME.enemyHp = 1; GAME.isEventChallenge = true;
-                if(Math.random() > 0.5) setupCombat(); else setupPuzzle();
+                const hackType = ['combat', 'puzzle', 'vocab'][Math.floor(Math.random() * 3)];
+                if (hackType === 'puzzle') setupPuzzle();
+                else if (hackType === 'vocab') setupCombat('vocabQueue', Q_VOCAB);
+                else setupCombat('combatQueue', Q_COMBAT);
 
                 GAME.maxTime = 20; GAME.timeLeft = 20;
                 startTimer();
@@ -563,11 +619,11 @@
             optDiv.appendChild(btnHack); optDiv.appendChild(btnLeave);
         }
 
-        function setupCombat() {
+        function setupCombat(queueKey = 'combatQueue', source = Q_COMBAT) {
             document.getElementById('combat-area').classList.remove('hidden');
             document.getElementById('combat-options').innerHTML = '';
 
-            GAME.currentQ = drawQuestion('combatQueue', Q_COMBAT);
+            GAME.currentQ = drawQuestion(queueKey, source);
             document.getElementById('combat-q').innerText = GAME.currentQ.q;
 
             GAME.currentQ.opt.forEach((opt, idx) => {
@@ -681,14 +737,18 @@
                 // Boss 戰未死，切換題目
                 setTimeout(() => {
                     GAME.isProcessing = false;
-                    if (LEVELS[GAME.stage].type === 'boss') {
-                        if(Math.random() > 0.5) {
-                            document.getElementById('puzzle-area').classList.add('hidden'); setupCombat();
-                        } else {
-                            document.getElementById('combat-area').classList.add('hidden'); setupPuzzle();
-                        }
-                    } else if (LEVELS[GAME.stage].type === 'combat') {
-                        setupCombat();
+                    const stageType = LEVELS[GAME.stage].type;
+                    if (stageType === 'boss') {
+                        const pick = ['combat', 'puzzle', 'vocab'][Math.floor(Math.random() * 3)];
+                        document.getElementById('puzzle-area').classList.add('hidden');
+                        document.getElementById('combat-area').classList.add('hidden');
+                        if (pick === 'puzzle') setupPuzzle();
+                        else if (pick === 'vocab') setupCombat('vocabQueue', Q_VOCAB);
+                        else setupCombat('combatQueue', Q_COMBAT);
+                    } else if (stageType === 'combat') {
+                        setupCombat('combatQueue', Q_COMBAT);
+                    } else if (stageType === 'vocab') {
+                        setupCombat('vocabQueue', Q_VOCAB);
                     } else {
                         setupPuzzle();
                     }
