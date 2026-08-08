@@ -159,6 +159,22 @@
             60% { transform: scale(1.3); opacity: 1; }
             100% { transform: scale(1); opacity: 1; }
         }
+
+        .boss-warning-banner {
+            animation: warnPulse 0.35s ease-in-out infinite alternate;
+        }
+        @keyframes warnPulse {
+            from { opacity: 0.7; transform: translateX(-50%) scale(1); }
+            to { opacity: 1; transform: translateX(-50%) scale(1.05); }
+        }
+
+        .boss-lunge {
+            animation: bossLunge 0.7s ease-in-out infinite;
+        }
+        @keyframes bossLunge {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,0,0,0.5)); }
+            50% { transform: scale(1.15); filter: drop-shadow(0 0 25px rgba(255,0,0,0.9)); }
+        }
     </style>
 </head>
 <body class="flex items-center justify-center h-screen overflow-hidden m-0">
@@ -206,6 +222,7 @@
             <!-- 第一人稱敵人視角區 -->
             <div class="flex-1 min-h-0 flex flex-col items-center justify-center relative mb-2 overflow-hidden">
                 <div id="laser-shot" class="laser-shot"></div>
+                <div id="boss-warning" class="hidden absolute top-1 left-1/2 -translate-x-1/2 bg-red-900 border-2 border-red-500 text-red-200 font-bold text-sm sm:text-lg px-3 py-1 z-20 boss-warning-banner font-sans text-center whitespace-nowrap rounded">⚠️ 魔王蓄力反擊！快點作答！</div>
                 <div class="text-center mb-4">
                     <h2 id="enemy-name" class="text-2xl sm:text-4xl font-bold text-red-500 mb-2 sm:mb-4 tracking-widest uppercase font-sans"></h2>
                     <div id="enemy-sprite" class="text-6xl sm:text-9xl mb-2 sm:mb-4 animate-bounce enemy-sprite select-none">🛸</div>
@@ -538,7 +555,7 @@
         ];
 
         let GAME = {
-            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0, combo: 0,
+            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0, combo: 0, bossCounterFired: false,
             enemyHp: 0, isProcessing: false, isEventChallenge: false,
             timer: null, timeLeft: 0, maxTime: 10, currentQ: null, currentQType: null,
             combatQueue: [], puzzleQueue: [], vocabQueue: []
@@ -586,6 +603,8 @@
         function sfxClick() { beep(500, 0.04, 'square', 0.06); }
         function sfxCombo(tier) { beep(440 + tier * 110, 0.14, 'square', 0.18, (440 + tier * 110) * 2); }
         function sfxLevelUp() { [523, 659, 784, 1047].forEach((f, i) => beep(f, 0.16, 'square', 0.15, null, i * 0.09)); }
+        function sfxBossAttack() { [0, 0.15, 0.3, 0.45].forEach((d, i) => beep(i % 2 === 0 ? 200 : 350, 0.16, 'sawtooth', 0.18, null, d)); }
+        function sfxBossHit() { beep(90, 0.35, 'sawtooth', 0.25, 40); }
         function sfxWin() { [523, 659, 784, 1047, 1319].forEach((f, i) => beep(f, 0.2, 'square', 0.16, null, i * 0.12)); }
         function sfxLose() { [392, 349, 311, 262].forEach((f, i) => beep(f, 0.4, 'sawtooth', 0.15, null, i * 0.2)); }
 
@@ -595,6 +614,36 @@
             laser.classList.remove('firing');
             void laser.offsetWidth;
             laser.classList.add('firing');
+        }
+
+        // 魔王反擊：倒數過一半還沒作答，魔王會蓄力 0.7 秒後反擊；
+        // 這段時間內只要玩家送出答案（GAME.isProcessing 變 true）就算閃避成功，不會扣血。
+        async function triggerBossCounterAttack() {
+            const warn = document.getElementById('boss-warning');
+            const sprite = document.getElementById('enemy-sprite');
+            warn.classList.remove('hidden');
+            sprite.classList.add('boss-lunge');
+            sfxBossAttack();
+
+            await wait(700);
+
+            warn.classList.add('hidden');
+            sprite.classList.remove('boss-lunge');
+
+            if (GAME.isProcessing) return; // 及時作答，閃避成功
+
+            sfxBossHit();
+            GAME.hp -= 10;
+            updateTopUI();
+            document.body.classList.add('shake');
+            document.getElementById('screen-game').style.boxShadow = 'inset 0 0 100px rgba(255,0,0,0.7)';
+            await wait(350);
+            document.body.classList.remove('shake');
+            document.getElementById('screen-game').style.boxShadow = '';
+
+            if (GAME.hp <= 0 && document.getElementById('screen-end').classList.contains('hidden')) {
+                gameOver(false);
+            }
         }
 
         function wait(ms) {
@@ -794,6 +843,8 @@
         function setupCombat(queueKey = 'combatQueue', source = Q_COMBAT) {
             document.getElementById('combat-area').classList.remove('hidden');
             document.getElementById('combat-options').innerHTML = '';
+            GAME.bossCounterFired = false;
+            document.getElementById('boss-warning').classList.add('hidden');
 
             GAME.currentQType = queueKey === 'vocabQueue' ? 'vocab' : 'grammar';
             GAME.currentQ = drawQuestion(queueKey, source);
@@ -810,6 +861,8 @@
 
         function setupPuzzle() {
             document.getElementById('puzzle-area').classList.remove('hidden');
+            GAME.bossCounterFired = false;
+            document.getElementById('boss-warning').classList.add('hidden');
             GAME.currentQType = 'puzzle';
             GAME.currentQ = drawQuestion('puzzleQueue', Q_PUZZLE);
             document.getElementById('puzzle-hint').innerText = GAME.currentQ.hint;
@@ -1028,6 +1081,11 @@
 
                 if (percent < 30) bar.style.backgroundColor = '#ff3333';
                 else bar.style.backgroundColor = '#00ffcc';
+
+                if (LEVELS[GAME.stage] && LEVELS[GAME.stage].type === 'boss' && !GAME.bossCounterFired && percent <= 45 && percent > 0) {
+                    GAME.bossCounterFired = true;
+                    triggerBossCounterAttack();
+                }
 
                 if (GAME.timeLeft <= 0) {
                     clearInterval(GAME.timer);
