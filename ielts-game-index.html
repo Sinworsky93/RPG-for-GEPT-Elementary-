@@ -36,17 +36,17 @@
   @media(min-width:860px){.split{grid-template-columns:1.1fr 1fr;}}
   .passage-box, .qbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;}
   .passage-box{max-height:78vh;overflow-y:auto;position:sticky;top:76px;}
-  .passage-box h2{font-size:19px;margin-top:0;}
-  .passage-box p{line-height:1.75;font-size:14.5px;}
+  .passage-box h2{font-size:21px;margin-top:0;}
+  .passage-box p{line-height:1.8;font-size:16.5px;}
   .para-label{font-weight:800;color:var(--accent);margin-right:6px;}
   .qgroup{margin-bottom:26px;}
-  .qgroup h4{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--sub);margin:0 0 4px;}
-  .qgroup .instr{font-size:13px;color:var(--sub);margin-bottom:12px;font-style:italic;}
-  .heading-list{background:var(--chip);border-radius:8px;padding:10px 14px;font-size:13px;line-height:1.7;margin-bottom:12px;}
-  .qitem{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:14px;flex-wrap:wrap;}
+  .qgroup h4{font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:var(--sub);margin:0 0 4px;}
+  .qgroup .instr{font-size:14px;color:var(--sub);margin-bottom:12px;font-style:italic;}
+  .heading-list{background:var(--chip);border-radius:8px;padding:12px 16px;font-size:15px;line-height:1.8;margin-bottom:12px;}
+  .qitem{display:flex;align-items:center;gap:10px;margin-bottom:12px;font-size:15.5px;flex-wrap:wrap;}
   .qitem .qn{font-weight:700;color:var(--sub);min-width:22px;}
-  .qitem select, .qitem input[type=text]{border:1px solid var(--line);border-radius:6px;padding:6px 8px;font-size:14px;}
-  .tfng label{display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:13px;cursor:pointer;}
+  .qitem select, .qitem input[type=text]{border:1px solid var(--line);border-radius:6px;padding:7px 9px;font-size:15px;}
+  .tfng label{display:inline-flex;align-items:center;gap:4px;margin-right:12px;font-size:14.5px;cursor:pointer;}
   .qstatement{flex:1;min-width:220px;}
   .result{font-size:12px;font-weight:700;margin-left:4px;}
   .result.correct{color:var(--good);}
@@ -58,10 +58,10 @@
   /* writing/speaking */
   .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;}
   .chip-row span{background:var(--chip);color:var(--accent);font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:999px;}
-  .section-title{font-size:15px;font-weight:800;margin:22px 0 10px;text-transform:capitalize;}
-  .prompt-item{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:8px;font-size:14px;line-height:1.6;}
+  .section-title{font-size:16px;font-weight:800;margin:22px 0 10px;text-transform:capitalize;}
+  .prompt-item{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin-bottom:8px;font-size:15.5px;line-height:1.65;}
   .prompt-item .tag{font-size:11px;font-weight:700;color:#fff;background:#8b98ab;padding:1px 7px;border-radius:5px;margin-right:8px;}
-  .cue-card{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:18px;font-size:14px;line-height:1.7;margin-bottom:10px;}
+  .cue-card{background:var(--panel);border:1px dashed var(--line);border-radius:12px;padding:18px;font-size:15px;line-height:1.75;margin-bottom:10px;}
   .flipbtn{background:var(--accent);color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:700;cursor:pointer;font-size:13px;margin-bottom:16px;}
   .part3set{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px;}
   .part3set h4{margin:0 0 8px;font-size:14px;color:var(--accent);}
@@ -73,11 +73,18 @@
 <header>
   <div class="wrap">
     <h1>📘 IELTS Practice</h1>
-    <nav>
-      <button data-tab="reading" class="active">Reading</button>
-      <button data-tab="writing">Writing</button>
-      <button data-tab="speaking">Speaking</button>
-    </nav>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <nav>
+        <button data-tab="reading" class="active">Reading</button>
+        <button data-tab="writing">Writing</button>
+        <button data-tab="speaking">Speaking</button>
+      </nav>
+      <div class="zoomctrl" style="display:flex;align-items:center;gap:2px;border:1px solid var(--line);border-radius:8px;padding:2px;">
+        <button onclick="adjustZoom(-0.1)" title="Zoom out" style="border:none;background:none;width:26px;height:26px;font-weight:800;color:var(--sub);cursor:pointer;border-radius:6px;">−</button>
+        <span id="zoomLevel" style="font-size:12px;color:var(--sub);width:38px;text-align:center;">100%</span>
+        <button onclick="adjustZoom(0.1)" title="Zoom in" style="border:none;background:none;width:26px;height:26px;font-weight:800;color:var(--sub);cursor:pointer;border-radius:6px;">+</button>
+      </div>
+    </div>
   </div>
 </header>
 
@@ -249,44 +256,62 @@ function gradePassage(){
 const PALETTE = ['#2f6fed','#e0673f','#1c8a4b','#b8860b','#8b5cf6','#0891b2'];
 
 function svgLineChart(chart){
-  const W=560,H=260,padL=44,padR=14,padT=14,padB=28;
+  const W=760,H=380,padL=54,padR=20,padT=28,padB=40;
   const allVals = chart.series.flatMap(s=>s.values);
-  const max = Math.max(...allVals)*1.1, min = Math.min(0, Math.min(...allVals));
+  const max = Math.max(...allVals)*1.15, min = Math.min(0, Math.min(...allVals));
   const n = chart.labels.length;
   const x = i => padL + (W-padL-padR) * (i/(n-1));
   const y = v => H-padB - (H-padT-padB) * ((v-min)/(max-min || 1));
   let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">`;
-  svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#c7ccd4"/>`;
-  svg += `<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H-padB}" stroke="#c7ccd4"/>`;
-  chart.labels.forEach((l,i)=>{ svg += `<text x="${x(i)}" y="${H-padB+16}" font-size="9" fill="#5b6472" text-anchor="middle">${l}</text>`; });
+  // horizontal gridlines with value labels
+  const gridSteps = 4;
+  for(let g=0; g<=gridSteps; g++){
+    const v = min + (max-min)*g/gridSteps;
+    const gy = y(v);
+    svg += `<line x1="${padL}" y1="${gy}" x2="${W-padR}" y2="${gy}" stroke="#eceff3"/>`;
+    svg += `<text x="${padL-8}" y="${gy+4}" font-size="12" fill="#5b6472" text-anchor="end">${Math.round(v*10)/10}</text>`;
+  }
+  svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#8a92a0"/>`;
+  chart.labels.forEach((l,i)=>{ svg += `<text x="${x(i)}" y="${H-padB+22}" font-size="12" fill="#5b6472" text-anchor="middle">${l}</text>`; });
   chart.series.forEach((s,si)=>{
     const color = PALETTE[si%PALETTE.length];
     const pts = s.values.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
-    svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.5"/>`;
-    s.values.forEach((v,i)=> svg += `<circle cx="${x(i)}" cy="${y(v)}" r="2.5" fill="${color}"/>`);
+    svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3"/>`;
+    s.values.forEach((v,i)=>{
+      svg += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${color}"/>`;
+      svg += `<text x="${x(i)}" y="${y(v)-10}" font-size="11" font-weight="700" fill="${color}" text-anchor="middle">${v}</text>`;
+    });
   });
   svg += '</svg>';
-  const legend = chart.series.map((s,si)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:12px;"><span style="width:10px;height:10px;background:${PALETTE[si%PALETTE.length]};border-radius:2px;display:inline-block;"></span>${s.name}</span>`).join('');
-  return `<div>${svg}<div style="margin-top:6px;">${legend}</div>${chart.unit?`<div style="font-size:11px;color:var(--sub);margin-top:2px;">Unit: ${chart.unit}</div>`:''}</div>`;
+  const legend = chart.series.map((s,si)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:13px;"><span style="width:11px;height:11px;background:${PALETTE[si%PALETTE.length]};border-radius:2px;display:inline-block;"></span>${s.name}</span>`).join('');
+  return `<div>${svg}<div style="margin-top:8px;">${legend}</div>${chart.unit?`<div style="font-size:12px;color:var(--sub);margin-top:3px;">Unit: ${chart.unit}</div>`:''}</div>`;
 }
 
 function svgBarChart(chart){
-  const W=560,H=260,padL=44,padR=14,padT=14,padB=28;
+  const W=760,H=380,padL=54,padR=20,padT=28,padB=40;
   const allVals = chart.series.flatMap(s=>s.values);
-  const max = Math.max(...allVals)*1.15;
+  const max = Math.max(...allVals)*1.2;
   const n = chart.labels.length, sN = chart.series.length;
   const groupW = (W-padL-padR)/n;
-  const barW = Math.min(28, (groupW*0.7)/sN);
+  const barW = Math.min(40, (groupW*0.72)/sN);
   const y = v => H-padB - (H-padT-padB) * (v/max);
   let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">`;
-  svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#c7ccd4"/>`;
+  const gridSteps = 4;
+  for(let g=0; g<=gridSteps; g++){
+    const v = max*g/gridSteps;
+    const gy = y(v);
+    svg += `<line x1="${padL}" y1="${gy}" x2="${W-padR}" y2="${gy}" stroke="#eceff3"/>`;
+    svg += `<text x="${padL-8}" y="${gy+4}" font-size="12" fill="#5b6472" text-anchor="end">${Math.round(v*10)/10}</text>`;
+  }
+  svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#8a92a0"/>`;
   chart.labels.forEach((l,i)=>{
     const gx = padL + groupW*i + groupW/2;
-    svg += `<text x="${gx}" y="${H-padB+16}" font-size="9" fill="#5b6472" text-anchor="middle">${l}</text>`;
+    svg += `<text x="${gx}" y="${H-padB+22}" font-size="12" fill="#5b6472" text-anchor="middle">${l}</text>`;
     chart.series.forEach((s,si)=>{
       const v = s.values[i];
       const bx = gx - (sN*barW)/2 + si*barW;
-      svg += `<rect x="${bx}" y="${y(v)}" width="${barW-2}" height="${H-padB-y(v)}" fill="${PALETTE[si%PALETTE.length]}" rx="1.5"/>`;
+      svg += `<rect x="${bx}" y="${y(v)}" width="${barW-2}" height="${H-padB-y(v)}" fill="${PALETTE[si%PALETTE.length]}" rx="2"/>`;
+      svg += `<text x="${bx+(barW-2)/2}" y="${y(v)-6}" font-size="10.5" font-weight="700" fill="${PALETTE[si%PALETTE.length]}" text-anchor="middle">${v}</text>`;
     });
   });
   svg += '</svg>';
@@ -295,25 +320,28 @@ function svgBarChart(chart){
 }
 
 function svgPieSet(chart){
-  const R=48;
+  const R=80;
   const pieSVG = (pie)=>{
     const total = pie.values.reduce((a,b)=>a+b,0);
     let angle = -Math.PI/2, path='';
-    const cx=R+4, cy=R+4;
+    const cx=R+6, cy=R+6;
     pie.values.forEach((v,i)=>{
       const frac = v/total, a2 = angle + frac*2*Math.PI;
       const x1=cx+R*Math.cos(angle), y1=cy+R*Math.sin(angle);
       const x2=cx+R*Math.cos(a2), y2=cy+R*Math.sin(a2);
       const large = frac>0.5?1:0;
+      const mid = angle + (a2-angle)/2;
+      const lx = cx + (R*0.65)*Math.cos(mid), ly = cy + (R*0.65)*Math.sin(mid);
       path += `<path d="M${cx},${cy} L${x1},${y1} A${R},${R} 0 ${large} 1 ${x2},${y2} Z" fill="${PALETTE[i%PALETTE.length]}"/>`;
+      if(frac>0.05) path += `<text x="${lx}" y="${ly}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">${v}%</text>`;
       angle = a2;
     });
     return `<div style="text-align:center;">
-      <svg viewBox="0 0 ${(R+4)*2} ${(R+4)*2}" width="120" height="120">${path}</svg>
-      <div style="font-weight:700;font-size:12px;margin-top:4px;">${pie.year}</div>
+      <svg viewBox="0 0 ${(R+6)*2} ${(R+6)*2}" width="190" height="190">${path}</svg>
+      <div style="font-weight:700;font-size:14px;margin-top:6px;">${pie.year}</div>
     </div>`;
   };
-  const legend = chart.pies[0].labels.map((l,i)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:12px;"><span style="width:10px;height:10px;background:${PALETTE[i%PALETTE.length]};border-radius:2px;display:inline-block;"></span>${l}</span>`).join('');
+  const legend = chart.pies[0].labels.map((l,i)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:13px;"><span style="width:11px;height:11px;background:${PALETTE[i%PALETTE.length]};border-radius:2px;display:inline-block;"></span>${l}</span>`).join('');
   return `<div style="display:flex;gap:24px;flex-wrap:wrap;">${chart.pies.map(pieSVG).join('')}</div><div style="margin-top:10px;">${legend}</div>`;
 }
 
@@ -552,6 +580,21 @@ function nextCue(){
   cueIndex = Math.floor(Math.random()*cards.length);
   document.getElementById('cueCard').innerHTML = cueCardHTML(cards[cueIndex]);
 }
+
+/* ---------- zoom control ---------- */
+let zoomLevel = 1;
+function adjustZoom(delta){
+  zoomLevel = Math.min(1.6, Math.max(0.8, Math.round((zoomLevel+delta)*10)/10));
+  document.body.style.zoom = zoomLevel;
+  document.getElementById('zoomLevel').textContent = Math.round(zoomLevel*100)+'%';
+  try{ localStorage.setItem('ieltsZoom', zoomLevel); }catch(e){}
+}
+(function initZoom(){
+  try{
+    const saved = parseFloat(localStorage.getItem('ieltsZoom'));
+    if(saved && saved>=0.8 && saved<=1.6){ zoomLevel = saved; document.body.style.zoom = zoomLevel; document.getElementById('zoomLevel').textContent = Math.round(zoomLevel*100)+'%'; }
+  }catch(e){}
+})();
 
 init();
 </script>
