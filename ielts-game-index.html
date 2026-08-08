@@ -288,26 +288,51 @@ function savePassageHighlights(){
 }
 function unwrapHighlight(mark){
   const parent = mark.parentNode;
+  if(!parent) return;
   while(mark.firstChild) parent.insertBefore(mark.firstChild, mark);
   parent.removeChild(mark);
+  parent.normalize();
   savePassageHighlights();
 }
+/* Click on any existing highlight (live view or restored from storage) removes it. */
+document.addEventListener('click', e=>{
+  const mark = e.target.closest && e.target.closest('mark.hl');
+  if(mark){ e.stopPropagation(); unwrapHighlight(mark); }
+});
 function highlightSelection(){
   const sel = window.getSelection();
   if(!sel || !sel.rangeCount || sel.isCollapsed) return;
   const range = sel.getRangeAt(0);
   const container = document.getElementById('passageTextOnly');
   if(!container || !container.contains(range.commonAncestorContainer)) return;
-  const mark = document.createElement('mark');
-  mark.className = 'hl';
-  mark.onclick = function(e){ e.stopPropagation(); unwrapHighlight(mark); };
-  try{
-    range.surroundContents(mark);
-  }catch(e){
-    const frag = range.extractContents();
-    mark.appendChild(frag);
-    range.insertNode(mark);
-  }
+
+  /* Walk only the text nodes touched by the selection and wrap the selected
+     substring of each one individually (splitText), instead of moving whole
+     DOM subtrees via surroundContents/extractContents — that approach could
+     drop or scramble content whenever a selection crossed element boundaries
+     (e.g. spanning the paragraph-label <span> or two <p> tags). */
+  const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, {
+    acceptNode(node){ return range.intersectsNode(node) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT; }
+  });
+  const nodes = [];
+  let n;
+  while((n = walker.nextNode())) nodes.push(n);
+
+  nodes.forEach(node=>{
+    const isStart = node === range.startContainer;
+    const isEnd = node === range.endContainer;
+    const localStart = isStart ? range.startOffset : 0;
+    const localEnd = isEnd ? range.endOffset : node.data.length;
+    if(localStart >= localEnd) return;
+    let target = node;
+    if(localEnd < target.data.length) target.splitText(localEnd);
+    if(localStart > 0) target = target.splitText(localStart);
+    const mark = document.createElement('mark');
+    mark.className = 'hl';
+    target.parentNode.insertBefore(mark, target);
+    mark.appendChild(target);
+  });
+
   sel.removeAllRanges();
   savePassageHighlights();
 }
