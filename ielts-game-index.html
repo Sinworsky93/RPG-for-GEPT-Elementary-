@@ -15,7 +15,7 @@
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);}
   header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
   .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
-  header .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;flex-wrap:wrap;gap:6px;}
+  header .wrap{display:flex;align-items:center;justify-content:space-between;min-height:56px;flex-wrap:wrap;gap:6px;padding-top:8px;padding-bottom:8px;}
   header h1{font-size:16px;margin:0;font-weight:700;letter-spacing:.3px;white-space:nowrap;}
   nav{display:flex;gap:2px;flex-wrap:wrap;}
   nav button{border:none;background:transparent;color:var(--sub);font-size:13px;font-weight:600;padding:7px 10px;border-radius:8px;cursor:pointer;white-space:nowrap;}
@@ -104,6 +104,9 @@
   @media(max-width:600px){
     header h1{font-size:14px;}
     nav button{font-size:12px;padding:6px 8px;}
+    header .wrap{justify-content:flex-start;}
+    nav{order:3;width:100%;}
+    #studentBadge{margin-left:auto;}
     .passage-box p{font-size:15px;}
     #enlargeOverlay{padding:10px;}
     #enlargeOverlay .sheet{padding:16px;font-size:17px;}
@@ -121,6 +124,7 @@
       <button data-tab="speaking">口說 Speaking</button>
       <button data-tab="review">複習 Review</button>
     </nav>
+    <button id="studentBadge" class="smallbtn" onclick="promptStudentName(false)" style="white-space:nowrap;">👤 登記姓名</button>
   </div>
 </header>
 
@@ -154,6 +158,45 @@
 <script>
 const state = { reading: null, writing: null, speaking: null, currentPassage: null };
 
+/* ---------- backend sync (optional Google Sheets via Apps Script) ---------- */
+/* 老師部署 Google Apps Script 後，把網址貼在下面這一行的引號中間即可啟用後台紀錄功能。 */
+const BACKEND_URL = '';
+
+function getStudentName(){
+  try{ return localStorage.getItem('ieltsStudentName') || ''; }catch(e){ return ''; }
+}
+function setStudentName(name){
+  try{ localStorage.setItem('ieltsStudentName', name); }catch(e){}
+  syncToBackend('register', {});
+  renderStudentBadge();
+}
+function promptStudentName(force){
+  const current = getStudentName();
+  const name = prompt(force ? '請輸入你的姓名，方便老師在後台辨識你的紀錄：' : '修改姓名：', current);
+  if(name && name.trim()){ setStudentName(name.trim()); }
+}
+function renderStudentBadge(){
+  const el = document.getElementById('studentBadge');
+  if(!el) return;
+  const name = getStudentName();
+  el.textContent = name ? `👤 ${name}` : '👤 登記姓名';
+  el.title = name ? '點擊修改姓名' : '點擊登記姓名';
+}
+function syncToBackend(type, payload){
+  if(!BACKEND_URL) return;
+  const name = getStudentName();
+  if(!name && type !== 'register') return;
+  const body = Object.assign({ type, name, ts: new Date().toISOString() }, payload);
+  try{
+    fetch(BACKEND_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(body)
+    }).catch(()=>{});
+  }catch(e){}
+}
+
 async function loadJSON(paths){
   for(const p of paths){
     try{
@@ -173,6 +216,8 @@ async function init(){
   renderSpeaking();
   renderReview();
   if(window.indexedDB){ purgeOldRecordings().then(renderReview); }
+  renderStudentBadge();
+  if(!getStudentName()) promptStudentName(true);
 }
 
 /* ---------- nav ---------- */
@@ -380,13 +425,20 @@ async function renderRecordingsSection(){
 }
 
 /* ---------- reading ---------- */
+function bestReadingScore(title){
+  const hist = loadHistory().filter(h => h.type==='reading' && h.title===title);
+  if(!hist.length) return null;
+  return hist.reduce((best,h) => (h.score/h.total > best.score/best.total ? h : best), hist[0]);
+}
 function renderReadingList(){
   const el = document.getElementById('reading-list');
   if(!state.reading || !state.reading.passages){ el.innerHTML='<div class="empty">找不到 reading-bank.json</div>'; return; }
   el.innerHTML = state.reading.passages.map((p,i)=>{
     const qcount = p.questions.reduce((s,g)=>s+g.items.length,0);
+    const best = bestReadingScore(p.title);
+    const doneBadge = best ? `<span class="badge" style="background:#e6f6ec;color:var(--good);">✓ 最佳 ${best.score}/${best.total}</span>` : '';
     return `<div class="card" onclick="openPassage(${i})">
-      <span class="badge">第 ${i+1} 篇</span>
+      <span class="badge">第 ${i+1} 篇</span>${doneBadge}
       <h3>${p.title}</h3>
       <p>${Object.keys(p.paragraphs).length} 段落．${qcount} 題</p>
     </div>`;
@@ -496,6 +548,7 @@ function stopReadingTimer(){
 }
 
 function closePassage(){
+  renderReadingList();
   document.getElementById('reading-test').style.display='none';
   document.getElementById('reading-list').style.display='block';
 }
@@ -549,6 +602,8 @@ function gradePassage(autoSubmitted){
 
   saveHistoryEntry({ type:'reading', title: passageTitle, score: correct, total });
   addWrongAnswers(wrongItems);
+  syncToBackend('reading_score', { title: passageTitle, score: correct, total });
+  wrongItems.forEach(w => syncToBackend('wrong_answer', w));
 }
 
 /* ---------- chart rendering helpers ---------- */
@@ -706,6 +761,23 @@ let essayTimerId = null;
 let essaySecondsLeft = 0;
 let taskCtx = null; // { kind:'task1'|'task2', cat, i, minWords, durationMin, modelAnswer }
 
+/* ---------- essay draft autosave ---------- */
+function essayDraftKey(ctx){
+  return ctx.kind === 'task1' ? `essayDraft_task1_${ctx.i}` : `essayDraft_task2_${ctx.cat}_${ctx.i}`;
+}
+function saveEssayDraft(){
+  if(!taskCtx) return;
+  const box = document.getElementById('essayBox');
+  if(!box) return;
+  try{ localStorage.setItem(essayDraftKey(taskCtx), box.value); }catch(e){}
+}
+function loadEssayDraft(ctx){
+  try{ return localStorage.getItem(essayDraftKey(ctx)) || ''; }catch(e){ return ''; }
+}
+function clearEssayDraft(ctx){
+  try{ localStorage.removeItem(essayDraftKey(ctx||taskCtx)); }catch(e){}
+}
+
 function openTask1(i){
   stopEssayTimer();
   const item = state.writing.task1_academic[i];
@@ -728,17 +800,19 @@ function openTask1(i){
         <h4 style="margin-top:0;">你的報告</h4>
         <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
       </div>
-      <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。</p>
+      <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。草稿會自動儲存在本機。</p>
       <textarea id="essayBox" rows="14"
         autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
         style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
-        placeholder="在這裡描述圖表…" oninput="updateWordCount(${minWords})"></textarea>
+        placeholder="在這裡描述圖表…" oninput="updateWordCount(${minWords});saveEssayDraft()"></textarea>
       <div class="submitbar">
         <span class="score" id="wordCount">0 / ${minWords} 字</span>
         <button type="button" onclick="finishEssay(false)">完成並檢視</button>
       </div>
     </div>
   `;
+  const draft1 = loadEssayDraft(taskCtx);
+  if(draft1){ document.getElementById('essayBox').value = draft1; updateWordCount(minWords); }
   startEssayTimer();
 }
 
@@ -758,17 +832,19 @@ function openTask2(cat, i){
         <h3 style="margin-top:0;">${prompt}</h3>
         <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
       </div>
-      <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。</p>
+      <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。草稿會自動儲存在本機。</p>
       <textarea id="essayBox" rows="16"
         autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
         style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
-        placeholder="在這裡開始寫作文…" oninput="updateWordCount(${minWords})"></textarea>
+        placeholder="在這裡開始寫作文…" oninput="updateWordCount(${minWords});saveEssayDraft()"></textarea>
       <div class="submitbar">
         <span class="score" id="wordCount">0 / ${minWords} 字</span>
         <button type="button" onclick="finishEssay(false)">完成並檢視</button>
       </div>
     </div>
   `;
+  const draft2 = loadEssayDraft(taskCtx);
+  if(draft2){ document.getElementById('essayBox').value = draft2; updateWordCount(minWords); }
   startEssayTimer();
 }
 
@@ -861,11 +937,10 @@ function finishEssay(autoSubmitted){
     </div>
   `;
 
-  saveHistoryEntry({
-    type:'writing',
-    title: (ctx.kind==='task1' ? 'Task 1：' : 'Task 2：') + (ctx.promptText||'').slice(0,70) + ((ctx.promptText||'').length>70?'…':''),
-    checksPassed, checksTotal: checks.length
-  });
+  const historyTitle = (ctx.kind==='task1' ? 'Task 1：' : 'Task 2：') + (ctx.promptText||'').slice(0,70) + ((ctx.promptText||'').length>70?'…':'');
+  saveHistoryEntry({ type:'writing', title: historyTitle, checksPassed, checksTotal: checks.length });
+  syncToBackend('writing_score', { title: historyTitle, checksPassed, checksTotal: checks.length });
+  clearEssayDraft(ctx);
 }
 
 /* ---------- speaking ---------- */
