@@ -1043,7 +1043,7 @@ function renderSpeaking(){
 
   html += '<div class="section-title">Part 2－題卡</div>';
   html += `<button class="flipbtn" onclick="nextCue()">🎴 隨機抽一張題卡</button>`;
-  html += `<div class="cue-card" id="cueCard">${cueCardHTML(state.speaking.part2_cue_cards[0])}</div>`;
+  html += `<div class="cue-card" id="cueCard">${cueCardHTML(state.speaking.part2_cue_cards[0], 0)}</div>`;
 
   html += '<div class="section-title">Part 3－延伸討論</div>';
   html += (state.speaking.part3_discussion_sets||[]).map(s=>
@@ -1057,17 +1057,35 @@ function showPart1(i){
   document.getElementById('p1questions').innerHTML =
     `<div class="part3set"><h4>${t.topic}</h4>${usefulWordsHTML(t.useful_words)}<ul>${t.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`;
 }
-function cueCardHTML(card){
+/* Maps each Part 2 cue card's index to the most closely related Part 3
+   discussion theme index, so drawing a cue card immediately surfaces the
+   examiner-style follow-up questions on the same topic, just like the real
+   exam structure (Part 3 builds directly on the Part 2 topic). */
+const CUE_TO_PART3 = [9,3,0,0,5,0,0,5,2,9,4,5,2,9,3,1,11,5,14,5,4,7,3,8,9,5,16,9,0,8,1,8,5,0,8,4,4,8,5,4,5,5,5,1,10,7,1,1,8,5,9,9,9,9,2,2,11,5,10,10,11,10,5,12,1,13,14,12,3,3,13,5,5,15,16,3];
+
+function linkedPart3HTML(cardIndex){
+  const idx = CUE_TO_PART3[cardIndex];
+  const set = state.speaking.part3_discussion_sets && state.speaking.part3_discussion_sets[idx];
+  if(!set) return '';
+  return `<div class="part3set" style="margin-top:14px;border-color:var(--accent);">
+      <div style="font-size:11px;color:var(--accent);font-weight:700;margin-bottom:6px;">🔗 對應的 Part 3 延伸討論</div>
+      <h4>${set.theme}</h4>
+      ${usefulWordsHTML(set.useful_words)}
+      <ul>${set.questions.map(q=>`<li>${q}</li>`).join('')}</ul>
+    </div>`;
+}
+function cueCardHTML(card, cardIndex){
   return `<div style="font-weight:700;margin-bottom:8px;">${card.topic}</div>
     ${usefulWordsHTML(card.useful_words)}
     <div style="font-size:12.5px;color:var(--sub);margin-bottom:4px;">You should say:</div>
     <ul style="margin:0 0 10px;padding-left:18px;">${card.points.map(p=>`<li>${p}</li>`).join('')}</ul>
-    <div id="recorderZone" data-topic="${card.topic.replace(/"/g,'&quot;')}"></div>`;
+    <div id="recorderZone" data-topic="${card.topic.replace(/"/g,'&quot;')}"></div>
+    ${linkedPart3HTML(cardIndex)}`;
 }
 function nextCue(){
   const cards = state.speaking.part2_cue_cards;
   cueIndex = Math.floor(Math.random()*cards.length);
-  document.getElementById('cueCard').innerHTML = cueCardHTML(cards[cueIndex]);
+  document.getElementById('cueCard').innerHTML = cueCardHTML(cards[cueIndex], cueIndex);
   setupRecorder();
 }
 
