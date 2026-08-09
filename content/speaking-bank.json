@@ -630,6 +630,40 @@
         "background noise",
         "live performance"
       ]
+    },
+    {
+      "topic": "Hobbies",
+      "questions": [
+        "What hobbies do you have?",
+        "When did you start to become interested in this hobby?",
+        "Who do you usually do this activity with?",
+        "Is this activity popular in your country?",
+        "How do you think this hobby has influenced you?"
+      ],
+      "useful_words": [
+        "passion for",
+        "leisure pursuit",
+        "hone a skill",
+        "unwind",
+        "pick up a hobby"
+      ]
+    },
+    {
+      "topic": "Lifestyle and Daily Habits",
+      "questions": [
+        "When do you usually feel most energetic during the day?",
+        "Describe your eating habits.",
+        "Do you spend time exercising? What type of exercise do you do?",
+        "How do you balance work/study and leisure?",
+        "Do you think it's important to maintain a healthy lifestyle? Why?"
+      ],
+      "useful_words": [
+        "work-life balance",
+        "wholesome diet",
+        "sedentary",
+        "energised",
+        "routine"
+      ]
     }
   ],
   "part2_cue_cards": [
@@ -1850,6 +1884,310 @@
         "unforgettable",
         "underdog"
       ]
+    },
+    {
+      "topic": "Describe a person who has had an important influence on you.",
+      "points": [
+        "who this person is",
+        "how you know this person",
+        "what this person is like",
+        "and explain why this person has influenced you so much"
+      ],
+      "useful_words": [
+        "role model",
+        "profound impact",
+        "instil values",
+        "look up to",
+        "shape one's outlook"
+      ]
+    },
+    {
+      "topic": "Describe a celebrity you admire.",
+      "points": [
+        "who this person is",
+        "what they are known for",
+        "how you first heard of them",
+        "and explain why you admire them"
+      ],
+      "useful_words": [
+        "public figure",
+        "achievements",
+        "down-to-earth",
+        "inspiring",
+        "widely respected"
+      ]
+    },
+    {
+      "topic": "Describe an interesting person you know.",
+      "points": [
+        "who this person is",
+        "how you met them",
+        "what makes them interesting",
+        "and explain how you feel about this person"
+      ],
+      "useful_words": [
+        "unique perspective",
+        "eccentric",
+        "captivating",
+        "well-travelled",
+        "memorable character"
+      ]
+    },
+    {
+      "topic": "Describe a good teacher you have had.",
+      "points": [
+        "who this teacher was",
+        "what subject they taught",
+        "what made them a good teacher",
+        "and explain how this teacher influenced you"
+      ],
+      "useful_words": [
+        "dedicated",
+        "patient",
+        "inspiring",
+        "encourage",
+        "leave a lasting impression"
+      ]
+    },
+    {
+      "topic": "Describe a technology product you want to buy.",
+      "points": [
+        "what the product is",
+        "what it is used for",
+        "how much it costs",
+        "and explain why you want to buy it"
+      ],
+      "useful_words": [
+        "cutting-edge",
+        "worth the investment",
+        "user-friendly",
+        "upgrade",
+        "on my wish list"
+      ]
+    },
+    {
+      "topic": "Describe a family heirloom or antique in your home.",
+      "points": [
+        "what the object is",
+        "where it came from",
+        "how old it is",
+        "and explain why it is kept in your family"
+      ],
+      "useful_words": [
+        "sentimental value",
+        "passed down",
+        "cherished",
+        "family heritage",
+        "handed down through generations"
+      ]
+    },
+    {
+      "topic": "Describe a gift you have received.",
+      "points": [
+        "what the gift was",
+        "who gave it to you",
+        "the occasion it was given",
+        "and explain how you felt about receiving it"
+      ],
+      "useful_words": [
+        "thoughtful gesture",
+        "touched",
+        "unexpected",
+        "treasured",
+        "meaningful present"
+      ]
+    },
+    {
+      "topic": "Describe a place where you like to relax.",
+      "points": [
+        "where this place is",
+        "how often you go there",
+        "what you do there",
+        "and explain why it helps you relax"
+      ],
+      "useful_words": [
+        "tranquil",
+        "escape the hustle and bustle",
+        "unwind",
+        "peaceful retreat",
+        "recharge"
+      ]
+    },
+    {
+      "topic": "Describe an impressive historical building you have visited.",
+      "points": [
+        "what the building is",
+        "where it is located",
+        "what it looks like",
+        "and explain why it impressed you"
+      ],
+      "useful_words": [
+        "architectural feat",
+        "steeped in history",
+        "awe-inspiring",
+        "landmark",
+        "intricate design"
+      ]
+    },
+    {
+      "topic": "Describe a place you want to visit but haven't been to yet.",
+      "points": [
+        "where this place is",
+        "how you learned about it",
+        "what you would like to do there",
+        "and explain why you want to visit it"
+      ],
+      "useful_words": [
+        "bucket list",
+        "aspire to",
+        "off the beaten track",
+        "dream destination",
+        "hidden gem"
+      ]
+    },
+    {
+      "topic": "Describe a place that has special meaning to you.",
+      "points": [
+        "where this place is",
+        "how you discovered it",
+        "what you do there",
+        "and explain why it is meaningful to you"
+      ],
+      "useful_words": [
+        "sentimental value",
+        "cherish",
+        "hold a special place",
+        "nostalgic",
+        "significant"
+      ]
+    },
+    {
+      "topic": "Describe a memorable travel experience.",
+      "points": [
+        "where you went",
+        "who you went with",
+        "what happened during the trip",
+        "and explain why it was memorable"
+      ],
+      "useful_words": [
+        "unforgettable",
+        "eventful journey",
+        "broaden one's horizons",
+        "cultural immersion",
+        "vivid memory"
+      ]
+    },
+    {
+      "topic": "Describe an experience when you helped someone.",
+      "points": [
+        "who you helped",
+        "what the situation was",
+        "how you helped them",
+        "and explain how you felt afterwards"
+      ],
+      "useful_words": [
+        "lend a hand",
+        "go out of one's way",
+        "sense of fulfilment",
+        "selfless",
+        "make a difference"
+      ]
+    },
+    {
+      "topic": "Describe an experience learning a new skill.",
+      "points": [
+        "what the skill was",
+        "how you learned it",
+        "how long it took",
+        "and explain how you felt about learning it"
+      ],
+      "useful_words": [
+        "steep learning curve",
+        "hands-on practice",
+        "sense of achievement",
+        "persistence",
+        "master a skill"
+      ]
+    },
+    {
+      "topic": "Describe an achievement you are proud of.",
+      "points": [
+        "what the achievement was",
+        "how you accomplished it",
+        "what challenges you faced",
+        "and explain why you are proud of it"
+      ],
+      "useful_words": [
+        "sense of accomplishment",
+        "hard-earned",
+        "milestone",
+        "pay off",
+        "overcome adversity"
+      ]
+    },
+    {
+      "topic": "Describe an experience when you faced a challenge.",
+      "points": [
+        "what the challenge was",
+        "when it happened",
+        "how you dealt with it",
+        "and explain what you learned from it"
+      ],
+      "useful_words": [
+        "overcome adversity",
+        "resilient",
+        "setback",
+        "perseverance",
+        "valuable lesson"
+      ]
+    },
+    {
+      "topic": "Describe a sport you enjoy.",
+      "points": [
+        "what the sport is",
+        "when you started playing it",
+        "who you usually play it with",
+        "and explain why you enjoy it"
+      ],
+      "useful_words": [
+        "stay in shape",
+        "competitive",
+        "team spirit",
+        "physically demanding",
+        "adrenaline rush"
+      ]
+    },
+    {
+      "topic": "Describe an activity you like to do on weekends.",
+      "points": [
+        "what the activity is",
+        "who you usually do it with",
+        "how long you have been doing it",
+        "and explain why you enjoy it"
+      ],
+      "useful_words": [
+        "unwind",
+        "recharge",
+        "leisure time",
+        "wind down",
+        "quality time"
+      ]
+    },
+    {
+      "topic": "Describe a traditional festival or celebration.",
+      "points": [
+        "what the festival is",
+        "when it takes place",
+        "how people celebrate it",
+        "and explain what it means to you"
+      ],
+      "useful_words": [
+        "cultural heritage",
+        "festive atmosphere",
+        "time-honoured tradition",
+        "commemorate",
+        "customs"
+      ]
     }
   ],
   "part3_discussion_sets": [
@@ -1860,7 +2198,8 @@
         "How has technology changed the way people shop for food?",
         "Are there any disadvantages to using many subscription services at the same time?",
         "In your opinion, will more things become 'subscription only' in the future? Why or why not?",
-        "Do you think technology makes life more complex? Should we simplify our lives by reducing our use of technology?"
+        "Do you think technology makes life more complex? Should we simplify our lives by reducing our use of technology?",
+        "What are the differences in attitudes towards technology between young and old people?"
       ],
       "useful_words": [
         "double-edged sword",
@@ -1877,7 +2216,12 @@
         "What skills do you think are needed to get a good job these days?",
         "What's the biggest difference between white collar and blue collar jobs?",
         "How important is work-life balance to you?",
-        "Do you think people should change jobs often, or stay in one job for a long time?"
+        "Do you think people should change jobs often, or stay in one job for a long time?",
+        "Do you think people nowadays have more stress compared to the past? Why?",
+        "How do men and women differ in their responses to stress?",
+        "Why are modern people increasingly focusing on work-life balance?",
+        "What factors influence people's career choices?",
+        "Do you think remote work will become mainstream in the future?"
       ],
       "useful_words": [
         "job security",
@@ -1893,7 +2237,10 @@
         "What can governments do to encourage people to protect the environment?",
         "Do you think individuals can make a real difference to environmental problems, or is it mainly the responsibility of governments and large companies?",
         "How can governments improve living quality in crowded cities?",
-        "What are the negative aspects of living in a crowded city?"
+        "What are the negative aspects of living in a crowded city?",
+        "What challenges might urban planning face in the future?",
+        "How will increased environmental awareness affect consumption habits?",
+        "How should governments balance economic development and environmental protection?"
       ],
       "useful_words": [
         "sustainable development",
@@ -1926,7 +2273,8 @@
         "Do you think good friends are necessary in life?",
         "Why is advice from experienced people valuable?",
         "How do people decide whether to follow advice?",
-        "Do you often ask others for advice? Who do you usually ask?"
+        "Do you often ask others for advice? Who do you usually ask?",
+        "How does social media affect young people's interpersonal relationships?"
       ],
       "useful_words": [
         "confide in",
@@ -1976,7 +2324,8 @@
         "What makes a business successful?",
         "What makes a business fail?",
         "Is it easy to set up a new business in your country?",
-        "Do you think companies should donate money to help society?"
+        "Do you think companies should donate money to help society?",
+        "Is society's definition of success changing?"
       ],
       "useful_words": [
         "entrepreneurial spirit",
@@ -2009,7 +2358,9 @@
         "How do people choose a city to travel to?",
         "Where do people in your country often go for holidays?",
         "What is the ideal length for a holiday?",
-        "Is it important to plan a holiday ahead?"
+        "Is it important to plan a holiday ahead?",
+        "What are the main differences between city life and countryside life?",
+        "Why do some people prefer to travel alone rather than in groups?"
       ],
       "useful_words": [
         "broaden one's horizons",
@@ -2059,7 +2410,8 @@
         "Do you think people today should learn about AI technology?",
         "Should children learn to use AI?",
         "How can AI help in our lives?",
-        "Do you think students are overly reliant on AI?"
+        "Do you think students are overly reliant on AI?",
+        "How will traditional occupations transform with technological development?"
       ],
       "useful_words": [
         "automation",
@@ -2076,7 +2428,8 @@
         "Do you think school rules are important?",
         "What are the rules people should obey at work?",
         "What is the purpose of punishment?",
-        "Do people in your country usually obey the law?"
+        "Do people in your country usually obey the law?",
+        "Which is more important, personal privacy or public security?"
       ],
       "useful_words": [
         "deterrent",
@@ -2133,6 +2486,38 @@
         "cognitive benefit",
         "language exchange",
         "steep learning curve"
+      ]
+    },
+    {
+      "theme": "Education and the Future",
+      "useful_words": [
+        "curriculum",
+        "critical thinking",
+        "lifelong learning",
+        "equal access",
+        "assessment method"
+      ],
+      "questions": [
+        "How do you think education will evolve in the future?",
+        "What do you think is the main purpose of education?",
+        "Should traditional exams remain the main way to assess students, or are other methods better?",
+        "Do you think everyone should have equal access to higher education?"
+      ]
+    },
+    {
+      "theme": "Culture and Heritage",
+      "useful_words": [
+        "cultural heritage",
+        "time-honoured tradition",
+        "preserve",
+        "globalisation",
+        "customs"
+      ],
+      "questions": [
+        "How do different cultures celebrate festivals differently?",
+        "What has led to the decline of traditional crafts?",
+        "Is it important to protect cultural heritage? Why?",
+        "Do you think globalisation is making cultures more similar to each other?"
       ]
     }
   ]
