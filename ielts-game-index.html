@@ -249,7 +249,7 @@ function openEnlargeLive(sourceId, withHighlighter){
   content.appendChild(source);
   const toolbar = document.getElementById('enlargeToolbar');
   toolbar.innerHTML = withHighlighter
-    ? `<button type="button" class="enlarge-btn" title="標記螢光筆" onclick="highlightSelection()">🖍</button>
+    ? `<button type="button" class="enlarge-btn" title="標記螢光筆" onpointerdown="event.preventDefault()" onclick="highlightSelection()">🖍</button>
        <button type="button" class="enlarge-btn" title="清除標記" onclick="clearHighlights()">🧹</button>`
     : '';
   const overlay = document.getElementById('enlargeOverlay');
@@ -540,7 +540,7 @@ function openPassage(i){
           <h2 style="margin-top:0;">${p.title}</h2>
           <span style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
             <span id="readingTimerDisplay" style="font-weight:800;font-size:17px;color:var(--accent);white-space:nowrap;">${fmtTime(readingSecondsLeft)}</span>
-            <button type="button" class="enlarge-btn" title="標記螢光筆" onclick="highlightSelection()">🖍</button>
+            <button type="button" class="enlarge-btn" title="標記螢光筆" onpointerdown="event.preventDefault()" onclick="highlightSelection()">🖍</button>
             <button type="button" class="enlarge-btn" title="清除標記" onclick="clearHighlights()">🧹</button>
             <button type="button" class="enlarge-btn" title="放大文章（仍可標記螢光筆）" onclick="openEnlargeLive('passageTextOnly', true)">⛶</button>
           </span>
