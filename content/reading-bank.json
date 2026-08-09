@@ -143,33 +143,63 @@
         },
         {
           "group": "6-10",
-          "type": "true_false_not_given",
-          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "type": "multiple_choice",
+          "instructions": "Choose the correct letter, A, B, C or D.",
           "items": [
             {
               "n": 6,
-              "statement": "Charles Duhigg attended Harvard Business School.",
-              "answer": "TRUE"
+              "question": "According to Paragraph A, what did Charles Duhigg discover after becoming a manager?",
+              "options": [
+                "A) His academic credentials guaranteed his success as a communicator",
+                "B) His impulse to offer solutions often failed to meet his colleagues' emotional needs",
+                "C) His employees preferred emotional support over practical advice in every situation",
+                "D) Harvard Business School had not adequately trained him in public speaking"
+              ],
+              "answer": "B"
             },
             {
               "n": 7,
-              "statement": "Social conversations are primarily aimed at reaching consensus between speakers.",
-              "answer": "FALSE"
+              "question": "What is the primary goal of a social conversation, according to Paragraph B?",
+              "options": [
+                "A) Reaching a firm consensus among speakers",
+                "B) Solving a shared practical problem",
+                "C) Acknowledging differing perspectives to maintain social cohesion",
+                "D) Expressing personal vulnerabilities to build trust"
+              ],
+              "answer": "C"
             },
             {
               "n": 8,
-              "statement": "The \"two ships passing in the night\" metaphor describes a successful conversational outcome.",
-              "answer": "FALSE"
+              "question": "According to Paragraph C, what does the \"matching principle\" require?",
+              "options": [
+                "A) Two speakers must agree on all points",
+                "B) Both parties engage in the same type of conversation at the same time",
+                "C) Conversations must always begin in the practical dimension",
+                "D) Speakers should avoid switching between conversational modes"
+              ],
+              "answer": "B"
             },
             {
               "n": 9,
-              "statement": "Analysing a speaker's word choice can help identify which conversational mode is active.",
-              "answer": "TRUE"
+              "question": "In Paragraph D, what indicates that a conversation has shifted from a practical mode to an emotional one?",
+              "options": [
+                "A) The introduction of numerical data",
+                "B) A change in speaking volume",
+                "C) The use of emotionally charged language",
+                "D) A pause in the conversation"
+              ],
+              "answer": "C"
             },
             {
               "n": 10,
-              "statement": "Duhigg's book on communication has been translated into more than ten languages.",
-              "answer": "NOT GIVEN"
+              "question": "According to Paragraph E, what does the passage suggest about becoming a good communicator?",
+              "options": [
+                "A) It requires an innate, unteachable talent",
+                "B) It results primarily from formal education",
+                "C) It can be developed through deliberate practice",
+                "D) It depends mainly on reaching full agreement with others"
+              ],
+              "answer": "C"
             }
           ]
         }
@@ -373,33 +403,39 @@
         },
         {
           "group": "7-11",
-          "type": "true_false_not_given",
-          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Loneliness carries serious health risks, comparable to smoking. Aristotle viewed friendship as a bond free from ___(7)___, unlike commercial relationships. In recent decades, geographic mobility, parenting duties, and \"workism\" have all reduced the ___(8)___ available for socialising. Studies show that young men's willingness to confide in a friend during a crisis has fallen sharply, with many now turning to their ___(9)___ instead. The COVID-19 pandemic disproportionately disrupted ___(10)___ friendships, because they depend more on face-to-face contact. Ultimately, maintaining friendship requires ___(11)___ effort rather than being left to chance.",
+          "wordBank": [
+            "A. parents",
+            "B. workplace",
+            "C. deliberate",
+            "D. time",
+            "E. self-interest",
+            "F. female",
+            "G. male",
+            "H. income"
+          ],
           "items": [
             {
               "n": 7,
-              "statement": "Chronic loneliness has been compared to the health risk of smoking a certain number of cigarettes a day.",
-              "answer": "TRUE"
+              "answer": "E"
             },
             {
               "n": 8,
-              "statement": "Aristotle valued friendship mainly for the practical benefits it provides.",
-              "answer": "FALSE"
+              "answer": "D"
             },
             {
               "n": 9,
-              "statement": "The proportion of young men reporting no close friends has decreased since the 1990s.",
-              "answer": "FALSE"
+              "answer": "A"
             },
             {
               "n": 10,
-              "statement": "During the COVID-19 pandemic, men reported losing touch with friends more than women did.",
-              "answer": "FALSE"
+              "answer": "F"
             },
             {
               "n": 11,
-              "statement": "Government funding for community centres is identified as a key solution to the friendship recession.",
-              "answer": "NOT GIVEN"
+              "answer": "C"
             }
           ]
         }
@@ -878,33 +914,63 @@
         },
         {
           "group": "6-10",
-          "type": "true_false_not_given",
-          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "type": "multiple_choice",
+          "instructions": "Choose the correct letter, A, B, C or D.",
           "items": [
             {
               "n": 6,
-              "statement": "Moore's Law is a law of physics rather than a principle of economics.",
-              "answer": "FALSE"
+              "question": "What does Moore's Law describe, according to Paragraph A?",
+              "options": [
+                "A) A physical law governing the size of silicon atoms",
+                "B) An economic principle predicting the doubling of transistor counts roughly every two years",
+                "C) A legal restriction on chip exports",
+                "D) The exact date silicon was first discovered"
+              ],
+              "answer": "B"
             },
             {
               "n": 7,
-              "statement": "A single atomic impurity can make an entire silicon wafer unusable.",
-              "answer": "TRUE"
+              "question": "According to Paragraph B, why is silicon wafer production concentrated among so few companies?",
+              "options": [
+                "A) Government regulations limit the number of licensed producers",
+                "B) The purification process is so sensitive that even one atomic impurity ruins a wafer",
+                "C) Only four countries possess silicon deposits",
+                "D) Silicon is extremely rare in the Earth's crust"
+              ],
+              "answer": "B"
             },
             {
               "n": 8,
-              "statement": "ASML's extreme ultraviolet lithography machines cost less than $100 million each.",
-              "answer": "FALSE"
+              "question": "What is the function of the ASML lithography machine described in Paragraph C?",
+              "options": [
+                "A) It cools silicon wafers during transport",
+                "B) It tests finished chips for defects",
+                "C) It uses a laser-generated plasma to carve intricate transistor patterns onto silicon",
+                "D) It mines raw silicon from quarries"
+              ],
+              "answer": "C"
             },
             {
               "n": 9,
-              "statement": "TSMC manufactures the majority of the world's most advanced processor chips.",
-              "answer": "TRUE"
+              "question": "According to Paragraph D, what allows companies to justify the roughly $20 billion cost of a modern fabrication facility?",
+              "options": [
+                "A) Government subsidies that cover the entire cost",
+                "B) Producing at a massive scale to achieve economies of scale",
+                "C) Charging significantly higher prices for older chip designs",
+                "D) Sharing a single facility among multiple competitors"
+              ],
+              "answer": "B"
             },
             {
               "n": 10,
-              "statement": "China is the world's leading producer of extreme ultraviolet lithography machines.",
-              "answer": "NOT GIVEN"
+              "question": "What does Paragraph E indicate about the global semiconductor supply chain?",
+              "options": [
+                "A) It is entirely self-sufficient within a single country",
+                "B) It depends on international cooperation, making it vulnerable to geopolitical disruption",
+                "C) It relies exclusively on materials produced in the United States",
+                "D) It has eliminated dependence on any single-nation supplier of raw materials"
+              ],
+              "answer": "B"
             }
           ]
         }
@@ -1059,33 +1125,33 @@
         },
         {
           "group": "7-11",
-          "type": "true_false_not_given",
-          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-F.",
           "items": [
             {
               "n": 7,
-              "statement": "The Gros Michel variety was favoured for export partly because of its thick skin.",
-              "answer": "TRUE"
+              "statement": "A description of how one company's own tax records were used against it during a land dispute.",
+              "answer": "E"
             },
             {
               "n": 8,
-              "statement": "Manuel Bonilla's attempt to retake power in Honduras received no outside financial support.",
-              "answer": "FALSE"
+              "statement": "A reference to the specific month and year in which an exiled leader set sail to retake power.",
+              "answer": "B"
             },
             {
               "n": 9,
-              "statement": "United Fruit Company owned plantation land in only one Central American country.",
-              "answer": "FALSE"
+              "statement": "A description of the company's rebranding under a new company name.",
+              "answer": "F"
             },
             {
               "n": 10,
-              "statement": "Panama Disease spread partly because of the transport infrastructure built by the fruit companies.",
-              "answer": "TRUE"
+              "statement": "An explanation of why the industry's early plantations were highly vulnerable to disease.",
+              "answer": "D"
             },
             {
               "n": 11,
-              "statement": "The Cavendish banana is completely immune to all plant diseases.",
-              "answer": "FALSE"
+              "statement": "A statistic showing the proportion of one country's farmland owned by a single corporation.",
+              "answer": "C"
             }
           ]
         }
@@ -1146,33 +1212,63 @@
         },
         {
           "group": "6-10",
-          "type": "true_false_not_given",
-          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "type": "multiple_choice",
+          "instructions": "Choose the correct letter, A, B, C or D.",
           "items": [
             {
               "n": 6,
-              "statement": "Film adaptations of the Odyssey have generally been very successful.",
-              "answer": "FALSE"
+              "question": "According to Paragraph A, what is a common misunderstanding about the Odyssey?",
+              "options": [
+                "A) That it was written by multiple unrelated authors",
+                "B) That it is merely a straightforward tale of heroic adventure",
+                "C) That it focuses exclusively on Telemachus rather than Odysseus",
+                "D) That it was never adapted for the cinema"
+              ],
+              "answer": "B"
             },
             {
               "n": 7,
-              "statement": "Every oral performance of the epic used exactly the same wording.",
-              "answer": "FALSE"
+              "question": "What does Paragraph B suggest about performances of the epic in oral tradition?",
+              "options": [
+                "A) They were memorised and repeated word-for-word every time",
+                "B) They varied depending on how the audience responded",
+                "C) They were only performed by professional actors, never bards",
+                "D) They ceased once the poem was first written down"
+              ],
+              "answer": "B"
             },
             {
               "n": 8,
-              "statement": "The written text of the epic was finalised as soon as it was first written down.",
-              "answer": "FALSE"
+              "question": "According to Paragraph C, how do modern readers' analytical approaches compare to those of ancient scholars?",
+              "options": [
+                "A) They are completely different, since ancient scholars lacked critical methods",
+                "B) They remain strikingly similar to methods used by Alexandrian commentators",
+                "C) They rely exclusively on archaeological evidence unavailable to ancient scholars",
+                "D) They have made ancient scholarly methods entirely obsolete"
+              ],
+              "answer": "B"
             },
             {
               "n": 9,
-              "statement": "Emily Wilson was the first woman to translate the Odyssey into English.",
-              "answer": "TRUE"
+              "question": "What distinguishes Emily Wilson's translation, according to Paragraph D?",
+              "options": [
+                "A) She avoided any reference to slavery in her translation",
+                "B) She was the first translator to directly translate Greek terms as \"slaves\"",
+                "C) She restored the euphemism \"serving girls\" used before the 1950s",
+                "D) She translated the epic into a language other than English"
+              ],
+              "answer": "B"
             },
             {
               "n": 10,
-              "statement": "All modern scholars agree on a single correct translation of the word 'polytropos'.",
-              "answer": "FALSE"
+              "question": "What point does Paragraph E make about the word \"polytropos\"?",
+              "options": [
+                "A) It has a single, universally agreed English translation",
+                "B) Its ambiguity illustrates why no translation should be treated as definitive",
+                "C) It was invented by Emily Wilson for her modern translation",
+                "D) It refers exclusively to Odysseus's physical strength"
+              ],
+              "answer": "B"
             }
           ]
         }
@@ -1233,33 +1329,39 @@
         },
         {
           "group": "6-10",
-          "type": "true_false_not_given",
-          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Stretching is generally divided into dynamic and static forms, and muscle behaves as a ___(6)___ material rather than a simple elastic one like rubber. At the micro level, repeated short stretches temporarily reduce a muscle's resistance to elongation, but this effect is ___(7)___ and fades within about ten minutes. Lasting flexibility instead depends on the body adding extra ___(8)___ over a sustained daily routine. Because holding one stretch indefinitely is risky, experts recommend splitting stretching into several shorter ___(9)___. Finally, stretching is not equally useful for every sport; for example, it does little to prevent the common injuries seen in ___(10)___.",
+          "wordBank": [
+            "A. viscoelastic",
+            "B. sarcomeres",
+            "C. intervals",
+            "D. long-distance running",
+            "E. permanent",
+            "F. transient",
+            "G. tendons",
+            "H. weightlifting"
+          ],
           "items": [
             {
               "n": 6,
-              "statement": "Dynamic stretching involves holding one fixed position for an extended period.",
-              "answer": "FALSE"
+              "answer": "A"
             },
             {
               "n": 7,
-              "statement": "Muscle tissue returns to its original shape immediately after being stretched, just like rubber.",
-              "answer": "FALSE"
+              "answer": "F"
             },
             {
               "n": 8,
-              "statement": "The flexibility gained from a single stretch normally disappears within about ten minutes.",
-              "answer": "TRUE"
+              "answer": "B"
             },
             {
               "n": 9,
-              "statement": "Experts recommend holding one continuous stretch for ten minutes rather than breaking it into shorter sessions.",
-              "answer": "FALSE"
+              "answer": "C"
             },
             {
               "n": 10,
-              "statement": "Stretching before running has little effect on preventing the injuries most common to that sport.",
-              "answer": "TRUE"
+              "answer": "D"
             }
           ]
         }
@@ -1414,33 +1516,33 @@
         },
         {
           "group": "6-10",
-          "type": "true_false_not_given",
-          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-E.",
           "items": [
             {
               "n": 6,
-              "statement": "Trepanation reliably cured patients of their headaches in ancient Greece.",
-              "answer": "FALSE"
+              "statement": "A description of an ancient religious response to head pain, tried before any medical treatment.",
+              "answer": "A"
             },
             {
               "n": 7,
-              "statement": "Primary headaches account for roughly half of all reported headache cases.",
-              "answer": "TRUE"
+              "statement": "A statistic on the number of distinct diagnosable headache types identified by practitioners.",
+              "answer": "B"
             },
             {
               "n": 8,
-              "statement": "Sinus infections cause pain by putting pressure on blood vessels and muscles around the skull.",
-              "answer": "TRUE"
+              "statement": "An explanation of how a bodily fluid imbalance can create symptoms that contradict a specific primary headache type.",
+              "answer": "D"
             },
             {
               "n": 9,
-              "statement": "The exact cause of tension headaches has been definitively established by researchers.",
-              "answer": "FALSE"
+              "statement": "A description of the treatment approach used for the less severe categories of headache.",
+              "answer": "E"
             },
             {
               "n": 10,
-              "statement": "Cluster headaches can cause a drooping eyelid and burning pain behind one eye.",
-              "answer": "TRUE"
+              "statement": "An explanation of the biological process by which pressure from swollen sinuses leads to pain.",
+              "answer": "C"
             }
           ]
         }

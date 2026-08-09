@@ -524,6 +524,48 @@ function openPassage(i){
           <input type="text" placeholder="answer" data-n="${it.n}" data-answer="${it.answer}" style="width:140px;">
           <span class="result" id="res-${it.n}"></span>
         </div>`).join('');
+    } else if(g.type === 'multiple_choice'){
+      inner += g.items.map(it=>{
+        const opts = it.options.map(o=>{
+          const letter = o.split(')')[0].split('.')[0].trim();
+          return `<label style="display:block;margin:3px 0;"><input type="radio" name="q${it.n}" value="${letter}" data-n="${it.n}" data-answer="${it.answer}"> ${o}</label>`;
+        }).join('');
+        return `<div class="qitem" data-type="multiple_choice" data-text="${it.question.replace(/"/g,'&quot;')}" style="flex-direction:column;align-items:flex-start;">
+          <div><span class="qn">${it.n}.</span><span class="qstatement">${it.question}</span></div>
+          <div style="margin-left:30px;font-size:14.5px;">${opts}</div>
+          <span class="result" id="res-${it.n}"></span>
+        </div>`;
+      }).join('');
+    } else if(g.type === 'summary_completion'){
+      if(g.summary) inner += `<div class="heading-list">${g.summary}</div>`;
+      if(g.wordBank) inner += `<div class="heading-list">${g.wordBank.join('<br>')}</div>`;
+      inner += g.items.map(it=>{
+        const opts = (g.wordBank||[]).map(w=>{
+          const val = w.split('.')[0].trim();
+          return `<option value="${val}">${val}</option>`;
+        }).join('');
+        return `<div class="qitem" data-type="summary_completion" data-text="Blank ${it.n}">
+          <span class="qn">${it.n}.</span>
+          <span class="qstatement">Blank ${it.n}</span>
+          <select data-n="${it.n}" data-answer="${it.answer}">
+            <option value="">--</option>${opts}
+          </select>
+          <span class="result" id="res-${it.n}"></span>
+        </div>`;
+      }).join('');
+    } else if(g.type === 'matching_information'){
+      const paraLetters = state.currentPassage ? Object.keys(state.currentPassage.paragraphs) : [];
+      inner += g.items.map(it=>{
+        const opts = paraLetters.map(l=>`<option value="${l}">${l}</option>`).join('');
+        return `<div class="qitem" data-type="matching_information" data-text="${it.statement.replace(/"/g,'&quot;')}">
+          <span class="qn">${it.n}.</span>
+          <span class="qstatement">${it.statement}</span>
+          <select data-n="${it.n}" data-answer="${it.answer}">
+            <option value="">--</option>${opts}
+          </select>
+          <span class="result" id="res-${it.n}"></span>
+        </div>`;
+      }).join('');
     }
     return `<div class="qgroup">
       <h4>Questions ${g.group}</h4>
