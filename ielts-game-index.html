@@ -705,18 +705,18 @@ async function renderRecordingsSection(){
       <audio controls src="${url}" style="display:block;width:100%;margin-bottom:6px;"></audio>
       <div class="rec-row">
         <button class="smallbtn" onclick="deleteRecording(${r.id}).then(renderRecordingsSection)">刪除</button>
-        <button class="smallbtn" onclick="openAIFeedback('${(r.topic||'').replace(/'/g,"\\'")}')">🤖 AI 批改（demo）</button>
+        <button class="smallbtn" onclick="openAIFeedback(${r.id}, '${(r.topic||'').replace(/'/g,"\\'")}')">🤖 AI 批改${BACKEND_URL?'':'（demo）'}</button>
       </div>
     </div>`;
   }).join('');
 }
 
-/* ---------- AI speaking feedback (demo only — not yet connected to a real AI API) ---------- */
+/* ---------- AI speaking feedback (real call via Apps Script + Gemini when BACKEND_URL is set, otherwise a demo) ---------- */
 function mockAIFeedback(topic){
   const sub = { fluency:6.5, vocab:6.0, grammar:6.5, pronunciation:5.5 };
   const overall = Math.round(((sub.fluency+sub.vocab+sub.grammar+sub.pronunciation)/4)*2)/2;
   return {
-    topic, overall, sub,
+    transcript: '', overall, sub,
     comment: '整體表達大致流暢，能針對主題給出合理的例子與說明。但部分句子偏短、缺乏連接詞串聯，语法上時態偶有混用（例如過去式與現在式交錯），發音的重音與語調變化較平，建議多練習長句與語調起伏。',
     strengths: ['能清楚回應題目，內容切題不離題', '使用了一些主題相關的詞彙', '整體語速穩定，聽起來不會太緊張'],
     improvements: ['句子之間缺少連接詞，聽起來較破碎', '時態使用不夠一致，過去式/現在式常混用', '語調較平，重音位置不明顯'],
@@ -728,44 +728,79 @@ function mockAIFeedback(topic){
   };
 }
 function subLabel(key){ return { fluency:'流利度與連貫性', vocab:'詞彙資源', grammar:'文法範圍', pronunciation:'發音' }[key]; }
-function openAIFeedback(topic){
-  const body = document.getElementById('aiFeedbackBody');
-  body.innerHTML = `<div class="loading">AI 分析中…</div>`;
+function blobToBase64(blob){
+  return new Promise((resolve, reject)=>{
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result.split(',')[1]);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+async function fetchRealAIFeedback(recording, topic){
+  const name = getStudentName();
+  const audioBase64 = await blobToBase64(recording.blob);
+  const res = await fetch(BACKEND_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ type:'ai_feedback', name, topic, mimeType: recording.blob.type || 'audio/webm', audioBase64 })
+  });
+  const data = await res.json();
+  if(!data.ok) throw new Error(data.error || 'AI 評分失敗');
+  return data.feedback;
+}
+function renderAIFeedbackBody(f, topic, isDemo){
+  const pct = Math.round((f.overall/9)*100);
+  const subRows = Object.entries(f.sub).map(([k,v])=>{
+    const warn = v < 6 ? 'warn' : '';
+    return `<div class="subscore-row">
+      <div class="lbl"><span>${subLabel(k)}</span><b style="color:${v<6?'var(--warn)':'var(--accent)'}">${v.toFixed(1)}</b></div>
+      <div class="subscore-bar ${warn}"><div style="width:${(v/9)*100}%"></div></div>
+    </div>`;
+  }).join('');
+  const vocabRows = (f.vocab||[]).map(v=>`<tr>
+    <td>"${v.said}"</td>
+    <td class="better">${v.better}</td>
+    <td class="ex">${v.example}</td>
+  </tr>`).join('');
+  const transcriptHTML = f.transcript ? `<div class="ai-section"><h5>📝 逐字稿</h5><p style="font-style:italic;">${f.transcript}</p></div>` : '';
+  const banner = isDemo
+    ? `<div class="disclaimer-banner">⚠️ 這是「介面示範」用的假資料，還沒有串接真正的 AI 語音評分服務 — 分數與建議都不是根據你剛剛的錄音產生的。</div>`
+    : `<div class="disclaimer-banner" style="background:#e6f6ec;border-color:#9bd6b3;color:#1c8a4b;">✅ 由 AI 依據你這段錄音實際分析產生，僅供參考，不是正式雅思分數。</div>`;
+  document.getElementById('aiFeedbackBody').innerHTML = `
+    ${banner}
+    <h4 style="margin:0 0 4px;">${topic || 'AI 口說評分'}</h4>
+    <div class="score-hero">
+      <div class="score-gauge" style="--pct:${pct}"><div class="score-gauge-inner"><b>${f.overall.toFixed(1)}</b><span>Band</span></div></div>
+      <div class="score-meta"><span class="lbl">總體評分 Score</span><b>${f.overall.toFixed(1)}</b><span class="lbl">${f.overall>=7?'Good User':f.overall>=6?'Competent User':'Modest User'}</span></div>
+    </div>
+    ${subRows}
+    ${transcriptHTML}
+    <div class="ai-section"><h5>💬 考官意見</h5><p>${f.comment}</p></div>
+    <div class="ai-section"><h5>✅ 優點</h5><ul class="strength-list">${(f.strengths||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
+    <div class="ai-section"><h5>✗ 需要改善的地方</h5><ul class="improve-list">${(f.improvements||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
+    <div class="ai-section"><h5>📘 更好的詞彙</h5>
+      <div class="vocab-wrap"><table class="vocab-table">
+        <tr><th>你說的</th><th>更好的替代詞</th><th>例句</th></tr>
+        ${vocabRows}
+      </table></div>
+    </div>
+  `;
+}
+async function openAIFeedback(recId, topic){
+  document.getElementById('aiFeedbackBody').innerHTML = `<div class="loading">AI 分析中…</div>`;
   document.getElementById('aiFeedbackModal').classList.add('active');
-  setTimeout(()=>{
-    const f = mockAIFeedback(topic);
-    const pct = Math.round((f.overall/9)*100);
-    const subRows = Object.entries(f.sub).map(([k,v])=>{
-      const warn = v < 6 ? 'warn' : '';
-      return `<div class="subscore-row">
-        <div class="lbl"><span>${subLabel(k)}</span><b style="color:${v<6?'var(--warn)':'var(--accent)'}">${v.toFixed(1)}</b></div>
-        <div class="subscore-bar ${warn}"><div style="width:${(v/9)*100}%"></div></div>
-      </div>`;
-    }).join('');
-    const vocabRows = f.vocab.map(v=>`<tr>
-      <td>"${v.said}"</td>
-      <td class="better">${v.better}</td>
-      <td class="ex">${v.example}</td>
-    </tr>`).join('');
-    body.innerHTML = `
-      <div class="disclaimer-banner">⚠️ 這是「介面示範」用的假資料，還沒有串接真正的 AI 語音評分服務 — 分數與建議都不是根據你剛剛的錄音產生的。</div>
-      <h4 style="margin:0 0 4px;">${f.topic || 'AI 口說評分'}</h4>
-      <div class="score-hero">
-        <div class="score-gauge" style="--pct:${pct}"><div class="score-gauge-inner"><b>${f.overall.toFixed(1)}</b><span>Band</span></div></div>
-        <div class="score-meta"><span class="lbl">總體評分 Score</span><b>${f.overall.toFixed(1)}</b><span class="lbl">${f.overall>=7?'Good User':f.overall>=6?'Competent User':'Modest User'}</span></div>
-      </div>
-      ${subRows}
-      <div class="ai-section"><h5>💬 考官意見</h5><p>${f.comment}</p></div>
-      <div class="ai-section"><h5>✅ 優點</h5><ul class="strength-list">${f.strengths.map(s=>`<li>${s}</li>`).join('')}</ul></div>
-      <div class="ai-section"><h5>✗ 需要改善的地方</h5><ul class="improve-list">${f.improvements.map(s=>`<li>${s}</li>`).join('')}</ul></div>
-      <div class="ai-section"><h5>📘 更好的詞彙</h5>
-        <div class="vocab-wrap"><table class="vocab-table">
-          <tr><th>你說的</th><th>更好的替代詞</th><th>例句</th></tr>
-          ${vocabRows}
-        </table></div>
-      </div>
-    `;
-  }, 600);
+  if(!BACKEND_URL){
+    setTimeout(()=> renderAIFeedbackBody(mockAIFeedback(topic), topic, true), 600);
+    return;
+  }
+  try{
+    const recording = await getRecording(recId);
+    if(!recording) throw new Error('找不到這段錄音');
+    const f = await fetchRealAIFeedback(recording, topic);
+    renderAIFeedbackBody(f, topic, false);
+  }catch(e){
+    document.getElementById('aiFeedbackBody').innerHTML = `<div class="disclaimer-banner">⚠️ AI 批改失敗：${(e.message||'未知錯誤').replace(/</g,'&lt;')}</div>`;
+  }
 }
 function closeAIFeedback(){
   document.getElementById('aiFeedbackModal').classList.remove('active');
@@ -794,6 +829,7 @@ function readingCardHTML(p, i){
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'口說 AI 批改串接真正的 Gemini API（需部署新版後台並設定 API 金鑰，未設定時自動顯示示範資料）' },
   { date:'2026-08-10', text:'寫作 Task 1／Task 2 新增各分類的實用詞彙（跟口說一樣依分類提供，不是每題單獨列）' },
   { date:'2026-08-10', text:'電腦版新增「首頁」儀表板：今日推薦訓練、本週學習進度、連續天數、錯題預覽、常用字彙' },
   { date:'2026-08-10', text:'口說錄音新增「AI 批改」介面示範（尚未串接真正的 AI 評分服務）' },
@@ -1667,6 +1703,17 @@ async function getAllRecordings(){
       req.onerror = () => resolve([]);
     });
   }catch(e){ return []; }
+}
+async function getRecording(id){
+  try{
+    const db = await openRecDB();
+    return new Promise((resolve)=>{
+      const tx = db.transaction('recordings','readonly');
+      const req = tx.objectStore('recordings').get(id);
+      req.onsuccess = () => resolve(req.result||null);
+      req.onerror = () => resolve(null);
+    });
+  }catch(e){ return null; }
 }
 async function deleteRecording(id){
   try{
