@@ -196,6 +196,19 @@ function syncToBackend(type, payload){
   }catch(e){}
 }
 
+let remoteDraftsCache = null;
+async function fetchRemoteDrafts(){
+  if(!BACKEND_URL) return {};
+  const name = getStudentName();
+  if(!name) return {};
+  try{
+    const res = await fetch(`${BACKEND_URL}?action=drafts&name=${encodeURIComponent(name)}`);
+    if(!res.ok) return {};
+    const data = await res.json();
+    return data.drafts || {};
+  }catch(e){ return {}; }
+}
+
 async function loadJSON(paths){
   for(const p of paths){
     try{
@@ -210,6 +223,7 @@ async function init(){
   state.reading = await loadJSON(['content/reading-bank.json','content/readingbank.json','reading-bank.json','readingbank.json']);
   state.writing = await loadJSON(['content/writing-bank.json','content/writingbank.json','writing-bank.json','writingbank.json']);
   state.speaking = await loadJSON(['content/speaking-bank.json','content/speakingbank.json','speaking-bank.json','speakingbank.json']);
+  remoteDraftsCache = await fetchRemoteDrafts();
   renderReadingList();
   renderWriting();
   renderSpeaking();
@@ -454,22 +468,32 @@ function bestReadingScore(title){
   if(!hist.length) return null;
   return hist.reduce((best,h) => (h.score/h.total > best.score/best.total ? h : best), hist[0]);
 }
-function renderReadingList(){
-  const el = document.getElementById('reading-list');
-  if(!state.reading || !state.reading.passages){ el.innerHTML='<div class="empty">找不到 reading-bank.json</div>'; return; }
-  el.innerHTML = state.reading.passages.map((p,i)=>{
-    const qcount = p.questions.reduce((s,g)=>s+g.items.length,0);
-    const best = bestReadingScore(p.title);
-    const passageKey = p.id || p.title;
-    const hasDraft = !best && !!loadReadingAnswers(passageKey);
-    const doneBadge = best ? `<span class="badge" style="background:#e6f6ec;color:var(--good);">✓ 最佳 ${best.score}/${best.total}</span>` : '';
-    const draftBadge = hasDraft ? `<span class="badge" style="background:#fff3d6;color:var(--warn);">📝 進行中，點擊繼續</span>` : '';
-    return `<div class="card" onclick="openPassage(${i})">
-      <span class="badge">第 ${i+1} 篇</span>${doneBadge}${draftBadge}
+function readingCardHTML(p, i){
+  const qcount = p.questions.reduce((s,g)=>s+g.items.length,0);
+  const best = bestReadingScore(p.title);
+  const passageKey = p.id || p.title;
+  const hasDraft = !best && !!loadReadingAnswers(passageKey);
+  const doneBadge = best ? `<span class="badge" style="background:#e6f6ec;color:var(--good);">✓ 最佳 ${best.score}/${best.total}</span>` : '';
+  const draftBadge = hasDraft ? `<span class="badge" style="background:#fff3d6;color:var(--warn);">📝 進行中，點擊繼續</span>` : '';
+  const shortBadge = p.short ? `<span class="badge" style="background:#eef2ff;color:var(--accent);">⚡ 快速練習．約5分鐘</span>` : `<span class="badge">第 ${i+1} 篇</span>`;
+  return `<div class="card" onclick="openPassage(${i})">
+      ${shortBadge}${doneBadge}${draftBadge}
       <h3>${p.title}</h3>
       <p>${Object.keys(p.paragraphs).length} 段落．${qcount} 題</p>
     </div>`;
-  }).join('');
+}
+
+function renderReadingList(){
+  const el = document.getElementById('reading-list');
+  if(!state.reading || !state.reading.passages){ el.innerHTML='<div class="empty">找不到 reading-bank.json</div>'; return; }
+  const full = [], short = [];
+  state.reading.passages.forEach((p,i)=>{ (p.short ? short : full).push([p,i]); });
+  let html = full.map(([p,i])=>readingCardHTML(p,i)).join('');
+  if(short.length){
+    html += `<div class="section-title" style="margin-top:26px;">⚡ 快速練習（短文，題目較少，手機也能幾分鐘做完）</div>`;
+    html += short.map(([p,i])=>readingCardHTML(p,i)).join('');
+  }
+  el.innerHTML = html;
 }
 
 let readingTimerId = null;
@@ -482,7 +506,7 @@ function openPassage(i){
   const test = document.getElementById('reading-test');
   test.style.display='block';
   const p = state.currentPassage;
-  readingSecondsLeft = 15*60;
+  readingSecondsLeft = p.short ? 5*60 : 15*60;
 
   const passageKey = p.id || p.title;
   const savedHL = loadPassageHighlights()[passageKey];
@@ -886,21 +910,48 @@ let essayTimerId = null;
 let essaySecondsLeft = 0;
 let taskCtx = null; // { kind:'task1'|'task2', cat, i, minWords, durationMin, modelAnswer }
 
-/* ---------- essay draft autosave ---------- */
+/* ---------- essay draft autosave (with cross-device sync via backend) ---------- */
 function essayDraftKey(ctx){
   return ctx.kind === 'task1' ? `essayDraft_task1_${ctx.i}` : `essayDraft_task2_${ctx.cat}_${ctx.i}`;
 }
+let draftSyncTimer = null;
 function saveEssayDraft(){
   if(!taskCtx) return;
   const box = document.getElementById('essayBox');
   if(!box) return;
-  try{ localStorage.setItem(essayDraftKey(taskCtx), box.value); }catch(e){}
+  const key = essayDraftKey(taskCtx);
+  const nowIso = new Date().toISOString();
+  try{
+    localStorage.setItem(key, box.value);
+    localStorage.setItem(key+'_ts', nowIso);
+  }catch(e){}
+  if(BACKEND_URL){
+    clearTimeout(draftSyncTimer);
+    draftSyncTimer = setTimeout(()=>{ syncToBackend('draft', { ctx: key, text: box.value }); }, 2000);
+  }
 }
 function loadEssayDraft(ctx){
-  try{ return localStorage.getItem(essayDraftKey(ctx)) || ''; }catch(e){ return ''; }
+  const key = essayDraftKey(ctx);
+  let text = '';
+  try{ text = localStorage.getItem(key) || ''; }catch(e){}
+  const remote = remoteDraftsCache && remoteDraftsCache[key];
+  if(remote){
+    let localTs = '';
+    try{ localTs = localStorage.getItem(key+'_ts') || ''; }catch(e){}
+    if(!localTs || new Date(remote.ts) > new Date(localTs)){
+      text = remote.text || '';
+      try{ localStorage.setItem(key, text); localStorage.setItem(key+'_ts', remote.ts); }catch(e){}
+    }
+  }
+  return text;
 }
 function clearEssayDraft(ctx){
-  try{ localStorage.removeItem(essayDraftKey(ctx||taskCtx)); }catch(e){}
+  const key = essayDraftKey(ctx||taskCtx);
+  if(BACKEND_URL){ syncToBackend('draft', { ctx: key, text: '' }); }
+  try{
+    localStorage.removeItem(key);
+    localStorage.removeItem(key+'_ts');
+  }catch(e){}
 }
 
 function openTask1(i){
