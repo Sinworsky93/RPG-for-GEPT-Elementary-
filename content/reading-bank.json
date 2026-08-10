@@ -30,27 +30,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "原文：\"there is a quiet diversification underway...the premium spirits sector...has emerged as an unexpected contender\"（半導體之外，威士忌等精品產業正悄悄崛起），第A段介紹這個較少人知的產業，對應標題 vi。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"the island's environment was traditionally viewed as a major impediment...these meteorological challenges were creatively re-engineered into distinct advantages\"（原本被視為不利的氣候被轉化為優勢），對應標題 iii。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"A cornerstone of this rapid-maturation success lies in sophisticated barrel management, exemplified by the proprietary STR process\"（STR是重新設計木桶處理法的核心），對應標題 ii。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"The global breakthrough for Taiwanese spirits occurred in 2015...transitioning the island from an obscure domestic producer to a global phenomenon\"（從默默無聞到享譽國際），對應標題 iv。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"these boutique industries share nearly identical macroeconomic bottlenecks...Taiwanese producers have adopted a value-over-volume strategy\"（台灣精品產業共同面臨的困境與策略），對應標題 v。"
             }
           ]
         },
@@ -62,27 +67,32 @@
             {
               "n": 6,
               "statement": "Kavalan Distillery was established in 2005.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"Kavalan's founding in 2005\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 7,
               "statement": "Taiwanese whisky producers mainly compete with large international brands by offering lower prices.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"competing on price with mass-market global giants is economically unviable. Consequently, Taiwanese producers have adopted a value-over-volume strategy\"（無法靠低價競爭，改走高品質策略），與題目「主要靠低價競爭」相反，故為 FALSE。"
             },
             {
               "n": 8,
               "statement": "Singapore is currently the largest export market for Taiwanese whisky by revenue.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "原文提到日韓是主要海外市場、新加坡是重點市場，但並未明確指出新加坡是「營收最大」的出口市場，故為 NOT GIVEN。"
             },
             {
               "n": 9,
               "statement": "There are currently four commercial whisky distilleries operating in Taiwan.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"bringing the total number of commercial homegrown distilleries on the island to four\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 10,
               "statement": "Unpredictable weather events threaten the consistency of raw materials used by Taiwan's craft industries.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"environmental threats from extreme weather anomalies—such as droughts, torrential rains, and typhoons—jeopardize raw crop consistency\"，與題目敘述相符，故為 TRUE。"
             }
           ]
         },
@@ -94,22 +104,26 @@
             {
               "n": 11,
               "statement": "Taiwan's subtropical climate was originally seen as a disadvantage for whisky production.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"the island's environment was traditionally viewed as a major impediment to the slow, delicate aging process required for spirits\"，與題目敘述相符，故為 YES。"
             },
             {
               "n": 12,
               "statement": "Kavalan is the only whisky distillery currently operating in Taiwan.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"the domestic landscape is diversifying, with distilleries like Omar Whisky gaining traction, bringing the total number of commercial homegrown distilleries on the island to four\"（台灣目前共有四間商業酒廠，不只噶瑪蘭一間），與題目敘述相反，故為 NO。"
             },
             {
               "n": 13,
               "statement": "Taiwanese producers plan to compete with global giants mainly by lowering prices.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"competing on price with mass-market global giants is economically unviable. Consequently, Taiwanese producers have adopted a value-over-volume strategy\"（廠商選擇的是「重質不重量」而非降價策略），與題目敘述相反，故為 NO。"
             },
             {
               "n": 14,
               "statement": "Extreme weather poses a risk to the consistency of raw ingredients used by Taiwan's craft industries.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"environmental threats from extreme weather anomalies...jeopardize raw crop consistency\"，與題目敘述相符，故為 YES。"
             }
           ]
         }
@@ -638,27 +652,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"This acidic transformation...prompted milk proteins to coagulate into soft curds. It was through the discovery of this natural coagulation that early farmers learned...\"（是偶然的酸化反應導致凝乳，早期農民才因此發現製乳酪的方法，並解決了乳糖難消化的問題），對應標題 iv。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"cheese represented an unprecedented survival strategy...By transforming highly perishable milk into a storable commodity, ancient societies successfully stockpiled essential proteins\"（把易腐敗的鮮奶轉化成可儲存的商品，是重要的生存策略），對應標題 i。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "原文：\"cheese was integrated into both administrative structures and sacred rituals...clay tablets featuring cuneiform script contain administrative logs detailing cheese quotas\"（乳酪配額被記錄在行政文書與宗教儀式中），對應標題 vi。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"distinct regional adaptations arose, reflecting local climates and cultural preferences\"（蒙古、埃及、南亞、歐洲各地依氣候文化發展出不同乳酪），對應標題 iii。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"the epicenter of cheesemaking innovation shifted to the European countryside, particularly within the walls of Benedictine monasteries. Medieval monks...experimented with diverse milk sources\"，對應標題 v。"
             }
           ]
         },
@@ -670,27 +689,32 @@
             {
               "n": 6,
               "statement": "Neolithic farmers deliberately invented cheese as a planned dietary innovation.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"This acidic transformation...prompted milk proteins to coagulate...It was through the discovery of this natural coagulation that early farmers learned to separate the solid curd\"（是自然發酵後意外發現的，並非刻意規劃發明），與題目「刻意規劃發明」相反，故為 FALSE。"
             },
             {
               "n": 7,
               "statement": "Archaeological evidence of dairy residue has been found in pottery from Turkey.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"seventh-millennium BCE pottery fragments excavated in modern-day Turkey, which still retain chemical residues of ancient dairy lipids\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 8,
               "statement": "Rennet is obtained from the stomach lining of fully grown cattle.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"rennet. This complex enzymatic byproduct, harvested from the stomachs of young ruminants\"（凝乳酶取自「幼年」反芻動物的胃，不是成年牛），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 9,
               "statement": "Roman soldiers were forbidden from carrying cheese as part of their rations.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"caseus aridus...became an indispensable military ration...sustained nearly half a million Roman legionaries\"（乳酪是羅馬軍隊不可或缺的口糧），與題目「禁止攜帶」相反，故為 FALSE。"
             },
             {
               "n": 10,
               "statement": "A war was fought over control of an Alpine cheese-producing region.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"in the late fourteenth century, an armed conflict erupted when a neighboring state invaded the Gruyere highlands of Switzerland to seize control of the lucrative Alpine cheese trade\"，與題目敘述相符，故為 TRUE。"
             }
           ]
         },
@@ -709,22 +733,26 @@
             {
               "n": 11,
               "start": "Early cheesemaking solved a dietary problem",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"the high concentration of lactose, a disaccharide sugar that remains exceedingly difficult for many human populations to digest\"（凝乳過程降低了難消化的乳糖濃度），對應 C。"
             },
             {
               "n": 12,
               "start": "Cheese became a vital survival technology for Neolithic communities",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"cheese represented an unprecedented survival strategy for Neolithic communities...sustained them through harsh winters and periods of famine\"，對應 A。"
             },
             {
               "n": 13,
               "start": "The use of rennet in Anatolia was significant",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"The widespread adoption of rennet facilitated the production of firmer, more durable cheeses, which were less prone to spoilage and far better suited for long-distance transport\"，對應 B。"
             },
             {
               "n": 14,
               "start": "Medieval monks perfected many famous cheese varieties",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"Medieval monks, operating with a level of scientific curiosity and systematic trial, experimented with diverse milk sources, temperature variables, and aging techniques. Their meticulous efforts perfected many of the world's most celebrated varieties\"，對應 E。"
             }
           ]
         }
@@ -901,32 +929,38 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"twelve aqueducts...distributing water across the city's seven hills. By channeling water from elevated natural springs and distant rivers\"（從天然水源到全市配水網絡），對應標題 iii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"engineers had to maintain a continuous, gradual slope to ensure constant flow over vast distances...engineers propped up the water conduits on monumental stone arcades\"（管理長距離的坡度與水壓），對應標題 ii。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"Wealthy citizens could secure private water lines routed directly to their estates, albeit at a premium municipal tariff\"（付費才能取得家用／商用水），對應標題 iv。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "viii"
+              "answer": "viii",
+              "explanation": "原文：\"The daily routine of Roman citizens...most of the population would transfer to the local bathhouse to wash, socialize\"（工作、沐浴、社交的日常節奏），對應標題 viii。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "原文：\"the Romans devised the hypocaust, an underfloor heating system...directed hot air upwards through the walls via hollow clay bricks\"（驅動最熱房間的地下科技），對應標題 vi。"
             },
             {
               "n": 6,
               "paragraph": "F",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"social status was loudly broadcasted by the size of one's retinue...class distinctions were simultaneously dissolved and highlighted\"（表面平等的空間裡展現階級地位），對應標題 i。"
             }
           ]
         },
@@ -938,27 +972,32 @@
             {
               "n": 7,
               "statement": "All of the water carried by Rome's aqueducts was reserved for public fountains only.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"a substantial proportion was allocated for domestic and commercial purposes\"（大部分水並非只給公共噴泉，也分配給民宅與商業使用），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 8,
               "statement": "Wealthy Roman families paid an extra fee to have water piped directly to their homes.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"Wealthy citizens could secure private water lines routed directly to their estates, albeit at a premium municipal tariff\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 9,
               "statement": "The Aqua Virgo no longer supplies any water in the present day.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"the Aqua Virgo...continues to supply water to the Trevi Fountain today\"（愛之泉水道至今仍在供水），與題目「現在已不供水」相反，故為 FALSE。"
             },
             {
               "n": 10,
               "statement": "The frigidarium had high ceilings partly in order to help keep the air inside cool.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"the unheated frigidarium featured soaring ceilings to naturally maintain cooler air\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 11,
               "statement": "Chlorine was used to purify the water in Rome's large public pools.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"large pools, such as the open-air natatio, completely lacked modern chemical purification methods like chlorine\"（完全沒有氯消毒），與題目敘述相反，故為 FALSE。"
             }
           ]
         },
@@ -970,22 +1009,26 @@
             {
               "n": 12,
               "prompt": "The changing room where bathers undressed before entering the baths was called the ______.",
-              "answer": "apodyterium"
+              "answer": "apodyterium",
+              "explanation": "原文：\"Upon entering the apodyterium, the changing room where patrons undressed to bathe completely naked\"，答案為 apodyterium。"
             },
             {
               "n": 13,
               "prompt": "Underground fires heated the hollow space beneath the raised floor, known as the ______.",
-              "answer": "hypocaust"
+              "answer": "hypocaust",
+              "explanation": "原文：\"the Romans devised the hypocaust, an underfloor heating system where slaves stoked roaring fires in subterranean furnaces\"，答案為 hypocaust。"
             },
             {
               "n": 14,
               "prompt": "Hot air travelled upward through hollow clay bricks called ______, hidden behind marble panels.",
-              "answer": "tubuli"
+              "answer": "tubuli",
+              "explanation": "原文：\"directed hot air upwards through the walls via hollow clay bricks, known as tubuli\"，答案為 tubuli。"
             },
             {
               "n": 15,
               "prompt": "The final, hottest room, where temperatures exceeded 110°F, was called the ______.",
-              "answer": "caldarium"
+              "answer": "caldarium",
+              "explanation": "原文：\"In the caldarium, the final and hottest chamber, temperatures exceeded 110 degrees Fahrenheit\"，答案為 caldarium。"
             }
           ]
         }
@@ -1579,27 +1622,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"it remains a surprisingly sophisticated psychological epic...meticulously interrogates the profound complexities of human identity, the essence of masculinity, and the arduous process of maturation\"（不只是冒險故事，更探討身分認同與成長），對應標題 ii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"Each performance varied dynamically depending on audience reception, rendering the oral text inherently unstable\"（口述表演每次都不同，隨聽眾反應改變），對應標題 iii。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"The transition from oral performance to a stabilised written text occurred gradually...continuously altered and refined until the fifth century BCE\"（從口述到定本文字的過程），對應標題 v。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"Emily Wilson's recent translation...confronts the institution of slavery head-on by translating the Greek terms directly as 'slaves'\"（譯者如何處理「奴隸」用詞），對應標題 iv。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"translators must grapple with profound lexical ambiguity, epitomised by the epic's opening adjective, polytropos\"（單一希臘字難以用單一英文詞翻譯），對應標題 i。"
             }
           ]
         },
@@ -1685,22 +1733,26 @@
             {
               "n": 11,
               "start": "The Odyssey is more than a simple adventure story",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"viewing this ancient masterpiece as a straightforward adventure story is to fundamentally misunderstand its intricate structure\"，即《奧德賽》深入探討身分認同、陽剛特質與成長，對應 C。"
             },
             {
               "n": 12,
               "start": "Oral performances of the epic were inherently unstable",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Each performance varied dynamically depending on audience reception, rendering the oral text inherently unstable\"，對應 A。"
             },
             {
               "n": 13,
               "start": "The Odyssey's academic reception has remained remarkably consistent",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"the intellectual engagement with the text remains remarkably consistent...employ analytical strategies identical to those used by...third-century BCE Alexandria\"，對應 D。"
             },
             {
               "n": 14,
               "start": "Emily Wilson's translation is considered notable",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"Emily Wilson's recent translation...confronts the institution of slavery head-on by translating the Greek terms directly as 'slaves'\"，對應 B。"
             }
           ]
         }
@@ -2843,27 +2895,32 @@
             {
               "n": 1,
               "start": "Milton's metaphor of the Bible as a preserved 'vial' is significant",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"this assembly of sacred writings has so fundamentally permeated the structures of global civilization that imagining a world without it is virtually impossible\"，對應 D。"
             },
             {
               "n": 2,
               "start": "Frankenstein is considered a landmark novel",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"it also reflects a profound anxiety regarding the transition from God as the ultimate creator to humans as the technological creators of life\"，對應 A。"
             },
             {
               "n": 3,
               "start": "Virginia Woolf argued that women need a room and money",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"Only when a woman possesses a room of her own and independent financial resources, she argues, can she hope to engage in the luxury of intellectual creation\"，對應 B。"
             },
             {
               "n": 4,
               "start": "Jane Austen's novels presented an unusual view of marriage",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"Austen positioned marriage not simply as a vehicle for romantic fulfillment, but as an essential social and economic institution governing survival\"，對應 C。"
             },
             {
               "n": 5,
               "start": "The Harry Potter series achieved lasting popularity partly",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"its unique structural progression, allowing its protagonists to age organically alongside their readers\"，對應 E。"
             }
           ]
         }
