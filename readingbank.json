@@ -2345,6 +2345,83 @@
               "explanation": "原文：\"They are not difficult to love...rather, they are exceptionally difficult to manipulate\"（他們不是難以相處，而是難以被操控），與題目「難以建立關係」的說法相反，故為 NO。"
             }
           ]
+        },
+        {
+          "group": "6-10",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. Society's tendency to view solitude as a psychological flaw",
+            "ii. Boundaries maintained even when it causes social friction",
+            "iii. Solitude as a source of intellectual and emotional growth",
+            "iv. Growing apart from others as a sign of personal development",
+            "v. A summary of five traits that reframe solitude as strength",
+            "vi. The financial motivations behind avoiding social circles",
+            "vii. How technology has increased pressure to appear popular"
+          ],
+          "items": [
+            {
+              "n": 6,
+              "paragraph": "A",
+              "answer": "i",
+              "explanation": "原文：\"individuals who exhibit non-affiliative tendencies...are frequently subjected to societal skepticism. Traditional sociological frameworks have historically pathologized this state of voluntary solitude\"，第A段講社會如何把獨處視為心理缺陷，對應標題 i。"
+            },
+            {
+              "n": 7,
+              "paragraph": "B",
+              "answer": "iii",
+              "explanation": "原文：\"solitude is not an empty state to be feared, but a cognitive catalyst that actively facilitates intellectual and emotional growth\"，對應標題 iii。"
+            },
+            {
+              "n": 8,
+              "paragraph": "C",
+              "answer": "ii",
+              "explanation": "原文：\"these individuals exhibit exceptionally robust interpersonal boundaries, which they maintain even at the cost of social disapproval\"，對應標題 ii。"
+            },
+            {
+              "n": 9,
+              "paragraph": "D",
+              "answer": "iv",
+              "explanation": "原文：\"a defining dimension of those who roll solo is their accelerated rate of psychological evolution...one individual is undergoing a profound internal transformation\"，對應標題 iv。"
+            },
+            {
+              "n": 10,
+              "paragraph": "E",
+              "answer": "v",
+              "explanation": "原文：\"examining these five distinct dimensions...we can discern a lifestyle that is not defined by lack, but by abundance\"，第E段總結五個特質，對應標題 v。"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 11,
+              "question": "What term does the passage use to describe people who do not seek a conventional circle of friends?",
+              "answer": "non-affiliative",
+              "explanation": "原文：\"individuals who exhibit non-affiliative tendencies—specifically those who do not possess or seek a conventional circle of companions\"，答案為 non-affiliative。"
+            },
+            {
+              "n": 12,
+              "question": "According to Paragraph B, besides journaling and walking, what do these individuals tend to prefer over speaking?",
+              "answer": "listen",
+              "explanation": "原文：\"a pronounced inclination to listen rather than to speak\"，答案為 listen。"
+            },
+            {
+              "n": 13,
+              "question": "According to Paragraph C, what capacity allows them to sense subtle shifts in social dynamics almost immediately?",
+              "answer": "hyper-intuitive capacities",
+              "explanation": "原文：\"This protective stance is further enhanced by their hyper-intuitive capacities, allowing them to sense subtle shifts in social dynamics\"，答案為 hyper-intuitive capacities。"
+            },
+            {
+              "n": 14,
+              "question": "According to Paragraph D, what are these individuals difficult to do, rather than difficult to love?",
+              "answer": "manipulate",
+              "explanation": "原文：\"They are not difficult to love...rather, they are exceptionally difficult to manipulate\"，答案為 manipulate。"
+            }
+          ]
         }
       ]
     },
@@ -2756,6 +2833,83 @@
               "explanation": "原文：\"Across almost all participating countries, girls consistently outperform boys in reading literacy\"，答案為 reading literacy。"
             }
           ]
+        },
+        {
+          "group": "6-10",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. A controversial global tool for comparing academic performance",
+            "ii. Small or resource-poor nations investing heavily in human capital",
+            "iii. The mental health cost of chasing high test scores",
+            "iv. Internal inequality behind one nation's average ranking",
+            "v. Gender gaps in achievement and a nation that bans girls from school",
+            "vi. Increased spending is proven to guarantee better test scores",
+            "vii. A shift from paper-based testing to fully digital assessments"
+          ],
+          "items": [
+            {
+              "n": 6,
+              "paragraph": "A",
+              "answer": "i",
+              "explanation": "原文：\"Not without considerable controversy was the initial implementation of these assessments, as critics vigorously questioned the feasibility of comparing vastly disparate educational systems\"，對應標題 i。"
+            },
+            {
+              "n": 7,
+              "paragraph": "B",
+              "answer": "ii",
+              "explanation": "原文：\"others, like Singapore, are completely devoid of abundant natural resources, leading these societies to prioritize human capital investment\"，對應標題 ii。"
+            },
+            {
+              "n": 8,
+              "paragraph": "C",
+              "answer": "iii",
+              "explanation": "原文：\"extraordinary academic accomplishments are often achieved at a severe cost to students' mental well-being\"，對應標題 iii。"
+            },
+            {
+              "n": 9,
+              "paragraph": "D",
+              "answer": "iv",
+              "explanation": "原文：\"The United States exhibits a remarkably mediocre average PISA performance, primarily attributable to a severe domestic divide in wealth distribution\"，對應標題 iv。"
+            },
+            {
+              "n": 10,
+              "paragraph": "E",
+              "answer": "v",
+              "explanation": "原文：\"girls consistently outperform boys in reading literacy...Afghanistan is currently the sole nation to prohibit female students over the age of twelve from attending schools\"，對應標題 v。"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the Reading Passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 11,
+              "statement": "PISA was implemented without any controversy or criticism.",
+              "answer": "FALSE",
+              "explanation": "原文：\"Not without considerable controversy was the initial implementation of these assessments\"（PISA一開始的實施伴隨相當大的爭議），與題目敘述相反，故為 FALSE。"
+            },
+            {
+              "n": 12,
+              "statement": "Reducing class size always significantly improves student achievement, no matter how small the class already is.",
+              "answer": "FALSE",
+              "explanation": "原文：\"reducing class sizes has a negligible impact on student achievement beyond a certain threshold\"（超過某個門檻後，縮小班級規模對成績影響微乎其微），與題目敘述相反，故為 FALSE。"
+            },
+            {
+              "n": 13,
+              "statement": "Some wealthy American states would rank among the world's best if assessed as separate countries.",
+              "answer": "TRUE",
+              "explanation": "原文：\"Had some affluent American states participated as independent entities, they would have ranked among the global academic elite\"，與題目敘述相符，故為 TRUE。"
+            },
+            {
+              "n": 14,
+              "statement": "Girls outperform boys in mathematics in almost every participating country.",
+              "answer": "NOT GIVEN",
+              "explanation": "原文只提到「girls consistently outperform boys in reading literacy」（閱讀素養），並未提及數學科目的性別差異，故為 NOT GIVEN。"
+            }
+          ]
         }
       ]
     },
@@ -2987,6 +3141,90 @@
               "explanation": "原文：\"its unique structural progression, allowing its protagonists to age organically alongside their readers\"，對應 E。"
             }
           ]
+        },
+        {
+          "group": "6-10",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. A metaphor describing books as vessels preserving human thought",
+            "ii. Anxiety about the boundary between creator and creation",
+            "iii. Material conditions necessary for women's intellectual work",
+            "iv. Marriage portrayed as an economic necessity rather than romance",
+            "v. A series whose structure lets readers grow alongside its characters",
+            "vi. The invention of the printing press and mass literacy",
+            "vii. Government censorship of controversial early novels"
+          ],
+          "items": [
+            {
+              "n": 6,
+              "paragraph": "A",
+              "answer": "i",
+              "explanation": "原文：\"John Milton famously conceptualised a book as a chemical 'vial' into which the precious lifeblood of a human soul is poured and preserved\"，對應標題 i。"
+            },
+            {
+              "n": 7,
+              "paragraph": "B",
+              "answer": "ii",
+              "explanation": "原文：\"it also reflects a profound anxiety regarding the transition from God as the ultimate creator to humans as the technological creators of life\"，對應標題 ii。"
+            },
+            {
+              "n": 8,
+              "paragraph": "C",
+              "answer": "iii",
+              "explanation": "原文：\"Only when a woman possesses a room of her own and independent financial resources, she argues, can she hope to engage in the luxury of intellectual creation\"，對應標題 iii。"
+            },
+            {
+              "n": 9,
+              "paragraph": "D",
+              "answer": "iv",
+              "explanation": "原文：\"Austen positioned marriage not simply as a vehicle for romantic fulfillment, but as an essential social and economic institution governing survival\"，對應標題 iv。"
+            },
+            {
+              "n": 10,
+              "paragraph": "E",
+              "answer": "v",
+              "explanation": "原文：\"its unique structural progression, allowing its protagonists to age organically alongside their readers\"，對應標題 v。"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Throughout literary history, books have shaped society in different ways. Milton described a book as a ___(11)___ preserving the human soul, and the Bible's influence on civilisation is described as almost impossible to imagine away. Mary Shelley's Frankenstein reflected anxieties about humans becoming ___(12)___ of life rather than God. Virginia Woolf argued that ___(13)___ independence and a private room are prerequisites for women's creative work. Meanwhile, the Harry Potter series achieved lasting popularity partly because its characters ___(14)___ alongside its readers.",
+          "wordBank": [
+            "A. vial",
+            "B. creators",
+            "C. financial",
+            "D. age",
+            "E. villains",
+            "F. printing",
+            "G. teachers",
+            "H. translate"
+          ],
+          "items": [
+            {
+              "n": 11,
+              "answer": "A",
+              "explanation": "原文：\"John Milton famously conceptualised a book as a chemical 'vial' into which the precious lifeblood of a human soul is poured\"，空格填 A (vial)。"
+            },
+            {
+              "n": 12,
+              "answer": "B",
+              "explanation": "原文：\"a profound anxiety regarding the transition from God as the ultimate creator to humans as the technological creators of life\"，空格填 B (creators)。"
+            },
+            {
+              "n": 13,
+              "answer": "C",
+              "explanation": "原文：\"Only when a woman possesses a room of her own and independent financial resources\"，空格填 C (financial)。"
+            },
+            {
+              "n": 14,
+              "answer": "D",
+              "explanation": "原文：\"allowing its protagonists to age organically alongside their readers\"，空格填 D (age)。"
+            }
+          ]
         }
       ]
     },
@@ -3134,6 +3372,83 @@
               "statement": "Most people who enjoy fiction do so mainly to improve their vocabulary.",
               "answer": "NOT GIVEN",
               "explanation": "文章提到閱讀虛構故事的目的是心理模擬與情感演練，並未提及「主要為了增進詞彙量」，故為 NOT GIVEN。"
+            }
+          ]
+        },
+        {
+          "group": "6-10",
+          "type": "matching_headings",
+          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. The brain constructs a coherent narrative rather than reflecting reality directly",
+            "ii. Evidence from patients whose two brain hemispheres were separated",
+            "iii. A specific experiment showing the left brain inventing false explanations",
+            "iv. How the brain resolves word meaning using surrounding context",
+            "v. Fiction as practice for real-life situations",
+            "vi. Damage to the right hemisphere causes memory loss",
+            "vii. The chemical basis of long-term memory formation"
+          ],
+          "items": [
+            {
+              "n": 6,
+              "paragraph": "A",
+              "answer": "i",
+              "explanation": "原文：\"subjective experience is not a direct reflection of objective reality, but rather a highly curated, retrospective narrative constructed by the unconscious brain\"，對應標題 i。"
+            },
+            {
+              "n": 7,
+              "paragraph": "B",
+              "answer": "ii",
+              "explanation": "原文：\"pioneering studies on split-brain patients—individuals whose corpus callosum had been surgically severed\"，對應標題 ii。"
+            },
+            {
+              "n": 8,
+              "paragraph": "C",
+              "answer": "iii",
+              "explanation": "原文：\"his left hemisphere—which had not seen the word 'Bell'—immediately concocted a plausible explanation\"，對應標題 iii。"
+            },
+            {
+              "n": 9,
+              "paragraph": "D",
+              "answer": "iv",
+              "explanation": "原文：\"the word 'mouse' possesses multiple meanings, but the brain immediately resolves the ambiguity once it is placed in context\"，對應標題 iv。"
+            },
+            {
+              "n": 10,
+              "paragraph": "E",
+              "answer": "v",
+              "explanation": "原文：\"engaging with fictional worlds serves as a low-risk cognitive simulator, allowing individuals to mentally rehearse unexpected life events\"，對應標題 v。"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 11,
+              "question": "What term is used for the left-hemisphere mechanism that constructs a coherent story from experience?",
+              "answer": "the interpreter",
+              "explanation": "原文：\"a specialized cognitive mechanism—termed the 'interpreter'—continually synthesizes external behaviors and internal emotional states\"，答案為 the interpreter。"
+            },
+            {
+              "n": 12,
+              "question": "What part of the brain was surgically severed in the split-brain patients studied by Gazzaniga?",
+              "answer": "the corpus callosum",
+              "explanation": "原文：\"individuals whose corpus callosum had been surgically severed to treat intractable epilepsy\"，答案為 the corpus callosum。"
+            },
+            {
+              "n": 13,
+              "question": "What did Joe's left hemisphere attribute his hand's action to?",
+              "answer": "hearing church bells",
+              "explanation": "原文：\"attributing the action to a memory of hearing church bells earlier that day\"，答案為 hearing church bells。"
+            },
+            {
+              "n": 14,
+              "question": "What term describes the brain sampling a broad range of stimuli rather than analysing input word-by-word?",
+              "answer": "semantic chunking",
+              "explanation": "原文：\"operating through a mechanism known as semantic chunking\"，答案為 semantic chunking。"
             }
           ]
         }
