@@ -117,13 +117,17 @@
   .countdown-card input[type=date]{border:none;border-radius:6px;padding:6px 8px;font-size:13px;}
   .countdown-card .cd-setbtn{background:#ffd166;color:#1b1f27;border:none;padding:6px 12px;border-radius:6px;font-weight:700;font-size:12.5px;cursor:pointer;}
   .countdown-card .cd-clearbtn{background:none;border:1px solid #4a5162;color:#c7ccd6;padding:6px 10px;border-radius:6px;font-size:12px;cursor:pointer;}
-  .updates-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
-  .updates-card h4{margin:0 0 8px;font-size:13px;color:var(--sub);text-transform:uppercase;letter-spacing:.05em;}
-  .update-row{display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px;}
+  .updates-trigger{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:100%;min-height:64px;background:var(--panel);border:1px solid var(--line);border-radius:14px;color:var(--ink);font-size:14px;font-weight:700;cursor:pointer;}
+  .updates-trigger:hover{border-color:var(--accent);color:var(--accent);}
+  .update-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:13.5px;}
   .update-row:last-child{border-bottom:none;}
   .update-row .u-date{color:var(--sub);white-space:nowrap;font-size:12px;padding-top:1px;}
   .update-row .u-text{line-height:1.5;}
-  .updates-toggle{background:none;border:none;color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;padding:6px 0 0;}
+  #updatesModal{display:none;position:fixed;inset:0;background:rgba(20,24,33,.72);z-index:110;padding:24px;overflow-y:auto;}
+  #updatesModal.active{display:block;}
+  #updatesModal .sheet{background:var(--panel);max-width:520px;margin:40px auto;border-radius:14px;padding:24px;position:relative;}
+  #updatesModal h4{margin:0 0 12px;font-size:15px;}
+  #updatesModal .closebtn{position:absolute;top:16px;right:16px;background:var(--ink);color:#fff;border:none;width:30px;height:30px;border-radius:999px;cursor:pointer;font-size:14px;}
   .countdown-standalone{margin-bottom:20px;}
   .countdown-standalone .countdown-card{max-width:420px;}
 
@@ -186,6 +190,14 @@
     <button class="closebtn" onclick="closeEnlarge()">✕</button>
     <div id="enlargeToolbar"></div>
     <div id="enlargeContent" style="clear:both;"></div>
+  </div>
+</div>
+
+<div id="updatesModal" onclick="if(event.target===this) closeUpdatesModal()">
+  <div class="sheet">
+    <button class="closebtn" onclick="closeUpdatesModal()">✕</button>
+    <h4>📣 最近更新</h4>
+    <div id="updatesModalBody"></div>
   </div>
 </div>
 
@@ -576,17 +588,19 @@ function renderAllCountdowns(){
     if(el) el.innerHTML = countdownHTML(suffix);
   });
 }
-let showAllUpdates = false;
 const UPDATES_PREVIEW_COUNT = 5;
-function updatesHTML(){
-  const shown = showAllUpdates ? UPDATES : UPDATES.slice(0,UPDATES_PREVIEW_COUNT);
-  const rows = shown.map(u=>`<div class="update-row"><span class="u-date">${u.date}</span><span class="u-text">${u.text}</span></div>`).join('');
-  const toggle = UPDATES.length > UPDATES_PREVIEW_COUNT ? `<button class="updates-toggle" onclick="showAllUpdates=!showAllUpdates;renderUpdatesSlot();">${showAllUpdates?'收合':`顯示全部 ${UPDATES.length} 則`}</button>` : '';
-  return `<div class="updates-card"><h4>📣 最近更新</h4>${rows}${toggle}</div>`;
-}
 function renderUpdatesSlot(){
   const el = document.getElementById('updates-slot');
-  if(el) el.innerHTML = updatesHTML();
+  if(!el) return;
+  el.innerHTML = `<button class="updates-trigger" onclick="openUpdatesModal()">📣 最近更新</button>`;
+}
+function openUpdatesModal(){
+  const rows = UPDATES.slice(0,UPDATES_PREVIEW_COUNT).map(u=>`<div class="update-row"><span class="u-date">${u.date}</span><span class="u-text">${u.text}</span></div>`).join('');
+  document.getElementById('updatesModalBody').innerHTML = rows;
+  document.getElementById('updatesModal').classList.add('active');
+}
+function closeUpdatesModal(){
+  document.getElementById('updatesModal').classList.remove('active');
 }
 function renderDashboardStrip(){
   renderAllCountdowns();
@@ -613,6 +627,7 @@ function openPassage(i){
   stopReadingTimer();
   state.currentPassage = state.reading.passages[i];
   document.getElementById('reading-list').style.display='none';
+  document.getElementById('updates-slot').style.display='none';
   const test = document.getElementById('reading-test');
   test.style.display='block';
   const p = state.currentPassage;
@@ -755,6 +770,7 @@ function closePassage(){
   renderReadingList();
   document.getElementById('reading-test').style.display='none';
   document.getElementById('reading-list').style.display='block';
+  document.getElementById('updates-slot').style.display='';
 }
 
 /* ---------- reading in-progress answer autosave (so an accidental exit isn't lost) ---------- */
