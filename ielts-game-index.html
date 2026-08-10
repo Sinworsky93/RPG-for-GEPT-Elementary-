@@ -35,8 +35,7 @@
   .split{display:grid;grid-template-columns:1fr;gap:20px;}
   @media(min-width:860px){.split{grid-template-columns:1.1fr 1fr;}}
   .passage-box, .qbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;}
-  .passage-box{max-height:78vh;overflow-y:auto;}
-  @media(min-width:860px){.passage-box{position:sticky;top:66px;}}
+  @media(min-width:860px){.passage-box{position:sticky;top:66px;max-height:78vh;overflow-y:auto;}}
   .passage-box h2{font-size:19px;margin-top:0;}
   .passage-box p{line-height:1.8;font-size:16px;}
   .para-label{font-weight:800;color:var(--accent);margin-right:6px;}
