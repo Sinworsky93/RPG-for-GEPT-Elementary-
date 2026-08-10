@@ -29,6 +29,9 @@
   .card h3{margin:0 0 4px;font-size:16px;}
   .card p{margin:0;color:var(--sub);font-size:13px;}
   .badge{display:inline-block;font-size:11px;font-weight:700;color:var(--accent);background:var(--chip);padding:2px 8px;border-radius:999px;margin-right:6px;}
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px;}
+  @media(max-width:600px){.cat-grid{grid-template-columns:1fr;}}
+  .cat-grid .card{margin-bottom:0;}
 
   /* passage/test view */
   .backbtn{background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;font-size:14px;margin-bottom:14px;padding:0;}
@@ -121,6 +124,8 @@
   .update-row .u-date{color:var(--sub);white-space:nowrap;font-size:12px;padding-top:1px;}
   .update-row .u-text{line-height:1.5;}
   .updates-toggle{background:none;border:none;color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;padding:6px 0 0;}
+  .countdown-standalone{margin-bottom:20px;}
+  .countdown-standalone .countdown-card{max-width:420px;}
 
   @media(max-width:600px){
     header h1{font-size:14px;}
@@ -152,20 +157,26 @@
 
 <main>
   <section id="view-reading" class="view active">
-    <div id="dashboard-strip"></div>
+    <div id="dashboard-strip">
+      <div id="countdown-slot-reading"></div>
+      <div id="updates-slot"></div>
+    </div>
     <div id="reading-list"><div class="loading">閱讀題庫載入中…</div></div>
     <div id="reading-test" style="display:none;"></div>
   </section>
 
   <section id="view-writing" class="view">
+    <div id="countdown-slot-writing" class="countdown-standalone"></div>
     <div id="writing-list"><div class="loading">寫作題庫載入中…</div></div>
   </section>
 
   <section id="view-speaking" class="view">
+    <div id="countdown-slot-speaking" class="countdown-standalone"></div>
     <div id="speaking-list"><div class="loading">口說題庫載入中…</div></div>
   </section>
 
   <section id="view-review" class="view">
+    <div id="countdown-slot-review" class="countdown-standalone"></div>
     <div id="review-list"></div>
   </section>
 </main>
@@ -526,21 +537,22 @@ function getExamDate(){
 }
 function setExamDate(dateStr){
   try{ if(dateStr) localStorage.setItem('ieltsExamDate', dateStr); else localStorage.removeItem('ieltsExamDate'); }catch(e){}
-  renderDashboardStrip();
+  renderAllCountdowns();
 }
 function daysUntil(dateStr){
   const target = new Date(dateStr+'T00:00:00');
   const today = new Date(); today.setHours(0,0,0,0);
   return Math.round((target - today) / 86400000);
 }
-function countdownHTML(){
+function countdownHTML(suffix){
+  const inputId = 'examDateInput-'+suffix;
   const d = getExamDate();
   if(!d){
     return `<div class="countdown-card">
       <div class="cd-label">🎯 設定你的考試／模考日期</div>
       <div class="cd-editrow">
-        <input type="date" id="examDateInput">
-        <button class="cd-setbtn" onclick="setExamDate(document.getElementById('examDateInput').value)">設定</button>
+        <input type="date" id="${inputId}">
+        <button class="cd-setbtn" onclick="setExamDate(document.getElementById('${inputId}').value)">設定</button>
       </div>
     </div>`;
   }
@@ -551,23 +563,34 @@ function countdownHTML(){
     <div class="cd-days">${label}</div>
     <div class="cd-date">考試日期：${d}</div>
     <div class="cd-editrow">
-      <input type="date" id="examDateInput" value="${d}">
-      <button class="cd-setbtn" onclick="setExamDate(document.getElementById('examDateInput').value)">更新</button>
+      <input type="date" id="${inputId}" value="${d}">
+      <button class="cd-setbtn" onclick="setExamDate(document.getElementById('${inputId}').value)">更新</button>
       <button class="cd-clearbtn" onclick="setExamDate('')">清除</button>
     </div>
   </div>`;
 }
+const COUNTDOWN_MOUNTS = { reading:'countdown-slot-reading', writing:'countdown-slot-writing', speaking:'countdown-slot-speaking', review:'countdown-slot-review' };
+function renderAllCountdowns(){
+  Object.entries(COUNTDOWN_MOUNTS).forEach(([suffix,elId])=>{
+    const el = document.getElementById(elId);
+    if(el) el.innerHTML = countdownHTML(suffix);
+  });
+}
 let showAllUpdates = false;
+const UPDATES_PREVIEW_COUNT = 5;
 function updatesHTML(){
-  const shown = showAllUpdates ? UPDATES : UPDATES.slice(0,4);
+  const shown = showAllUpdates ? UPDATES : UPDATES.slice(0,UPDATES_PREVIEW_COUNT);
   const rows = shown.map(u=>`<div class="update-row"><span class="u-date">${u.date}</span><span class="u-text">${u.text}</span></div>`).join('');
-  const toggle = UPDATES.length > 4 ? `<button class="updates-toggle" onclick="showAllUpdates=!showAllUpdates;renderDashboardStrip();">${showAllUpdates?'收合':`顯示全部 ${UPDATES.length} 則`}</button>` : '';
+  const toggle = UPDATES.length > UPDATES_PREVIEW_COUNT ? `<button class="updates-toggle" onclick="showAllUpdates=!showAllUpdates;renderUpdatesSlot();">${showAllUpdates?'收合':`顯示全部 ${UPDATES.length} 則`}</button>` : '';
   return `<div class="updates-card"><h4>📣 最近更新</h4>${rows}${toggle}</div>`;
 }
+function renderUpdatesSlot(){
+  const el = document.getElementById('updates-slot');
+  if(el) el.innerHTML = updatesHTML();
+}
 function renderDashboardStrip(){
-  const el = document.getElementById('dashboard-strip');
-  if(!el) return;
-  el.innerHTML = countdownHTML() + updatesHTML();
+  renderAllCountdowns();
+  renderUpdatesSlot();
 }
 
 function renderReadingList(){
@@ -981,35 +1004,67 @@ function renderChart(item){
 }
 
 /* ---------- writing ---------- */
+const CHART_TYPE_NAMES = { line:'折線圖', bar:'長條圖', pie:'圓餅圖', table:'表格', process:'流程圖', map:'地圖比較' };
+const CHART_TYPE_ORDER = ['line','bar','pie','table','process','map'];
+const TASK2_CAT_NAMES = { education:'教育', environment:'環境', society_government:'社會與政府', work_economy:'工作與經濟', media_technology:'媒體與科技' };
+
 function renderWriting(){
+  state.currentWritingCat = null;
   const el = document.getElementById('writing-list');
   if(!state.writing){ el.innerHTML='<div class="empty">找不到 writing-bank.json</div>'; return; }
-  const draftTag = `<span class="tag" style="background:#fff3d6;color:#8a6400;">📝 草稿，點擊繼續</span>`;
-  let html = '<div class="section-title">Task 1－學術類（點選題目查看圖表並開始寫作）</div>';
-  const chartTypeNames = { line:'折線圖', bar:'長條圖', pie:'圓餅圖', table:'表格', process:'流程圖', map:'地圖比較' };
-  const chartTypeOrder = ['line','bar','pie','table','process','map'];
   const task1Items = (state.writing.task1_academic||[]).map((t,i)=>({ t, i }));
-  chartTypeOrder.forEach(ct=>{
+  let html = '<div class="section-title">Task 1－學術類（先選圖表種類）</div><div class="cat-grid">';
+  CHART_TYPE_ORDER.forEach(ct=>{
     const group = task1Items.filter(x=>x.t.chart_type===ct);
     if(!group.length) return;
-    html += `<div class="section-title" style="font-size:13px;color:var(--sub);margin-top:16px;">${chartTypeNames[ct]||ct}</div>`;
-    html += group.map(({t,i})=>{
+    const hasDraft = group.some(({i})=>!!loadEssayDraft({ kind:'task1', i }));
+    html += `<div class="card" onclick="openWritingCategory('task1','${ct}')">
+      <h3>${CHART_TYPE_NAMES[ct]||ct}</h3>
+      <p>${group.length} 篇${hasDraft ? '．📝 有草稿' : ''}</p>
+    </div>`;
+  });
+  html += '</div>';
+
+  html += '<div class="section-title" style="margin-top:24px;">Task 2－作文（先選主題類別）</div><div class="cat-grid">';
+  const cats = state.writing.task2_essay || {};
+  Object.entries(cats).forEach(([cat, prompts])=>{
+    const hasDraft = prompts.some((p,pi)=>!!loadEssayDraft({ kind:'task2', cat, i:pi }));
+    html += `<div class="card" onclick="openWritingCategory('task2','${cat}')">
+      <h3>${TASK2_CAT_NAMES[cat]||cat.replace(/_/g,' ')}</h3>
+      <p>${prompts.length} 題${hasDraft ? '．📝 有草稿' : ''}</p>
+    </div>`;
+  });
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function openWritingCategory(kind, key){
+  state.currentWritingCat = { kind, key };
+  renderWritingCategoryList();
+}
+
+function renderWritingCategoryList(){
+  const el = document.getElementById('writing-list');
+  const cur = state.currentWritingCat;
+  if(!cur){ renderWriting(); return; }
+  const draftTag = `<span class="tag" style="background:#fff3d6;color:#8a6400;">📝 草稿，點擊繼續</span>`;
+  let html = `<button class="backbtn" onclick="renderWriting()">&larr; 返回分類</button>`;
+  if(cur.kind === 'task1'){
+    html += `<div class="section-title">Task 1－${CHART_TYPE_NAMES[cur.key]||cur.key}</div>`;
+    const items = (state.writing.task1_academic||[]).map((t,i)=>({ t, i })).filter(x=>x.t.chart_type===cur.key);
+    html += items.map(({t,i})=>{
       const hasDraft = !!loadEssayDraft({ kind:'task1', i });
       return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask1(${i})">${hasDraft?draftTag:''}${t.prompt}</div>`;
     }).join('');
-  });
-
-  html += '<div class="section-title">Task 2－作文（點選題目開始寫作）</div>';
-  const cats = state.writing.task2_essay || {};
-  const catNames = { education:'教育', environment:'環境', society_government:'社會與政府', work_economy:'工作與經濟', media_technology:'媒體與科技' };
-  Object.entries(cats).forEach(([cat, prompts])=>{
-    html += `<div class="section-title" style="font-size:13px;color:var(--sub);margin-top:16px;">${catNames[cat]||cat.replace(/_/g,' ')}</div>`;
+  } else {
+    html += `<div class="section-title">Task 2－${TASK2_CAT_NAMES[cur.key]||cur.key}</div>`;
+    const prompts = (state.writing.task2_essay && state.writing.task2_essay[cur.key]) || [];
     html += prompts.map((p,pi)=>{
       const text = typeof p === 'string' ? p : p.prompt;
-      const hasDraft = !!loadEssayDraft({ kind:'task2', cat, i:pi });
-      return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask2('${cat}',${pi})">${hasDraft?draftTag:''}${text}</div>`;
+      const hasDraft = !!loadEssayDraft({ kind:'task2', cat:cur.key, i:pi });
+      return `<div class="prompt-item" style="cursor:pointer;" onclick="openTask2('${cur.key}',${pi})">${hasDraft?draftTag:''}${text}</div>`;
     }).join('');
-  });
+  }
   el.innerHTML = html;
 }
 
@@ -1069,7 +1124,7 @@ function openTask1(i){
   essaySecondsLeft = durationMin*60;
   const el = document.getElementById('writing-list');
   el.innerHTML = `
-    <button class="backbtn" onclick="stopEssayTimer();renderWriting()">&larr; 返回寫作列表</button>
+    <button class="backbtn" onclick="stopEssayTimer();renderWritingCategoryList()">&larr; 返回寫作列表</button>
     <div class="passage-box" style="margin-bottom:20px;position:static;max-height:none;">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
         <h3 style="margin-top:0;"><span class="tag">${item.chart_type}</span></h3>
@@ -1109,7 +1164,7 @@ function openTask2(cat, i){
   taskCtx = { kind:'task2', cat, i, minWords, durationMin, modelAnswer, promptText: prompt };
   essaySecondsLeft = durationMin*60;
   el.innerHTML = `
-    <button class="backbtn" onclick="stopEssayTimer();renderWriting()">&larr; 返回寫作列表</button>
+    <button class="backbtn" onclick="stopEssayTimer();renderWritingCategoryList()">&larr; 返回寫作列表</button>
     <div class="qbox">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;">
         <h3 style="margin-top:0;">${prompt}</h3>
@@ -1204,7 +1259,7 @@ function finishEssay(autoSubmitted){
 
   const el = document.getElementById('writing-list');
   el.innerHTML = `
-    <button class="backbtn" onclick="renderWriting()">&larr; 返回寫作列表</button>
+    <button class="backbtn" onclick="renderWritingCategoryList()">&larr; 返回寫作列表</button>
     <div class="qbox">
       <h3 style="margin-top:0;">${autoSubmitted ? "⏰ 時間到 — 已自動送出" : '檢視結果'}</h3>
       <div class="qgroup">
