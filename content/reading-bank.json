@@ -155,7 +155,8 @@
                 "C) His employees preferred emotional support over practical advice in every situation",
                 "D) Harvard Business School had not adequately trained him in public speaking"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第A段描述 Duhigg 當上主管後發現自己習慣直接給建議，卻忽略同事真正需要的是情緒上的回應，對應 B。"
             },
             {
               "n": 7,
@@ -166,7 +167,8 @@
                 "C) Acknowledging differing perspectives to maintain social cohesion",
                 "D) Expressing personal vulnerabilities to build trust"
               ],
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第B段指出社交型對話的目的是「彼此承認不同觀點以維繫社會連結」而非達成共識或解決問題，對應 C。"
             },
             {
               "n": 8,
@@ -177,7 +179,8 @@
                 "C) Conversations must always begin in the practical dimension",
                 "D) Speakers should avoid switching between conversational modes"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第C段的「matching principle」意指雙方必須同時處於同一種對話模式（practical/emotional/social），對應 B。"
             },
             {
               "n": 9,
@@ -188,7 +191,8 @@
                 "C) The use of emotionally charged language",
                 "D) A pause in the conversation"
               ],
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第D段說明可從用字判斷對話模式的轉換，帶有強烈情緒字眼即代表已轉入情緒對話，對應 C。"
             },
             {
               "n": 10,
@@ -199,7 +203,8 @@
                 "C) It can be developed through deliberate practice",
                 "D) It depends mainly on reaching full agreement with others"
               ],
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第E段結論強調優秀的溝通者不是天生的，而是持續刻意練習而來，對應 C。"
             }
           ]
         }
@@ -419,23 +424,28 @@
           "items": [
             {
               "n": 7,
-              "answer": "E"
+              "answer": "E",
+              "explanation": "第B段提到亞里斯多德認為真正的友誼不涉及自利（self-interest），與商業關係不同，空格填 E。"
             },
             {
               "n": 8,
-              "answer": "D"
+              "answer": "D",
+              "explanation": "第C段指出行動力、育兒與「workism（過度工作主義）」壓縮了人們可用來社交的時間，空格填 D。"
             },
             {
               "n": 9,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "第D段提到年輕男性在危機時願意找朋友傾訴的比例大幅下降，許多人轉而依賴父母，空格填 A。"
             },
             {
               "n": 10,
-              "answer": "F"
+              "answer": "F",
+              "explanation": "第E段說明疫情對女性友誼的衝擊更大，因為女性友誼較依賴實體互動，空格填 F。"
             },
             {
               "n": 11,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第F段結論強調維繫友誼需要「刻意」（deliberate）努力，而非放任不管，空格填 C。"
             }
           ]
         }
@@ -926,7 +936,8 @@
                 "C) A legal restriction on chip exports",
                 "D) The exact date silicon was first discovered"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第A段將摩爾定律定義為電晶體數量約每兩年翻倍的經濟規律，而非物理定律，對應 B。"
             },
             {
               "n": 7,
@@ -937,7 +948,8 @@
                 "C) Only four countries possess silicon deposits",
                 "D) Silicon is extremely rare in the Earth's crust"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第B段說明矽晶圓純化過程極其敏感，只要一個原子的雜質就會毀掉整片晶圓，因此生產集中在極少數公司，對應 B。"
             },
             {
               "n": 8,
@@ -948,7 +960,8 @@
                 "C) It uses a laser-generated plasma to carve intricate transistor patterns onto silicon",
                 "D) It mines raw silicon from quarries"
               ],
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第C段描述 ASML 微影機利用雷射產生的電漿在矽晶圓上刻出精密的電晶體圖案，對應 C。"
             },
             {
               "n": 9,
@@ -959,7 +972,8 @@
                 "C) Charging significantly higher prices for older chip designs",
                 "D) Sharing a single facility among multiple competitors"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第D段指出唯有大規模量產才能分攤一座晶圓廠約200億美元的建置成本，對應 B。"
             },
             {
               "n": 10,
@@ -970,7 +984,8 @@
                 "C) It relies exclusively on materials produced in the United States",
                 "D) It has eliminated dependence on any single-nation supplier of raw materials"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第E段結論強調半導體供應鏈仰賴國際合作，因此容易受地緣政治干擾，對應 B。"
             }
           ]
         }
@@ -1131,27 +1146,32 @@
             {
               "n": 7,
               "statement": "A description of how one company's own tax records were used against it during a land dispute.",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "第E段描述地主危地馬拉政府依據聯合果品公司自己申報的（偏低）土地稅務紀錄來徵收補償款，等於用該公司自己的報稅資料反將一軍。"
             },
             {
               "n": 8,
               "statement": "A reference to the specific month and year in which an exiled leader set sail to retake power.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第B段記載流亡的卡斯提拉總統於特定月份搭船返國奪回政權，答案在時間敘述的細節中。"
             },
             {
               "n": 9,
               "statement": "A description of the company's rebranding under a new company name.",
-              "answer": "F"
+              "answer": "F",
+              "explanation": "第F段提到聯合果品公司後來改名（Chiquita 前身），對應公司更名的描述。"
             },
             {
               "n": 10,
               "statement": "An explanation of why the industry's early plantations were highly vulnerable to disease.",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "第D段解釋密集單一品種（monoculture）種植使整個香蕉產業對疾病毫無抵抗力，因而極易爆發病害。"
             },
             {
               "n": 11,
               "statement": "A statistic showing the proportion of one country's farmland owned by a single corporation.",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第C段提到該公司取得瓜地馬拉超過四成可耕地，對應土地占比的統計數字。"
             }
           ]
         }
@@ -1224,7 +1244,8 @@
                 "C) That it focuses exclusively on Telemachus rather than Odysseus",
                 "D) That it was never adapted for the cinema"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第A段指出許多人誤以為《奧德賽》只是單純的英雄冒險故事，但它其實是一部相當細膩的心理史詩，對應 B。"
             },
             {
               "n": 7,
@@ -1235,7 +1256,8 @@
                 "C) They were only performed by professional actors, never bards",
                 "D) They ceased once the poem was first written down"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第B段描述吟遊詩人的口述表演會依聽眾反應而變化，並非每次都一字不差重複，對應 B。"
             },
             {
               "n": 8,
@@ -1246,7 +1268,8 @@
                 "C) They rely exclusively on archaeological evidence unavailable to ancient scholars",
                 "D) They have made ancient scholarly methods entirely obsolete"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第C段暗示現代學者的分析方法與亞歷山卓時期的注釋學者驚人地相似，對應 B。"
             },
             {
               "n": 9,
@@ -1257,7 +1280,8 @@
                 "C) She restored the euphemism \"serving girls\" used before the 1950s",
                 "D) She translated the epic into a language other than English"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第D／E段提到艾蜜莉．威爾森是第一位在譯文中直接把相關希臘詞譯為「slaves（奴隸）」的譯者，對應 B。"
             },
             {
               "n": 10,
@@ -1268,7 +1292,8 @@
                 "C) It was invented by Emily Wilson for her modern translation",
                 "D) It refers exclusively to Odysseus's physical strength"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第E段以「polytropos」一字為例，說明其意義模糊、有多種譯法，正說明沒有任何譯本能被視為唯一定論，對應 B。"
             }
           ]
         }
@@ -1345,23 +1370,28 @@
           "items": [
             {
               "n": 6,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "第B段將肌肉描述為「viscoelastic（黏彈性）」材質，不同於純彈性的橡膠，空格填 A。"
             },
             {
               "n": 7,
-              "answer": "F"
+              "answer": "F",
+              "explanation": "文中指出反覆短暫伸展降低肌肉阻力的效果是暫時性的（transient），約十分鐘後消退，空格填 F。"
             },
             {
               "n": 8,
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第D段說明持久的柔軟度改變來自肌肉增加額外的 sarcomeres（肌節），空格填 B。"
             },
             {
               "n": 9,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "因為長時間維持單一伸展姿勢有風險，專家建議把伸展拆成數個較短的 intervals（時段），空格填 C。"
             },
             {
               "n": 10,
-              "answer": "D"
+              "answer": "D",
+              "explanation": "第E段提到伸展對預防某些運動傷害幫助有限，例如長跑（long-distance running）常見的傷害，空格填 D。"
             }
           ]
         }
@@ -1522,27 +1552,32 @@
             {
               "n": 6,
               "statement": "A description of an ancient religious response to head pain, tried before any medical treatment.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "第A段描述古希臘人頭痛時會先向醫神 Asclepius 祈禱，這是在接受任何醫療處置之前的宗教性回應，對應 A。"
             },
             {
               "n": 7,
               "statement": "A statistic on the number of distinct diagnosable headache types identified by practitioners.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第B段指出頭痛在臨床上系統性地分為原發性與續發性兩大類，對應題目所問的分類方式，對應 B。"
             },
             {
               "n": 8,
               "statement": "An explanation of how a bodily fluid imbalance can create symptoms that contradict a specific primary headache type.",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "第D段說明體內某種體液失衡也可能製造出類似特定原發性頭痛的矛盾症狀，對應 D。"
             },
             {
               "n": 9,
               "statement": "A description of the treatment approach used for the less severe categories of headache.",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "第E段提到症狀較輕的頭痛類型（緊張型與續發性）可用非處方消炎藥處理，對應治療方式的描述，對應 E。"
             },
             {
               "n": 10,
               "statement": "An explanation of the biological process by which pressure from swollen sinuses leads to pain.",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第C段解釋鼻竇腔感染腫脹後產生的壓力如何造成疼痛的生理機制，對應 C。"
             }
           ]
         }
@@ -1566,22 +1601,26 @@
             {
               "n": 1,
               "statement": "Customers pay a deposit that is returned when they bring the container back.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章沒有提到押金退還機制，只說明「small deposit」，沒有進一步描述退還細節，因此為 NOT GIVEN。"
             },
             {
               "n": 2,
               "statement": "Trials in Germany and South Korea reduced packaging waste by over 50% in a year.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "第一段明確寫「such schemes can cut packaging waste by more than half within a single year」，對應 TRUE。"
             },
             {
               "n": 3,
               "statement": "All customers prefer the deposit system to disposable packaging.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "第二段只說「some customers find the deposit system inconvenient」，並非所有顧客都這樣覺得，故為 FALSE。"
             },
             {
               "n": 4,
               "statement": "Retailers expect costs to decrease as more stores adopt the scheme.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "第二段最後一句「the cost of running them will fall」正是零售商的預期，對應 TRUE。"
             }
           ]
         }
@@ -1611,7 +1650,8 @@
                 "C) By absorbing sunlight into their roots",
                 "D) Through artificial irrigation systems"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第一段提到樹木透過「shade and the natural cooling effect of releasing water vapour」降溫，對應 B。"
             },
             {
               "n": 2,
@@ -1622,7 +1662,8 @@
                 "C) Tree-lined streets in both cities are cooler than streets without trees",
                 "D) Both cities have identical average temperatures"
               ],
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第一段比較新加坡與墨爾本的有樹街道比無樹街道涼爽，對應 C。"
             },
             {
               "n": 3,
@@ -1633,7 +1674,8 @@
                 "C) They eliminate the need for public transport",
                 "D) They reduce the price of building materials"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第二段開頭「urban trees also improve air quality by filtering pollutants and absorbing carbon dioxide」對應 B。"
             },
             {
               "n": 4,
@@ -1644,7 +1686,8 @@
                 "C) A shortage of tree seeds worldwide",
                 "D) Legal restrictions on all forms of greenery"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第二段提到「underground pipes, narrow pavements, and pollution can all limit where trees are able to grow」，對應 B。"
             }
           ]
         }
@@ -1668,17 +1711,20 @@
             {
               "n": 1,
               "prompt": "Writing by hand forces the brain to process information more ___ and selectively.",
-              "answer": "slowly"
+              "answer": "slowly",
+              "explanation": "文中寫「forces the brain to process information more slowly and selectively」，空格填 slowly。"
             },
             {
               "n": 2,
               "prompt": "Compared with digital text, handwriting is slower, harder to search, and more difficult to ___.",
-              "answer": "share"
+              "answer": "share",
+              "explanation": "第二段列出手寫的缺點：「slower, harder to search, and more difficult to share」，空格填 share。"
             },
             {
               "n": 3,
               "prompt": "Many people now reserve handwriting for brainstorming, summarising, or reviewing key ideas before an ___.",
-              "answer": "exam"
+              "answer": "exam",
+              "explanation": "文末提到「reserving handwriting for brainstorming, summarising, or reviewing key ideas before an exam」，空格填 exam。"
             }
           ]
         }

@@ -53,6 +53,8 @@
   .result{font-size:12px;font-weight:700;margin-left:4px;}
   .result.correct{color:var(--good);}
   .result.wrong{color:var(--bad);}
+  .qexplain{width:100%;margin-top:8px;background:#fff3d6;border-left:3px solid var(--warn);padding:9px 12px;border-radius:6px;font-size:13.5px;line-height:1.65;color:var(--ink);}
+  .qexplain-lbl{display:block;font-weight:700;color:var(--warn);font-size:12px;margin-bottom:3px;}
   .submitbar{background:var(--panel);border-top:1px solid var(--line);padding:14px 0;margin-top:10px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;}
   .submitbar button{background:var(--accent);color:#fff;border:none;padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;cursor:pointer;}
   .score{font-weight:800;font-size:15px;}
@@ -100,6 +102,26 @@
   .rec-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:6px;}
   audio{max-width:100%;}
 
+  /* dashboard: countdown + changelog */
+  #dashboard-strip{display:grid;grid-template-columns:1fr;gap:14px;margin-bottom:20px;}
+  @media(min-width:700px){#dashboard-strip{grid-template-columns:1fr 1.3fr;}}
+  .countdown-card{background:var(--ink);color:#fff;border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;justify-content:center;gap:6px;}
+  .countdown-card .cd-label{font-size:13px;color:#c7ccd6;}
+  .countdown-card .cd-days{font-size:34px;font-weight:800;color:#ffd166;line-height:1.1;}
+  .countdown-card .cd-days span{font-size:16px;font-weight:600;color:#fff;margin-left:4px;}
+  .countdown-card .cd-date{font-size:12.5px;color:#9aa1ae;margin-top:2px;}
+  .countdown-card .cd-editrow{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap;}
+  .countdown-card input[type=date]{border:none;border-radius:6px;padding:6px 8px;font-size:13px;}
+  .countdown-card .cd-setbtn{background:#ffd166;color:#1b1f27;border:none;padding:6px 12px;border-radius:6px;font-weight:700;font-size:12.5px;cursor:pointer;}
+  .countdown-card .cd-clearbtn{background:none;border:1px solid #4a5162;color:#c7ccd6;padding:6px 10px;border-radius:6px;font-size:12px;cursor:pointer;}
+  .updates-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  .updates-card h4{margin:0 0 8px;font-size:13px;color:var(--sub);text-transform:uppercase;letter-spacing:.05em;}
+  .update-row{display:flex;gap:10px;padding:6px 0;border-bottom:1px dashed var(--line);font-size:13px;}
+  .update-row:last-child{border-bottom:none;}
+  .update-row .u-date{color:var(--sub);white-space:nowrap;font-size:12px;padding-top:1px;}
+  .update-row .u-text{line-height:1.5;}
+  .updates-toggle{background:none;border:none;color:var(--accent);font-size:12.5px;font-weight:700;cursor:pointer;padding:6px 0 0;}
+
   @media(max-width:600px){
     header h1{font-size:14px;}
     nav button{font-size:12px;padding:6px 8px;}
@@ -110,6 +132,7 @@
     #enlargeOverlay{padding:10px;}
     #enlargeOverlay .sheet{padding:16px;font-size:17px;}
     #enlargeOverlay .sheet p{font-size:17px;}
+    .qexplain{font-size:14px;padding:10px 12px;}
   }
 </style>
 </head>
@@ -129,6 +152,7 @@
 
 <main>
   <section id="view-reading" class="view active">
+    <div id="dashboard-strip"></div>
     <div id="reading-list"><div class="loading">閱讀題庫載入中…</div></div>
     <div id="reading-test" style="display:none;"></div>
   </section>
@@ -224,6 +248,7 @@ async function init(){
   state.writing = await loadJSON(['content/writing-bank.json','content/writingbank.json','writing-bank.json','writingbank.json']);
   state.speaking = await loadJSON(['content/speaking-bank.json','content/speakingbank.json','speaking-bank.json','speakingbank.json']);
   remoteDraftsCache = await fetchRemoteDrafts();
+  renderDashboardStrip();
   renderReadingList();
   renderWriting();
   renderSpeaking();
@@ -483,6 +508,68 @@ function readingCardHTML(p, i){
     </div>`;
 }
 
+/* ---------- dashboard: exam countdown + recent updates ---------- */
+const UPDATES = [
+  { date:'2026-08-10', text:'新增「⚡ 快速練習」短文（題目少、5分鐘可做完，適合手機空檔練習）' },
+  { date:'2026-08-10', text:'修正手機閱讀頁滑不到題目的問題' },
+  { date:'2026-08-09', text:'口說題庫新增 Hobbies、Lifestyle 等主題，Part 2 題卡增至 95 張' },
+  { date:'2026-08-09', text:'閱讀題庫新增選擇題、摘要填空、段落配對題型，題目類型更多元' },
+  { date:'2026-08-09', text:'口說 Part 2 抽到題卡後，自動顯示對應主題的 Part 3 延伸討論' },
+  { date:'2026-08-09', text:'修正手機上螢光筆按鈕點不到、無法標記顏色的問題' },
+  { date:'2026-08-08', text:'閱讀、寫作加入「進行中」提示，意外離開也能快速找回進度' },
+  { date:'2026-08-08', text:'作文 Task 1 改為圖表在上、答題區在下，畫面更寬敞' },
+  { date:'2026-08-08', text:'新增學生姓名登記與後台紀錄、寫作草稿自動儲存、口說錄音功能' },
+];
+
+function getExamDate(){
+  try{ return localStorage.getItem('ieltsExamDate') || ''; }catch(e){ return ''; }
+}
+function setExamDate(dateStr){
+  try{ if(dateStr) localStorage.setItem('ieltsExamDate', dateStr); else localStorage.removeItem('ieltsExamDate'); }catch(e){}
+  renderDashboardStrip();
+}
+function daysUntil(dateStr){
+  const target = new Date(dateStr+'T00:00:00');
+  const today = new Date(); today.setHours(0,0,0,0);
+  return Math.round((target - today) / 86400000);
+}
+function countdownHTML(){
+  const d = getExamDate();
+  if(!d){
+    return `<div class="countdown-card">
+      <div class="cd-label">🎯 設定你的考試／模考日期</div>
+      <div class="cd-editrow">
+        <input type="date" id="examDateInput">
+        <button class="cd-setbtn" onclick="setExamDate(document.getElementById('examDateInput').value)">設定</button>
+      </div>
+    </div>`;
+  }
+  const days = daysUntil(d);
+  const label = days > 0 ? `${days}<span>天後應考</span>` : (days === 0 ? `今天<span>就是考試日！加油</span>` : `已考完<span>可以重新設定日期</span>`);
+  return `<div class="countdown-card">
+    <div class="cd-label">🎯 距離考試</div>
+    <div class="cd-days">${label}</div>
+    <div class="cd-date">考試日期：${d}</div>
+    <div class="cd-editrow">
+      <input type="date" id="examDateInput" value="${d}">
+      <button class="cd-setbtn" onclick="setExamDate(document.getElementById('examDateInput').value)">更新</button>
+      <button class="cd-clearbtn" onclick="setExamDate('')">清除</button>
+    </div>
+  </div>`;
+}
+let showAllUpdates = false;
+function updatesHTML(){
+  const shown = showAllUpdates ? UPDATES : UPDATES.slice(0,4);
+  const rows = shown.map(u=>`<div class="update-row"><span class="u-date">${u.date}</span><span class="u-text">${u.text}</span></div>`).join('');
+  const toggle = UPDATES.length > 4 ? `<button class="updates-toggle" onclick="showAllUpdates=!showAllUpdates;renderDashboardStrip();">${showAllUpdates?'收合':`顯示全部 ${UPDATES.length} 則`}</button>` : '';
+  return `<div class="updates-card"><h4>📣 最近更新</h4>${rows}${toggle}</div>`;
+}
+function renderDashboardStrip(){
+  const el = document.getElementById('dashboard-strip');
+  if(!el) return;
+  el.innerHTML = countdownHTML() + updatesHTML();
+}
+
 function renderReadingList(){
   const el = document.getElementById('reading-list');
   if(!state.reading || !state.reading.passages){ el.innerHTML='<div class="empty">找不到 reading-bank.json</div>'; return; }
@@ -522,7 +609,7 @@ function openPassage(i){
           const val = h.split('.')[0].trim();
           return `<option value="${val}">${val}</option>`;
         }).join('');
-        return `<div class="qitem" data-type="matching_headings" data-text="Paragraph ${it.paragraph}">
+        return `<div class="qitem" data-type="matching_headings" data-text="Paragraph ${it.paragraph}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">Paragraph ${it.paragraph}</span>
           <select data-group="${gi}" data-n="${it.n}" data-answer="${it.answer}">
@@ -532,7 +619,7 @@ function openPassage(i){
         </div>`;
       }).join('');
     } else if(g.type === 'true_false_not_given'){
-      inner += g.items.map(it=>`<div class="qitem" data-type="true_false_not_given" data-text="${it.statement.replace(/"/g,'&quot;')}">
+      inner += g.items.map(it=>`<div class="qitem" data-type="true_false_not_given" data-text="${it.statement.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">${it.statement}</span>
           <span class="tfng">
@@ -541,7 +628,7 @@ function openPassage(i){
           <span class="result" id="res-${it.n}"></span>
         </div>`).join('');
     } else if(g.type === 'sentence_completion'){
-      inner += g.items.map(it=>`<div class="qitem" data-type="sentence_completion" data-text="${it.prompt.replace(/"/g,'&quot;')}">
+      inner += g.items.map(it=>`<div class="qitem" data-type="sentence_completion" data-text="${it.prompt.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">${it.prompt}</span>
           <input type="text" placeholder="answer" data-n="${it.n}" data-answer="${it.answer}" style="width:140px;">
@@ -553,7 +640,7 @@ function openPassage(i){
           const letter = o.split(')')[0].split('.')[0].trim();
           return `<label style="display:block;margin:3px 0;"><input type="radio" name="q${it.n}" value="${letter}" data-n="${it.n}" data-answer="${it.answer}"> ${o}</label>`;
         }).join('');
-        return `<div class="qitem" data-type="multiple_choice" data-text="${it.question.replace(/"/g,'&quot;')}" style="flex-direction:column;align-items:flex-start;">
+        return `<div class="qitem" data-type="multiple_choice" data-text="${it.question.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}" style="flex-direction:column;align-items:flex-start;">
           <div><span class="qn">${it.n}.</span><span class="qstatement">${it.question}</span></div>
           <div style="margin-left:30px;font-size:14.5px;">${opts}</div>
           <span class="result" id="res-${it.n}"></span>
@@ -567,7 +654,7 @@ function openPassage(i){
           const val = w.split('.')[0].trim();
           return `<option value="${val}">${val}</option>`;
         }).join('');
-        return `<div class="qitem" data-type="summary_completion" data-text="Blank ${it.n}">
+        return `<div class="qitem" data-type="summary_completion" data-text="Blank ${it.n}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">Blank ${it.n}</span>
           <select data-n="${it.n}" data-answer="${it.answer}">
@@ -580,7 +667,7 @@ function openPassage(i){
       const paraLetters = state.currentPassage ? Object.keys(state.currentPassage.paragraphs) : [];
       inner += g.items.map(it=>{
         const opts = paraLetters.map(l=>`<option value="${l}">${l}</option>`).join('');
-        return `<div class="qitem" data-type="matching_information" data-text="${it.statement.replace(/"/g,'&quot;')}">
+        return `<div class="qitem" data-type="matching_information" data-text="${it.statement.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
           <span class="qn">${it.n}.</span>
           <span class="qstatement">${it.statement}</span>
           <select data-n="${it.n}" data-answer="${it.answer}">
@@ -689,6 +776,23 @@ function restoreReadingAnswers(passageKey){
   });
 }
 
+/* ---------- answer explanations (auto-expand on wrong answer) ---------- */
+function showExplanationBlock(qitem, correctAnswer){
+  if(!qitem) return;
+  clearExplanationBlock(qitem);
+  const text = (qitem.dataset.explain || '').trim();
+  const body = text ? text : `解析建置中，正確答案為 ${correctAnswer}。`;
+  const div = document.createElement('div');
+  div.className = 'qexplain';
+  div.innerHTML = `<span class="qexplain-lbl">💡 詳解</span>${body}`;
+  qitem.appendChild(div);
+}
+function clearExplanationBlock(qitem){
+  if(!qitem) return;
+  const old = qitem.querySelector('.qexplain');
+  if(old) old.remove();
+}
+
 function gradePassage(autoSubmitted){
   stopReadingTimer();
   const form = document.getElementById('qform');
@@ -701,10 +805,11 @@ function gradePassage(autoSubmitted){
     const res = document.getElementById('res-'+sel.dataset.n);
     const qitem = sel.closest('.qitem');
     const qtext = qitem ? qitem.dataset.text : '';
-    if(sel.value && sel.value.toLowerCase()===sel.dataset.answer.toLowerCase()){ correct++; res.textContent='✓'; res.className='result correct'; }
+    if(sel.value && sel.value.toLowerCase()===sel.dataset.answer.toLowerCase()){ correct++; res.textContent='✓'; res.className='result correct'; clearExplanationBlock(qitem); }
     else {
       res.textContent='✗ ('+sel.dataset.answer+')'; res.className='result wrong';
       wrongItems.push({passageTitle, n:sel.dataset.n, text:qtext, yourAnswer:sel.value, correctAnswer:sel.dataset.answer});
+      showExplanationBlock(qitem, sel.dataset.answer);
     }
   });
   const seen = new Set();
@@ -715,10 +820,11 @@ function gradePassage(autoSubmitted){
     const res = document.getElementById('res-'+r.dataset.n);
     const qitem = r.closest('.qitem');
     const qtext = qitem ? qitem.dataset.text : '';
-    if(checked && checked.value===r.dataset.answer){ correct++; res.textContent='✓'; res.className='result correct'; }
+    if(checked && checked.value===r.dataset.answer){ correct++; res.textContent='✓'; res.className='result correct'; clearExplanationBlock(qitem); }
     else {
       res.textContent='✗ ('+r.dataset.answer+')'; res.className='result wrong';
       wrongItems.push({passageTitle, n:r.dataset.n, text:qtext, yourAnswer:checked?checked.value:'', correctAnswer:r.dataset.answer});
+      showExplanationBlock(qitem, r.dataset.answer);
     }
   });
   form.querySelectorAll('input[type=text][data-answer]').forEach(inp=>{
@@ -727,10 +833,11 @@ function gradePassage(autoSubmitted){
     const qitem = inp.closest('.qitem');
     const qtext = qitem ? qitem.dataset.text : '';
     const norm = s => (s||'').trim().toLowerCase();
-    if(norm(inp.value)===norm(inp.dataset.answer)){ correct++; res.textContent='✓'; res.className='result correct'; }
+    if(norm(inp.value)===norm(inp.dataset.answer)){ correct++; res.textContent='✓'; res.className='result correct'; clearExplanationBlock(qitem); }
     else {
       res.textContent='✗ ('+inp.dataset.answer+')'; res.className='result wrong';
       wrongItems.push({passageTitle, n:inp.dataset.n, text:qtext, yourAnswer:inp.value, correctAnswer:inp.dataset.answer});
+      showExplanationBlock(qitem, inp.dataset.answer);
     }
   });
   const scoreEl = document.getElementById('scoreDisplay');
