@@ -162,6 +162,37 @@
   .countdown-standalone{margin-bottom:20px;}
   .countdown-standalone .countdown-card{max-width:420px;}
 
+  /* home dashboard (desktop only) */
+  .desktop-only-tab{display:none;}
+  @media(min-width:860px){.desktop-only-tab{display:inline-block;}}
+  .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  @media(max-width:700px){.home-grid{grid-template-columns:1fr;}}
+  .home-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px;}
+  .home-card h3{margin:0;font-size:12px;color:var(--sub);text-transform:uppercase;letter-spacing:.05em;}
+  .home-card .home-card-title{font-size:19px;font-weight:800;margin:4px 0 14px;}
+  .home-reco{background:var(--chip);border-radius:12px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:10px;}
+  .home-reco:hover{outline:2px solid var(--accent);}
+  .home-reco .reco-label{font-weight:700;font-size:14.5px;}
+  .home-reco .reco-sub{font-size:12.5px;color:var(--sub);margin-top:2px;}
+  .home-reco .reco-arrow{color:var(--accent);font-weight:800;font-size:18px;}
+  .streak-pill{background:var(--chip);color:var(--accent);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;}
+  .week-bars{display:flex;justify-content:space-between;align-items:flex-end;height:90px;margin:14px 4px 8px;}
+  .week-bars .bar-col{display:flex;flex-direction:column;align-items:center;gap:6px;}
+  .week-bars .bar-col .daylabel{font-size:11px;color:var(--sub);}
+  .week-bars .bar{width:18px;border-radius:4px 4px 0 0;background:var(--line);min-height:3px;}
+  .week-bars .bar.active{background:var(--ink);}
+  .week-bars .bar.today{background:var(--accent);}
+  .week-stats{display:flex;justify-content:space-around;text-align:center;border-top:1px solid var(--line);padding-top:12px;}
+  .week-stats b{display:block;font-size:20px;}
+  .week-stats span{font-size:11.5px;color:var(--sub);}
+  .mistake-row{display:flex;align-items:center;gap:8px;font-size:13px;padding:9px 0;border-bottom:1px dashed var(--line);flex-wrap:wrap;}
+  .mistake-row:last-child{border-bottom:none;}
+  .mistake-row .wrongtxt{text-decoration:line-through;color:var(--bad);}
+  .mistake-row .arrow{color:var(--sub);}
+  .mistake-row .righttxt{color:var(--good);font-weight:700;}
+  .mistake-row .tag{margin-left:auto;font-size:10.5px;}
+  .vocab-chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
+
   @media(max-width:600px){
     header h1{font-size:14px;}
     nav button{font-size:12px;padding:6px 8px;}
@@ -181,6 +212,7 @@
   <div class="wrap">
     <h1>📘 IELTS Practice</h1>
     <nav>
+      <button data-tab="home" class="desktop-only-tab">🏠 首頁</button>
       <button data-tab="reading" class="active">閱讀 Reading</button>
       <button data-tab="writing">寫作 Writing</button>
       <button data-tab="speaking">口說 Speaking</button>
@@ -191,6 +223,10 @@
 </header>
 
 <main>
+  <section id="view-home" class="view">
+    <div id="home-dashboard"></div>
+  </section>
+
   <section id="view-reading" class="view active">
     <div id="dashboard-strip">
       <div id="countdown-slot-reading"></div>
@@ -320,14 +356,15 @@ async function init(){
 }
 
 /* ---------- nav ---------- */
+function switchTab(tab){
+  document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active', b.dataset.tab===tab));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+tab).classList.add('active');
+  if(tab==='review') renderReview();
+  if(tab==='home') renderHome();
+}
 document.querySelectorAll('nav button').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    document.querySelectorAll('nav button').forEach(b=>b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-    document.getElementById('view-'+btn.dataset.tab).classList.add('active');
-    if(btn.dataset.tab==='review') renderReview();
-  });
+  btn.addEventListener('click', ()=> switchTab(btn.dataset.tab));
 });
 
 /* ---------- enlarge (click-to-zoom a section) ---------- */
@@ -527,6 +564,129 @@ function renderReview(){
   renderRecordingsSection();
 }
 
+/* ---------- home dashboard (desktop only) ---------- */
+const WEEKDAY_LABELS = ['一','二','三','四','五','六','日'];
+function computeStreak(){
+  const hist = loadHistory();
+  if(!hist.length) return 0;
+  const days = new Set(hist.map(h=>new Date(h.date).toDateString()));
+  let streak = 0;
+  const d = new Date(); d.setHours(0,0,0,0);
+  while(days.has(d.toDateString())){
+    streak++;
+    d.setDate(d.getDate()-1);
+  }
+  return streak;
+}
+function weekActivityCounts(){
+  const hist = loadHistory();
+  const counts = [0,0,0,0,0,0,0];
+  const now = new Date();
+  const dow = (now.getDay()+6)%7;
+  const monday = new Date(now); monday.setHours(0,0,0,0); monday.setDate(now.getDate()-dow);
+  hist.forEach(h=>{
+    const diff = Math.floor((new Date(h.date) - monday)/86400000);
+    if(diff>=0 && diff<7) counts[diff]++;
+  });
+  return counts;
+}
+function recommendedAction(){
+  if(!state.reading || !state.reading.passages) return null;
+  for(let i=0;i<state.reading.passages.length;i++){
+    const p = state.reading.passages[i];
+    const key = p.id || p.title;
+    if(loadReadingAnswers(key)) return { label:'繼續閱讀', title:p.title, sub:'上次寫到一半，點擊接著做', index:i };
+  }
+  for(let i=0;i<state.reading.passages.length;i++){
+    const p = state.reading.passages[i];
+    if(!bestReadingScore(p.title)) return { label:'開始閱讀', title:p.title, sub:'還沒做過這篇，來試試看', index:i };
+  }
+  return { label:'複習閱讀', title:state.reading.passages[0].title, sub:'全部都做過了，挑一篇重新練習', index:0 };
+}
+function goHomeReco(index){
+  switchTab('reading');
+  openPassage(index);
+}
+function randomVocabChips(n){
+  const pool = [];
+  const sp = state.speaking;
+  if(sp){
+    (sp.part1_topics||[]).forEach(t=>{ if(t.useful_words) pool.push(...t.useful_words); });
+    (sp.part2_cue_cards||[]).forEach(c=>{ if(c.useful_words) pool.push(...c.useful_words); });
+    (sp.part3_discussion_sets||[]).forEach(s=>{ if(s.useful_words) pool.push(...s.useful_words); });
+  }
+  const uniq = [...new Set(pool)];
+  const picked = [];
+  const seed = new Date().getDate();
+  for(let i=0;i<n && uniq.length;i++){
+    picked.push(uniq[(seed*7+i*13) % uniq.length]);
+  }
+  return [...new Set(picked)];
+}
+function renderHome(){
+  const el = document.getElementById('home-dashboard');
+  if(!el) return;
+  const reco = recommendedAction();
+  const streak = computeStreak();
+  const counts = weekActivityCounts();
+  const totalThisWeek = counts.reduce((a,b)=>a+b,0);
+  const maxCount = Math.max(1, ...counts);
+  const todayIdx = (new Date().getDay()+6)%7;
+  const wrong = loadWrongBank().slice(0,3);
+  const vocab = randomVocabChips(6);
+
+  const recoHTML = reco ? `<div class="home-reco" onclick="goHomeReco(${reco.index})">
+      <div><div class="reco-label">${reco.label}：${reco.title}</div><div class="reco-sub">${reco.sub}</div></div>
+      <div class="reco-arrow">→</div>
+    </div>` : `<div class="empty">閱讀題庫載入中…</div>`;
+
+  const barsHTML = counts.map((c,i)=>{
+    const h = Math.round((c/maxCount)*70)+3;
+    const cls = i===todayIdx ? 'today' : (c>0 ? 'active' : '');
+    return `<div class="bar-col"><div class="bar ${cls}" style="height:${h}px;"></div><div class="daylabel">${WEEKDAY_LABELS[i]}</div></div>`;
+  }).join('');
+
+  const wrongHTML = wrong.length ? wrong.map(w=>`<div class="mistake-row">
+      <span class="wrongtxt">${w.yourAnswer || '未作答'}</span>
+      <span class="arrow">→</span>
+      <span class="righttxt">${w.correctAnswer}</span>
+      <span class="tag">${w.passageTitle}．第${w.n}題</span>
+    </div>`).join('') : `<div class="empty" style="padding:10px 0;">目前沒有錯題，繼續保持！</div>`;
+
+  const vocabHTML = vocab.length ? `<div class="vocab-chip-row">${vocab.map(v=>`<span class="word-chip">${v}</span>`).join('')}</div>` : `<div class="empty" style="padding:10px 0;">口說題庫載入中…</div>`;
+
+  el.innerHTML = `
+    <div class="home-grid">
+      <div class="home-card">
+        <h3>今天只做這一項</h3>
+        <div class="home-card-title">今日推薦訓練</div>
+        ${recoHTML}
+      </div>
+      <div class="home-card">
+        <h3>本週</h3>
+        <div class="home-card-title">學習進度 <span class="streak-pill">🔥 連續 ${streak} 天</span></div>
+        <div class="week-bars">${barsHTML}</div>
+        <div class="week-stats">
+          <div><b>${totalThisWeek}</b><span>本週練習次數</span></div>
+          <div><b>${streak}</b><span>連續天數</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="home-grid">
+      <div class="home-card">
+        <h3>錯題本</h3>
+        <div class="home-card-title">優先複習這些 <button class="smallbtn" style="float:right;font-weight:400;" onclick="switchTab('review')">查看全部</button></div>
+        ${wrongHTML}
+      </div>
+      <div class="home-card">
+        <h3>口說</h3>
+        <div class="home-card-title">常用字彙</div>
+        ${vocabHTML}
+      </div>
+    </div>
+  `;
+}
+
 async function renderRecordingsSection(){
   const box = document.getElementById('recordingsSection');
   if(!box) return;
@@ -634,6 +794,7 @@ function readingCardHTML(p, i){
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'電腦版新增「首頁」儀表板：今日推薦訓練、本週學習進度、連續天數、錯題預覽、常用字彙' },
   { date:'2026-08-10', text:'口說錄音新增「AI 批改」介面示範（尚未串接真正的 AI 評分服務）' },
   { date:'2026-08-10', text:'新增「⚡ 快速練習」短文（題目少、5分鐘可做完，適合手機空檔練習）' },
   { date:'2026-08-10', text:'修正手機閱讀頁滑不到題目的問題' },
