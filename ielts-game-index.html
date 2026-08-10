@@ -166,6 +166,20 @@
   .countdown-standalone{margin-bottom:20px;}
   .countdown-standalone .countdown-card{max-width:420px;}
 
+  /* Task 1 process (flowchart) and map-comparison charts */
+  .flowchart{display:flex;flex-direction:column;align-items:center;max-width:480px;margin:0 auto;}
+  .flow-step{display:flex;align-items:center;gap:12px;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;}
+  .flow-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .flow-text{font-size:13.5px;line-height:1.5;}
+  .flow-arrow{font-size:18px;color:var(--accent);font-weight:800;margin:2px 0;}
+  .map-compare{display:flex;align-items:stretch;gap:12px;}
+  @media(max-width:640px){.map-compare{flex-direction:column;}}
+  .map-panel{flex:1;border:2px dashed var(--accent);border-radius:12px;padding:12px 14px;background:var(--panel);}
+  .map-panel-title{font-weight:800;font-size:13.5px;color:var(--accent);margin-bottom:8px;text-align:center;text-transform:uppercase;letter-spacing:.03em;}
+  .map-feature-list{margin:0;padding-left:18px;font-size:13px;line-height:1.7;}
+  .map-compare-arrow{align-self:center;font-size:22px;font-weight:800;color:var(--accent);flex-shrink:0;}
+  @media(max-width:640px){.map-compare-arrow{transform:rotate(90deg);}}
+
   /* home dashboard (desktop only) */
   .desktop-only-tab{display:none;}
   @media(min-width:860px){.desktop-only-tab{display:inline-block;}}
@@ -880,6 +894,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'修正寫作 Task 1 圖表問題：流程圖改成真的流程箭頭圖、地圖題改成左右對照的地圖框、折線圖數字重疊變乾淨、圓餅圖修正非百分比資料誤標成%的問題' },
   { date:'2026-08-10', text:'修正 AI 批改在手機瀏覽器出現「undefined is not an object」錯誤的問題，並補足 YES/NO/NOT GIVEN、摘要填空、句子拼接、簡答題各至少8篇文章' },
   { date:'2026-08-10', text:'修正 AI 批改在部分瀏覽器（如 Safari）顯示「Load failed」失敗的問題（改成上傳後輪詢結果，需重新部署後台）' },
   { date:'2026-08-10', text:'閱讀題庫一口氣新增 18 篇文章（心理、科學、環境、社會議題、歷史文化、教育語言等主題），總數來到 37 篇' },
@@ -1399,8 +1414,11 @@ function svgLineChart(chart){
     const pts = s.values.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
     svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3"/>`;
     s.values.forEach((v,i)=>{
-      svg += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${color}"/>`;
-      svg += `<text x="${x(i)}" y="${y(v)-10}" font-size="11" font-weight="700" fill="${color}" text-anchor="middle">${v}</text>`;
+      // Only label the first and last point of each line — labelling every point on
+      // multi-series charts caused overlapping, unreadable numbers when values were close together.
+      const isEndpoint = i===0 || i===s.values.length-1;
+      svg += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${color}"><title>${s.name}: ${v}</title></circle>`;
+      if(isEndpoint) svg += `<text x="${x(i)}" y="${y(v)-10}" font-size="11" font-weight="700" fill="${color}" text-anchor="middle">${v}</text>`;
     });
   });
   svg += '</svg>';
@@ -1453,8 +1471,9 @@ function svgPieSet(chart){
       const large = frac>0.5?1:0;
       const mid = angle + (a2-angle)/2;
       const lx = cx + (R*0.65)*Math.cos(mid), ly = cy + (R*0.65)*Math.sin(mid);
+      const labelText = chart.unit === '%' ? `${v}%` : `${v}`;
       path += `<path d="M${cx},${cy} L${x1},${y1} A${R},${R} 0 ${large} 1 ${x2},${y2} Z" fill="${PALETTE[i%PALETTE.length]}"/>`;
-      if(frac>0.05) path += `<text x="${lx}" y="${ly}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">${v}%</text>`;
+      if(frac>0.05) path += `<text x="${lx}" y="${ly}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">${labelText}</text>`;
       angle = a2;
     });
     return `<div style="text-align:center;">
@@ -1463,7 +1482,8 @@ function svgPieSet(chart){
     </div>`;
   };
   const legend = chart.pies[0].labels.map((l,i)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:13px;"><span style="width:11px;height:11px;background:${PALETTE[i%PALETTE.length]};border-radius:2px;display:inline-block;"></span>${l}</span>`).join('');
-  return `<div style="display:flex;gap:24px;flex-wrap:wrap;">${chart.pies.map(pieSVG).join('')}</div><div style="margin-top:10px;">${legend}</div>`;
+  const unitNote = chart.unit ? `<div style="font-size:11px;color:var(--sub);margin-top:6px;">Unit: ${chart.unit}</div>` : '';
+  return `<div style="display:flex;gap:24px;flex-wrap:wrap;">${chart.pies.map(pieSVG).join('')}</div><div style="margin-top:10px;">${legend}</div>${unitNote}`;
 }
 
 function htmlTable(chart){
@@ -1478,16 +1498,25 @@ function htmlTable(chart){
 }
 
 function processSteps(chart){
-  return `<ol style="margin:0;padding-left:20px;font-size:13.5px;line-height:1.9;">${chart.steps.map(s=>`<li>${s}</li>`).join('')}</ol>`;
+  return `<div class="flowchart">${chart.steps.map((s,i)=>`
+    <div class="flow-step">
+      <div class="flow-num">${i+1}</div>
+      <div class="flow-text">${s}</div>
+    </div>
+    ${i < chart.steps.length-1 ? '<div class="flow-arrow">↓</div>' : ''}
+  `).join('')}</div>`;
 }
 
 function mapCompare(chart){
-  let html = `<div class="scrollx"><table style="width:100%;border-collapse:collapse;font-size:13px;"><tr>${chart.columns.map(c=>`<th style="text-align:left;border-bottom:2px solid var(--line);padding:6px;color:var(--accent);">${c}</th>`).join('')}</tr>`;
-  chart.rows.forEach(r=>{
-    html += `<tr>${r.map(cell=>`<td style="padding:8px 6px;border-bottom:1px solid var(--line);vertical-align:top;">${cell}</td>`).join('')}</tr>`;
-  });
-  html += '</table></div>';
-  return html;
+  const panel = (label, idx) => `<div class="map-panel">
+    <div class="map-panel-title">${label}</div>
+    <ul class="map-feature-list">${chart.rows.map(r=>`<li>${r[idx]}</li>`).join('')}</ul>
+  </div>`;
+  return `<div class="map-compare">
+    ${panel(chart.columns[0], 0)}
+    <div class="map-compare-arrow">→</div>
+    ${panel(chart.columns[1], 1)}
+  </div>`;
 }
 
 function renderChart(item){
