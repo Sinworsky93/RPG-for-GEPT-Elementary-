@@ -829,6 +829,7 @@ function readingCardHTML(p, i){
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'修正部分瀏覽器（如 iPhone Safari）錄音存檔格式標記錯誤、播放時出現 error 的問題' },
   { date:'2026-08-10', text:'口說 AI 批改串接真正的 Gemini API（需部署新版後台並設定 API 金鑰，未設定時自動顯示示範資料）' },
   { date:'2026-08-10', text:'寫作 Task 1／Task 2 新增各分類的實用詞彙（跟口說一樣依分類提供，不是每題單獨列）' },
   { date:'2026-08-10', text:'電腦版新增「首頁」儀表板：今日推薦訓練、本週學習進度、連續天數、錯題預覽、常用字彙' },
@@ -1765,10 +1766,13 @@ async function toggleRecording(){
     return;
   }
   recordedChunks = [];
-  mediaRecorder = new MediaRecorder(currentStream);
+  const preferredMime = ['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/aac']
+    .find(t => window.MediaRecorder.isTypeSupported && window.MediaRecorder.isTypeSupported(t));
+  mediaRecorder = preferredMime ? new MediaRecorder(currentStream, { mimeType: preferredMime }) : new MediaRecorder(currentStream);
   mediaRecorder.ondataavailable = e => { if(e.data && e.data.size) recordedChunks.push(e.data); };
   mediaRecorder.onstop = async () => {
-    const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+    const actualMime = mediaRecorder.mimeType || preferredMime || 'audio/webm';
+    const blob = new Blob(recordedChunks, { type: actualMime });
     const url = URL.createObjectURL(blob);
     const pb = document.getElementById('recPlayback');
     if(pb) pb.innerHTML = `<audio controls src="${url}" style="display:block;margin-top:8px;"></audio>`;
