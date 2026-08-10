@@ -280,7 +280,7 @@ const state = { reading: null, writing: null, speaking: null, currentPassage: nu
 
 /* ---------- backend sync (optional Google Sheets via Apps Script) ---------- */
 /* 老師部署 Google Apps Script 後，把網址貼在下面這一行的引號中間即可啟用後台紀錄功能。 */
-const BACKEND_URL = '';
+const BACKEND_URL = 'https://script.google.com/macros/s/AKfycbwX4uUKetOFrCJUR6MzWCGsuCPNAq-1Rm_8QFJnUIOJGOOmYzbk0WM6CumvDmblBdaX/exec';
 
 function getStudentName(){
   try{ return localStorage.getItem('ieltsStudentName') || ''; }catch(e){ return ''; }
