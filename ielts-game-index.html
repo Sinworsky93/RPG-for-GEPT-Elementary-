@@ -829,6 +829,7 @@ function readingCardHTML(p, i){
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'口說 Part 1、Part 2、Part 3 全部都能錄音了（原本只有 Part 2 題卡有錄音功能）' },
   { date:'2026-08-10', text:'修正部分瀏覽器（如 iPhone Safari）錄音存檔格式標記錯誤、播放時出現 error 的問題' },
   { date:'2026-08-10', text:'口說 AI 批改串接真正的 Gemini API（需部署新版後台並設定 API 金鑰，未設定時自動顯示示範資料）' },
   { date:'2026-08-10', text:'寫作 Task 1／Task 2 新增各分類的實用詞彙（跟口說一樣依分類提供，不是每題單獨列）' },
@@ -1619,16 +1620,15 @@ function renderSpeaking(){
   html += `<div class="cue-card" id="cueCard">${cueCardHTML(state.speaking.part2_cue_cards[0], 0)}</div>`;
 
   html += '<div class="section-title">Part 3－延伸討論</div>';
-  html += (state.speaking.part3_discussion_sets||[]).map(s=>
-    `<div class="part3set"><h4>${s.theme}</h4>${usefulWordsHTML(s.useful_words)}<ul>${s.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`).join('');
+  html += (state.speaking.part3_discussion_sets||[]).map((s,si)=>
+    `<div class="part3set"><h4>${s.theme}</h4>${usefulWordsHTML(s.useful_words)}<ul>${s.questions.map(q=>`<li>${q}</li>`).join('')}</ul>${recorderHTML('p3-'+si, s.theme)}</div>`).join('');
 
   el.innerHTML = html;
-  setupRecorder();
 }
 function showPart1(i){
   const t = state.speaking.part1_topics[i];
   document.getElementById('p1questions').innerHTML =
-    `<div class="part3set"><h4>${t.topic}</h4>${usefulWordsHTML(t.useful_words)}<ul>${t.questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`;
+    `<div class="part3set"><h4>${t.topic}</h4>${usefulWordsHTML(t.useful_words)}<ul>${t.questions.map(q=>`<li>${q}</li>`).join('')}</ul>${recorderHTML('p1-'+i, t.topic)}</div>`;
 }
 /* Maps each Part 2 cue card's index to the most closely related Part 3
    discussion theme index, so drawing a cue card immediately surfaces the
@@ -1646,6 +1646,7 @@ function linkedPart3HTML(cardIndex){
       <h4>${set.theme}</h4>
       ${usefulWordsHTML(set.useful_words)}
       <ul>${set.questions.map(q=>`<li>${q}</li>`).join('')}</ul>
+      ${recorderHTML('p3link-'+idx, set.theme)}
     </div>`;
 }
 function cueCardHTML(card, cardIndex){
@@ -1653,14 +1654,13 @@ function cueCardHTML(card, cardIndex){
     ${usefulWordsHTML(card.useful_words)}
     <div style="font-size:12.5px;color:var(--sub);margin-bottom:4px;">You should say:</div>
     <ul style="margin:0 0 10px;padding-left:18px;">${card.points.map(p=>`<li>${p}</li>`).join('')}</ul>
-    <div id="recorderZone" data-topic="${card.topic.replace(/"/g,'&quot;')}"></div>
+    ${recorderHTML('p2-'+cardIndex, card.topic)}
     ${linkedPart3HTML(cardIndex)}`;
 }
 function nextCue(){
   const cards = state.speaking.part2_cue_cards;
   cueIndex = Math.floor(Math.random()*cards.length);
   document.getElementById('cueCard').innerHTML = cueCardHTML(cards[cueIndex], cueIndex);
-  setupRecorder();
 }
 
 /* ---------- speech recording (MediaRecorder + IndexedDB, ~7-day local retention) ---------- */
@@ -1734,29 +1734,23 @@ async function purgeOldRecordings(){
   }catch(e){}
 }
 
-function setupRecorder(){
-  const zone = document.getElementById('recorderZone');
-  if(!zone) return;
-  const supported = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder && window.indexedDB);
-  if(!supported){
-    zone.innerHTML = `<div class="hist-meta">此瀏覽器不支援錄音功能。</div>`;
-    return;
-  }
-  zone.innerHTML = `
-    <div class="rec-row">
-      <button type="button" class="smallbtn" id="recBtn" onclick="toggleRecording()">🎙️ 開始錄音</button>
-      <span id="recStatus" class="hist-meta"></span>
+const RECORDING_SUPPORTED = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia && window.MediaRecorder && window.indexedDB);
+let activeRecZoneId = null;
+function recorderHTML(zoneId, topic){
+  if(!RECORDING_SUPPORTED) return `<div class="hist-meta">此瀏覽器不支援錄音功能。</div>`;
+  const safeTopic = (topic||'').replace(/'/g,"\\'").replace(/"/g,'&quot;');
+  return `<div class="rec-row">
+      <button type="button" class="smallbtn" id="recBtn-${zoneId}" onclick="toggleRecording('${zoneId}','${safeTopic}')">🎙️ 開始錄音</button>
+      <span id="recStatus-${zoneId}" class="hist-meta"></span>
     </div>
-    <div id="recPlayback"></div>
-  `;
+    <div id="recPlayback-${zoneId}"></div>`;
 }
-async function toggleRecording(){
-  const btn = document.getElementById('recBtn');
-  const status = document.getElementById('recStatus');
-  const zone = document.getElementById('recorderZone');
-  const topic = zone ? zone.dataset.topic : '口說練習';
+async function toggleRecording(zoneId, topic){
+  const btn = document.getElementById('recBtn-'+zoneId);
+  const status = document.getElementById('recStatus-'+zoneId);
   if(mediaRecorder && mediaRecorder.state === 'recording'){
-    mediaRecorder.stop();
+    if(activeRecZoneId === zoneId){ mediaRecorder.stop(); }
+    else if(status){ status.textContent = '請先停止目前正在錄音的題目。'; }
     return;
   }
   try{
@@ -1765,6 +1759,7 @@ async function toggleRecording(){
     if(status) status.textContent = '麥克風權限被拒絕。';
     return;
   }
+  activeRecZoneId = zoneId;
   recordedChunks = [];
   const preferredMime = ['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/aac']
     .find(t => window.MediaRecorder.isTypeSupported && window.MediaRecorder.isTypeSupported(t));
@@ -1774,12 +1769,13 @@ async function toggleRecording(){
     const actualMime = mediaRecorder.mimeType || preferredMime || 'audio/webm';
     const blob = new Blob(recordedChunks, { type: actualMime });
     const url = URL.createObjectURL(blob);
-    const pb = document.getElementById('recPlayback');
+    const pb = document.getElementById('recPlayback-'+zoneId);
     if(pb) pb.innerHTML = `<audio controls src="${url}" style="display:block;margin-top:8px;"></audio>`;
     currentStream.getTracks().forEach(t=>t.stop());
     if(btn) btn.textContent = '🎙️ 重新錄音';
     const saved = await saveRecording(topic, blob);
     if(status) status.textContent = saved ? `錄音已儲存在這台裝置上，約 ${REC_RETENTION_DAYS} 天後自動清除。` : '錄音暫存失敗，只能在這次瀏覽中播放。';
+    activeRecZoneId = null;
   };
   mediaRecorder.start();
   if(btn) btn.textContent = '⏹ 停止錄音';
