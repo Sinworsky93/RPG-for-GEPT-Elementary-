@@ -768,7 +768,11 @@ async function fetchRealAIFeedback(recording, topic, onStatus){
     }
     if(data.ready){
       if(!data.ok) throw new Error(data.error || 'AI 評分失敗');
-      return data.feedback;
+      const f = data.feedback;
+      if(!f || typeof f.overall !== 'number' || !f.sub || typeof f.sub !== 'object'){
+        throw new Error('AI 回覆格式不完整，請再試一次');
+      }
+      return f;
     }
   }
   throw new Error('AI 分析逾時，請稍後再試一次');
@@ -876,6 +880,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'修正 AI 批改在手機瀏覽器出現「undefined is not an object」錯誤的問題，並補足 YES/NO/NOT GIVEN、摘要填空、句子拼接、簡答題各至少8篇文章' },
   { date:'2026-08-10', text:'修正 AI 批改在部分瀏覽器（如 Safari）顯示「Load failed」失敗的問題（改成上傳後輪詢結果，需重新部署後台）' },
   { date:'2026-08-10', text:'閱讀題庫一口氣新增 18 篇文章（心理、科學、環境、社會議題、歷史文化、教育語言等主題），總數來到 37 篇' },
   { date:'2026-08-10', text:'閱讀新增「依題型瀏覽」，補齊雅思正式考試的題型（YES/NO/NOT GIVEN、特徵配對、句子拼接、簡答題），每種題型附解題提示' },

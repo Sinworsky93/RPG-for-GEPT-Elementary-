@@ -85,6 +85,33 @@
               "answer": "TRUE"
             }
           ]
+        },
+        {
+          "group": "11-14",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 11,
+              "statement": "Taiwan's subtropical climate was originally seen as a disadvantage for whisky production.",
+              "answer": "YES"
+            },
+            {
+              "n": 12,
+              "statement": "Kavalan is the only whisky distillery currently operating in Taiwan.",
+              "answer": "NO"
+            },
+            {
+              "n": 13,
+              "statement": "Taiwanese producers plan to compete with global giants mainly by lowering prices.",
+              "answer": "NO"
+            },
+            {
+              "n": 14,
+              "statement": "Extreme weather poses a risk to the consistency of raw ingredients used by Taiwan's craft industries.",
+              "answer": "YES"
+            }
+          ]
         }
       ],
       "category": "history_culture"
@@ -208,6 +235,40 @@
               "explanation": "第E段結論強調優秀的溝通者不是天生的，而是持續刻意練習而來，對應 C。"
             }
           ]
+        },
+        {
+          "group": "11-14",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-E, below.",
+          "endings": [
+            "A. because they had assumed prestigious credentials would be enough.",
+            "B. because participants seek empathy rather than solutions.",
+            "C. because it prevents smooth communication and mutual trust.",
+            "D. because it can be identified by a sudden shift in emotional language.",
+            "E. because agreement is not the true goal of most conversations."
+          ],
+          "items": [
+            {
+              "n": 11,
+              "start": "Charles Duhigg was surprised by his own communication failures",
+              "answer": "A"
+            },
+            {
+              "n": 12,
+              "start": "Emotional conversations require active listening rather than advice",
+              "answer": "B"
+            },
+            {
+              "n": 13,
+              "start": "Mismatched conversational modes cause friction",
+              "answer": "C"
+            },
+            {
+              "n": 14,
+              "start": "A shift from a practical to an emotional conversation can often be detected",
+              "answer": "D"
+            }
+          ]
         }
       ],
       "category": "psychology_society"
@@ -274,6 +335,33 @@
               "n": 8,
               "prompt": "Walking 5,000 steps at a faster pace is linked to measurable ______ health improvements.",
               "answer": "long-term"
+            }
+          ]
+        },
+        {
+          "group": "9-12",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 9,
+              "question": "What term describes planned activities such as swimming or fitness classes?",
+              "answer": "structured exercise"
+            },
+            {
+              "n": 10,
+              "question": "How many steps does current UK government advice recommend walking daily?",
+              "answer": "ten thousand steps"
+            },
+            {
+              "n": 11,
+              "question": "What must a person increase if they want to shorten their workout duration, according to Dr Saynor?",
+              "answer": "intensity"
+            },
+            {
+              "n": 12,
+              "question": "What idiom is used to describe getting greater health benefits without more time or effort?",
+              "answer": "more bang for your buck"
             }
           ]
         }
@@ -343,6 +431,33 @@
               "n": 7,
               "statement": "The World Food Programme's Tunisia campaign used a television drama to encourage people to share meals.",
               "answer": "TRUE"
+            }
+          ]
+        },
+        {
+          "group": "8-11",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 8,
+              "statement": "Following credible or knowledgeable people is a habit that starts only in adulthood.",
+              "answer": "NO"
+            },
+            {
+              "n": 9,
+              "statement": "Touchscreen ordering removes the social anxiety some customers feel about being judged.",
+              "answer": "YES"
+            },
+            {
+              "n": 10,
+              "statement": "Nudge theory argues that behaviour is best changed through strict rules and mandates.",
+              "answer": "NO"
+            },
+            {
+              "n": 11,
+              "statement": "The Tunisian TV drama campaign was more expensive to produce than traditional public announcements.",
+              "answer": "NOT GIVEN"
             }
           ]
         }
@@ -538,6 +653,40 @@
               "n": 10,
               "statement": "A war was fought over control of an Alpine cheese-producing region.",
               "answer": "TRUE"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-E, below.",
+          "endings": [
+            "A. because it allowed food to be preserved through winters and famines.",
+            "B. because it allowed for firmer cheese that travelled well.",
+            "C. because it reduced the amount of hard-to-digest lactose in milk.",
+            "D. because it became a standard ration for Roman soldiers.",
+            "E. because they experimented systematically with different techniques."
+          ],
+          "items": [
+            {
+              "n": 11,
+              "start": "Early cheesemaking solved a dietary problem",
+              "answer": "C"
+            },
+            {
+              "n": 12,
+              "start": "Cheese became a vital survival technology for Neolithic communities",
+              "answer": "A"
+            },
+            {
+              "n": 13,
+              "start": "The use of rennet in Anatolia was significant",
+              "answer": "B"
+            },
+            {
+              "n": 14,
+              "start": "Medieval monks perfected many famous cheese varieties",
+              "answer": "E"
             }
           ]
         }
@@ -874,6 +1023,33 @@
               "answer": "NOT GIVEN"
             }
           ]
+        },
+        {
+          "group": "11-14",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 11,
+              "statement": "Workaholism should mainly be understood as an admirable form of work ethic.",
+              "answer": "NO"
+            },
+            {
+              "n": 12,
+              "statement": "The dopamine reward triggered by success is unrelated to addictive behaviour.",
+              "answer": "NO"
+            },
+            {
+              "n": 13,
+              "statement": "Workaholics generally have more 'real friends' than 'deal friends'.",
+              "answer": "NO"
+            },
+            {
+              "n": 14,
+              "statement": "Spiritual practice or reflection may help protect people from performance pressure.",
+              "answer": "YES"
+            }
+          ]
         }
       ],
       "category": "psychology_society"
@@ -997,6 +1173,40 @@
               "explanation": "第E段結論強調半導體供應鏈仰賴國際合作，因此容易受地緣政治干擾，對應 B。"
             }
           ]
+        },
+        {
+          "group": "11-14",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Semiconductor manufacturing is an extraordinarily ___(11)___ process. Refining silicon to sufficient purity is so difficult that only four companies worldwide can do it, since even a single ___(12)___ can ruin a wafer. Cutting-edge lithography machines use a laser striking tin droplets to create a ___(13)___ that emits extremely short-wavelength light. Because a modern fabrication plant costs about $20 billion to build, the industry has become highly ___(14)___, leaving only three companies able to make the most advanced chips.",
+          "wordBank": [
+            "A. plasma",
+            "B. concentrated",
+            "C. impurity",
+            "D. cheap",
+            "E. consolidated",
+            "F. transistor",
+            "G. delicate",
+            "H. abundant"
+          ],
+          "items": [
+            {
+              "n": 11,
+              "answer": "G"
+            },
+            {
+              "n": 12,
+              "answer": "C"
+            },
+            {
+              "n": 13,
+              "answer": "A"
+            },
+            {
+              "n": 14,
+              "answer": "E"
+            }
+          ]
         }
       ],
       "category": "science_tech"
@@ -1083,6 +1293,40 @@
               "n": 10,
               "statement": "Long-term excessive sugar consumption can produce cravings comparable to those caused by nicotine or alcohol.",
               "answer": "TRUE"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-E, below.",
+          "endings": [
+            "A. because dopamine release fails to level out with repeated consumption.",
+            "B. because it reinforced behaviours essential for survival.",
+            "C. because they act as metabolic sensors rather than producing taste.",
+            "D. because it mirrors the neurological patterns of addictive substances.",
+            "E. because it helps organisms avoid spoiled or toxic food."
+          ],
+          "items": [
+            {
+              "n": 11,
+              "start": "Dopamine release evolved to spike during essential activities",
+              "answer": "B"
+            },
+            {
+              "n": 12,
+              "start": "Habituation to a repeated meal is useful",
+              "answer": "E"
+            },
+            {
+              "n": 13,
+              "start": "Sugar disrupts the brain's normal habituation process",
+              "answer": "A"
+            },
+            {
+              "n": 14,
+              "start": "Gut sugar receptors are different from receptors on the tongue",
+              "answer": "C"
             }
           ]
         }
@@ -1183,6 +1427,33 @@
               "statement": "A statistic showing the proportion of one country's farmland owned by a single corporation.",
               "answer": "C",
               "explanation": "第C段提到該公司取得瓜地馬拉超過四成可耕地，對應土地占比的統計數字。"
+            }
+          ]
+        },
+        {
+          "group": "12-15",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 12,
+              "question": "Which banana variety did merchants originally focus their commercial efforts on?",
+              "answer": "Gros Michel"
+            },
+            {
+              "n": 13,
+              "question": "What nickname was given to the United Fruit Company because of its far-reaching influence?",
+              "answer": "El Pulpo"
+            },
+            {
+              "n": 14,
+              "question": "What disease devastated Gros Michel plantations starting in the 1910s?",
+              "answer": "Panama Disease"
+            },
+            {
+              "n": 15,
+              "question": "What variety did United Fruit switch to in the early 1960s?",
+              "answer": "Cavendish"
             }
           ]
         }
@@ -1306,6 +1577,40 @@
               ],
               "answer": "B",
               "explanation": "第E段以「polytropos」一字為例，說明其意義模糊、有多種譯法，正說明沒有任何譯本能被視為唯一定論，對應 B。"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-E, below.",
+          "endings": [
+            "A. because each performance could vary depending on the audience.",
+            "B. because it directly confronts the reality of slavery in the text.",
+            "C. because it explores identity, masculinity, and maturation in depth.",
+            "D. because scholars still analyse it using methods similar to ancient commentators.",
+            "E. because translators disagree on how to render its meaning in English."
+          ],
+          "items": [
+            {
+              "n": 11,
+              "start": "The Odyssey is more than a simple adventure story",
+              "answer": "C"
+            },
+            {
+              "n": 12,
+              "start": "Oral performances of the epic were inherently unstable",
+              "answer": "A"
+            },
+            {
+              "n": 13,
+              "start": "The Odyssey's academic reception has remained remarkably consistent",
+              "answer": "D"
+            },
+            {
+              "n": 14,
+              "start": "Emily Wilson's translation is considered notable",
+              "answer": "B"
             }
           ]
         }
@@ -1502,6 +1807,33 @@
               "answer": "FALSE"
             }
           ]
+        },
+        {
+          "group": "12-15",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 12,
+              "question": "What sensation is triggered when systemic water levels diminish, according to Paragraph B?",
+              "answer": "thirst"
+            },
+            {
+              "n": 13,
+              "question": "Which bodily process can shift between automatic and conscious control, according to Paragraph D?",
+              "answer": "respiration / breathing"
+            },
+            {
+              "n": 14,
+              "question": "Besides the hippocampus, which brain region benefits from exercise-triggered growth factors?",
+              "answer": "the prefrontal cortex"
+            },
+            {
+              "n": 15,
+              "question": "What term describes the brain's capacity to structurally reorganise itself throughout life?",
+              "answer": "neuroplasticity"
+            }
+          ]
         }
       ],
       "category": "health_body"
@@ -1593,6 +1925,40 @@
               "statement": "An explanation of the biological process by which pressure from swollen sinuses leads to pain.",
               "answer": "C",
               "explanation": "第C段解釋鼻竇腔感染腫脹後產生的壓力如何造成疼痛的生理機制，對應 C。"
+            }
+          ]
+        },
+        {
+          "group": "11-14",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Headaches are divided into two categories. Secondary headaches result from an underlying ___(11)___, such as a sinus infection, where swelling puts pressure on blood vessels and stimulates pain receptors. Primary headaches, by contrast, have a cause that remains largely ___(12)___. Among the three main primary types, tension headaches are the most ___(13)___, while migraines can last up to three days and cause visual disturbances called ___(14)___.",
+          "wordBank": [
+            "A. common",
+            "B. auras",
+            "C. disorder",
+            "D. elusive",
+            "E. rare",
+            "F. treatable",
+            "G. nociceptors",
+            "H. permanent"
+          ],
+          "items": [
+            {
+              "n": 11,
+              "answer": "C"
+            },
+            {
+              "n": 12,
+              "answer": "D"
+            },
+            {
+              "n": 13,
+              "answer": "A"
+            },
+            {
+              "n": 14,
+              "answer": "B"
             }
           ]
         }
@@ -1840,6 +2206,40 @@
               "answer": "A"
             }
           ]
+        },
+        {
+          "group": "6-9",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-E, below.",
+          "endings": [
+            "A. because morality police have been given sweeping enforcement powers.",
+            "B. because public demonstrations were violently suppressed.",
+            "C. because teachers must constantly change locations to avoid detection.",
+            "D. because education is denied to girls over a certain age.",
+            "E. because activists were excluded from the discussions."
+          ],
+          "items": [
+            {
+              "n": 6,
+              "start": "Ordinary tasks like riding a bus now cause women intense anxiety",
+              "answer": "A"
+            },
+            {
+              "n": 7,
+              "start": "Public protest has largely been replaced by quiet, symbolic defiance",
+              "answer": "B"
+            },
+            {
+              "n": 8,
+              "start": "Running secret schools is extremely risky",
+              "answer": "C"
+            },
+            {
+              "n": 9,
+              "start": "The Doha talks drew heavy international criticism",
+              "answer": "E"
+            }
+          ]
         }
       ]
     },
@@ -1894,6 +2294,33 @@
               "answer": "i"
             }
           ]
+        },
+        {
+          "group": "6-9",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 6,
+              "question": "What phenomenon describes a rising intonation at the end of sentences, adopted by social media creators?",
+              "answer": "up-talk"
+            },
+            {
+              "n": 7,
+              "question": "What term describes the covert or overt extinction of endangered languages?",
+              "answer": "linguicide"
+            },
+            {
+              "n": 8,
+              "question": "Which language is given as a celebrated example of successful revitalisation?",
+              "answer": "Māori"
+            },
+            {
+              "n": 9,
+              "question": "What term describes AI's tendency to fabricate non-existent words or grammar?",
+              "answer": "hallucinations"
+            }
+          ]
         }
       ]
     },
@@ -1939,6 +2366,33 @@
               "n": 5,
               "statement": "Most schools have increased the number of complete books assigned to students.",
               "answer": "NOT GIVEN"
+            }
+          ]
+        },
+        {
+          "group": "6-9",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 6,
+              "statement": "The decline in reading is mainly a problem of illiteracy.",
+              "answer": "NO"
+            },
+            {
+              "n": 7,
+              "statement": "Anxiety about changing reading habits is a completely new phenomenon caused only by digital media.",
+              "answer": "NO"
+            },
+            {
+              "n": 8,
+              "statement": "Schools should assign more isolated excerpts instead of complete books.",
+              "answer": "NOT GIVEN"
+            },
+            {
+              "n": 9,
+              "statement": "Losing the patience to read extended arguments weakens a person's ability to think independently.",
+              "answer": "YES"
             }
           ]
         }
@@ -1992,6 +2446,40 @@
               "n": 5,
               "statement": "Producing it requires the largest area of land per glass.",
               "answer": "A"
+            }
+          ]
+        },
+        {
+          "group": "6-9",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Compared with dairy milk, most plant-based milks have lower carbohydrate and fat content but often lack naturally occurring ___(6)___ and calcium, meaning manufacturers must add these nutrients afterwards. Environmentally, dairy production is extremely ___(7)___-intensive, requiring around 4 square kilometres of land per glass, whereas oat and soy milk need only a fraction of this. Almond milk, however, requires a large amount of ___(8)___ because almond trees must be watered constantly. Dairy farming also produces far higher ___(9)___ emissions than any plant-based alternative.",
+          "wordBank": [
+            "A. water",
+            "B. land",
+            "C. vitamin D",
+            "D. greenhouse gas",
+            "E. protein",
+            "F. sunlight",
+            "G. fibre",
+            "H. potassium"
+          ],
+          "items": [
+            {
+              "n": 6,
+              "answer": "C"
+            },
+            {
+              "n": 7,
+              "answer": "B"
+            },
+            {
+              "n": 8,
+              "answer": "A"
+            },
+            {
+              "n": 9,
+              "answer": "D"
             }
           ]
         }
@@ -2094,6 +2582,33 @@
               "answer": "B"
             }
           ]
+        },
+        {
+          "group": "6-9",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 6,
+              "question": "What pathogen is responsible for the outbreak described in the passage?",
+              "answer": "Cyclospora"
+            },
+            {
+              "n": 7,
+              "question": "What surveillance network had its funding reduced, according to Paragraph C?",
+              "answer": "FoodNet"
+            },
+            {
+              "n": 8,
+              "question": "In what year was the Food Safety Modernization Act signed into law?",
+              "answer": "2011"
+            },
+            {
+              "n": 9,
+              "question": "What kind of lettuce product is described as carrying a high risk of pooled contamination?",
+              "answer": "pre-packaged, chopped lettuce"
+            }
+          ]
         }
       ]
     },
@@ -2139,6 +2654,33 @@
               "n": 5,
               "prompt": "When requesting a break, individuals should use ___ statements rather than blaming the other person.",
               "answer": "I-centered"
+            }
+          ]
+        },
+        {
+          "group": "6-9",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 6,
+              "statement": "Minor workplace disagreements are always processed rationally by the brain.",
+              "answer": "NO"
+            },
+            {
+              "n": 7,
+              "statement": "People are usually fully aware that their self-protective narratives during conflict are exaggerated.",
+              "answer": "NO"
+            },
+            {
+              "n": 8,
+              "statement": "Cognitive distancing techniques, such as imagining oneself as a 'fly on the wall', can help reduce emotional reactivity.",
+              "answer": "YES"
+            },
+            {
+              "n": 9,
+              "statement": "Blaming the other person directly is the most effective way to request a break during an argument.",
+              "answer": "NO"
             }
           ]
         }
@@ -2249,6 +2791,40 @@
               "answer": "E"
             }
           ]
+        },
+        {
+          "group": "6-9",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Around the world, school lunches reflect different national priorities. Finland was the first country to make free lunches a legal ___(6)___, while Brazil requires a proportion of ingredients to come from local farmers. In parts of East Asia, ___(7)___ trays help control exact serving sizes. In Japan, students take part in preparing and cleaning up meals as a form of ___(8)___. Meanwhile, some countries such as Norway have no in-house cafeterias, so lunch is a home-prepared ___(9)___ brought from home.",
+          "wordBank": [
+            "A. sandwich",
+            "B. requirement",
+            "C. sectioned",
+            "D. education",
+            "E. dessert",
+            "F. donation",
+            "G. cafeteria",
+            "H. subsidy"
+          ],
+          "items": [
+            {
+              "n": 6,
+              "answer": "B"
+            },
+            {
+              "n": 7,
+              "answer": "C"
+            },
+            {
+              "n": 8,
+              "answer": "D"
+            },
+            {
+              "n": 9,
+              "answer": "A"
+            }
+          ]
         }
       ]
     },
@@ -2343,6 +2919,40 @@
               "answer": "unstable"
             }
           ]
+        },
+        {
+          "group": "6-9",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-E, below.",
+          "endings": [
+            "A. because it must be steep enough to build energy but shallow enough to hold snow.",
+            "B. because it forms a weak layer that a heavier slab can rest unstably upon.",
+            "C. because it can be as small as the weight of a single skier.",
+            "D. because it exploits inverse segregation to keep a person near the surface.",
+            "E. because no forecasting system can fully remove the danger."
+          ],
+          "items": [
+            {
+              "n": 6,
+              "start": "A slope angle of 30 to 45 degrees is dangerous",
+              "answer": "A"
+            },
+            {
+              "n": 7,
+              "start": "Surface hoar is a particular hazard",
+              "answer": "B"
+            },
+            {
+              "n": 8,
+              "start": "An avalanche trigger does not need to be large",
+              "answer": "C"
+            },
+            {
+              "n": 9,
+              "start": "An avalanche airbag can help a person survive",
+              "answer": "D"
+            }
+          ]
         }
       ]
     },
@@ -2408,6 +3018,33 @@
               "answer": "B"
             }
           ]
+        },
+        {
+          "group": "5-8",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 5,
+              "statement": "Social pain and physical pain are processed by entirely separate, unrelated brain systems.",
+              "answer": "NO"
+            },
+            {
+              "n": 6,
+              "statement": "Public health campaigns should encourage people to hide their struggles with loneliness.",
+              "answer": "NO"
+            },
+            {
+              "n": 7,
+              "statement": "Media coverage of solitude tends to favour negative portrayals over positive ones.",
+              "answer": "YES"
+            },
+            {
+              "n": 8,
+              "statement": "Cognitive reframing suggests that alone time can, in the right circumstances, be beneficial.",
+              "answer": "YES"
+            }
+          ]
         }
       ]
     },
@@ -2446,6 +3083,40 @@
             {
               "n": 4,
               "statement": "A study showing a delay in the onset of a specific disease among bilingual patients.",
+              "answer": "D"
+            }
+          ]
+        },
+        {
+          "group": "5-8",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-E, below.",
+          "endings": [
+            "A. because it was later proven entirely incorrect by cognitive research.",
+            "B. because their first language often feels more emotionally charged.",
+            "C. because it requires more deliberate mental effort to build new connections.",
+            "D. because bilingual patients showed symptoms years later than monolingual patients.",
+            "E. because it strengthens neural networks associated with executive control."
+          ],
+          "items": [
+            {
+              "n": 5,
+              "start": "The old belief that bilingualism confuses children is now rejected",
+              "answer": "A"
+            },
+            {
+              "n": 6,
+              "start": "Bilingual speakers often report a difference between their two languages",
+              "answer": "B"
+            },
+            {
+              "n": 7,
+              "start": "Learning a language later in life may bring greater cognitive rewards",
+              "answer": "C"
+            },
+            {
+              "n": 8,
+              "start": "A 2007 Toronto study on dementia was significant",
               "answer": "D"
             }
           ]
@@ -2488,6 +3159,33 @@
               "n": 4,
               "statement": "Reading fiction can trigger activity in brain regions associated with physical sensation.",
               "answer": "TRUE"
+            }
+          ]
+        },
+        {
+          "group": "5-8",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES, NO, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 5,
+              "statement": "The human brain has evolved a dedicated, innate region purely for reading.",
+              "answer": "NO"
+            },
+            {
+              "n": 6,
+              "statement": "Logographic and alphabetic reading rely on identical neural regions.",
+              "answer": "NO"
+            },
+            {
+              "n": 7,
+              "statement": "The emotional and physical sensations triggered by reading fiction are purely metaphorical, with no real neurological basis.",
+              "answer": "NO"
+            },
+            {
+              "n": 8,
+              "statement": "Reading is best understood as a passive activity that has little effect on the body.",
+              "answer": "NO"
             }
           ]
         }
@@ -2572,6 +3270,40 @@
               "answer": "akiya banks"
             }
           ]
+        },
+        {
+          "group": "5-8",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "Japan's akiya crisis stems largely from an ageing and shrinking population. When elderly rural homeowners die, their properties often pass to ___(5)___ who have already moved to major cities and have no wish to return. Because demolishing an old house can raise ___(6)___, many heirs simply leave the property empty. This has attracted foreign buyers seeking cheap real estate, though hidden costs such as ___(7)___ can make the true price much higher. In response, municipal governments have created online ___(8)___ that list vacant homes at reduced prices.",
+          "wordBank": [
+            "A. akiya banks",
+            "B. renovation costs",
+            "C. property tax",
+            "D. heirs",
+            "E. tourists",
+            "F. insurance",
+            "G. rent",
+            "H. subsidies"
+          ],
+          "items": [
+            {
+              "n": 5,
+              "answer": "D"
+            },
+            {
+              "n": 6,
+              "answer": "C"
+            },
+            {
+              "n": 7,
+              "answer": "B"
+            },
+            {
+              "n": 8,
+              "answer": "A"
+            }
+          ]
         }
       ]
     },
@@ -2615,6 +3347,33 @@
               "n": 4,
               "statement": "Is exemplified by volcanoes found in Hawaii.",
               "answer": "A"
+            }
+          ]
+        },
+        {
+          "group": "5-8",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 5,
+              "question": "What term is used for molten rock once it reaches the Earth's surface?",
+              "answer": "lava"
+            },
+            {
+              "n": 6,
+              "question": "Which volcano type is exemplified by Mount Fuji and Mount Vesuvius?",
+              "answer": "stratovolcano"
+            },
+            {
+              "n": 7,
+              "question": "Which 1815 eruption caused the 'Year Without a Summer'?",
+              "answer": "Mount Tambora"
+            },
+            {
+              "n": 8,
+              "question": "What geographically active zone is home to an estimated 800 million people?",
+              "answer": "the Pacific Ring of Fire"
             }
           ]
         }
