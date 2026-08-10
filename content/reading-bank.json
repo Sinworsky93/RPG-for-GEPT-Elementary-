@@ -1497,32 +1497,38 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"merchants...began experimenting with banana imports...transformed the banana into an affordable, year-round staple\"（從非洲裔加勒比小農的地方作物變成大眾商品），對應標題 ii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"banana moguls aggressively lobbied and bribed government officials in Central America, even funding military coups\"，對應標題 i。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"the United Fruit Company had established an unprecedented corporate hegemony...felling pristine rainforests...to establish plantations\"（快速擴張與環境破壞），對應標題 v。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "原文：\"their complete lack of biological diversity created a highly volatile ecological scenario...a soil-borne fungus...began to level Gros Michel plantations\"（單一品種種植帶來的病害風險），對應標題 vi。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"President Jacobo Arbenz...tried to buy back uncultivated corporate land...the CIA orchestrated the overthrow...Honduran workers organised historic strikes, forcing the corporation to formally recognise a new labour union\"（土地改革、政變、工會承認），對應標題 iv。"
             },
             {
               "n": 6,
               "paragraph": "F",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"United Fruit finally transitioned from Gros Michel to the disease-resistant Cavendish...growers rely on the frequent application of toxic chemical pesticides\"（換品種後仍依賴化學藥劑），對應標題 iii。"
             }
           ]
         },
@@ -1571,22 +1577,26 @@
             {
               "n": 12,
               "question": "Which banana variety did merchants originally focus their commercial efforts on?",
-              "answer": "Gros Michel"
+              "answer": "Gros Michel",
+              "explanation": "原文：\"They focused their commercial efforts on a specific cultivar known as the 'Gros Michel'\"，答案為 Gros Michel。"
             },
             {
               "n": 13,
               "question": "What nickname was given to the United Fruit Company because of its far-reaching influence?",
-              "answer": "El Pulpo"
+              "answer": "El Pulpo",
+              "explanation": "原文：\"earning the moniker 'El Pulpo'—the Octopus—due to its pervasive, far-reaching influence\"，答案為 El Pulpo。"
             },
             {
               "n": 14,
               "question": "What disease devastated Gros Michel plantations starting in the 1910s?",
-              "answer": "Panama Disease"
+              "answer": "Panama Disease",
+              "explanation": "原文：\"a soil-borne fungus, the pathogen responsible for 'Panama Disease', began to level Gros Michel plantations\"，答案為 Panama Disease。"
             },
             {
               "n": 15,
               "question": "What variety did United Fruit switch to in the early 1960s?",
-              "answer": "Cavendish"
+              "answer": "Cavendish",
+              "explanation": "原文：\"United Fruit finally transitioned from Gros Michel to the disease-resistant Cavendish banana in the early 1960s\"，答案為 Cavendish。"
             }
           ]
         }
@@ -2113,19 +2123,23 @@
           "items": [
             {
               "n": 11,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"Secondary headaches result from an underlying...\"對應原文 \"Secondary headaches are indicative of an underlying bodily disorder\"（續發性頭痛源自潛在的「病症／disorder」），空格填 C (disorder)。"
             },
             {
               "n": 12,
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"the precise etiology of primary headaches remains elusive\"（原發性頭痛成因仍然「難以捉摸／elusive」），空格填 D (elusive)。"
             },
             {
               "n": 13,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Tension headaches, the most common type\"（緊張型頭痛是最「常見／common」的類型），空格填 A (common)。"
             },
             {
               "n": 14,
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"migraines...trigger optical hallucinations known as auras\"（偏頭痛會引發稱為「auras（先兆）」的視覺幻象），空格填 B (auras)。"
             }
           ]
         }
@@ -2452,27 +2466,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"Seldom, however, have previous technological revolutions accelerated the velocity of linguistic change to such an unprecedented degree as has the contemporary advent of digital communication\"（數位時代語言變化速度前所未有），對應標題 ii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"Slang, in its essence, serves as a powerful instrument for identity construction...teenagers swiftly discard these terms in favor of novel linguistic innovations\"（青少年俚語的起源與淘汰循環），對應標題 iv。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"the digital landscape is actively reshaping phonetics and grammatical frameworks...up-talk is systematically deployed by social media creators\"（演算法如何重塑發音與文法），對應標題 iii。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"modern social media platforms expose individuals to these diverse voices, but they also facilitate an unprecedented level of global homogenization...linguicide\"（全球趨同與語言滅絕風險），對應標題 v。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"modern technology and grassroots movements also provide powerful pathways for linguistic revitalization...Artificial Intelligence has emerged as a double-edged sword\"（科技對語言復振的雙面性），對應標題 i。"
             }
           ]
         },
@@ -2484,22 +2503,26 @@
             {
               "n": 6,
               "question": "What phenomenon describes a rising intonation at the end of sentences, adopted by social media creators?",
-              "answer": "up-talk"
+              "answer": "up-talk",
+              "explanation": "原文：\"up-talk...is systematically deployed by social media creators, who adopt this rising intonation to foster rapport\"，答案為 up-talk。"
             },
             {
               "n": 7,
               "question": "What term describes the covert or overt extinction of endangered languages?",
-              "answer": "linguicide"
+              "answer": "linguicide",
+              "explanation": "原文：\"This homogenization has intensified the threat of 'linguicide'—the covert or overt extinction of endangered languages\"，答案為 linguicide。"
             },
             {
               "n": 8,
               "question": "Which language is given as a celebrated example of successful revitalisation?",
-              "answer": "Māori"
+              "answer": "Māori",
+              "explanation": "原文：\"A celebrated exemplar of successful revitalization is the Māori language of New Zealand\"，答案為 Māori。"
             },
             {
               "n": 9,
               "question": "What term describes AI's tendency to fabricate non-existent words or grammar?",
-              "answer": "hallucinations"
+              "answer": "hallucinations",
+              "explanation": "原文：\"it is highly susceptible to 'hallucinations'—the fabrication of non-existent words or erroneous grammatical structures\"，答案為 hallucinations。"
             }
           ]
         }
@@ -2526,27 +2549,32 @@
             {
               "n": 1,
               "statement": "The decline in reading is concentrated mainly among younger, less educated citizens.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"a precipitous drop in reading engagement that cuts indiscriminately across all age categories, genders, educational attainments, and socioeconomic strata\"（下滑趨勢不分年齡、教育程度，並非只集中在年輕、低教育程度族群），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 2,
               "statement": "People today generally read fewer written words overall than previous generations.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"contemporary individuals arguably process more written words than any previous generation\"（現代人處理的文字量其實比以前更多），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 3,
               "statement": "AI summarisation tools have made some students less willing to read full texts.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"a resistance further exacerbated by AI tools that readily summarize complex ideas\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 4,
               "statement": "Concern about changing reading habits first appeared with the rise of digital media.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"historical precedents suggest that anxiety surrounding shifts in reading habits is not entirely unprecedented. Before the newspaper or the modern novel established their cultural dominance, they were frequently perceived as existential threats\"（早在報紙、小說出現時就有類似焦慮，並非數位時代才開始），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 5,
               "statement": "Most schools have increased the number of complete books assigned to students.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章提到學生常被安排讀片段而非完整作品，但並未提及「大多數學校已增加指定完整書籍數量」，故為 NOT GIVEN。"
             }
           ]
         },
@@ -2558,22 +2586,26 @@
             {
               "n": 6,
               "statement": "The decline in reading is mainly a problem of illiteracy.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"To attribute this decline solely to a lack of literacy would be to misunderstand the nature of modern communication\"（把閱讀衰退歸咎於識字問題是誤解），與題目敘述相反，故為 NO。"
             },
             {
               "n": 7,
               "statement": "Anxiety about changing reading habits is a completely new phenomenon caused only by digital media.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"historical precedents suggest that anxiety surrounding shifts in reading habits is not entirely unprecedented\"（這種焦慮並非數位媒體帶來的全新現象），與題目敘述相反，故為 NO。"
             },
             {
               "n": 8,
               "statement": "Schools should assign more isolated excerpts instead of complete books.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章描述學生「被安排」閱讀片段而非完整作品是現況的一部分，但作者並未主張學校「應該」多用片段教學，故為 NOT GIVEN。"
             },
             {
               "n": 9,
               "statement": "Losing the patience to read extended arguments weakens a person's ability to think independently.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"When individuals surrender the patience required to digest extended arguments, they forfeit their ability to think for themselves\"，與題目敘述相符，故為 YES。"
             }
           ]
         }
@@ -2606,27 +2638,32 @@
             {
               "n": 1,
               "statement": "It provides a protein content roughly equal to that of dairy milk.",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"Soy milk, meanwhile, contains a comparable quantity of protein to bovine milk\"，對應 D。"
             },
             {
               "n": 2,
               "statement": "It has the lowest overall nutrient content among the milks compared.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"almond milk has the least nutrients of the four leading types of milk\"，對應 B。"
             },
             {
               "n": 3,
               "statement": "Its production requires by far the greatest amount of water per glass.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Dairy milk production is exceptionally resource-intensive, requiring approximately 120 liters of water per glass\"（遠高於其他選項），對應 A。"
             },
             {
               "n": 4,
               "statement": "It is rich in a type of fibre known as beta-glucans.",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"oat milk is replete with beta-glucans, a highly beneficial form of soluble dietary fiber\"，對應 C。"
             },
             {
               "n": 5,
               "statement": "Producing it requires the largest area of land per glass.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"The production of bovine milk is extraordinarily land-intensive, demanding nearly 4 square kilometers of land\"，對應 A。"
             }
           ]
         },
@@ -2648,19 +2685,23 @@
           "items": [
             {
               "n": 6,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"critical nutrients, particularly vitamin D and calcium, do not occur naturally in the majority of plant-based formulations\"（植物奶天然缺乏「維生素D／vitamin D」），空格填 C (vitamin D)。"
             },
             {
               "n": 7,
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"The production of bovine milk is extraordinarily land-intensive, demanding nearly 4 square kilometers of land\"（酪農業對「土地／land」需求極大），空格填 B (land)。"
             },
             {
               "n": 8,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Almond milk occupies the second position, consuming more than 70 liters of water per glass...almond trees must be irrigated consistently\"（杏仁樹需要大量「水／water」灌溉），空格填 A (water)。"
             },
             {
               "n": 9,
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"dairy farming contributes over half a kilogram, heavily exacerbated by methane\"（酪農業產生更多「溫室氣體／greenhouse gas」排放），空格填 D (greenhouse gas)。"
             }
           ]
         }
@@ -3467,22 +3508,26 @@
             {
               "n": 1,
               "question": "By approximately what percentage would food-related greenhouse gas emissions fall if meat consumption stopped overnight?",
-              "answer": "63%"
+              "answer": "63%",
+              "explanation": "原文：\"food-related greenhouse gas emissions would plummet by approximately 63% almost instantaneously\"，答案為 63%。"
             },
             {
               "n": 2,
               "question": "Which country is given as an example of a place where vegetable cultivation is especially difficult?",
-              "answer": "Mongolia"
+              "answer": "Mongolia",
+              "explanation": "原文：\"In regions such as Mongolia, where the harsh, arid environment makes vegetable cultivation exceptionally difficult\"，答案為 Mongolia。"
             },
             {
               "n": 3,
               "question": "Which community is mentioned as relying on salmon for both food and cultural identity?",
-              "answer": "Pacific Northwest"
+              "answer": "Pacific Northwest",
+              "explanation": "原文：\"salmon-eating communities of the Pacific Northwest\"，答案為 the Pacific Northwest。"
             },
             {
               "n": 4,
               "question": "What could grazing land be used for instead, according to Paragraph D?",
-              "answer": "reforestation"
+              "answer": "reforestation",
+              "explanation": "原文：\"the reallocated agricultural land currently devoted to grazing and feed-crop cultivation could be repurposed for reforestation or the restoration of native grasslands\"，答案為 reforestation。"
             }
           ]
         }
