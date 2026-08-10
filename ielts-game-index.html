@@ -895,6 +895,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'修正圓餅圖小區塊（低於8%）沒有顯示數字的問題，改用指引線把數字標示在圓外；折線圖改用「顏色＋實線虛線＋資料點形狀」三重方式區分每條線，即使數值重疊也能分辨是哪一條' },
   { date:'2026-08-10', text:'補齊4篇題數過少的文章（原本各只有5題），每篇新增2組全新題型，現在都達到14題，並附上完整詳解' },
   { date:'2026-08-10', text:'閱讀題庫 363 題全部補齊詳解（含原文關鍵句引用＋中文解析），閱讀練習答錯時都能看到完整解說了' },
   { date:'2026-08-10', text:'圖表格線刻度改用整數的漂亮刻度（如0/10/20/30），不再出現40.3這種小數' },
@@ -1426,6 +1427,19 @@ function niceScale(minVal, maxVal, maxTicks){
   return { min: niceMin, max: niceMax, step };
 }
 
+const LINE_DASH = ['','6,4','2,3','8,3,2,3','1,4','10,2,2,2'];
+const LINE_MARKERS = ['circle','square','triangle','diamond','cross','triangle-down'];
+function markerSVG(shape, cx, cy, color, r){
+  r = r || 4.5;
+  switch(shape){
+    case 'square': return `<rect x="${cx-r}" y="${cy-r}" width="${r*2}" height="${r*2}" fill="${color}" stroke="#fff" stroke-width="1.3"/>`;
+    case 'triangle': { const h=r*1.35; return `<polygon points="${cx},${cy-h} ${cx-h},${cy+h*0.85} ${cx+h},${cy+h*0.85}" fill="${color}" stroke="#fff" stroke-width="1.3"/>`; }
+    case 'triangle-down': { const h=r*1.35; return `<polygon points="${cx},${cy+h} ${cx-h},${cy-h*0.85} ${cx+h},${cy-h*0.85}" fill="${color}" stroke="#fff" stroke-width="1.3"/>`; }
+    case 'diamond': return `<polygon points="${cx},${cy-r*1.3} ${cx+r*1.3},${cy} ${cx},${cy+r*1.3} ${cx-r*1.3},${cy}" fill="${color}" stroke="#fff" stroke-width="1.3"/>`;
+    case 'cross': return `<g stroke="${color}" stroke-width="2.6" stroke-linecap="round"><line x1="${cx-r}" y1="${cy-r}" x2="${cx+r}" y2="${cy+r}"/><line x1="${cx-r}" y1="${cy+r}" x2="${cx+r}" y2="${cy-r}"/></g>`;
+    default: return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${color}" stroke="#fff" stroke-width="1.3"/>`;
+  }
+}
 function svgLineChart(chart){
   const W=760,H=380,padL=54,padR=20,padT=28,padB=40;
   const allVals = chart.series.flatMap(s=>s.values);
@@ -1442,23 +1456,32 @@ function svgLineChart(chart){
   }
   svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#8a92a0"/>`;
   chart.labels.forEach((l,i)=>{ svg += `<text x="${x(i)}" y="${H-padB+22}" font-size="12" fill="#5b6472" text-anchor="middle">${l}</text>`; });
-  const DASH = ['','6,4','2,3','8,3,2,3'];
+  function l(i){ return chart.labels[i]; }
+  // Draw every line first, then every marker on top — otherwise a later series' line
+  // would be painted over an earlier series' markers when several lines coincide.
   chart.series.forEach((s,si)=>{
     const color = PALETTE[si%PALETTE.length];
     const pts = s.values.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
-    const dash = DASH[si%DASH.length];
+    const dash = LINE_DASH[si%LINE_DASH.length];
     svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3"${dash?` stroke-dasharray="${dash}"`:''}/>`;
-    // Real IELTS line graphs do not print a number at every data point — readers use the
-    // gridlines/axis to estimate values. Printing numbers caused labels to collide when
-    // multiple series had close values, so we rely on gridlines + hover tooltips instead.
+  });
+  // Real IELTS line graphs do not print a number at every data point — readers use the
+  // gridlines/axis to estimate values. Distinct marker shapes (not just colour/dash) let
+  // readers tell lines apart even at points where two series' values coincide exactly.
+  chart.series.forEach((s,si)=>{
+    const color = PALETTE[si%PALETTE.length];
+    const shape = LINE_MARKERS[si%LINE_MARKERS.length];
     s.values.forEach((v,i)=>{
-      svg += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${color}"><title>${s.name} — ${l(i)}: ${v}</title></circle>`;
+      svg += `<g>${markerSVG(shape, x(i), y(v), color)}<title>${s.name} — ${l(i)}: ${v}</title></g>`;
     });
   });
-  function l(i){ return chart.labels[i]; }
   svg += '</svg>';
-  const legend = chart.series.map((s,si)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:13px;"><span style="width:16px;height:0;border-top:3px ${DASH[si%DASH.length]?'dashed':'solid'} ${PALETTE[si%PALETTE.length]};display:inline-block;"></span>${s.name}</span>`).join('');
-  return `<div>${svg}<div style="margin-top:8px;">${legend}</div><div style="font-size:11px;color:var(--sub);margin-top:3px;">滑鼠移到數據點上可看到精確數值${chart.unit?`；單位：${chart.unit}`:''}</div></div>`;
+  const legend = chart.series.map((s,si)=>{
+    const color = PALETTE[si%PALETTE.length], shape = LINE_MARKERS[si%LINE_MARKERS.length];
+    const markerIcon = `<svg width="14" height="14" viewBox="0 0 14 14" style="flex-shrink:0;">${markerSVG(shape,7,7,color,3.5)}</svg>`;
+    return `<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:13px;">${markerIcon}<span style="width:14px;height:0;border-top:3px ${LINE_DASH[si%LINE_DASH.length]?'dashed':'solid'} ${color};display:inline-block;"></span>${s.name}</span>`;
+  }).join('');
+  return `<div>${svg}<div style="margin-top:8px;">${legend}</div><div style="font-size:11px;color:var(--sub);margin-top:3px;">滑鼠移到資料點上可看到精確數值；不同線條以顏色、線型（實線/虛線）與資料點形狀三重方式區分，重疊時也能分辨${chart.unit?`；單位：${chart.unit}`:''}</div></div>`;
 }
 
 function svgBarChart(chart){
@@ -1493,25 +1516,42 @@ function svgBarChart(chart){
 }
 
 function svgPieSet(chart){
-  const R=80;
+  const R=80, M=46; // M: extra margin around the circle so small slices can get an
+                     // external label + leader line instead of no label at all.
+  const SMALL_THRESHOLD = 0.08;
   const pieSVG = (pie)=>{
     const total = pie.values.reduce((a,b)=>a+b,0);
-    let angle = -Math.PI/2, path='';
-    const cx=R+6, cy=R+6;
+    let angle = -Math.PI/2, path='', labels='';
+    const cx=R+M, cy=R+M;
+    let smallCount = 0;
     pie.values.forEach((v,i)=>{
       const frac = v/total, a2 = angle + frac*2*Math.PI;
       const x1=cx+R*Math.cos(angle), y1=cy+R*Math.sin(angle);
       const x2=cx+R*Math.cos(a2), y2=cy+R*Math.sin(a2);
       const large = frac>0.5?1:0;
       const mid = angle + (a2-angle)/2;
-      const lx = cx + (R*0.65)*Math.cos(mid), ly = cy + (R*0.65)*Math.sin(mid);
       const labelText = chart.unit === '%' ? `${v}%` : `${v}`;
       path += `<path d="M${cx},${cy} L${x1},${y1} A${R},${R} 0 ${large} 1 ${x2},${y2} Z" fill="${PALETTE[i%PALETTE.length]}"/>`;
-      if(frac>0.05) path += `<text x="${lx}" y="${ly}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">${labelText}</text>`;
+      if(frac > SMALL_THRESHOLD){
+        const lx = cx + (R*0.65)*Math.cos(mid), ly = cy + (R*0.65)*Math.sin(mid);
+        labels += `<text x="${lx}" y="${ly}" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">${labelText}</text>`;
+      } else {
+        // Small slices don't have room for an inside label — every slice must still show
+        // its number, so draw a leader line out to a label placed outside the circle.
+        // Alternate the leader length so consecutive small slices don't collide.
+        const leadR = R + 10 + (smallCount % 2) * 15;
+        const ex = cx + leadR*Math.cos(mid), ey = cy + leadR*Math.sin(mid);
+        const tx = cx + (leadR+12)*Math.cos(mid), ty = cy + (leadR+12)*Math.sin(mid);
+        const anchor = Math.cos(mid) > 0.15 ? 'start' : (Math.cos(mid) < -0.15 ? 'end' : 'middle');
+        const px = cx + (R+2)*Math.cos(mid), py = cy + (R+2)*Math.sin(mid);
+        labels += `<line x1="${px}" y1="${py}" x2="${ex}" y2="${ey}" stroke="#5b6472" stroke-width="1"/>`;
+        labels += `<text x="${tx}" y="${ty+4}" font-size="12" font-weight="700" fill="#2a2f38" text-anchor="${anchor}">${labelText}</text>`;
+        smallCount++;
+      }
       angle = a2;
     });
     return `<div style="text-align:center;">
-      <svg viewBox="0 0 ${(R+6)*2} ${(R+6)*2}" width="190" height="190">${path}</svg>
+      <svg viewBox="0 0 ${(R+M)*2} ${(R+M)*2}" width="220" height="220">${path}${labels}</svg>
       <div style="font-weight:700;font-size:14px;margin-top:6px;">${pie.year}</div>
     </div>`;
   };
