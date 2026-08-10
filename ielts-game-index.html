@@ -171,12 +171,13 @@
   .flow-step{display:flex;align-items:center;gap:12px;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;}
   .flow-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
   .flow-text{font-size:13.5px;line-height:1.5;}
-  .flow-arrow{font-size:18px;color:var(--accent);font-weight:800;margin:2px 0;}
+  .flow-arrow{display:flex;justify-content:center;margin:2px 0;}
   .map-compare{display:flex;align-items:stretch;gap:12px;}
   @media(max-width:640px){.map-compare{flex-direction:column;}}
   .map-panel{flex:1;border:2px dashed var(--accent);border-radius:12px;padding:12px 14px;background:var(--panel);}
   .map-panel-title{font-weight:800;font-size:13.5px;color:var(--accent);margin-bottom:8px;text-align:center;text-transform:uppercase;letter-spacing:.03em;}
-  .map-feature-list{margin:0;padding-left:18px;font-size:13px;line-height:1.7;}
+  .map-feature-list{margin:0;padding:0;list-style:none;font-size:13px;line-height:1.5;}
+  .map-feature-list li{display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;}
   .map-compare-arrow{align-self:center;font-size:22px;font-weight:800;color:var(--accent);flex-shrink:0;}
   @media(max-width:640px){.map-compare-arrow{transform:rotate(90deg);}}
 
@@ -894,6 +895,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'折線圖改比照正式雅思考試作法，不在圖上標數字（改用格線刻度＋滑鼠提示精確值）以徹底避免數字重疊；地圖題加上指南針與定位圖釘、流程圖改用畫出來的箭頭圖示，看起來更像真正的圖表' },
   { date:'2026-08-10', text:'修正寫作 Task 1 圖表問題：流程圖改成真的流程箭頭圖、地圖題改成左右對照的地圖框、折線圖數字重疊變乾淨、圓餅圖修正非百分比資料誤標成%的問題' },
   { date:'2026-08-10', text:'修正 AI 批改在手機瀏覽器出現「undefined is not an object」錯誤的問題，並補足 YES/NO/NOT GIVEN、摘要填空、句子拼接、簡答題各至少8篇文章' },
   { date:'2026-08-10', text:'修正 AI 批改在部分瀏覽器（如 Safari）顯示「Load failed」失敗的問題（改成上傳後輪詢結果，需重新部署後台）' },
@@ -1409,21 +1411,23 @@ function svgLineChart(chart){
   }
   svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#8a92a0"/>`;
   chart.labels.forEach((l,i)=>{ svg += `<text x="${x(i)}" y="${H-padB+22}" font-size="12" fill="#5b6472" text-anchor="middle">${l}</text>`; });
+  const DASH = ['','6,4','2,3','8,3,2,3'];
   chart.series.forEach((s,si)=>{
     const color = PALETTE[si%PALETTE.length];
     const pts = s.values.map((v,i)=>`${x(i)},${y(v)}`).join(' ');
-    svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3"/>`;
+    const dash = DASH[si%DASH.length];
+    svg += `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="3"${dash?` stroke-dasharray="${dash}"`:''}/>`;
+    // Real IELTS line graphs do not print a number at every data point — readers use the
+    // gridlines/axis to estimate values. Printing numbers caused labels to collide when
+    // multiple series had close values, so we rely on gridlines + hover tooltips instead.
     s.values.forEach((v,i)=>{
-      // Only label the first and last point of each line — labelling every point on
-      // multi-series charts caused overlapping, unreadable numbers when values were close together.
-      const isEndpoint = i===0 || i===s.values.length-1;
-      svg += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${color}"><title>${s.name}: ${v}</title></circle>`;
-      if(isEndpoint) svg += `<text x="${x(i)}" y="${y(v)-10}" font-size="11" font-weight="700" fill="${color}" text-anchor="middle">${v}</text>`;
+      svg += `<circle cx="${x(i)}" cy="${y(v)}" r="3.5" fill="${color}"><title>${s.name} — ${l(i)}: ${v}</title></circle>`;
     });
   });
+  function l(i){ return chart.labels[i]; }
   svg += '</svg>';
-  const legend = chart.series.map((s,si)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:13px;"><span style="width:11px;height:11px;background:${PALETTE[si%PALETTE.length]};border-radius:2px;display:inline-block;"></span>${s.name}</span>`).join('');
-  return `<div>${svg}<div style="margin-top:8px;">${legend}</div>${chart.unit?`<div style="font-size:12px;color:var(--sub);margin-top:3px;">Unit: ${chart.unit}</div>`:''}</div>`;
+  const legend = chart.series.map((s,si)=>`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:14px;font-size:13px;"><span style="width:16px;height:0;border-top:3px ${DASH[si%DASH.length]?'dashed':'solid'} ${PALETTE[si%PALETTE.length]};display:inline-block;"></span>${s.name}</span>`).join('');
+  return `<div>${svg}<div style="margin-top:8px;">${legend}</div><div style="font-size:11px;color:var(--sub);margin-top:3px;">滑鼠移到數據點上可看到精確數值${chart.unit?`；單位：${chart.unit}`:''}</div></div>`;
 }
 
 function svgBarChart(chart){
@@ -1497,25 +1501,33 @@ function htmlTable(chart){
   return html;
 }
 
+const FLOW_ARROW_SVG = `<svg width="22" height="34" viewBox="0 0 22 34"><line x1="11" y1="0" x2="11" y2="24" stroke="#8a92a0" stroke-width="2.5"/><polygon points="11,34 3,20 19,20" fill="#8a92a0"/></svg>`;
+
 function processSteps(chart){
   return `<div class="flowchart">${chart.steps.map((s,i)=>`
     <div class="flow-step">
       <div class="flow-num">${i+1}</div>
       <div class="flow-text">${s}</div>
     </div>
-    ${i < chart.steps.length-1 ? '<div class="flow-arrow">↓</div>' : ''}
+    ${i < chart.steps.length-1 ? `<div class="flow-arrow">${FLOW_ARROW_SVG}</div>` : ''}
   `).join('')}</div>`;
 }
+
+const MAP_PIN_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z" fill="#c0392b"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>`;
+const COMPASS_SVG = `<svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="15" fill="none" stroke="#8a92a0" stroke-width="1.5"/><text x="17" y="8" font-size="8" fill="#5b6472" text-anchor="middle">N</text><text x="17" y="30" font-size="8" fill="#5b6472" text-anchor="middle">S</text><text x="4" y="20" font-size="8" fill="#5b6472" text-anchor="middle">W</text><text x="30" y="20" font-size="8" fill="#5b6472" text-anchor="middle">E</text><line x1="17" y1="10" x2="17" y2="24" stroke="#c0392b" stroke-width="1.5"/><line x1="9" y1="17" x2="25" y2="17" stroke="#8a92a0" stroke-width="1"/></svg>`;
 
 function mapCompare(chart){
   const panel = (label, idx) => `<div class="map-panel">
     <div class="map-panel-title">${label}</div>
-    <ul class="map-feature-list">${chart.rows.map(r=>`<li>${r[idx]}</li>`).join('')}</ul>
+    <ul class="map-feature-list">${chart.rows.map(r=>`<li>${MAP_PIN_SVG}<span>${r[idx]}</span></li>`).join('')}</ul>
   </div>`;
-  return `<div class="map-compare">
-    ${panel(chart.columns[0], 0)}
-    <div class="map-compare-arrow">→</div>
-    ${panel(chart.columns[1], 1)}
+  return `<div class="map-compare-wrap">
+    <div style="text-align:center;margin-bottom:4px;">${COMPASS_SVG}</div>
+    <div class="map-compare">
+      ${panel(chart.columns[0], 0)}
+      <div class="map-compare-arrow">→</div>
+      ${panel(chart.columns[1], 1)}
+    </div>
   </div>`;
 }
 
