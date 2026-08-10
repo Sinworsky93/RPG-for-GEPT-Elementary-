@@ -604,6 +604,123 @@
             "The build-up area ring road leads directly to the town centre",
             "A new route diverts around the industrial estate before reaching the town centre"
           ]
+        ],
+        "scenes": [
+          {
+            "areas": [
+              {
+                "x": 195,
+                "y": 70,
+                "w": 55,
+                "h": 30,
+                "fill": "#dfe6ea",
+                "label": "Air Field"
+              }
+            ],
+            "paths": [
+              {
+                "d": "M210,15 L280,90",
+                "style": "rail",
+                "label": "Railway",
+                "lx": 213,
+                "ly": 12
+              },
+              {
+                "d": "M10,130 Q60,115 110,90",
+                "style": "road",
+                "label": "A2",
+                "lx": 12,
+                "ly": 142
+              },
+              {
+                "d": "M110,90 Q190,105 265,128",
+                "style": "road",
+                "label": "Ring Road",
+                "lx": 170,
+                "ly": 118
+              }
+            ],
+            "points": [
+              {
+                "x": 110,
+                "y": 90,
+                "shape": "roundabout",
+                "label": "Roundabout"
+              },
+              {
+                "x": 135,
+                "y": 75,
+                "label": "Gas Station"
+              },
+              {
+                "x": 270,
+                "y": 128,
+                "shape": "town",
+                "label": "Town Centre"
+              }
+            ]
+          },
+          {
+            "areas": [
+              {
+                "x": 195,
+                "y": 70,
+                "w": 55,
+                "h": 30,
+                "fill": "#cbd3da",
+                "label": "Industrial Estate"
+              }
+            ],
+            "paths": [
+              {
+                "d": "M210,15 L280,90",
+                "style": "rail",
+                "label": "Railway",
+                "lx": 213,
+                "ly": 12
+              },
+              {
+                "d": "M10,130 Q60,115 110,90",
+                "style": "road",
+                "label": "A2",
+                "lx": 12,
+                "ly": 142
+              },
+              {
+                "d": "M110,90 Q130,45 155,15",
+                "style": "road",
+                "label": "A4",
+                "lx": 118,
+                "ly": 32
+              },
+              {
+                "d": "M110,90 Q165,140 210,148 Q245,150 265,128",
+                "style": "road",
+                "label": "New Route",
+                "lx": 135,
+                "ly": 153
+              }
+            ],
+            "points": [
+              {
+                "x": 110,
+                "y": 90,
+                "shape": "roundabout",
+                "label": "Roundabout"
+              },
+              {
+                "x": 140,
+                "y": 50,
+                "label": "Gas Station"
+              },
+              {
+                "x": 270,
+                "y": 128,
+                "shape": "town",
+                "label": "Town Centre"
+              }
+            ]
+          }
         ]
       },
       "model_answer": "The two maps compare the current layout of Hunderstone town with a proposed future plan for the area.\n\nOverall, the proposed plan involves replacing the existing air field with an industrial estate and altering the road network, while a number of features, including the gas station, are retained in a modified form.\n\nAt present, an air field is located next to the railway line, and a roundabout connects the A2 road to the town centre ring road. A gas station is situated near this roundabout, and the built-up area's ring road leads directly into the town centre.\n\nUnder the proposed plan, the air field would be removed and replaced by a new industrial estate. The roundabout would be redesigned so that it also connects to a newly built A4 road, and although the gas station would remain in the same general area, it would now be positioned closer to this new A4. In addition, rather than leading straight into the town centre, the ring road would be diverted around the new industrial estate before reaching the centre.\n\n(174 words)"
@@ -634,6 +751,182 @@
             "Further from Cransdon (25 km, population 29,000)",
             "Closer to the main roads leading to Cransdon"
           ]
+        ],
+        "scenes": [
+          {
+            "areas": [
+              {
+                "shape": "circle",
+                "x": 170,
+                "y": 85,
+                "r": 34,
+                "fill": "#e4ecef",
+                "label": "",
+                "fontSize": 8
+              },
+              {
+                "shape": "circle",
+                "x": 170,
+                "y": 85,
+                "r": 15,
+                "fill": "#d3e0e6",
+                "label": "Zone",
+                "fontSize": 7
+              },
+              {
+                "shape": "rect",
+                "x": 95,
+                "y": 128,
+                "w": 45,
+                "h": 20,
+                "fill": "#e3d9c4",
+                "label": "Housing"
+              },
+              {
+                "shape": "rect",
+                "x": 205,
+                "y": 125,
+                "w": 45,
+                "h": 20,
+                "fill": "#cfd3d8",
+                "label": "Industry"
+              }
+            ],
+            "paths": [
+              {
+                "d": "M10,15 L95,65",
+                "style": "rail",
+                "label": "Railway",
+                "lx": 20,
+                "ly": 35
+              }
+            ],
+            "points": [
+              {
+                "x": 40,
+                "y": 62,
+                "shape": "star",
+                "tag": "S1",
+                "label": "Site S1"
+              }
+            ],
+            "labels": [
+              {
+                "x": 170,
+                "y": 56,
+                "text": "Town Centre",
+                "size": 8
+              },
+              {
+                "x": 18,
+                "y": 10,
+                "text": "Hindon 12km",
+                "anchor": "start",
+                "size": 7.5
+              },
+              {
+                "x": 282,
+                "y": 10,
+                "text": "Bransdon 16km",
+                "anchor": "end",
+                "size": 7.5
+              },
+              {
+                "x": 282,
+                "y": 154,
+                "text": "Cransdon 25km",
+                "anchor": "end",
+                "size": 7.5
+              }
+            ]
+          },
+          {
+            "areas": [
+              {
+                "shape": "circle",
+                "x": 170,
+                "y": 85,
+                "r": 34,
+                "fill": "#e4ecef",
+                "label": "",
+                "fontSize": 8
+              },
+              {
+                "shape": "circle",
+                "x": 170,
+                "y": 85,
+                "r": 15,
+                "fill": "#d3e0e6",
+                "label": "Zone",
+                "fontSize": 7
+              },
+              {
+                "shape": "rect",
+                "x": 95,
+                "y": 128,
+                "w": 45,
+                "h": 20,
+                "fill": "#e3d9c4",
+                "label": "Housing"
+              },
+              {
+                "shape": "rect",
+                "x": 205,
+                "y": 125,
+                "w": 45,
+                "h": 20,
+                "fill": "#cfd3d8",
+                "label": "Industry"
+              }
+            ],
+            "paths": [
+              {
+                "d": "M10,15 L95,65",
+                "style": "rail",
+                "label": "Railway",
+                "lx": 20,
+                "ly": 35
+              }
+            ],
+            "points": [
+              {
+                "x": 170,
+                "y": 85,
+                "shape": "star",
+                "tag": "S2",
+                "label": "Site S2"
+              }
+            ],
+            "labels": [
+              {
+                "x": 170,
+                "y": 56,
+                "text": "Town Centre",
+                "size": 8
+              },
+              {
+                "x": 18,
+                "y": 10,
+                "text": "Hindon 12km",
+                "anchor": "start",
+                "size": 7.5
+              },
+              {
+                "x": 282,
+                "y": 10,
+                "text": "Bransdon 16km",
+                "anchor": "end",
+                "size": 7.5
+              },
+              {
+                "x": 282,
+                "y": 154,
+                "text": "Cransdon 25km",
+                "anchor": "end",
+                "size": 7.5
+              }
+            ]
+          }
         ]
       },
       "model_answer": "The map compares two potential sites, S1 and S2, being considered for a new supermarket in the town of Garlsdon, which has a population of 65,000.\n\nOverall, Site S1 is situated on the outskirts of town near open countryside and the railway line, whereas Site S2 lies within the town centre in a designated no-traffic zone, and the two sites also differ considerably in their distances from neighbouring towns.\n\nSite S1 is located on the edge of the countryside, adjacent to the railway line, and is approached by roads surrounded by a mixture of housing and industrial buildings. It lies 12 kilometres from Hindon, a town with a population of 10,000, but is comparatively far from Cransdon, which has a larger population of 29,000, at a distance of 25 kilometres.\n\nSite S2, by contrast, is located inside the town centre itself, within a zone closed to traffic, and is also surrounded by housing and industrial areas. It lies 16 kilometres from Bransdon, which has a population of 15,000, and is positioned closer to the main roads leading towards Cransdon than Site S1.\n\n(180 words)"
@@ -886,6 +1179,182 @@
             "A fish market sits near the sea",
             "A private beach and public beach now divide the coastline"
           ]
+        ],
+        "scenes": [
+          {
+            "areas": [
+              {
+                "shape": "rect",
+                "x": 15,
+                "y": 15,
+                "w": 55,
+                "h": 28,
+                "fill": "#bfe3a8",
+                "label": "Golf Course"
+              },
+              {
+                "shape": "rect",
+                "x": 85,
+                "y": 15,
+                "w": 55,
+                "h": 28,
+                "fill": "#d9e8b0",
+                "label": "Farmland"
+              },
+              {
+                "shape": "rect",
+                "x": 15,
+                "y": 55,
+                "w": 125,
+                "h": 14,
+                "fill": "#e6ded0",
+                "label": "High Street & Shops"
+              },
+              {
+                "shape": "rect",
+                "x": 20,
+                "y": 128,
+                "w": 110,
+                "h": 10,
+                "fill": "#e8dfc0",
+                "label": "Dunes"
+              }
+            ],
+            "paths": [
+              {
+                "d": "M0,140 Q75,128 150,138 T300,140",
+                "style": "coast",
+                "label": "",
+                "lx": 0,
+                "ly": 0
+              }
+            ],
+            "points": [
+              {
+                "x": 225,
+                "y": 115,
+                "label": "Hotel & Cafe"
+              },
+              {
+                "x": 200,
+                "y": 130,
+                "label": "Marina"
+              },
+              {
+                "x": 90,
+                "y": 135,
+                "label": "Fish Market"
+              }
+            ]
+          },
+          {
+            "areas": [
+              {
+                "shape": "rect",
+                "x": 15,
+                "y": 15,
+                "w": 55,
+                "h": 28,
+                "fill": "#bfe3a8",
+                "label": "Golf Course"
+              },
+              {
+                "shape": "rect",
+                "x": 85,
+                "y": 15,
+                "w": 55,
+                "h": 28,
+                "fill": "#cfd6e0",
+                "label": "Apartments"
+              },
+              {
+                "shape": "rect",
+                "x": 15,
+                "y": 55,
+                "w": 125,
+                "h": 14,
+                "fill": "#e6ded0",
+                "label": "High Street & Shops"
+              },
+              {
+                "shape": "rect",
+                "x": 230,
+                "y": 128,
+                "w": 30,
+                "h": 14,
+                "fill": "#c7cdd6",
+                "label": "Car Park"
+              },
+              {
+                "shape": "rect",
+                "x": 20,
+                "y": 133,
+                "w": 45,
+                "h": 6,
+                "fill": "#e8dfc0",
+                "label": ""
+              }
+            ],
+            "paths": [
+              {
+                "d": "M0,140 Q75,128 150,138 T300,140",
+                "style": "coast",
+                "label": "",
+                "lx": 0,
+                "ly": 0
+              },
+              {
+                "d": "M150,130 L150,150",
+                "style": "divider"
+              }
+            ],
+            "points": [
+              {
+                "x": 225,
+                "y": 115,
+                "label": "Hotel & Cafe"
+              },
+              {
+                "x": 200,
+                "y": 130,
+                "label": "Marina"
+              },
+              {
+                "x": 160,
+                "y": 30,
+                "label": "Pool & Tennis"
+              },
+              {
+                "x": 110,
+                "y": 150,
+                "shape": "turbine"
+              },
+              {
+                "x": 140,
+                "y": 150,
+                "shape": "turbine"
+              },
+              {
+                "x": 170,
+                "y": 150,
+                "shape": "turbine"
+              }
+            ],
+            "labels": [
+              {
+                "x": 75,
+                "y": 148,
+                "text": "Private Beach",
+                "size": 7.5
+              },
+              {
+                "x": 225,
+                "y": 148,
+                "text": "Public Beach",
+                "size": 7.5
+              }
+            ]
+          }
         ]
       },
       "model_answer": "The two maps compare the town of Felixstowe in 1967 with the same town in 2001.\n\nOverall, the most significant changes involve the conversion of farmland into residential and leisure facilities, the addition of a car park near the seafront, and the installation of offshore wind turbines, while the golf course remained unchanged.\n\nIn 1967, the town featured a golf course, farmland and a row of shops along the High Street. A hotel and a cafe were situated near the pier and marina, and a fish market operated close to the sea. Sand dunes ran along the coastline, providing natural protection for the beach.\n\nBy 2001, while the golf course remained in place, the farmland had been redeveloped into apartments alongside a swimming pool and tennis courts. The hotel and cafe near the pier remained standing, but a car park had since been built beside them. Along the coast, the dunes had been reduced, and wind turbines had been installed offshore. The fish market had disappeared, and the coastline was now divided into a private beach and a public beach.\n\n(178 words)"
