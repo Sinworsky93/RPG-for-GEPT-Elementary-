@@ -740,17 +740,38 @@ function blobToBase64(blob){
     reader.readAsDataURL(blob);
   });
 }
-async function fetchRealAIFeedback(recording, topic){
+function sleep(ms){ return new Promise(r=>setTimeout(r, ms)); }
+async function fetchRealAIFeedback(recording, topic, onStatus){
   const name = getStudentName();
   const audioBase64 = await blobToBase64(recording.blob);
-  const res = await fetch(BACKEND_URL, {
+  const requestId = 'req_' + Date.now() + '_' + Math.random().toString(36).slice(2,8);
+  // Fire-and-forget upload: some browsers (notably Safari) can't reliably read a
+  // cross-origin POST response from Apps Script, so we don't wait on this fetch's
+  // body — the result is retrieved afterwards via a GET poll, which does work.
+  fetch(BACKEND_URL, {
     method: 'POST',
+    mode: 'no-cors',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify({ type:'ai_feedback', name, topic, mimeType: recording.blob.type || 'audio/webm', audioBase64 })
-  });
-  const data = await res.json();
-  if(!data.ok) throw new Error(data.error || 'AI 評分失敗');
-  return data.feedback;
+    body: JSON.stringify({ type:'ai_feedback', requestId, name, topic, mimeType: recording.blob.type || 'audio/webm', audioBase64 })
+  }).catch(()=>{});
+
+  const maxAttempts = 40; // ~80 seconds
+  for(let i=0; i<maxAttempts; i++){
+    await sleep(2000);
+    if(onStatus) onStatus(i);
+    let data;
+    try{
+      const res = await fetch(`${BACKEND_URL}?action=ai_status&id=${encodeURIComponent(requestId)}`);
+      data = await res.json();
+    }catch(networkErr){
+      continue; // transient poll failure — just try again on the next tick
+    }
+    if(data.ready){
+      if(!data.ok) throw new Error(data.error || 'AI 評分失敗');
+      return data.feedback;
+    }
+  }
+  throw new Error('AI 分析逾時，請稍後再試一次');
 }
 function renderAIFeedbackBody(f, topic, isDemo){
   const pct = Math.round((f.overall/9)*100);
@@ -800,7 +821,10 @@ async function openAIFeedback(recId, topic){
   try{
     const recording = await getRecording(recId);
     if(!recording) throw new Error('找不到這段錄音');
-    const f = await fetchRealAIFeedback(recording, topic);
+    const f = await fetchRealAIFeedback(recording, topic, (tick)=>{
+      const box = document.getElementById('aiFeedbackBody');
+      if(box) box.innerHTML = `<div class="loading">AI 分析中…（已等待約 ${tick*2} 秒，語音較長時可能要一分鐘左右）</div>`;
+    });
     renderAIFeedbackBody(f, topic, false);
   }catch(e){
     document.getElementById('aiFeedbackBody').innerHTML = `<div class="disclaimer-banner">⚠️ AI 批改失敗：${(e.message||'未知錯誤').replace(/</g,'&lt;')}</div>`;
@@ -852,6 +876,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'修正 AI 批改在部分瀏覽器（如 Safari）顯示「Load failed」失敗的問題（改成上傳後輪詢結果，需重新部署後台）' },
   { date:'2026-08-10', text:'閱讀題庫一口氣新增 18 篇文章（心理、科學、環境、社會議題、歷史文化、教育語言等主題），總數來到 37 篇' },
   { date:'2026-08-10', text:'閱讀新增「依題型瀏覽」，補齊雅思正式考試的題型（YES/NO/NOT GIVEN、特徵配對、句子拼接、簡答題），每種題型附解題提示' },
   { date:'2026-08-10', text:'閱讀題庫新增「依主題瀏覽」分類（心理社會、科學科技、健康人體、環境永續、歷史文化、社會議題、教育語言）' },
