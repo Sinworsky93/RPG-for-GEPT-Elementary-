@@ -1394,20 +1394,48 @@ function gradePassage(autoSubmitted){
 /* ---------- chart rendering helpers ---------- */
 const PALETTE = ['#2f6fed','#e0673f','#1c8a4b','#b8860b','#8b5cf6','#0891b2'];
 
+// Standard "nice numbers" axis algorithm (Heckbert) — produces round-number gridlines
+// (e.g. 0/10/20/30/40) like real IELTS Task 1 charts, instead of raw fractional ticks.
+function niceNumber(range, round){
+  if(range === 0) return 1;
+  const exponent = Math.floor(Math.log10(range));
+  const fraction = range / Math.pow(10, exponent);
+  let niceFraction;
+  if(round){
+    if(fraction < 1.5) niceFraction = 1;
+    else if(fraction < 3) niceFraction = 2;
+    else if(fraction < 7) niceFraction = 5;
+    else niceFraction = 10;
+  } else {
+    if(fraction <= 1) niceFraction = 1;
+    else if(fraction <= 2) niceFraction = 2;
+    else if(fraction <= 5) niceFraction = 5;
+    else niceFraction = 10;
+  }
+  return niceFraction * Math.pow(10, exponent);
+}
+function niceScale(minVal, maxVal, maxTicks){
+  if(minVal === maxVal){ maxVal = minVal + 1; }
+  const range = niceNumber(maxVal - minVal, false);
+  const step = niceNumber(range / (maxTicks - 1), true);
+  const niceMin = Math.floor(minVal / step) * step;
+  const niceMax = Math.ceil(maxVal / step) * step;
+  return { min: niceMin, max: niceMax, step };
+}
+
 function svgLineChart(chart){
   const W=760,H=380,padL=54,padR=20,padT=28,padB=40;
   const allVals = chart.series.flatMap(s=>s.values);
-  const max = Math.max(...allVals)*1.15, min = Math.min(0, Math.min(...allVals));
+  const scale = niceScale(Math.min(0, Math.min(...allVals)), Math.max(...allVals), 5);
+  const max = scale.max, min = scale.min;
   const n = chart.labels.length;
   const x = i => padL + (W-padL-padR) * (i/(n-1));
   const y = v => H-padB - (H-padT-padB) * ((v-min)/(max-min || 1));
   let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">`;
-  const gridSteps = 4;
-  for(let g=0; g<=gridSteps; g++){
-    const v = min + (max-min)*g/gridSteps;
+  for(let v=min; v<=max+1e-9; v+=scale.step){
     const gy = y(v);
     svg += `<line x1="${padL}" y1="${gy}" x2="${W-padR}" y2="${gy}" stroke="#eceff3"/>`;
-    svg += `<text x="${padL-8}" y="${gy+4}" font-size="12" fill="#5b6472" text-anchor="end">${Math.round(v*10)/10}</text>`;
+    svg += `<text x="${padL-8}" y="${gy+4}" font-size="12" fill="#5b6472" text-anchor="end">${Math.round(v)}</text>`;
   }
   svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#8a92a0"/>`;
   chart.labels.forEach((l,i)=>{ svg += `<text x="${x(i)}" y="${H-padB+22}" font-size="12" fill="#5b6472" text-anchor="middle">${l}</text>`; });
@@ -1433,18 +1461,17 @@ function svgLineChart(chart){
 function svgBarChart(chart){
   const W=760,H=380,padL=54,padR=20,padT=28,padB=40;
   const allVals = chart.series.flatMap(s=>s.values);
-  const max = Math.max(...allVals)*1.2;
+  const scale = niceScale(0, Math.max(...allVals), 5);
+  const max = scale.max;
   const n = chart.labels.length, sN = chart.series.length;
   const groupW = (W-padL-padR)/n;
   const barW = Math.min(40, (groupW*0.72)/sN);
   const y = v => H-padB - (H-padT-padB) * (v/max);
   let svg = `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;">`;
-  const gridSteps = 4;
-  for(let g=0; g<=gridSteps; g++){
-    const v = max*g/gridSteps;
+  for(let v=0; v<=max+1e-9; v+=scale.step){
     const gy = y(v);
     svg += `<line x1="${padL}" y1="${gy}" x2="${W-padR}" y2="${gy}" stroke="#eceff3"/>`;
-    svg += `<text x="${padL-8}" y="${gy+4}" font-size="12" fill="#5b6472" text-anchor="end">${Math.round(v*10)/10}</text>`;
+    svg += `<text x="${padL-8}" y="${gy+4}" font-size="12" fill="#5b6472" text-anchor="end">${Math.round(v)}</text>`;
   }
   svg += `<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="#8a92a0"/>`;
   chart.labels.forEach((l,i)=>{
