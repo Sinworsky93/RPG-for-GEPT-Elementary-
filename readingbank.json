@@ -2355,27 +2355,32 @@
             {
               "n": 1,
               "statement": "A description of how public street protests were replaced by a quieter form of resistance.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"physical public demonstrations have virtually ceased, leading to a transition where women now post video recordings of themselves singing in quiet defiance\"（公開抗議幾乎絕跡，轉為錄影唱歌等安靜抵抗），對應 B。"
             },
             {
               "n": 2,
               "statement": "An example that contradicts the general ban on education for young women.",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"regional contradictions have emerged, as evidenced by a Taliban-run midwife training course...where young women in their twenties are permitted to learn maternal nursing\"（禁止教育的例外案例），對應 C。"
             },
             {
               "n": 3,
               "statement": "A description of the personal risks taken by teachers running unofficial classes.",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"teachers must wake up daily praying for safe passage and are frequently forced to change locations to evade detection\"，對應 D。"
             },
             {
               "n": 4,
               "statement": "A reference to an international meeting that excluded the very people it concerned.",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"That meeting, from which Afghan women's rights and civil society activists were conspicuously excluded, drew intense international criticism\"，對應 E。"
             },
             {
               "n": 5,
               "statement": "A description of how a new law affects women's ability to be heard in public.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"mandating that they must cover their faces and bodies entirely...the female voice is strictly prohibited from being heard in public spaces\"，對應 A。"
             }
           ]
         },
@@ -2394,22 +2399,26 @@
             {
               "n": 6,
               "start": "Ordinary tasks like riding a bus now cause women intense anxiety",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"It is not uncommon for women to experience intense anxiety when performing routine tasks, such as boarding a bus...as any perceived infraction could lead to immediate detention\"（道德警察擁有廣泛且隨意的執法權），對應 A。"
             },
             {
               "n": 7,
               "start": "Public protest has largely been replaced by quiet, symbolic defiance",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"groups of courageous women frequently took to the streets to demand their fundamental rights. However, the regime cracked down on these public marches with brutal efficiency\"（政權以殘暴手段鎮壓遊行），對應 B。"
             },
             {
               "n": 8,
               "start": "Running secret schools is extremely risky",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"teachers must wake up daily praying for safe passage and are frequently forced to change locations to evade detection\"，對應 C。"
             },
             {
               "n": 9,
               "start": "The Doha talks drew heavy international criticism",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"That meeting, from which Afghan women's rights and civil society activists were conspicuously excluded, drew intense international criticism directed at the United Nations\"，對應 E。"
             }
           ]
         }
@@ -2678,27 +2687,32 @@
             {
               "n": 1,
               "question": "Which organisation initiated the PISA assessments in the year 2000?",
-              "answer": "the OECD"
+              "answer": "the OECD",
+              "explanation": "原文：\"the Programme for International Student Assessment (PISA), initiated by the OECD in the year 2000\"，答案為 the OECD。"
             },
             {
               "n": 2,
               "question": "Besides Estonia, which small territory mentioned in Paragraph B is next to a much larger neighbour?",
-              "answer": "Taiwan"
+              "answer": "Taiwan",
+              "explanation": "原文：\"many, such as Estonia and Taiwan, are situated adjacent to disproportionately larger neighbors\"，答案為 Taiwan。"
             },
             {
               "n": 3,
               "question": "According to Paragraph C, what popular policy has a negligible effect on achievement beyond a certain point?",
-              "answer": "reducing class sizes"
+              "answer": "reducing class sizes",
+              "explanation": "原文：\"Extensive PISA data suggests that reducing class sizes has a negligible impact on student achievement beyond a certain threshold\"，答案為 reducing class sizes。"
             },
             {
               "n": 4,
               "question": "According to Paragraph D, which country shows a mediocre average PISA score due to internal wealth disparities?",
-              "answer": "the United States"
+              "answer": "the United States",
+              "explanation": "原文：\"The United States exhibits a remarkably mediocre average PISA performance, primarily attributable to a severe domestic divide in wealth distribution\"，答案為 the United States。"
             },
             {
               "n": 5,
               "question": "According to Paragraph E, which subject shows girls consistently outperforming boys?",
-              "answer": "reading literacy"
+              "answer": "reading literacy",
+              "explanation": "原文：\"Across almost all participating countries, girls consistently outperform boys in reading literacy\"，答案為 reading literacy。"
             }
           ]
         }
@@ -2735,23 +2749,28 @@
           "items": [
             {
               "n": 1,
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"Unlike bacteria, which actively reproduce on environmental surfaces, parasites do not multiply outside a host\"（寄生蟲不像細菌會在體外環境中「繁殖／reproduce」，因此難以偵測），空格填 D (reproduce)。"
             },
             {
               "n": 2,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"Funding for FoodNet, a crucial surveillance network, was reduced\"（監測網絡經費遭到「削減／cuts」），空格填 C (cuts)。"
             },
             {
               "n": 3,
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"resulting in a contraction of the pathogens routinely monitored; Cyclospora was altogether removed from the list of high-priority organisms\"，空格填 E (high-priority)。"
             },
             {
               "n": 4,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"a critical food traceability rule...remains unimplemented\"（該規則至今尚未「實施／implemented」），空格填 A (implemented)。"
             },
             {
               "n": 5,
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"small food distributors are increasingly consolidating\"（小型食品供應商逐漸「整合／consolidation」成少數大公司），空格填 B (consolidation)。"
             }
           ]
         },
@@ -2763,22 +2782,26 @@
             {
               "n": 6,
               "question": "What pathogen is responsible for the outbreak described in the passage?",
-              "answer": "Cyclospora"
+              "answer": "Cyclospora",
+              "explanation": "原文：\"the current Cyclospora outbreak. This unprecedented epidemic has spread across forty-seven states\"，答案為 Cyclospora。"
             },
             {
               "n": 7,
               "question": "What surveillance network had its funding reduced, according to Paragraph C?",
-              "answer": "FoodNet"
+              "answer": "FoodNet",
+              "explanation": "原文：\"Funding for FoodNet, a crucial surveillance network, was reduced\"，答案為 FoodNet。"
             },
             {
               "n": 8,
               "question": "In what year was the Food Safety Modernization Act signed into law?",
-              "answer": "2011"
+              "answer": "2011",
+              "explanation": "原文：\"the Food Safety Modernization Act was signed into law in 2011\"，答案為 2011。"
             },
             {
               "n": 9,
               "question": "What kind of lettuce product is described as carrying a high risk of pooled contamination?",
-              "answer": "pre-packaged, chopped lettuce"
+              "answer": "pre-packaged, chopped lettuce",
+              "explanation": "原文：\"modern consumer preferences favor pre-packaged, chopped lettuce bags, which contain leaves harvested from hundreds of different heads, creating a high probability of pooled contamination\"，答案為 pre-packaged, chopped lettuce。"
             }
           ]
         }
@@ -2954,27 +2977,32 @@
             {
               "n": 1,
               "statement": "Students help prepare and clean up meals as part of their education.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"In Japan, children are actively integrated into the culinary process, taking turns preparing, serving, and cleaning up after their peers\"，對應 B。"
             },
             {
               "n": 2,
               "statement": "A law requires a minimum proportion of ingredients to come from local farmers.",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"Brazil has elevated nutritional security to a constitutional right, requiring that at least thirty percent of ingredients be sourced directly from local farmers\"，對應 D。"
             },
             {
               "n": 3,
               "statement": "Schools do not have their own cafeterias, so lunch is brought from home.",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"Norwegian schools do not operate in-house cafeterias, so students bring a home-prepared open-face sandwich instead\"，對應 C。"
             },
             {
               "n": 4,
               "statement": "It was the first country to legally guarantee free lunches for all students.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Finland, which was the pioneering nation in the world to mandate free school lunches for every student\"，對應 A。"
             },
             {
               "n": 5,
               "statement": "Meals are served on trays with sections designed for exact portion sizes.",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"In South Korea, students eat off sectioned steel trays designed to facilitate perfect portion sizes\"，對應 E。"
             }
           ]
         },
@@ -2996,19 +3024,23 @@
           "items": [
             {
               "n": 6,
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"Finland, which was the pioneering nation in the world to mandate free school lunches for every student\"（芬蘭立法「規定／requirement」免費午餐），空格填 B (requirement)。"
             },
             {
               "n": 7,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"students eat off sectioned steel trays designed to facilitate perfect portion sizes\"（分「隔／sectioned」餐盤控制份量），空格填 C (sectioned)。"
             },
             {
               "n": 8,
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"children are actively integrated into the culinary process...to cultivate lifelong healthy habits\"（透過參與備餐清潔作為「教育／education」的一環），空格填 D (education)。"
             },
             {
               "n": 9,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Norwegian schools do not operate in-house cafeterias, so students bring a home-prepared open-face sandwich instead\"，空格填 A (sandwich)。"
             }
           ]
         }
@@ -3476,22 +3508,26 @@
             {
               "n": 1,
               "prompt": "By 2038, statisticians project that about one in three Japanese homes could be ___.",
-              "answer": "empty"
+              "answer": "empty",
+              "explanation": "原文：\"statisticians project that by 2038, roughly one in three homes nationwide could stand empty\"，答案為 empty。"
             },
             {
               "n": 2,
               "prompt": "Demolishing an old akiya can trigger a rise in ___, discouraging heirs from tearing it down.",
-              "answer": "property tax"
+              "answer": "property tax",
+              "explanation": "原文：\"demolishing an old structure can trigger a significant increase in property tax\"，答案為 property tax。"
             },
             {
               "n": 3,
               "prompt": "Buyers are warned that hidden costs such as renovation and unclear ___ can make an akiya far more expensive than its advertised price.",
-              "answer": "property boundaries"
+              "answer": "property boundaries",
+              "explanation": "原文：\"renovation costs, unclear property boundaries, and local bureaucratic hurdles can rapidly inflate the true cost\"，答案為 property boundaries。"
             },
             {
               "n": 4,
               "prompt": "Municipal governments have created online ___ that list available vacant homes at reduced prices.",
-              "answer": "akiya banks"
+              "answer": "akiya banks",
+              "explanation": "原文：\"subsidized 'akiya banks'—online databases that list available vacant properties at reduced prices\"，答案為 akiya banks。"
             }
           ]
         },
@@ -3513,19 +3549,23 @@
           "items": [
             {
               "n": 5,
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"their properties are frequently inherited by adult children who have long since relocated to Tokyo...and have no intention of returning\"（房產由「繼承人／heirs」繼承），空格填 D (heirs)。"
             },
             {
               "n": 6,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"demolishing an old structure can trigger a significant increase in property tax\"，空格填 C (property tax)。"
             },
             {
               "n": 7,
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"renovation costs, unclear property boundaries, and local bureaucratic hurdles can rapidly inflate the true cost of ownership\"（隱藏成本例如「整修費用／renovation costs」），空格填 B (renovation costs)。"
             },
             {
               "n": 8,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"subsidized 'akiya banks'—online databases that list available vacant properties at reduced prices\"，空格填 A (akiya banks)。"
             }
           ]
         }
