@@ -145,27 +145,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"prestigious academic credentials did not automatically guarantee communicative efficacy\"（顯赫學歷不保證溝通能力）。第A段描述 Duhigg 雖是哈佛商學院畢業，卻在當上主管後才發現自己不懂同事真正需要的是什麼，對應標題 i「業界資歷不保證人際溝通能力」。容易誤選 v（溝通是可以刻意培養的技能），但那其實是結論段（E段）才提到的主題。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"researchers have categorized human dialogue into three primary dimensions: practical, emotional, and social\"（研究者把對話分成三大類：實務、情緒、社交）。第B段主要在介紹這三種對話類型，對應標題 iv「日常對話背後的三種分類」。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"Communication failures frequently occur when interlocutors operate in discordant modes\"（雙方對話模式不一致時常導致溝通失敗）。第C段講的是「兩艘船在夜裡擦身而過」的比喻，對應標題 iii「對話模式不一致的後果」。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"analyzing lexical choices is equally paramount...such expressions...indicate that the dialogue has shifted from a practical dimension to an emotional one\"（分析用字選擇同樣重要，這類用語代表對話已從實務轉為情緒層面）。第D段講的是如何從用字判斷對話類型轉換，對應標題 ii「透過用字判讀對話線索」。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"they are individuals who consciously allocate cognitive resources...any dedicated individual can cultivate them through systematic practice\"（優秀溝通者是刻意投入心力練習出來的）。第E段結論強調溝通是可以後天培養的技能，對應標題 v。"
             }
           ]
         },
@@ -251,22 +256,26 @@
             {
               "n": 11,
               "start": "Charles Duhigg was surprised by his own communication failures",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Duhigg recognized a profound deficiency in his everyday interactions\"（Duhigg 發現自己日常互動中有明顯的缺陷）。這正是他對自己溝通失誤感到意外的原因，對應 A。"
             },
             {
               "n": 12,
               "start": "Emotional conversations require active listening rather than advice",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"individuals do not seek logical remedies or plans; instead, they require active empathy\"（在情緒對話中，人們要的不是解決方案而是同理）。對應 B。"
             },
             {
               "n": 13,
               "start": "Mismatched conversational modes cause friction",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"Communication failures frequently occur when interlocutors operate in discordant modes\"（雙方模式不一致就會產生溝通摩擦）。對應 C。"
             },
             {
               "n": 14,
               "start": "A shift from a practical to an emotional conversation can often be detected",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"Such expressions...indicate that the dialogue has shifted from a practical dimension to an emotional one\"（這類用語代表對話已經轉向情緒層面）——也就是透過情緒化用字的出現來判斷轉變，對應 D。"
             }
           ]
         }
@@ -393,17 +402,20 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"This tendency is not a newly acquired adult trait; humans begin adopting this pattern from an early age\"（這個傾向不是成年後才有的，人從小就會模仿可信任的人）。第A段主題是「跟隨可信任者」這個心理捷徑，對應標題 iii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"these businesses have reported a noticeable increase in revenue...customers are far more inclined to accept automated upsell offers\"（改用觸控點餐後營收上升，顧客更容易接受加購建議）。第B段講觸控點餐如何提升營收，對應標題 iv。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"international organizations also employ these techniques to prompt positive social change...rooted in nudge theory\"（國際組織也用這些技巧推動社會正向改變，基礎是推力理論）。第C段主題是政府/組織如何運用行為科學，對應標題 ii。"
             }
           ]
         },
@@ -415,22 +427,26 @@
             {
               "n": 4,
               "statement": "People only start following the lead of others they consider credible once they become adults.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"This tendency is not a newly acquired adult trait; humans begin adopting this pattern from an early age, first copying their parents and teachers\"（這不是成年才有的習慣，人從小就開始模仿）。題目說「只有成年後才開始」與原文相反，故為 FALSE。"
             },
             {
               "n": 5,
               "statement": "Touchscreen ordering systems have reduced the average spending per transaction at fast-food chains.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"these digital prompts typically boost the average basket spend by 25% to 30%\"（觸控點餐讓平均消費金額提升25%~30%）。題目說「降低」平均消費，與原文相反，故為 FALSE。"
             },
             {
               "n": 6,
               "statement": "Nudge theory relies on strict rules rather than subtle suggestions to change behaviour.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"nudge theory...suggests that human habits can be effectively altered through small, subtle prompts rather than strict mandates\"（推力理論是用細微暗示而非強制規定來改變習慣）。題目說「依賴嚴格規則」，與原文相反，故為 FALSE。"
             },
             {
               "n": 7,
               "statement": "The World Food Programme's Tunisia campaign used a television drama to encourage people to share meals.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"they decided to think outside the box by producing a creative TV drama series set entirely inside a restaurant\"（他們製作了一部以餐廳為背景的電視劇來推廣共餐）。與題目敘述相符，故為 TRUE。"
             }
           ]
         },
@@ -442,22 +458,26 @@
             {
               "n": 8,
               "statement": "Following credible or knowledgeable people is a habit that starts only in adulthood.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"humans begin adopting this pattern from an early age\"（人從小就開始這個模式），並非只有成年後才有，故為 NO。"
             },
             {
               "n": 9,
               "statement": "Touchscreen ordering removes the social anxiety some customers feel about being judged.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"Computers, however, eliminate this social pressure\"（電腦點餐消除了這種社交壓力），與題目敘述相符，故為 YES。"
             },
             {
               "n": 10,
               "statement": "Nudge theory argues that behaviour is best changed through strict rules and mandates.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"human habits can be effectively altered through small, subtle prompts rather than strict mandates\"（推力理論靠的是細微暗示，不是嚴格規定），與題目敘述相反，故為 NO。"
             },
             {
               "n": 11,
               "statement": "The Tunisian TV drama campaign was more expensive to produce than traditional public announcements.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章只提到這部電視劇的內容和目的，並未比較製作成本與傳統公告的花費，故為 NOT GIVEN。"
             }
           ]
         }
@@ -496,32 +516,38 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"Not only is existing without intimate companions as detrimental to human longevity as smoking fifteen cigarettes daily...scholar Daniel Cox coined the term friendship recession\"（缺乏親密朋友對壽命的傷害等同每天抽15根菸，學者提出「友誼衰退」一詞）。第A段介紹這個現象與其危害，對應標題 i。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"It was Aristotle who idealized friendship...completely devoid of transactional motives\"（亞里斯多德認為真正的友誼不帶任何利益交換）。第B段講友誼的歷史哲學觀，對應標題 ii。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"several twenty-first-century socio-economic barriers actively impede the formation and maintenance of meaningful connections\"（21世紀有多種社經因素阻礙友誼的形成與維繫）。第C段列出這些障礙（搬遷、育兒、工作主義等），對應標題 iii。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"The demographic consequences of these societal shifts are particularly pronounced among male cohorts\"（這些社會變化對男性的影響特別明顯）。第D段聚焦男性友誼銳減的統計數據，對應標題 iv。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"Seldom did a global event expose the fragile architecture of human networks as starkly as the COVID-19 pandemic...it was women...who bore the brunt\"（COVID-19疫情暴露了社交網絡的脆弱，而受影響最大的是女性）。第E段講疫情對女性友誼的衝擊，對應標題 v。"
             },
             {
               "n": 6,
               "paragraph": "F",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "原文：\"friendship...resembles a meticulous woodworking project that demands deliberate carving, active cultivation, and continuous effort\"（友誼像木工工藝，需要刻意經營，不會自己開花）。第F段結論強調友誼需要主動投入，對應標題 vi。"
             }
           ]
         },
@@ -725,32 +751,38 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"represents a profound shift in human cognitive processing...historically, the origin of flow traces back to...Csikszentmihalyi\"（心流是認知的重大轉變，並回顧了心流一詞的歷史起源）。第A段介紹心流的定義與時間感扭曲，對應標題 i。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"individuals must meticulously orchestrate their biological and environmental prerequisites...dedicating an uninterrupted block of ninety to one hundred and twenty minutes\"（進入心流需要安排好生理與環境條件，包括不受打斷的90-120分鐘）。第B段講進入心流的環境條件，對應標題 ii。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"the challenge-skills balance, which is universally hailed as the golden rule of peak performance\"（挑戰與能力的平衡被稱為顛峰表現的黃金法則）。第C段主題正是這個平衡，對應標題 iii。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"sustaining this state depends heavily on the activation of specific neural pathways, predominantly driven by the release of dopamine\"（維持心流主要靠多巴胺驅動的神經路徑）。第D段講神經化學機制，對應標題 iv。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"peak performance is fueled by a structured sequence of five intrinsic motivators, each biologically engineered to build upon the previous one\"（顛峰表現由五個依序疊加的內在動機驅動）。第E段列出好奇心→熱情→使命→自主→精通這個階梯，對應標題 v。"
             },
             {
               "n": 6,
               "paragraph": "F",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "原文：\"flow is not a solitary endeavor; a shared, collective version known as group flow...universal to all humans, most mammals, and definitely all social mammals\"（心流不只是個人的，也存在於團隊與社會性哺乳類中）。第F段講集體心流，對應標題 vi。"
             }
           ]
         },
@@ -762,27 +794,32 @@
             {
               "n": 7,
               "statement": "Csikszentmihalyi was the first person in history to describe the experience later called flow.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"Historically, the origin of flow traces back to the German writer Goethe...it was...Csikszentmihalyi...who systematically investigated\"（心流概念最早可追溯到歌德，但是 Csikszentmihalyi 系統性地研究它）——他不是「史上第一個描述」這個經驗的人，只是系統化研究者，故為 FALSE。"
             },
             {
               "n": 8,
               "statement": "Most people can enter flow without dedicating an uninterrupted block of time to a task.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"seldom do practitioners transition into flow without dedicating an uninterrupted block of ninety to one hundred and twenty minutes\"（很少有人能不投入90-120分鐘不受干擾的時間就進入心流）——題目說「大多數人不需要」，與原文相反，故為 FALSE。"
             },
             {
               "n": 9,
               "statement": "According to the passage, a task that is far beyond a person's current ability is ideal for triggering flow.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"human attention is captured most intensely when the perceived difficulty of a task slightly exceeds the individual's current capabilities\"（任務難度「稍微超過」能力時最容易進入心流，不是遠超過）。題目說「遠超過能力的任務最理想」，與原文不符，故為 FALSE。"
             },
             {
               "n": 10,
               "statement": "Facial frowning decreases when a person is in a state of deep flow.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"In deep flow, however, these facial muscles are temporarily paralyzed\"（深度心流時皺眉的臉部肌肉會暫時停止收縮）。與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 11,
               "statement": "Group flow has only ever been observed in human teams, not in other social species.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"flow is universal to all humans, most mammals, and definitely all social mammals\"（心流普遍存在於人類、多數哺乳類、以及所有社會性哺乳類）——並非只在人類團隊中觀察到，故為 FALSE。"
             }
           ]
         },
@@ -794,22 +831,26 @@
             {
               "n": 12,
               "prompt": "Dopamine is described as a neurotransmitter that heightens ______ and excitement.",
-              "answer": "alertness"
+              "answer": "alertness",
+              "explanation": "原文：\"dopamine, a neurotransmitter that heightens alertness and excitement\"，空格填 alertness。"
             },
             {
               "n": 13,
               "prompt": "Small cognitive wins, like solving a crossword clue, amplify ______ recognition.",
-              "answer": "pattern"
+              "answer": "pattern",
+              "explanation": "原文：\"solving a single clue in a crossword puzzle, trigger localized dopamine surges that immediately amplify pattern recognition\"，空格填 pattern。"
             },
             {
               "n": 14,
               "prompt": "Dopamine is deployed proactively to build motivation for ______.",
-              "answer": "risk-taking"
+              "answer": "risk-taking",
+              "explanation": "原文：\"risk-taking is not merely rewarded by dopamine after the fact; rather, the neurotransmitter is deployed proactively to drive the necessary motivation\"，對應「為冒險行為建立動機」，空格填 risk-taking。"
             },
             {
               "n": 15,
               "prompt": "This motivation helps individuals navigate ______ situations safely.",
-              "answer": "hazardous"
+              "answer": "hazardous",
+              "explanation": "原文：\"to navigate hazardous situations\"，空格填 hazardous。"
             }
           ]
         }
@@ -968,27 +1009,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"workaholism, a phenomenon widely misconstrued as a commendable work ethic. However...excessive labor is merely a secondary symptom\"（過勞常被誤認為是優良的工作倫理，但其實只是次要症狀）。第A段解釋過勞常被誤解的本質，對應標題 iii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"success triggers the release of dopamine...prompting them to seek identical stimuli repeatedly\"（成功會釋放多巴胺，驅使人不斷追求同樣的刺激）。第B段講多巴胺如何形成過勞循環，對應標題 i。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"the tendency of high-achievers to reduce themselves to mere success machines...treat themselves as instruments of labor rather than complex human beings\"（高成就者把自己簡化成「成功機器」，當成生產工具而非完整的人）。第C段主題正是這種自我物化，對應標題 ii。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"A critical distinction must be made between deal friends...and real friends\"（必須區分「利益之交」與「真心朋友」）。第D段講這兩種關係的差異，對應標題 iv。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"individuals must cultivate relationships with those who can love them back...work cannot substitute for genuine human intimacy\"（必須培養能夠回應情感的關係，工作無法取代真正的親密感）。第E段講重建真實關係，對應標題 v。"
             }
           ]
         },
@@ -1000,27 +1046,32 @@
             {
               "n": 6,
               "statement": "The passage argues that workaholism is best explained as a strong work ethic rather than an addiction.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"workaholism, a phenomenon widely misconstrued as a commendable work ethic\"（過勞常被誤認為是值得讚賞的工作倫理）——這正是文章要駁斥的觀點，故題目敘述為 FALSE。"
             },
             {
               "n": 7,
               "statement": "The release of dopamine after professional success motivates people to seek the same experience again.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"success triggers the release of dopamine...prompting them to seek identical stimuli repeatedly\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 8,
               "statement": "Because excellence is relative, individuals need to keep outperforming their peers to feel rewarded.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"Because excellence is inherently relative, individuals must consistently outperform peers to secure these rewards\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 9,
               "statement": "Workaholics typically have more \"real friends\" than \"deal friends.\"",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"the latter are desperately scarce among workaholics\"（後者，也就是真心朋友，在過勞者身上非常稀少）——過勞者的「利益之交」通常比「真心朋友」多，題目說反了，故為 FALSE。"
             },
             {
               "n": 10,
               "statement": "The passage recommends replacing human relationships entirely with spiritual or religious practice.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章建議透過靈性實踐提供心理支持，但並未說要「完全取代」人際關係，原文並無明確主張，故為 NOT GIVEN。"
             }
           ]
         },
@@ -1032,22 +1083,26 @@
             {
               "n": 11,
               "statement": "Workaholism should mainly be understood as an admirable form of work ethic.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"workaholism, a phenomenon widely misconstrued as a commendable work ethic\"（過勞常被「誤認為」是值得讚賞的工作倫理，這是誤解不是作者的立場），故為 NO。"
             },
             {
               "n": 12,
               "statement": "The dopamine reward triggered by success is unrelated to addictive behaviour.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"success triggers the release of dopamine, a neuromodulator intrinsically implicated in addictive behaviors\"（多巴胺本身就與成癮行為密切相關），故為 NO。"
             },
             {
               "n": 13,
               "statement": "Workaholics generally have more 'real friends' than 'deal friends'.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"the latter are desperately scarce among workaholics\"（真心朋友在過勞者身上非常稀少），故為 NO。"
             },
             {
               "n": 14,
               "statement": "Spiritual practice or reflection may help protect people from performance pressure.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"engaging in spiritual practices or exploring wisdom literature can provide a metaphysical grounding that shields individuals from performance pressure\"，與題目敘述相符，故為 YES。"
             }
           ]
         }
@@ -2136,27 +2191,32 @@
             {
               "n": 1,
               "statement": "Modern psychological research tends to view a preference for solitude as a sign of poor mental health.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"Seldom do these modern analyses view the choice to walk alone as a manifestation of psychological deficit\"（現代分析很少把獨處視為心理缺陷的表現），與題目敘述相反，故為 NO。"
             },
             {
               "n": 2,
               "statement": "Self-sovereign individuals generally find it easy to gain approval from their peer groups.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章描述自主獨處者拒絕追求同儕認同，但沒有明確說他們「很容易獲得認同」，屬於原文未提及的推論，故為 NOT GIVEN。"
             },
             {
               "n": 3,
               "statement": "People who value strong personal boundaries are usually indifferent to how others perceive them.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章提到他們維持強烈的人際界線，但並未明確表示他們對別人的看法「毫不在乎」，這是過度推論，故為 NOT GIVEN。"
             },
             {
               "n": 4,
               "statement": "A friendship can end simply because one person has changed in ways the other cannot accept.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"friendships to dissolve not because of toxic conflict, but because one individual is undergoing a profound internal transformation that their peer group cannot accommodate\"（友誼結束不是因為衝突，而是一方經歷了對方無法接受的轉變），與題目敘述相符，故為 YES。"
             },
             {
               "n": 5,
               "statement": "Self-sovereign individuals are best described as people who are hard to form relationships with.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"They are not difficult to love...rather, they are exceptionally difficult to manipulate\"（他們不是難以相處，而是難以被操控），與題目「難以建立關係」的說法相反，故為 NO。"
             }
           ]
         }
@@ -2633,27 +2693,32 @@
             {
               "n": 1,
               "prompt": "During conflict, a surge of ___ impairs the brain's prefrontal cortex.",
-              "answer": "cortisol"
+              "answer": "cortisol",
+              "explanation": "原文：\"Cortisol immediately floods the bloodstream, impairing the prefrontal cortex\"，空格填 cortisol。"
             },
             {
               "n": 2,
               "prompt": "A curt email is often wrongly assumed to be a sign of ___ from the sender.",
-              "answer": "malice"
+              "answer": "malice",
+              "explanation": "原文：\"receiving a curt email often triggers an immediate assumption of malice\"，空格填 malice。"
             },
             {
               "n": 3,
               "prompt": "Imagining oneself as a neutral \"fly on the wall\" is a technique known as cognitive ___.",
-              "answer": "distancing"
+              "answer": "distancing",
+              "explanation": "原文：\"cognitive distancing, whereby an individual visualizes themselves as a detached observer\"，空格填 distancing。"
             },
             {
               "n": 4,
               "prompt": "Silently naming an emotion such as anger is called emotion ___, and it reduces amygdala activity.",
-              "answer": "labeling"
+              "answer": "labeling",
+              "explanation": "原文：\"the practice of emotion labeling, silently naming feelings such as anger, has been shown to reduce amygdala activity\"，空格填 labeling。"
             },
             {
               "n": 5,
               "prompt": "When requesting a break, individuals should use ___ statements rather than blaming the other person.",
-              "answer": "I-centered"
+              "answer": "I-centered",
+              "explanation": "原文：\"utilizing I-centered statements rather than accusatorily suggesting that the other party needs to calm down\"，空格填 I-centered。"
             }
           ]
         },
@@ -2665,22 +2730,26 @@
             {
               "n": 6,
               "statement": "Minor workplace disagreements are always processed rationally by the brain.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"Even minor disagreements...are frequently interpreted by the human brain not merely as routine cognitive differences, but as existential threats\"（連小分歧都常被大腦解讀成威脅），代表衝突並非總是被理性處理，故為 NO。"
             },
             {
               "n": 7,
               "statement": "People are usually fully aware that their self-protective narratives during conflict are exaggerated.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"It is not uncommon for people to fail to realize that these internal rationalizations are largely fabricated\"（人們常常沒意識到自己的自我防衛敘事是虛構的），與題目「通常很清楚」相反，故為 NO。"
             },
             {
               "n": 8,
               "statement": "Cognitive distancing techniques, such as imagining oneself as a 'fly on the wall', can help reduce emotional reactivity.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"cognitive distancing, whereby an individual visualizes themselves as a detached observer...effectively prevents them from becoming engulfed by the affective dimensions\"（認知抽離能有效避免被情緒淹沒），與題目敘述相符，故為 YES。"
             },
             {
               "n": 9,
               "statement": "Blaming the other person directly is the most effective way to request a break during an argument.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"utilizing I-centered statements rather than accusatorily suggesting that the other party needs to calm down, which often exacerbates the situation\"（指責對方需要冷靜反而常使情況惡化），與題目敘述相反，故為 NO。"
             }
           ]
         }
@@ -2982,7 +3051,8 @@
                 "C) They showed increased activity in the amygdala only",
                 "D) They were unable to complete the experiment"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"participants who viewed photographs of a romantic partner while experiencing a painful stimulus reported significantly reduced pain intensity, and brain scans confirmed correspondingly lower activity in pain-related regions\"，對應選項 B。"
             },
             {
               "n": 2,
@@ -2993,7 +3063,8 @@
                 "C) Women",
                 "D) The elderly"
               ],
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"researchers found that women were disproportionately affected by the erosion of social ties during extended lockdowns\"，對應選項 C。"
             },
             {
               "n": 3,
@@ -3004,7 +3075,8 @@
                 "C) Mostly neutral",
                 "D) Overwhelmingly negative"
               ],
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"negative portrayals of time spent alone outnumber positive or neutral portrayals by a ratio of roughly ten to one\"（負面報導是正面的約十倍），對應選項 D。"
             },
             {
               "n": 4,
@@ -3015,7 +3087,8 @@
                 "C) Increasing media coverage of loneliness statistics",
                 "D) Replacing therapy with medication"
               ],
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"individuals are encouraged to consciously reinterpret solitary time not as a deficiency but as an opportunity for reflection and recovery\"，對應選項 B。"
             }
           ]
         },
@@ -3027,22 +3100,26 @@
             {
               "n": 5,
               "statement": "Social pain and physical pain are processed by entirely separate, unrelated brain systems.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"social pain and physical pain activate overlapping neural circuitry\"（社交痛苦與生理疼痛的腦部迴路是重疊的，不是完全分開的），與題目敘述相反，故為 NO。"
             },
             {
               "n": 6,
               "statement": "Public health campaigns should encourage people to hide their struggles with loneliness.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"public health campaigns increasingly encourage individuals to display vulnerability openly\"（公衛宣導鼓勵人們公開展現脆弱、坦承困難，而非隱藏），與題目敘述相反，故為 NO。"
             },
             {
               "n": 7,
               "statement": "Media coverage of solitude tends to favour negative portrayals over positive ones.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"negative portrayals of time spent alone outnumber positive or neutral portrayals by a ratio of roughly ten to one\"，與題目敘述相符，故為 YES。"
             },
             {
               "n": 8,
               "statement": "Cognitive reframing suggests that alone time can, in the right circumstances, be beneficial.",
-              "answer": "YES"
+              "answer": "YES",
+              "explanation": "原文：\"cognitive reframing, whereby individuals are encouraged to consciously reinterpret solitary time not as a deficiency but as an opportunity for reflection and recovery\"，與題目敘述相符，故為 YES。"
             }
           ]
         }
