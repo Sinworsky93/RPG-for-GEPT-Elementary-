@@ -794,6 +794,7 @@ function readingCardHTML(p, i){
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'寫作 Task 1／Task 2 新增各分類的實用詞彙（跟口說一樣依分類提供，不是每題單獨列）' },
   { date:'2026-08-10', text:'電腦版新增「首頁」儀表板：今日推薦訓練、本週學習進度、連續天數、錯題預覽、常用字彙' },
   { date:'2026-08-10', text:'口說錄音新增「AI 批改」介面示範（尚未串接真正的 AI 評分服務）' },
   { date:'2026-08-10', text:'新增「⚡ 快速練習」短文（題目少、5分鐘可做完，適合手機空檔練習）' },
@@ -1418,6 +1419,7 @@ function openTask1(i){
         <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
       </div>
       <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。草稿會自動儲存在本機。</p>
+      ${usefulWordsHTML((state.writing.task1_useful_words||{})[item.chart_type])}
       <textarea id="essayBox" rows="14"
         autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
         style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
@@ -1450,6 +1452,7 @@ function openTask2(cat, i){
         <span id="timerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(essaySecondsLeft)}</span>
       </div>
       <p style="color:var(--sub);font-size:13px;">至少寫 ${minWords} 字。建議花費 ${durationMin} 分鐘 — 時間到會自動送出。草稿會自動儲存在本機。</p>
+      ${usefulWordsHTML((state.writing.task2_useful_words||{})[cat])}
       <textarea id="essayBox" rows="16"
         autocorrect="off" autocapitalize="off" autocomplete="off" spellcheck="false"
         style="width:100%;border:1px solid var(--line);border-radius:8px;padding:12px;font-size:14px;line-height:1.6;font-family:inherit;"
