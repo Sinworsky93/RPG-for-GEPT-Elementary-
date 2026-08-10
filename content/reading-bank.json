@@ -1748,6 +1748,877 @@
         }
       ],
       "category": "education_language"
+    },
+    {
+      "id": "reading-017",
+      "title": "The Solitary Path: A Socio-Psychological Analysis of Non-Affiliative Behavior and Self-Sovereignty",
+      "source": "Original teaching material (psychology of solitude)",
+      "category": "psychology_society",
+      "paragraphs": {
+        "A": "In contemporary society, a hyper-connected paradigm prevails, heavily characterized by the metricization of social worth through digital platforms. On these networks, popularity is meticulously quantified, and the accumulation of virtual validation has become a primary objective for many. Within this pervasive atmosphere of collective social engagement, individuals who exhibit non-affiliative tendencies—specifically those who do not possess or seek a conventional circle of companions—are frequently subjected to societal skepticism. Traditional sociological frameworks have historically pathologized this state of voluntary solitude, assuming that human well-being is inherently contingent upon continuous peer interaction. However, recent empirical inquiries into psychological self-sovereignty suggest an alternative interpretation. Seldom do these modern analyses view the choice to walk alone as a manifestation of psychological deficit; rather, they identify it as a hallmark of heightened self-awareness and emotional intelligence.",
+        "B": "The first key characteristic of these self-sovereign individuals is their reliance on internal validation, which serves as a psychological anchor in an era dominated by external appraisal. Unlike the majority who actively pursue a sense of social belonging, often at the expense of their personal integrity, these individuals reject the necessity of peer approval. This internal orientation is closely linked with a capacity for profound contemplation. For these individuals, solitude is not an empty state to be feared, but a cognitive catalyst that actively facilitates intellectual and emotional growth. They are often characterized by habits such as reflective journaling, solitary walks, and a pronounced inclination to listen rather than to speak.",
+        "C": "Furthermore, these individuals exhibit exceptionally robust interpersonal boundaries, which they maintain even at the cost of social disapproval. They would far rather disappoint others than betray their own core principles, viewing the preservation of personal peace as a primary necessity. They consciously distance themselves from interpersonal drama, persistent negativity, and toxic social circles, all of which contribute to psychological depletion. This protective stance is further enhanced by their hyper-intuitive capacities, allowing them to sense subtle shifts in social dynamics almost immediately upon entering a room.",
+        "D": "Additionally, a defining dimension of those who roll solo is their accelerated rate of psychological evolution. It is not uncommon for friendships to dissolve not because of toxic conflict, but because one individual is undergoing a profound internal transformation that their peer group cannot accommodate. Seldom do they cling to obsolete social connections out of a fear of being alone, recognizing that personal evolution often requires outgrowing environments that no longer align with their authentic selves. They are not difficult to love, as conventional narratives might suggest; rather, they are exceptionally difficult to manipulate.",
+        "E": "In conclusion, the phenomenon of the friendless individual, when viewed through the lens of psychological self-sovereignty, challenges the traditional dogma of social conformity. By examining these five distinct dimensions—internal validation, contemplative depth, rigid boundaries, hyper-intuition, and rapid personal evolution—we can discern a lifestyle that is not defined by lack, but by abundance. These individuals choose to walk alone not because they are incapable of connection, but because they refuse to settle for superficiality. Ultimately, their choice to walk alone is not an indictment of social connection, but a profound affirmation of personal autonomy."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "yes_no_not_given",
+          "instructions": "Do the following statements agree with the claims of the writer? Write YES if the statement agrees with the writer's claims, NO if it contradicts the claims, or NOT GIVEN if it is impossible to say what the writer thinks about this.",
+          "items": [
+            {
+              "n": 1,
+              "statement": "Modern psychological research tends to view a preference for solitude as a sign of poor mental health.",
+              "answer": "NO"
+            },
+            {
+              "n": 2,
+              "statement": "Self-sovereign individuals generally find it easy to gain approval from their peer groups.",
+              "answer": "NOT GIVEN"
+            },
+            {
+              "n": 3,
+              "statement": "People who value strong personal boundaries are usually indifferent to how others perceive them.",
+              "answer": "NOT GIVEN"
+            },
+            {
+              "n": 4,
+              "statement": "A friendship can end simply because one person has changed in ways the other cannot accept.",
+              "answer": "YES"
+            },
+            {
+              "n": 5,
+              "statement": "Self-sovereign individuals are best described as people who are hard to form relationships with.",
+              "answer": "NO"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-018",
+      "title": "The Erasure of Voice: Female Disenfranchisement in Post-Conflict Afghanistan",
+      "source": "Adapted from real reporting on conditions for women under Taliban rule (not verbatim copied)",
+      "category": "society_global",
+      "paragraphs": {
+        "A": "Three years after the Taliban's sudden return to power in Afghanistan, a newly published decree has drastically curtailed the fundamental rights of women, mandating that they must cover their faces and bodies entirely whenever necessity compels them to leave their domestic spheres. Under this stringent law, the female voice is strictly prohibited from being heard in public spaces. For many Afghan women, this relentless series of dictats has transformed daily existence into a state resembling a psychological prison, where individuals describe themselves as \"dead bodies moving around\".",
+        "B": "To ensure compliance with these unprecedented decrees, the regime's morality police have been granted sweeping and arbitrary powers of enforcement. It is not uncommon for women to experience intense anxiety when performing routine tasks, such as boarding a bus or speaking at a normal volume, as any perceived infraction could lead to immediate detention. In the period immediately following the Taliban's takeover, groups of courageous women frequently took to the streets to demand their fundamental rights. However, the regime cracked down on these public marches with brutal efficiency. Consequently, physical public demonstrations have virtually ceased, leading to a transition where women now post video recordings of themselves singing in quiet defiance to criticize the regime's actions.",
+        "C": "Parallel to the restrictions on public movement is the devastating denial of education, which has locked teenage girls out of secondary and higher education for three consecutive years. Seldom has an educational blockade had such a catastrophic impact on youth mental health, with numerous young women expressing profound depression as a direct consequence of their enforced isolation. Despite this centralized embargo, regional contradictions have emerged, as evidenced by a Taliban-run midwife training course in a province near Kabul, where young women in their twenties are permitted to learn maternal nursing.",
+        "D": "Recognizing that official promises of educational reform have yielded no tangible results on the ground, some Afghan women have taken matters into their own hands through highly dangerous, clandestine initiatives. Behind closed doors, dedicated female educators operate secret schools for young girls, providing a desperate lifeline of knowledge under the constant threat of discovery. Operating such a school is not without immense personal peril, as teachers must wake up daily praying for safe passage and are frequently forced to change locations to evade detection.",
+        "E": "On the geopolitical stage, the enactment of these oppressive laws has severely complicated and destabilized relations between the Taliban regime and the global community. This diplomatic impasse stands in stark contrast to the events of late June, when the Taliban attended UN-led talks in Doha for the first time. That meeting, from which Afghan women's rights and civil society activists were conspicuously excluded, drew intense international criticism directed at the United Nations."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information?",
+          "items": [
+            {
+              "n": 1,
+              "statement": "A description of how public street protests were replaced by a quieter form of resistance.",
+              "answer": "B"
+            },
+            {
+              "n": 2,
+              "statement": "An example that contradicts the general ban on education for young women.",
+              "answer": "C"
+            },
+            {
+              "n": 3,
+              "statement": "A description of the personal risks taken by teachers running unofficial classes.",
+              "answer": "D"
+            },
+            {
+              "n": 4,
+              "statement": "A reference to an international meeting that excluded the very people it concerned.",
+              "answer": "E"
+            },
+            {
+              "n": 5,
+              "statement": "A description of how a new law affects women's ability to be heard in public.",
+              "answer": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-019",
+      "title": "The Digital Acceleration of Linguistic Evolution: TikTok, Algorithms, and Global Homogenization",
+      "source": "Original teaching material (sociolinguistics of social media)",
+      "category": "education_language",
+      "paragraphs": {
+        "A": "For millennia, human language has undergone a process of perpetual transition, adapting to the shifting needs of its speakers. Historically, this evolution was a gradual phenomenon, bounded by geographical constraints and slow-moving social interactions. Seldom, however, have previous technological revolutions accelerated the velocity of linguistic change to such an unprecedented degree as has the contemporary advent of digital communication. Today, internet-derived phrases such as \"it's giving\", \"rizz\", and \"no cap\" are widely attributed to the cultural output of millennial and Generation Z demographics. It is not uncommon, however, for older generations to view this hyperfast evolution with a mixture of bewilderment and apprehension.",
+        "B": "To comprehend this linguistic shift, one must examine the socio-cultural dynamics that underpin youth slang. Slang, in its essence, serves as a powerful instrument for identity construction and in-group demarcation. Yet, the moment these specialized phrases are co-opted by individuals outside the subgroup, they immediately lose their status as exclusive markers. Consequently, teenagers swiftly discard these terms in favor of novel linguistic innovations. Intriguingly, many of these mainstream expressions did not emerge from a cultural vacuum; rather, they were incubated within specific peripheral subcultures, including the Black and Latino LGBT communities in the United States, which pioneered terms like \"slay\" and \"it's giving\".",
+        "C": "Beyond mere lexical additions, the digital landscape is actively reshaping phonetics and grammatical frameworks, which are conventionally considered the most stable components of language. Phonetically, the phenomenon of \"up-talk\"—characterized by a rising intonation at the termination of declarative sentences—has transcended its regional origins in the antipodes. Today, up-talk is systematically deployed by social media creators, who adopt this rising intonation to foster rapport and heighten engagement, thereby maximizing viewer retention favored by recommendation algorithms.",
+        "D": "Historically, linguistic contact was highly localized. Today, however, the consumption of mass and social media exposes individuals to a highly diverse array of global voices. Not only do modern social media platforms expose individuals to these diverse voices, but they also facilitate an unprecedented level of global homogenization. This homogenization has intensified the threat of \"linguicide\"—the covert or overt extinction of endangered languages. Experts estimate that by the end of the twenty-first century, up to half of the world's seven thousand active languages may disappear entirely.",
+        "E": "Despite the ominous projections surrounding global language loss, modern technology and grassroots movements also provide powerful pathways for linguistic revitalization. A celebrated exemplar of successful revitalization is the Māori language of New Zealand. Concurrently, Artificial Intelligence has emerged as a double-edged sword in this domain: it can rapidly document low-resource languages, yet it is highly susceptible to \"hallucinations\"—the fabrication of non-existent words or erroneous grammatical structures."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_headings",
+          "instructions": "Choose the correct heading for each paragraph from the list of headings below.",
+          "headings": [
+            "i. The technological duality of language revitalization",
+            "ii. The unprecedented speed of digitally-driven language change",
+            "iii. How algorithms are reshaping pronunciation and grammar",
+            "iv. The origins and disposal cycle of youth slang",
+            "v. Global convergence and the risk of language extinction"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "paragraph": "A",
+              "answer": "ii"
+            },
+            {
+              "n": 2,
+              "paragraph": "B",
+              "answer": "iv"
+            },
+            {
+              "n": 3,
+              "paragraph": "C",
+              "answer": "iii"
+            },
+            {
+              "n": 4,
+              "paragraph": "D",
+              "answer": "v"
+            },
+            {
+              "n": 5,
+              "paragraph": "E",
+              "answer": "i"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-020",
+      "title": "The Twilight of the Written Word: The Collective Demise of Modern Reading",
+      "source": "Original teaching material (reading habits and cognition)",
+      "category": "education_language",
+      "paragraphs": {
+        "A": "In contemporary society, a silent cultural shift is unfolding, one that threatens to dismantle a foundational pillar of human intellect. Investigation into this phenomenon reveals a precipitous drop in reading engagement that cuts indiscriminately across all age categories, genders, educational attainments, and socioeconomic strata. According to empirical data compiled over the last two decades, the proportion of citizens who engage with a book or even a brief article on any given day has diminished by a staggering forty percent. So profound is this societal pivot that recreational gambling has now surpassed reading as a preferred leisure activity among the public.",
+        "B": "To attribute this decline solely to a lack of literacy would be to misunderstand the nature of modern communication, as contemporary individuals arguably process more written words than any previous generation. However, this hyper-stimulated consumption of superficial text has systematically eroded the human capacity to sustain focus on rich, complex, and extended literature. Seldom do we witness modern readers engaging in deep, undistracted cognitive processing. Students increasingly report perceiving full-text reading as an unnecessarily arduous methodology for extracting information, a resistance further exacerbated by AI tools that readily summarize complex ideas.",
+        "C": "While contemporary commentators lament this digital assault on literacy, historical precedents suggest that anxiety surrounding shifts in reading habits is not entirely unprecedented. Before the newspaper or the modern novel established their cultural dominance, they were frequently perceived as existential threats to disciplined intellectual pursuits. Nevertheless, the current crisis exhibits features that are qualitatively different from historical transitions: today, society faces a population that struggles not only to read but also to articulate complex thoughts coherently.",
+        "D": "The root of this systemic decline can be traced back to early childhood development and the evolving landscape of compulsory education. In the domestic sphere, the tradition of shared reading has dwindled to near extinction, with surveys indicating that a mere two percent of parents read to their children on any given day. Upon entering formal education, reading is increasingly reframed as a tedious chore rather than a source of intellectual discovery, and students are routinely presented with isolated excerpts rather than complete works.",
+        "E": "Ultimately, the societal abandonment of the written word carries profound implications that extend far beyond the classroom. The act of reading is a sequential, logical process that actively trains the human mind in analytical reasoning. Not until this capacity is fully restored can society hope to foster a citizenry capable of resisting superficial manipulation. When individuals surrender the patience required to digest extended arguments, they forfeit their ability to think for themselves, delegating their intellectual sovereignty to automated algorithms and simplified summaries."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 1,
+              "statement": "The decline in reading is concentrated mainly among younger, less educated citizens.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 2,
+              "statement": "People today generally read fewer written words overall than previous generations.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 3,
+              "statement": "AI summarisation tools have made some students less willing to read full texts.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 4,
+              "statement": "Concern about changing reading habits first appeared with the rise of digital media.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 5,
+              "statement": "Most schools have increased the number of complete books assigned to students.",
+              "answer": "NOT GIVEN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-021",
+      "title": "The Modern Milk Dilemma: Synthesizing Nutritional Efficacy and Ecological Sustainability",
+      "source": "Adapted teaching material (dairy vs plant-based milk research)",
+      "category": "environment",
+      "paragraphs": {
+        "A": "Upon entering a contemporary grocery establishment, consumers are confronted with a dizzying array of products vying for their attention. While bovine dairy has historically reigned supreme, a modern barrage of plant-based alternatives has disrupted the market. To transform a plant-based raw material into a substance resembling milk, specialized manufacturing protocols must be deployed: raw source materials are soaked, drained, rinsed, and milled into a paste, or dehydrated and ground into flour, then fortified with vitamins and minerals, flavored, and diluted with water.",
+        "B": "A standard 250-milliliter glass of cow's milk contains approximately 8 grams of protein, 12 grams of carbohydrates, and between 2 and 8 grams of lipids. This single portion delivers roughly 15% of the daily protein requirements for an average adult. Conversely, most vegetable-derived beverages are characterized by lower carbohydrate and fat contents, yet they possess a superior concentration of beneficial lipids. However, it is not uncommon for these plant-based alternatives to be not entirely devoid of nutritional deficiencies; critical nutrients, particularly vitamin D and calcium, do not occur naturally in the majority of plant-based formulations, thereby necessitating post-processing fortification.",
+        "C": "Both almond and oat beverages are relatively low in protein when compared to animal-derived dairy. While almond milk has the least nutrients of the four leading types of milk, oat milk is replete with beta-glucans, a highly beneficial form of soluble dietary fiber. Soy milk, meanwhile, contains a comparable quantity of protein to bovine milk and represents an excellent source of potassium. Ultimately, individual physiological characteristics dictate the optimal choice; lactose-intolerant individuals will find plant-based milks inherently superior, whereas those allergic to tree nuts must completely avoid almond-derived beverages.",
+        "D": "For a significant portion of the modern populace, the determination of the optimal milk extends beyond personal biochemical needs to encompass environmental stewardship. The production of bovine milk is extraordinarily land-intensive, demanding nearly 4 square kilometers of land to yield a single 250-milliliter glass. Strikingly, cultivating crops directly for plant-based milks requires merely a fraction of that land—only about a quarter of a square kilometer per glass. Although almond milk exhibits a similarly low land requirement, soybean cultivation is recognized as a major driver of global deforestation, whereas oat and almond cultivation do not carry the same ecological liabilities.",
+        "E": "Dairy milk production is exceptionally resource-intensive, requiring approximately 120 liters of water per glass. Almond milk occupies the second position, consuming more than 70 liters of water per glass, largely because almond trees must be irrigated consistently to prevent dieback. Oats and soybeans, by contrast, require substantially less water, consuming only 5 to 10 liters per glass. In terms of atmospheric pollution, plant-based milks generate a modest 0.1 to 0.2 kilograms of greenhouse gas emissions per glass, while dairy farming contributes over half a kilogram, heavily exacerbated by methane released by the ruminants themselves."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_features",
+          "instructions": "Look at the following statements and the list of milk types below. Match each statement with the correct milk type, A-D.",
+          "features": [
+            "A. Cow's milk",
+            "B. Almond milk",
+            "C. Oat milk",
+            "D. Soy milk"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "statement": "It provides a protein content roughly equal to that of dairy milk.",
+              "answer": "D"
+            },
+            {
+              "n": 2,
+              "statement": "It has the lowest overall nutrient content among the milks compared.",
+              "answer": "B"
+            },
+            {
+              "n": 3,
+              "statement": "Its production requires by far the greatest amount of water per glass.",
+              "answer": "A"
+            },
+            {
+              "n": 4,
+              "statement": "It is rich in a type of fibre known as beta-glucans.",
+              "answer": "C"
+            },
+            {
+              "n": 5,
+              "statement": "Producing it requires the largest area of land per glass.",
+              "answer": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-022",
+      "title": "The Architecture of Global Education: Rankings, Equity, and Policy Choices",
+      "source": "Adapted from BBC World Service reporting on global education systems (not verbatim copied)",
+      "category": "society_global",
+      "paragraphs": {
+        "A": "The quest for educational excellence has increasingly assumed a pivotal role in the geopolitical arena. Among the most influential instruments employed to evaluate national academic efficacy is the Programme for International Student Assessment (PISA), initiated by the OECD in the year 2000. Not without considerable controversy was the initial implementation of these assessments, as critics vigorously questioned the feasibility of comparing vastly disparate educational systems. However, the architects of these examinations approached scholastic performance through the same analytical lens applied to macroeconomic indicators such as GDP.",
+        "B": "An empirical analysis of PISA outcomes reveals a striking geographic consolidation of academic supremacy. East Asian jurisdictions, namely Singapore, South Korea, and Hong Kong, have consistently dominated the upper echelons of these global rankings. Finland has recently witnessed a discernible decline in its performance, whereas Estonia has emerged as a formidable European powerhouse. Under no circumstances can the geographical challenges of these territories be disregarded; many, such as Estonia and Taiwan, are situated adjacent to disproportionately larger neighbors, while others, like Singapore, are completely devoid of abundant natural resources, leading these societies to prioritize human capital investment.",
+        "C": "Nonetheless, the relentless pursuit of high test scores has ignited an intense international debate regarding what truly constitutes a comprehensive, well-rounded education. In many East Asian systems, extraordinary academic accomplishments are often achieved at a severe cost to students' mental well-being. Furthermore, the role of financial resource allocation in driving academic success is complex: while basic funding is indispensable, seldom do subsequent increases in expenditure automatically yield superior outcomes. Extensive PISA data suggests that reducing class sizes has a negligible impact on student achievement beyond a certain threshold.",
+        "D": "In stark contrast to the cohesive models of top-tier nations, the educational landscapes of several prominent Western powers are marked by profound internal disparities. The United States exhibits a remarkably mediocre average PISA performance, primarily attributable to a severe domestic divide in wealth distribution and localized school funding. Had some affluent American states participated as independent entities, they would have ranked among the global academic elite, whereas several southern states perform at levels comparable to developing nations.",
+        "E": "The gender dimension of academic performance introduces another layer of complexity. Across almost all participating countries, girls consistently outperform boys in reading literacy. Yet, while gender gaps in developed nations represent an analytical puzzle, girls in other parts of the world face absolute exclusion; Afghanistan is currently the sole nation to prohibit female students over the age of twelve from attending schools. Ultimately, PISA rankings demonstrate that the structure and efficacy of an education system are never accidents of nature, but direct products of deliberate policy choices."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 1,
+              "question": "Which organisation initiated the PISA assessments in the year 2000?",
+              "answer": "the OECD"
+            },
+            {
+              "n": 2,
+              "question": "Besides Estonia, which small territory mentioned in Paragraph B is next to a much larger neighbour?",
+              "answer": "Taiwan"
+            },
+            {
+              "n": 3,
+              "question": "According to Paragraph C, what popular policy has a negligible effect on achievement beyond a certain point?",
+              "answer": "reducing class sizes"
+            },
+            {
+              "n": 4,
+              "question": "According to Paragraph D, which country shows a mediocre average PISA score due to internal wealth disparities?",
+              "answer": "the United States"
+            },
+            {
+              "n": 5,
+              "question": "According to Paragraph E, which subject shows girls consistently outperforming boys?",
+              "answer": "reading literacy"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-023",
+      "title": "The Invisible Parasite: Food Safety and Supply Chain Fragility in the United States",
+      "source": "Adapted teaching material (food safety and public health)",
+      "category": "society_global",
+      "paragraphs": {
+        "A": "Seldom in the annals of public health has the United States witnessed a parasitic food safety crisis of such magnitude as the current Cyclospora outbreak. This unprecedented epidemic has spread across forty-seven states, striking down thousands of citizens with no scientifically identifiable source pinpointed by federal investigators. Compounding this epidemiological emergency is a critical administrative vacuum at the Food and Drug Administration (FDA), which has been operating without permanent leadership. The FDA's early assertion identifying iceberg lettuce as the possible culprit was later revealed to be a false positive, and fast-food stocks experienced significant declines upon the dissemination of the outbreak news.",
+        "B": "Tracing the trajectory of Cyclospora presents unique scientific hurdles that distinguish it from common bacterial pathogens such as E. coli and Salmonella. Unlike bacteria, which actively reproduce on environmental surfaces, parasites do not multiply outside a host, rendering contaminated food detection an exceptionally prolonged task. Since fresh lettuce possesses an exceptionally short shelf life, a contaminated batch typically traverses the entire food distribution system long before patients receive a positive diagnosis, making the acquisition of reliable traceback data absolutely indispensable.",
+        "C": "The vulnerability of the regulatory framework has been further exacerbated by political shifts that commenced in early 2025. Funding for FoodNet, a crucial surveillance network, was reduced, resulting in a contraction of the pathogens routinely monitored; Cyclospora was altogether removed from the list of high-priority organisms. According to a former CDC director, the CDC's Division of Parasitic Diseases and Malaria lost a staggering forty million dollars in funding, resulting in the loss of an estimated twenty-five percent of its specialized workforce.",
+        "D": "Food safety experts stress that the systemic breakdown of the nation's regulatory apparatus is not a novel phenomenon. The Food Center's budget stood at approximately 1.17 billion dollars, representing a mere seventeen percent of the FDA's total budget. It was only after a series of high-profile scandals that lawmakers enacted reform, and the Food Safety Modernization Act was signed into law in 2011. Nevertheless, a critical food traceability rule, which would have allowed federal authorities to swiftly isolate contamination sources, remains unimplemented.",
+        "E": "Compounding these regulatory shortcomings are the sweeping structural transformations within the agricultural private sector, where small food distributors are increasingly consolidating. While purchasing a single head of intact lettuce minimizes risk, modern consumer preferences favor pre-packaged, chopped lettuce bags, which contain leaves harvested from hundreds of different heads, creating a high probability of pooled contamination. Experts contend that the prevailing opaqueness within the supply chain prevents both distributors and consumers from discerning where ingredients originate."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "summary_completion",
+          "instructions": "Complete the summary below using words from the box.",
+          "summary": "The current Cyclospora outbreak has been made worse by several factors. Detecting the source is unusually slow because, unlike bacteria, the parasite cannot ___(1)___ outside of a host. At the same time, recent budget ___(2)___ have weakened the CDC's ability to monitor pathogens, and Cyclospora was even removed from its list of ___(3)___ organisms. A key traceability rule created under the FSMA still has not been ___(4)___. Finally, the growing ___(5)___ of small food suppliers into a few large companies means that pre-packaged salad bags mix leaves from hundreds of different farms, raising the risk of contamination.",
+          "wordBank": [
+            "A. implemented",
+            "B. consolidation",
+            "C. cuts",
+            "D. reproduce",
+            "E. high-priority",
+            "F. detected",
+            "G. expansion",
+            "H. traceable"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "answer": "D"
+            },
+            {
+              "n": 2,
+              "answer": "C"
+            },
+            {
+              "n": 3,
+              "answer": "E"
+            },
+            {
+              "n": 4,
+              "answer": "A"
+            },
+            {
+              "n": 5,
+              "answer": "B"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-024",
+      "title": "The Cognitive and Physiological Architecture of Interpersonal Conflict",
+      "source": "Original teaching material (psychology of conflict and emotional regulation)",
+      "category": "psychology_society",
+      "paragraphs": {
+        "A": "Within the modern corporate landscape, interpersonal friction is often perceived as an inevitable byproduct of collaborative endeavors. Even minor disagreements are frequently interpreted by the human brain not merely as routine cognitive differences, but as existential threats to an individual's career, ego, and professional identity. Upon detecting such a perceived threat, the human brain initiates a rapid, involuntary physiological cascade. Cortisol immediately floods the bloodstream, impairing the prefrontal cortex, while the amygdala becomes hyperactive, prompting immediate defensiveness.",
+        "B": "Once this neural mechanism is activated, the brain instinctively constructs a highly subjective narrative designed primarily for self-preservation. Individuals tend to formulate a rigid dichotomy wherein they cast themselves as the righteous, victimized party and their counterparts as the malevolent aggressors. It is not uncommon for people to fail to realize that these internal rationalizations are largely fabricated. For instance, receiving a curt email often triggers an immediate assumption of malice, when in fact the colleague may simply be experiencing an exceptionally demanding day.",
+        "C": "Navigating these volatile situations successfully demands a high degree of self-awareness alongside rigorous emotional self-control. In the crucible of conflict, individuals typically exhibit one of two instinctual tendencies: they either become immediately defensive, projecting all culpability onto the other party, or they conversely internalize the blame entirely. Only when an individual actively monitors these deeply ingrained psychological habits can they hope to break the cycle of unproductive reactivity.",
+        "D": "To mitigate the destructive potential of interpersonal friction, several evidence-based mindfulness techniques can be employed. Taking a deep, deliberate breath and grounding oneself in the physical present can prevent cognitive overwhelm. Another effective strategy involves cognitive distancing, whereby an individual visualizes themselves as a detached observer—akin to a metaphorical \"fly on the wall\"—viewing the conflict from a neutral perspective. Furthermore, the practice of emotion labeling, silently naming feelings such as \"anger\", has been shown to reduce amygdala activity.",
+        "E": "Ultimately, the most effective strategy for preserving cognitive composure is the deliberate implementation of a physical or temporal break. It is highly critical that the individual takes full ownership of the need for this pause, utilizing \"I-centered\" statements rather than accusatorily suggesting that the other party needs to calm down. Rarely do confrontational exchanges resolve productively when one party condescendingly points out the other's emotional instability."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "sentence_completion",
+          "instructions": "Complete the sentences below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 1,
+              "prompt": "During conflict, a surge of ___ impairs the brain's prefrontal cortex.",
+              "answer": "cortisol"
+            },
+            {
+              "n": 2,
+              "prompt": "A curt email is often wrongly assumed to be a sign of ___ from the sender.",
+              "answer": "malice"
+            },
+            {
+              "n": 3,
+              "prompt": "Imagining oneself as a neutral \"fly on the wall\" is a technique known as cognitive ___.",
+              "answer": "distancing"
+            },
+            {
+              "n": 4,
+              "prompt": "Silently naming an emotion such as anger is called emotion ___, and it reduces amygdala activity.",
+              "answer": "labeling"
+            },
+            {
+              "n": 5,
+              "prompt": "When requesting a break, individuals should use ___ statements rather than blaming the other person.",
+              "answer": "I-centered"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-025",
+      "title": "The Written Vessel: How Literature Catalyzes Societal Transitions",
+      "source": "Original teaching material (literary history)",
+      "category": "history_culture",
+      "paragraphs": {
+        "A": "Historically, the written word has functioned as the ultimate catalyst for global transformation, acting as both a repository of human thought and a driver of cognitive evolution. John Milton famously conceptualised a book as a chemical 'vial' into which the precious lifeblood of a human soul is poured and preserved. Consider, for example, the Bible: for centuries, this assembly of sacred writings has so fundamentally permeated the structures of global civilization that imagining a world without it is virtually impossible, demonstrating that physical books are indispensable vessels for transporting revolutionary concepts across generations.",
+        "B": "As society transitioned into the nineteenth century, Mary Shelley's gothic masterpiece, Frankenstein, published in 1818, captured a monumental paradigm shift in the human understanding of natural philosophy and ethics. Not only does the novel redefine the boundaries of human ambition, but it also reflects a profound anxiety regarding the transition from God as the ultimate creator to humans as the technological creators of life. According to literary critics, Frankenstein laid the foundational stones of modern science fiction, a genre that has subsequently changed how humanity conceptualises its own technological future.",
+        "C": "While Shelley examined the scientific boundaries of creation, later writers turned their analytical gaze toward the material conditions required for intellectual and creative output. Virginia Woolf, whose seminal essay A Room of One's Own remains a cornerstone of feminist literature, anchored her analysis in concrete, physical circumstances: financial autonomy and private physical space. Only when a woman possesses a room of her own and independent financial resources, she argues, can she hope to engage in the luxury of intellectual creation. It is not unfeasible to suggest that the material worries of daily survival act as insurmountable obstacles to the production of literature.",
+        "D": "In a similar vein, the socio-economic dimensions of women's lives were central to the works of Jane Austen. Seldom in nineteenth-century literature were women depicted not merely as passive trophies to be bartered by men, but as rational, autonomous agents whose personal decisions carried profound socio-economic consequences. Austen positioned marriage not simply as a vehicle for romantic fulfillment, but as an essential social and economic institution governing survival.",
+        "E": "In the modern era, the democratization of readership has been characterized by cross-generational literary phenomena, most notably exemplified by the works of J.K. Rowling. Although occasionally dismissed by traditional critics as a simplistic amalgamation of established tropes, the Harry Potter series achieved unprecedented global success, attributable not only to its intricate world-building but also to its unique structural progression, allowing its protagonists to age organically alongside their readers. Ultimately, these works remind us that books should be sources of profound enjoyment."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_sentence_endings",
+          "instructions": "Complete each sentence with the correct ending, A-F, below.",
+          "endings": [
+            "A. because it demonstrated humanity's growing anxiety about scientific overreach.",
+            "B. because financial security and physical space are prerequisites for creative work.",
+            "C. because it treated marriage as an economic necessity rather than pure romance.",
+            "D. because its influence on civilization is almost impossible to imagine away.",
+            "E. because its characters mature alongside the readers who grow up with them."
+          ],
+          "items": [
+            {
+              "n": 1,
+              "start": "Milton's metaphor of the Bible as a preserved 'vial' is significant",
+              "answer": "D"
+            },
+            {
+              "n": 2,
+              "start": "Frankenstein is considered a landmark novel",
+              "answer": "A"
+            },
+            {
+              "n": 3,
+              "start": "Virginia Woolf argued that women need a room and money",
+              "answer": "B"
+            },
+            {
+              "n": 4,
+              "start": "Jane Austen's novels presented an unusual view of marriage",
+              "answer": "C"
+            },
+            {
+              "n": 5,
+              "start": "The Harry Potter series achieved lasting popularity partly",
+              "answer": "E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-026",
+      "title": "The Comparative Anatomy of School Lunch Programs: A Global Health and Educational Analysis",
+      "source": "Original teaching material (comparative global school nutrition policy)",
+      "category": "society_global",
+      "paragraphs": {
+        "A": "Within contemporary educational systems, the midday meal has transcended its traditional role as mere physical sustenance, evolving instead into a cornerstone of institutionalized public health policy. Finland, which was the pioneering nation in the world to mandate free school lunches for every student, enforces rigorous nutritional standards by law: vegetables must occupy at least half of the student's plate. Similarly, Brazil has elevated nutritional security to a constitutional right, requiring that at least thirty percent of ingredients be sourced directly from local farmers, while in Rome, municipal regulations dictate that a minimum of seventy percent of ingredients must be organic.",
+        "B": "Beyond legislative mandates, the structural format of school lunches reflects deep-seated cultural attitudes toward gastronomy. French educational institutions cultivate appreciation for culinary arts by offering students up to a four-course meal, concluding with a sweet confection like marzipan. Not only do French culinary standards advocate for such gastronomic complexity, but Ukrainian schools also adopt a multi-course format, serving a three-course meal that finishes with a shortbread biscuit. Meanwhile, Italian students consume a structured two-course lunch of pasta followed by a protein and vegetable pairing.",
+        "C": "In East Asia, the implementation of portion-controlled designs plays an indispensable role in maintaining youthful health. In South Korea, students eat off sectioned steel trays designed to facilitate perfect portion sizes. To finance these initiatives, diverse economic models have emerged; in China, families pay a nominal monthly fee for a balanced box lunch, which contrasts sharply with the home-prepared tiffin box tradition in India, where the culinary contents are heavily dependent on regional agricultural variations.",
+        "D": "Beyond nutritional delivery, certain school lunch models function directly as educational tools. In Japan, children are actively integrated into the culinary process, taking turns preparing, serving, and cleaning up after their peers to cultivate lifelong healthy habits. This pedagogical approach contrasts with localized sourcing initiatives like Hawaii's Farm to School Program, which uses fresh, locally sourced ingredients prepared entirely from scratch.",
+        "E": "Finally, school meal dynamics are heavily constrained by school timetables and the absence of formal dining facilities. In Israel, where the school day finishes before lunchtime, only a mid-morning snack is necessary. Similarly, Norwegian schools do not operate in-house cafeterias, so students bring a home-prepared open-face sandwich instead. This reliance on convenience foods contrasts with Anglo-American hot lunch programs, which frequently incorporate processed elements such as a grilled cheese sandwich and tomato soup."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "matching_features",
+          "instructions": "Match each description with the correct country, A-E.",
+          "features": [
+            "A. Finland",
+            "B. Japan",
+            "C. Norway",
+            "D. Brazil",
+            "E. South Korea"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "statement": "Students help prepare and clean up meals as part of their education.",
+              "answer": "B"
+            },
+            {
+              "n": 2,
+              "statement": "A law requires a minimum proportion of ingredients to come from local farmers.",
+              "answer": "D"
+            },
+            {
+              "n": 3,
+              "statement": "Schools do not have their own cafeterias, so lunch is brought from home.",
+              "answer": "C"
+            },
+            {
+              "n": 4,
+              "statement": "It was the first country to legally guarantee free lunches for all students.",
+              "answer": "A"
+            },
+            {
+              "n": 5,
+              "statement": "Meals are served on trays with sections designed for exact portion sizes.",
+              "answer": "E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-027",
+      "title": "The Narrative Brain: How the Left-Hemisphere Interpreter Constructs Consciousness",
+      "source": "Original teaching material (neurocognitive science, split-brain research)",
+      "category": "science_tech",
+      "paragraphs": {
+        "A": "For centuries, humanity has conceptualized consciousness as a seamless, real-time river of sensory inputs. However, contemporary neuroscientific endeavors have increasingly undermined this linear model. Research indicates that subjective experience is not a direct reflection of objective reality, but rather a highly curated, retrospective narrative constructed by the unconscious brain. Located in the left cerebral hemisphere, a specialized cognitive mechanism—termed the \"interpreter\"—continually synthesizes external behaviors and internal emotional states into a coherent, unified storyline.",
+        "B": "The empirical foundations of this interpreter hypothesis were laid during the mid-20th century, primarily through pioneering studies on split-brain patients—individuals whose corpus callosum had been surgically severed to treat intractable epilepsy. Dr. Michael Gazzaniga demonstrated that speech and language production are localized almost exclusively in the left hemisphere. In contrast, the right hemisphere, which is largely incapable of speech, operates in silence. It is not without significance that while the non-speaking right hemisphere could execute complex motor commands, the speaking left hemisphere remained entirely unaware of the underlying visual prompts directing those actions.",
+        "C": "To illustrate this cognitive divergence, Dr. Gazzaniga reconstructed a series of lateralized tests. In one instance, a patient named Joe was shown the word \"Bell\" in his non-speaking right brain, while \"Music\" was shown to his speaking left brain. Joe's left hand pointed to a picture of a bell. When asked why, his left hemisphere—which had not seen the word \"Bell\"—immediately concocted a plausible explanation, attributing the action to a memory of hearing church bells earlier that day, even though the story was detached from the objective neurological cause.",
+        "D": "This retrospective narrativization suggests that human consciousness is inherently non-linear, operating through a mechanism known as semantic chunking. Rather than analyzing environmental inputs word-by-word, the unconscious mind samples a broad spectrum of stimuli before delivering a unified perceptual outcome. For instance, the word \"mouse\" possesses multiple meanings, but the brain immediately resolves the ambiguity once it is placed in context, such as \"The mouse pad was beside the computer.\"",
+        "E": "Ultimately, the evolutionary designation of humans as \"storytelling animals\" stems from this persistent internal drive to maintain a coherent narrative. Neuroscientists hypothesize that engaging with fictional worlds serves as a low-risk cognitive simulator, allowing individuals to mentally rehearse unexpected life events. Through this mental rehearsal, the brain enriches our cognitive repertoire, ultimately rendering our subjective experience of reality far richer."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 1,
+              "statement": "Split-brain surgery was originally performed as a treatment for severe epilepsy.",
+              "answer": "TRUE"
+            },
+            {
+              "n": 2,
+              "statement": "In Gazzaniga's research, the right hemisphere was able to produce speech.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 3,
+              "statement": "When Joe was asked why he pointed to the bell, his left brain admitted it did not know the reason.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 4,
+              "statement": "The brain processes ambiguous words like \"mouse\" one syllable at a time before understanding them.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 5,
+              "statement": "Most people who enjoy fiction do so mainly to improve their vocabulary.",
+              "answer": "NOT GIVEN"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-028",
+      "title": "The Mechanics and Mitigation of Alpine Avalanches",
+      "source": "Adapted teaching material (avalanche science and risk mitigation)",
+      "category": "science_tech",
+      "paragraphs": {
+        "A": "In February 2012, professional skier Elyse Saugstad was carving through the slopes of the Cascade Mountains when a sudden crack formed in the snowpack above her. Before she was fully engulfed by a massive, crushing 5,000-ton wall of snow, Elyse heard the warning shout \"AVALANCHE!\" just in time to react. Scientifically defined, avalanches represent the rapid descension of snow, ice, rock, or a combination of these elements down a mountain slope. In the United States alone, avalanches kill an average of 27 people annually, establishing them as a significant and persistent hazard in alpine environments.",
+        "B": "These alpine nightmares do not just awaken out of nowhere; rather, they require three specific conditions to materialize. First, the mountain terrain must possess the right slope angle, typically between 30 and 45 degrees—shallow enough to allow snow to build up, yet steep enough to provide sufficient potential energy for movement. Second, avalanches typically require a layer of sturdy snow deposited over a weak or unstable layer, a phenomenon colloquially referred to as \"something over nothing\", demonstrating that heavy snowfall is not without its hazardous consequences.",
+        "C": "Directly below this heavy, fresh slab of snow sat a thin, fragile layer of surface hoar—delicate, feathery ice crystals that form when water vapor rapidly freezes on the surface of existing snow. Underneath a heavy slab, this fragile crystal layer behaves as a structural void. Finally, avalanches require a trigger, which is defined as any external force sufficient to disturb this delicate balance, whether the weight of a skier or the natural settling of the snowpack itself.",
+        "D": "Once triggered, an avalanche can accelerate to speeds exceeding 130 kilometers per hour within seconds, giving victims almost no time to react. Survival depends heavily on the ability to stay near the surface of the moving snow, since burial beneath even a shallow layer can be fatal due to the snow's rapid compaction and the difficulty of breathing once it hardens. Modern avalanche airbag backpacks, which inflate rapidly upon deployment, exploit a physical principle known as inverse segregation to keep the wearer closer to the surface.",
+        "E": "To mitigate these risks, avalanche forecasters combine terrain analysis, snowpack observation, and weather modeling to issue daily hazard ratings for popular backcountry areas. Ski resorts frequently use controlled explosive charges to deliberately trigger smaller avalanches before the snowpack becomes unstable enough to pose a serious threat to visitors. Nevertheless, experts emphasize that education and personal decision-making in the backcountry remain the most effective line of defense, since no forecasting system can eliminate risk entirely."
+      },
+      "questions": [
+        {
+          "group": "1-5",
+          "type": "sentence_completion",
+          "instructions": "Complete the sentences below. Choose NO MORE THAN TWO WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 1,
+              "prompt": "An avalanche needs a slope angle that is shallow enough to let snow build up but steep enough to provide ___.",
+              "answer": "potential energy"
+            },
+            {
+              "n": 2,
+              "prompt": "The weak layer beneath a heavy snow slab is often made of fragile ice crystals called ___.",
+              "answer": "surface hoar"
+            },
+            {
+              "n": 3,
+              "prompt": "An avalanche requires a ___, which can be as simple as the weight of a skier.",
+              "answer": "trigger"
+            },
+            {
+              "n": 4,
+              "prompt": "Avalanche airbags rely on a principle called ___ to keep a person near the surface.",
+              "answer": "inverse segregation"
+            },
+            {
+              "n": 5,
+              "prompt": "Ski resorts sometimes use controlled explosive charges to trigger smaller avalanches before the snowpack becomes ___.",
+              "answer": "unstable"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-029",
+      "title": "Redefining Solitude and Social Well-being",
+      "source": "Original teaching material (physiology of loneliness and social connection)",
+      "category": "psychology_society",
+      "paragraphs": {
+        "A": "Neuroscientists have long been fascinated by the physical toll that loneliness exacts on the human body. Functional brain scans reveal that social pain and physical pain activate overlapping neural circuitry, meaning that the ache of exclusion is processed by the brain in ways strikingly similar to a physical injury. In one notable experiment, participants who viewed photographs of a romantic partner while experiencing a painful stimulus reported significantly reduced pain intensity, and brain scans confirmed correspondingly lower activity in pain-related regions, suggesting that a felt sense of connection can act as a genuine physiological buffer against distress.",
+        "B": "The COVID-19 pandemic offered an unplanned, global natural experiment in enforced isolation, and its effects were not evenly distributed across the population. Contrary to some early assumptions, researchers found that women were disproportionately affected by the erosion of social ties during extended lockdowns, with survey data indicating that more than half of women reported losing regular contact with close friends, compared with a notably smaller proportion of men. One explanation offered is that female friendships tend to rely more heavily on sustained face-to-face interaction and small rituals of care that proved difficult to maintain remotely.",
+        "C": "Public discourse and media coverage have historically treated solitude with a distinctly negative slant, often conflating the voluntary choice to be alone with the involuntary condition of chronic loneliness. Content analyses of major news outlets have found that negative portrayals of time spent alone outnumber positive or neutral portrayals by a ratio of roughly ten to one, reinforcing a cultural narrative in which solitude is something to be feared or pitied rather than a state that can, under the right circumstances, be restorative.",
+        "D": "In response to mounting evidence of social fragmentation, psychologists have increasingly advocated for a strategy known as cognitive reframing, whereby individuals are encouraged to consciously reinterpret solitary time not as a deficiency but as an opportunity for reflection and recovery. Educational institutions and media organizations are being urged to play a role in reducing the stigma historically attached to being alone, while public health campaigns increasingly encourage individuals to display vulnerability openly, on the grounds that admitting difficulty is often the first step toward rebuilding genuine social bonds."
+      },
+      "questions": [
+        {
+          "group": "1-4",
+          "type": "multiple_choice",
+          "instructions": "Choose the correct letter, A, B, C or D.",
+          "items": [
+            {
+              "n": 1,
+              "question": "What did brain scans reveal about participants who viewed photos of a romantic partner while in pain?",
+              "options": [
+                "A) They reported no change in pain intensity",
+                "B) They showed reduced activity in pain-related brain regions",
+                "C) They showed increased activity in the amygdala only",
+                "D) They were unable to complete the experiment"
+              ],
+              "answer": "B"
+            },
+            {
+              "n": 2,
+              "question": "According to Paragraph B, which group was most affected by lost friendships during the pandemic?",
+              "options": [
+                "A) Men",
+                "B) Children",
+                "C) Women",
+                "D) The elderly"
+              ],
+              "answer": "C"
+            },
+            {
+              "n": 3,
+              "question": "According to Paragraph C, how are media portrayals of solitude generally skewed?",
+              "options": [
+                "A) Overwhelmingly positive",
+                "B) Roughly balanced between positive and negative",
+                "C) Mostly neutral",
+                "D) Overwhelmingly negative"
+              ],
+              "answer": "D"
+            },
+            {
+              "n": 4,
+              "question": "What does 'cognitive reframing', as described in Paragraph D, involve?",
+              "options": [
+                "A) Avoiding all social contact",
+                "B) Reinterpreting time alone as potentially valuable rather than deficient",
+                "C) Increasing media coverage of loneliness statistics",
+                "D) Replacing therapy with medication"
+              ],
+              "answer": "B"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-030",
+      "title": "The Cognitive Architecture of the Multilingual Mind",
+      "source": "Original teaching material (neuroscience of bilingualism)",
+      "category": "science_tech",
+      "paragraphs": {
+        "A": "For much of the twentieth century, conventional wisdom held that raising a child bilingually risked confusing their developing mind, potentially delaying language acquisition and impairing academic performance. This historical assumption has, however, been proven entirely incorrect by decades of subsequent cognitive research. Contemporary neuroimaging studies demonstrate that far from causing confusion, early exposure to two languages actively constructs entirely new neural pathways, endowing bilingual children with structurally distinct brains compared with their monolingual peers.",
+        "B": "A landmark 2023 study conducted at Great Ormond Street, using resting-state functional MRI scans on children between the ages of eight and ten, found that those who had acquired a second language before the age of five exhibited the strongest neural connectivity at rest, particularly within networks associated with executive control. Researchers further noted a marked behavioural distinction between how bilinguals approach emotional versus rational decision-making, with many participants reporting that their first language felt more emotionally charged while their second language, often acquired in more formal settings such as school or work, felt comparatively detached and logical.",
+        "C": "Intriguingly, the cognitive advantages of bilingualism are not exclusive to those who acquire a second language in early childhood. Although learning a language later in life is undeniably more challenging, the adult brain compensates by modifying existing neural networks and forging additional connections, a process that some researchers argue yields even greater cognitive dividends than effortless childhood acquisition, since it requires more deliberate and sustained mental effort.",
+        "D": "Perhaps the most striking finding to emerge from this field concerns the relationship between bilingualism and neurodegenerative disease. A frequently cited 2007 study conducted in Toronto found that bilingual patients displayed the outward symptoms of dementia, including Alzheimer's disease, between four and four and a half years later on average than monolingual patients of otherwise comparable cognitive profiles, suggesting that the sustained mental exercise of managing two language systems may help to build a form of cognitive reserve."
+      },
+      "questions": [
+        {
+          "group": "1-4",
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information?",
+          "items": [
+            {
+              "n": 1,
+              "statement": "A description of an outdated belief about the effects of bilingualism on children.",
+              "answer": "A"
+            },
+            {
+              "n": 2,
+              "statement": "A reference to a difference in how bilinguals experience their first versus second language emotionally.",
+              "answer": "B"
+            },
+            {
+              "n": 3,
+              "statement": "An explanation of why learning a language as an adult might bring extra cognitive benefits.",
+              "answer": "C"
+            },
+            {
+              "n": 4,
+              "statement": "A study showing a delay in the onset of a specific disease among bilingual patients.",
+              "answer": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-031",
+      "title": "The Plastic Brain: How Literacy and Digitalization Reshape the Neural Landscape",
+      "source": "Original teaching material (neuroscience of reading)",
+      "category": "science_tech",
+      "paragraphs": {
+        "A": "Historically, language has been widely regarded as an innate human capacity, a natural extension of our biological heritage. However, scientific investigations have revealed that reading, which represents the graphic codification of spoken language, is anything but natural. While a neurotypical human brain is genetically programmed with the biological circuitry required for visual perception and vocalization, it possesses no innate neurological architecture dedicated to literacy. To circumvent this limitation, the brain must co-opt pre-existing neural pathways originally designed for visual, auditory, and language processing.",
+        "B": "Modern neuroscientific research demonstrates that learning to read is a whole-brain process that radically reshapes the human mind. Rather than relying on a singular \"reading center\", literacy necessitates the simultaneous activation of all four lobes of the cerebral cortex. As an individual acquires reading proficiency, the brain is effectively rewired, establishing novel connections between visual recognition systems and the neural centers responsible for auditory and semantic processing, demonstrating the remarkable neuroplasticity of the human brain.",
+        "C": "The profound impact of linguistic systems on brain structure is most vividly illustrated when comparing alphabetic languages with logographic systems. In alphabetic systems like English, words are constructed from a finite set of letters that correspond to phonemes. Conversely, logographic writing systems, of which Chinese characters are a prime example, represent objects or ideas directly through intricate symbols, activating fundamentally different neural regions and relying far more heavily on visual memory. This neurological divergence was dramatically corroborated by a clinical study of a bilingual patient fluent in English and Chinese, whose stroke-induced brain damage impaired his ability to read Chinese characters while leaving his English reading proficiency completely intact.",
+        "D": "Beyond cognitive and structural modifications, reading exerts a profound influence on the human body, manifesting in tangible physical and emotional experiences. When immersed in a narrative, readers frequently report feeling visceral sensations that mirror the experiences of fictional characters. This is not merely a metaphorical reaction; neuroimaging studies have shown that reading activates the anterior insula, a brain region responsible for processing bodily sensations, blurring the line between imagined and lived experience."
+      },
+      "questions": [
+        {
+          "group": "1-4",
+          "type": "true_false_not_given",
+          "instructions": "Do the following statements agree with the information given in the passage? Write TRUE, FALSE, or NOT GIVEN.",
+          "items": [
+            {
+              "n": 1,
+              "statement": "The human brain has a dedicated region specifically evolved for reading.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 2,
+              "statement": "Learning to read activates only one specific area of the brain.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 3,
+              "statement": "After his stroke, the bilingual patient lost the ability to read both English and Chinese.",
+              "answer": "FALSE"
+            },
+            {
+              "n": 4,
+              "statement": "Reading fiction can trigger activity in brain regions associated with physical sensation.",
+              "answer": "TRUE"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-032",
+      "title": "The Socio-Economic and Ecological Ramifications of a Meatless Biosphere",
+      "source": "Original teaching material (hypothetical scenario on global food systems)",
+      "category": "environment",
+      "paragraphs": {
+        "A": "In a hypothetical scenario where global meat consumption ceases abruptly, the immediate ecological ramifications would be nothing short of revolutionary. Presently, the global biomass of livestock represents a staggering demographic imbalance, with domestic herds numbering over four times the global human population. Should the planetary diet shift overnight to a meatless model, food-related greenhouse gas emissions would plummet by approximately 63% almost instantaneously, highlighting the immense environmental footprint of animal husbandry.",
+        "B": "In the wake of this sudden dietary shift, humanity would face an immediate nutritional deficit that must be rapidly addressed. Every year, human society processes approximately 70 billion chickens, 1.5 billion pigs, and 300 million cattle for consumption. While dietitians agree that a plant-based diet contains all necessary nutrients for a healthy life, global agricultural infrastructure cannot adapt overnight, and produce prices would likely skyrocket. In regions such as Mongolia, where the harsh, arid environment makes vegetable cultivation exceptionally difficult, a sudden absence of meat would leave populations with severe dietary scarcities.",
+        "C": "Beyond immediate cultural and geographic disruptions, the labor market would undergo a massive and painful restructuring. As the meat industry collapses, tens of millions of commercial anglers and livestock farmers in developing economies would face abrupt unemployment, with few alternative livelihoods readily available in the short term. Not only would indigenous populations, such as salmon-eating communities of the Pacific Northwest, lose their primary sustenance, but they would also lose an integral component of their cultural heritage.",
+        "D": "Over a longer time horizon, however, proponents argue that the reallocated agricultural land currently devoted to grazing and feed-crop cultivation could be repurposed for reforestation or the restoration of native grasslands, potentially sequestering vast quantities of atmospheric carbon. Critics counter that such a transition, however ecologically appealing in theory, would require decades of careful economic planning to avoid triggering food insecurity and social unrest across vulnerable regions."
+      },
+      "questions": [
+        {
+          "group": "1-4",
+          "type": "short_answer_question",
+          "instructions": "Answer the questions below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 1,
+              "question": "By approximately what percentage would food-related greenhouse gas emissions fall if meat consumption stopped overnight?",
+              "answer": "63%"
+            },
+            {
+              "n": 2,
+              "question": "Which country is given as an example of a place where vegetable cultivation is especially difficult?",
+              "answer": "Mongolia"
+            },
+            {
+              "n": 3,
+              "question": "Which community is mentioned as relying on salmon for both food and cultural identity?",
+              "answer": "Pacific Northwest"
+            },
+            {
+              "n": 4,
+              "question": "What could grazing land be used for instead, according to Paragraph D?",
+              "answer": "reforestation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-033",
+      "title": "Japan's Demographic Decline and the Escalating \"Akiya\" Crisis",
+      "source": "Original teaching material (Japan housing and demographic policy)",
+      "category": "society_global",
+      "paragraphs": {
+        "A": "Japan is currently grappling with an unprecedented housing crisis characterized by a staggering volume of abandoned properties. Nationwide, approximately nine million homes, colloquially known as akiya (literally meaning \"empty home\"), lie vacant, presenting a stark visual testament to the country's profound demographic shift. This phenomenon is inextricably linked to Japan's existential crisis of an aging and shrinking population, and statisticians project that by 2038, roughly one in three homes nationwide could stand empty.",
+        "B": "The causes of the akiya crisis are manifold, but inheritance law and rural depopulation feature prominently. When elderly rural homeowners pass away, their properties are frequently inherited by adult children who have long since relocated to Tokyo or other major cities and have no intention of returning. Because demolishing an old structure can trigger a significant increase in property tax, many heirs simply abandon the property rather than incur the cost of either renovating or tearing it down.",
+        "C": "In recent years, this glut of vacant housing has created unexpected opportunities for foreign buyers seeking affordable real estate. Reports of akiya being purchased for the equivalent of only a few thousand dollars have circulated widely online, attracting international attention. However, prospective buyers are frequently cautioned that the headline price is often deceptive; renovation costs, unclear property boundaries, and local bureaucratic hurdles can rapidly inflate the true cost of ownership to a level comparable with purchasing property in a major city.",
+        "D": "Municipal governments across Japan have responded to the crisis with a range of initiatives, including subsidized \"akiya banks\"—online databases that list available vacant properties at reduced prices in an effort to encourage relocation and revitalize shrinking rural communities. While some of these programs have achieved modest success in attracting young families and remote workers, demographers caution that without a broader reversal in national birth rates, the fundamental imbalance between housing supply and population will persist for decades to come."
+      },
+      "questions": [
+        {
+          "group": "1-4",
+          "type": "sentence_completion",
+          "instructions": "Complete the sentences below. Choose NO MORE THAN THREE WORDS from the passage for each answer.",
+          "items": [
+            {
+              "n": 1,
+              "prompt": "By 2038, statisticians project that about one in three Japanese homes could be ___.",
+              "answer": "empty"
+            },
+            {
+              "n": 2,
+              "prompt": "Demolishing an old akiya can trigger a rise in ___, discouraging heirs from tearing it down.",
+              "answer": "property tax"
+            },
+            {
+              "n": 3,
+              "prompt": "Buyers are warned that hidden costs such as renovation and unclear ___ can make an akiya far more expensive than its advertised price.",
+              "answer": "property boundaries"
+            },
+            {
+              "n": 4,
+              "prompt": "Municipal governments have created online ___ that list available vacant homes at reduced prices.",
+              "answer": "akiya banks"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reading-034",
+      "title": "The Dynamic Sculptors of Earth: Mechanisms, Taxonomies, and Environmental Implications of Volcanism",
+      "source": "Original teaching material (geology of volcanism)",
+      "category": "science_tech",
+      "paragraphs": {
+        "A": "Volcanoes represent one of the most visually dramatic manifestations of the geological processes that continuously reshape the Earth's surface. At their core, volcanic eruptions occur when molten rock, known as magma, accumulates in a subterranean chamber beneath the crust and is eventually forced upward through a vent, whereupon it is termed lava once it reaches the surface. The specific behaviour of an eruption—whether it manifests as a slow, effusive flow or a violently explosive blast—is determined largely by the magma's viscosity, which is itself governed by its silica content and dissolved gas concentration.",
+        "B": "Volcanologists broadly classify volcanoes into several distinct morphological categories. Shield volcanoes, such as those found in Hawaii, are characterized by low-viscosity, silica-poor magma that flows readily across great distances, producing broad, gently sloping structures. In stark contrast, stratovolcanoes, exemplified by Mount Fuji and Mount Vesuvius, are built from alternating layers of viscous lava and pyroclastic material, resulting in steep, conical profiles that are prone to catastrophic explosive eruptions when gas pressure builds beyond the structure's tensile limits.",
+        "C": "Beyond their immediate destructive potential, volcanic eruptions exert profound and far-reaching effects on global climate systems. Large-scale eruptions inject substantial quantities of sulphur dioxide into the stratosphere, where the gas reacts with water vapour to form fine aerosol particles capable of reflecting incoming solar radiation back into space. Historical records indicate that the 1815 eruption of Mount Tambora in Indonesia precipitated a period known as the \"Year Without a Summer\", during which anomalously cold temperatures across the Northern Hemisphere led to widespread crop failures.",
+        "D": "Despite their destructive capacity, volcanic regions have long attracted human settlement, drawn by the exceptional fertility of soils enriched by weathered volcanic ash. This precarious trade-off between agricultural bounty and existential risk has shaped civilizations for millennia, from the ancient communities that flourished beneath Vesuvius to contemporary populations residing along the volcanically active Pacific Ring of Fire, where an estimated 800 million people currently live within range of an active volcano."
+      },
+      "questions": [
+        {
+          "group": "1-4",
+          "type": "matching_features",
+          "instructions": "Match each description with the correct volcano type, A-B.",
+          "features": [
+            "A. Shield volcano",
+            "B. Stratovolcano"
+          ],
+          "items": [
+            {
+              "n": 1,
+              "statement": "Produces a broad, gently sloping structure due to low-viscosity magma.",
+              "answer": "A"
+            },
+            {
+              "n": 2,
+              "statement": "Is built from alternating layers of lava and pyroclastic material.",
+              "answer": "B"
+            },
+            {
+              "n": 3,
+              "statement": "Is prone to violent explosive eruptions when gas pressure builds up.",
+              "answer": "B"
+            },
+            {
+              "n": 4,
+              "statement": "Is exemplified by volcanoes found in Hawaii.",
+              "answer": "A"
+            }
+          ]
+        }
+      ]
     }
   ],
   "_excluded": [
