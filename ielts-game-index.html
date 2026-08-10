@@ -167,17 +167,23 @@
   .countdown-standalone .countdown-card{max-width:420px;}
 
   /* Task 1 process (flowchart) and map-comparison charts */
-  .flowchart{display:flex;flex-direction:column;align-items:center;max-width:480px;margin:0 auto;}
-  .flow-step{display:flex;align-items:center;gap:12px;width:100%;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;}
+  .flowchart-h{display:flex;flex-wrap:wrap;align-items:center;gap:4px;}
+  .flow-box{display:flex;align-items:center;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;box-shadow:0 1px 2px rgba(0,0,0,.05);flex:0 1 auto;max-width:230px;}
   .flow-num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
   .flow-text{font-size:13.5px;line-height:1.5;}
-  .flow-arrow{display:flex;justify-content:center;margin:2px 0;}
+  .flow-arrow-h{flex-shrink:0;display:flex;align-items:center;}
+  @media(max-width:640px){
+    .flowchart-h{flex-direction:column;align-items:stretch;}
+    .flow-box{max-width:none;}
+    .flow-arrow-h{align-self:center;transform:rotate(90deg);}
+  }
   .map-compare{display:flex;align-items:stretch;gap:12px;}
   @media(max-width:640px){.map-compare{flex-direction:column;}}
-  .map-panel{flex:1;border:2px dashed var(--accent);border-radius:12px;padding:12px 14px;background:var(--panel);}
+  .map-panel{flex:1;border:2px dashed var(--accent);border-radius:12px;padding:12px 14px;background:var(--panel);overflow:hidden;}
   .map-panel-title{font-weight:800;font-size:13.5px;color:var(--accent);margin-bottom:8px;text-align:center;text-transform:uppercase;letter-spacing:.03em;}
-  .map-feature-list{margin:0;padding:0;list-style:none;font-size:13px;line-height:1.5;}
-  .map-feature-list li{display:flex;align-items:flex-start;gap:6px;margin-bottom:6px;}
+  .map-feature-list{margin:10px 0 0;padding:0;list-style:none;font-size:13px;line-height:1.5;}
+  .map-feature-list li{display:flex;align-items:flex-start;gap:8px;margin-bottom:6px;}
+  .map-pin-num{flex-shrink:0;width:18px;height:18px;border-radius:50%;background:#c0392b;color:#fff;font-weight:800;font-size:10.5px;display:flex;align-items:center;justify-content:center;margin-top:1px;}
   .map-compare-arrow{align-self:center;font-size:22px;font-weight:800;color:var(--accent);flex-shrink:0;}
   @media(max-width:640px){.map-compare-arrow{transform:rotate(90deg);}}
 
@@ -895,6 +901,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'地圖題改成真的手繪風格地圖插圖（田野、道路、編號地標）＋對照說明；流程圖改成橫向排列、用箭頭連接的流程方框圖，兩者都是真正畫出來的圖，不再是條列文字' },
   { date:'2026-08-10', text:'修正圓餅圖小區塊（低於8%）沒有顯示數字的問題，改用指引線把數字標示在圓外；折線圖改用「顏色＋實線虛線＋資料點形狀」三重方式區分每條線，即使數值重疊也能分辨是哪一條' },
   { date:'2026-08-10', text:'補齊4篇題數過少的文章（原本各只有5題），每篇新增2組全新題型，現在都達到14題，並附上完整詳解' },
   { date:'2026-08-10', text:'閱讀題庫 363 題全部補齊詳解（含原文關鍵句引用＋中文解析），閱讀練習答錯時都能看到完整解說了' },
@@ -1571,25 +1578,46 @@ function htmlTable(chart){
   return html;
 }
 
-const FLOW_ARROW_SVG = `<svg width="22" height="34" viewBox="0 0 22 34"><line x1="11" y1="0" x2="11" y2="24" stroke="#8a92a0" stroke-width="2.5"/><polygon points="11,34 3,20 19,20" fill="#8a92a0"/></svg>`;
+const FLOW_ARROW_H_SVG = `<svg width="28" height="18" viewBox="0 0 28 18"><line x1="0" y1="9" x2="18" y2="9" stroke="#8a92a0" stroke-width="2.5"/><polygon points="28,9 16,3 16,15" fill="#8a92a0"/></svg>`;
 
 function processSteps(chart){
-  return `<div class="flowchart">${chart.steps.map((s,i)=>`
-    <div class="flow-step">
-      <div class="flow-num">${i+1}</div>
-      <div class="flow-text">${s}</div>
-    </div>
-    ${i < chart.steps.length-1 ? `<div class="flow-arrow">${FLOW_ARROW_SVG}</div>` : ''}
-  `).join('')}</div>`;
+  const parts = [];
+  chart.steps.forEach((s,i)=>{
+    parts.push(`<div class="flow-box"><div class="flow-num">${i+1}</div><div class="flow-text">${s}</div></div>`);
+    if(i < chart.steps.length-1) parts.push(`<div class="flow-arrow-h">${FLOW_ARROW_H_SVG}</div>`);
+  });
+  // A horizontal, wrapping row of boxes joined by arrows — a genuine drawn flow
+  // diagram (like real IELTS process diagrams) rather than a plain numbered list.
+  return `<div class="flowchart-h">${parts.join('')}</div>`;
 }
 
-const MAP_PIN_SVG = `<svg width="14" height="14" viewBox="0 0 24 24" style="flex-shrink:0;"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z" fill="#c0392b"/><circle cx="12" cy="10" r="3" fill="#fff"/></svg>`;
 const COMPASS_SVG = `<svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="15" fill="none" stroke="#8a92a0" stroke-width="1.5"/><text x="17" y="8" font-size="8" fill="#5b6472" text-anchor="middle">N</text><text x="17" y="30" font-size="8" fill="#5b6472" text-anchor="middle">S</text><text x="4" y="20" font-size="8" fill="#5b6472" text-anchor="middle">W</text><text x="30" y="20" font-size="8" fill="#5b6472" text-anchor="middle">E</text><line x1="17" y1="10" x2="17" y2="24" stroke="#c0392b" stroke-width="1.5"/><line x1="9" y1="17" x2="25" y2="17" stroke="#8a92a0" stroke-width="1"/></svg>`;
+
+// Decorative schematic map (fields, a winding road, trees) with numbered pins — a real
+// drawn illustration rather than a text list. Since the source data has no actual
+// coordinates, pin positions are fixed layout slots matched by number to the caption
+// list below, so the picture stays visually informative without inventing geography.
+const MAP_PIN_POSITIONS = [[46,42],[236,34],[130,84],[262,120],[56,124],[172,50],[100,116],[224,76]];
+function mapPanelIllustration(features){
+  const W=300, H=150;
+  let svg = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="150" style="display:block;border-radius:8px;">`;
+  svg += `<rect width="${W}" height="${H}" fill="#e2efe0"/>`;
+  svg += `<path d="M0,${H-30} C ${W*0.25},${H-90} ${W*0.55},${H*0.12} ${W},${H*0.35}" stroke="#c7cdd6" stroke-width="12" fill="none" stroke-linecap="round"/>`;
+  svg += `<path d="M0,${H-30} C ${W*0.25},${H-90} ${W*0.55},${H*0.12} ${W},${H*0.35}" stroke="#fff" stroke-width="1.5" stroke-dasharray="7,7" fill="none"/>`;
+  svg += `<circle cx="18" cy="18" r="6" fill="#8fbf7a"/><circle cx="284" cy="136" r="7" fill="#8fbf7a"/><circle cx="270" cy="20" r="5" fill="#8fbf7a"/>`;
+  features.forEach((f,i)=>{
+    const [px,py] = MAP_PIN_POSITIONS[i % MAP_PIN_POSITIONS.length];
+    svg += `<circle cx="${px}" cy="${py}" r="10" fill="#c0392b" stroke="#fff" stroke-width="2"/><text x="${px}" y="${py+4}" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">${i+1}</text>`;
+  });
+  svg += '</svg>';
+  return svg;
+}
 
 function mapCompare(chart){
   const panel = (label, idx) => `<div class="map-panel">
     <div class="map-panel-title">${label}</div>
-    <ul class="map-feature-list">${chart.rows.map(r=>`<li>${MAP_PIN_SVG}<span>${r[idx]}</span></li>`).join('')}</ul>
+    ${mapPanelIllustration(chart.rows.map(r=>r[idx]))}
+    <ul class="map-feature-list">${chart.rows.map((r,i)=>`<li><span class="map-pin-num">${i+1}</span><span>${r[idx]}</span></li>`).join('')}</ul>
   </div>`;
   return `<div class="map-compare-wrap">
     <div style="text-align:center;margin-bottom:4px;">${COMPASS_SVG}</div>
