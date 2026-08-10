@@ -1138,27 +1138,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "原文：\"This unprecedented expansion is governed by Moore's Law—a principle of economics rather than physics\"（半導體的擴張由摩爾定律這個經濟原則驅動）。第A段介紹摩爾定律，對應標題 i。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "原文：\"refining it to an extraordinary level of purity remains a formidable challenge...even a single atomic impurity can disrupt the functions of a circuit\"（提煉到極高純度極為困難，一個原子雜質就能毀掉電路）。第B段講矽晶圓的純度要求，對應標題 iv。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "原文：\"humans are far too imprecise for manufacturing at the nanometer level...highly automated factories containing massive, specialized machinery\"（人手無法達到奈米級精度，需要高度自動化的機械）。第C段講精密機械（微影機），對應標題 v。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "原文：\"a company must accumulate approximately $20 billion...some of the most expensive [factories] in human history\"（建一座晶圓廠要200億美元）。第D段講建廠的天文成本，對應標題 ii。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "原文：\"geopolitical issues can immediately disrupt supply\"（地緣政治問題會立即干擾供應鏈）。第E段講國際供應鏈的脆弱性，對應標題 iii。"
             }
           ]
         },
@@ -1247,19 +1252,23 @@
           "items": [
             {
               "n": 11,
-              "answer": "G"
+              "answer": "G",
+              "explanation": "原文：\"the manufacturing process is so sensitive that even a single atomic impurity can disrupt the functions of a circuit\"，指晶圓極其「精密（delicate）」，空格填 G。"
             },
             {
               "n": 12,
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"even a single atomic impurity can disrupt the functions of a circuit\"，空格對應「impurity（雜質）」，填 C。"
             },
             {
               "n": 13,
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"this machine utilizes a powerful laser to strike falling tin droplets, creating a plasma\"，空格對應「plasma（電漿）」，填 A。"
             },
             {
               "n": 14,
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"This economic barrier has resulted in a market where only three companies can fabricate cutting-edge processor chips\"，代表產業高度「consolidated（整合／集中）」，填 E。"
             }
           ]
         }
@@ -2918,27 +2927,32 @@
             {
               "n": 1,
               "statement": "Split-brain surgery was originally performed as a treatment for severe epilepsy.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"individuals whose corpus callosum had been surgically severed to treat intractable epilepsy\"（患者是為了治療頑固性癲癇才切除胼胝體），與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 2,
               "statement": "In Gazzaniga's research, the right hemisphere was able to produce speech.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"the right hemisphere, which is largely incapable of speech, operates in silence\"（右腦幾乎無法說話），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 3,
               "statement": "When Joe was asked why he pointed to the bell, his left brain admitted it did not know the reason.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"his left hemisphere...immediately concocted a plausible explanation\"（他的左腦立刻編造了一個看似合理的解釋，而不是承認不知道），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 4,
               "statement": "The brain processes ambiguous words like \"mouse\" one syllable at a time before understanding them.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"Rather than analyzing environmental inputs word-by-word...the unconscious mind samples a broad spectrum of stimuli before delivering a unified perceptual outcome\"（大腦不是逐字/逐音節處理，而是整體取樣後才理解），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 5,
               "statement": "Most people who enjoy fiction do so mainly to improve their vocabulary.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章提到閱讀虛構故事的目的是心理模擬與情感演練，並未提及「主要為了增進詞彙量」，故為 NOT GIVEN。"
             }
           ]
         }
@@ -2965,27 +2979,32 @@
             {
               "n": 1,
               "prompt": "An avalanche needs a slope angle that is shallow enough to let snow build up but steep enough to provide ___.",
-              "answer": "potential energy"
+              "answer": "potential energy",
+              "explanation": "原文：\"the mountain terrain must possess the right slope angle, typically between 30 and 45 degrees—shallow enough to allow snow to build up, yet steep enough to provide sufficient potential energy\"，空格填 potential energy。"
             },
             {
               "n": 2,
               "prompt": "The weak layer beneath a heavy snow slab is often made of fragile ice crystals called ___.",
-              "answer": "surface hoar"
+              "answer": "surface hoar",
+              "explanation": "原文：\"a thin, fragile layer of surface hoar—delicate, feathery ice crystals\"，空格填 surface hoar。"
             },
             {
               "n": 3,
               "prompt": "An avalanche requires a ___, which can be as simple as the weight of a skier.",
-              "answer": "trigger"
+              "answer": "trigger",
+              "explanation": "原文：\"avalanches require a trigger, which is defined as any external force sufficient to disturb this delicate balance\"，空格填 trigger。"
             },
             {
               "n": 4,
               "prompt": "Avalanche airbags rely on a principle called ___ to keep a person near the surface.",
-              "answer": "inverse segregation"
+              "answer": "inverse segregation",
+              "explanation": "原文：\"Modern avalanche airbag backpacks...exploit a physical principle known as inverse segregation\"，空格填 inverse segregation。"
             },
             {
               "n": 5,
               "prompt": "Ski resorts sometimes use controlled explosive charges to trigger smaller avalanches before the snowpack becomes ___.",
-              "answer": "unstable"
+              "answer": "unstable",
+              "explanation": "原文：\"Ski resorts frequently use controlled explosive charges to deliberately trigger smaller avalanches before the snowpack becomes unstable enough to pose a serious threat\"，空格填 unstable。"
             }
           ]
         },
@@ -3004,22 +3023,26 @@
             {
               "n": 6,
               "start": "A slope angle of 30 to 45 degrees is dangerous",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"the mountain terrain must possess the right slope angle...shallow enough to allow snow to build up, yet steep enough to provide sufficient potential energy for movement\"，對應 A。"
             },
             {
               "n": 7,
               "start": "Surface hoar is a particular hazard",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"this fragile crystal layer behaves as a structural void\"（脆弱的結晶層形成結構上的空洞，讓上方厚重雪層變得不穩定），對應 B。"
             },
             {
               "n": 8,
               "start": "An avalanche trigger does not need to be large",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"a trigger, which is defined as any external force sufficient to disturb this delicate balance, whether the weight of a skier\"，對應 C。"
             },
             {
               "n": 9,
               "start": "An avalanche airbag can help a person survive",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"Modern avalanche airbag backpacks...exploit a physical principle known as inverse segregation to keep the wearer closer to the surface\"，對應 D。"
             }
           ]
         }
@@ -3145,22 +3168,26 @@
             {
               "n": 1,
               "statement": "A description of an outdated belief about the effects of bilingualism on children.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "第A段描述「過去認為雙語會混淆孩童發展」這個舊觀念，並指出它「已被證明完全錯誤（proven entirely incorrect）」，對應 A。"
             },
             {
               "n": 2,
               "statement": "A reference to a difference in how bilinguals experience their first versus second language emotionally.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "第B段提到雙語者「第一語言感覺較情緒化、第二語言感覺較理性抽離」，對應 B。"
             },
             {
               "n": 3,
               "statement": "An explanation of why learning a language as an adult might bring extra cognitive benefits.",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "第C段解釋成人學語言雖然較費力，但大腦會「修改既有網絡、建立更多連結」，帶來更大的認知回報，對應 C。"
             },
             {
               "n": 4,
               "statement": "A study showing a delay in the onset of a specific disease among bilingual patients.",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "第D段提到2007年多倫多研究發現雙語患者失智症狀出現時間比單語患者晚4-4.5年，對應 D。"
             }
           ]
         },
@@ -3179,22 +3206,26 @@
             {
               "n": 5,
               "start": "The old belief that bilingualism confuses children is now rejected",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"This historical assumption has...been proven entirely incorrect by decades of subsequent cognitive research\"，對應 A。"
             },
             {
               "n": 6,
               "start": "Bilingual speakers often report a difference between their two languages",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"many participants reporting that their first language felt more emotionally charged while their second language...felt comparatively detached and logical\"，對應 B。"
             },
             {
               "n": 7,
               "start": "Learning a language later in life may bring greater cognitive rewards",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"the adult brain compensates by modifying existing neural networks and forging additional connections, a process that...yields even greater cognitive dividends\"，對應 C。"
             },
             {
               "n": 8,
               "start": "A 2007 Toronto study on dementia was significant",
-              "answer": "D"
+              "answer": "D",
+              "explanation": "原文：\"bilingual patients displayed the outward symptoms of dementia...between four and four and a half years later on average than monolingual patients\"，對應 D。"
             }
           ]
         }
@@ -3220,22 +3251,26 @@
             {
               "n": 1,
               "statement": "The human brain has a dedicated region specifically evolved for reading.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"it possesses no innate neurological architecture dedicated to literacy\"（大腦沒有天生專門用於閱讀的神經結構），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 2,
               "statement": "Learning to read activates only one specific area of the brain.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"literacy necessitates the simultaneous activation of all four lobes of the cerebral cortex\"（閱讀需要大腦四個腦葉同時活化，不是只有一區），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 3,
               "statement": "After his stroke, the bilingual patient lost the ability to read both English and Chinese.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"impaired his ability to read Chinese characters while leaving his English reading proficiency completely intact\"（他中文閱讀受損但英文閱讀完全不受影響），與題目「兩種語言都喪失」相反，故為 FALSE。"
             },
             {
               "n": 4,
               "statement": "Reading fiction can trigger activity in brain regions associated with physical sensation.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"reading activates the anterior insula, a brain region responsible for processing bodily sensations\"，與題目敘述相符，故為 TRUE。"
             }
           ]
         },
@@ -3247,22 +3282,26 @@
             {
               "n": 5,
               "statement": "The human brain has evolved a dedicated, innate region purely for reading.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"it possesses no innate neurological architecture dedicated to literacy\"，故為 NO。"
             },
             {
               "n": 6,
               "statement": "Logographic and alphabetic reading rely on identical neural regions.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"activating fundamentally different neural regions\"（邏輯文字與拼音文字啟動的是根本不同的腦區），故為 NO。"
             },
             {
               "n": 7,
               "statement": "The emotional and physical sensations triggered by reading fiction are purely metaphorical, with no real neurological basis.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"This is not merely a metaphorical reaction; neuroimaging studies have shown that reading activates the anterior insula\"（這不只是比喻，而是有真實神經科學根據），故為 NO。"
             },
             {
               "n": 8,
               "statement": "Reading is best understood as a passive activity that has little effect on the body.",
-              "answer": "NO"
+              "answer": "NO",
+              "explanation": "原文：\"reading exerts a profound influence on the human body, manifesting in tangible physical and emotional experiences\"（閱讀對身體有實質影響，不是被動活動），故為 NO。"
             }
           ]
         }
@@ -3408,22 +3447,26 @@
             {
               "n": 1,
               "statement": "Produces a broad, gently sloping structure due to low-viscosity magma.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Shield volcanoes...are characterized by low-viscosity, silica-poor magma that flows readily across great distances, producing broad, gently sloping structures\"，對應 A。"
             },
             {
               "n": 2,
               "statement": "Is built from alternating layers of lava and pyroclastic material.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"stratovolcanoes...are built from alternating layers of viscous lava and pyroclastic material\"，對應 B。"
             },
             {
               "n": 3,
               "statement": "Is prone to violent explosive eruptions when gas pressure builds up.",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"steep, conical profiles that are prone to catastrophic explosive eruptions when gas pressure builds\"，對應 B。"
             },
             {
               "n": 4,
               "statement": "Is exemplified by volcanoes found in Hawaii.",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"Shield volcanoes, such as those found in Hawaii\"，對應 A。"
             }
           ]
         },
@@ -3435,22 +3478,26 @@
             {
               "n": 5,
               "question": "What term is used for molten rock once it reaches the Earth's surface?",
-              "answer": "lava"
+              "answer": "lava",
+              "explanation": "原文：\"it is termed lava once it reaches the surface\"，答案為 lava。"
             },
             {
               "n": 6,
               "question": "Which volcano type is exemplified by Mount Fuji and Mount Vesuvius?",
-              "answer": "stratovolcano"
+              "answer": "stratovolcano",
+              "explanation": "原文：\"stratovolcanoes, exemplified by Mount Fuji and Mount Vesuvius\"，答案為 stratovolcano。"
             },
             {
               "n": 7,
               "question": "Which 1815 eruption caused the 'Year Without a Summer'?",
-              "answer": "Mount Tambora"
+              "answer": "Mount Tambora",
+              "explanation": "原文：\"the 1815 eruption of Mount Tambora in Indonesia precipitated a period known as the Year Without a Summer\"，答案為 Mount Tambora。"
             },
             {
               "n": 8,
               "question": "What geographically active zone is home to an estimated 800 million people?",
-              "answer": "the Pacific Ring of Fire"
+              "answer": "the Pacific Ring of Fire",
+              "explanation": "原文：\"populations residing along the volcanically active Pacific Ring of Fire, where an estimated 800 million people currently live\"，答案為 the Pacific Ring of Fire。"
             }
           ]
         }
