@@ -86,7 +86,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "history_culture"
     },
     {
       "id": "reading-002",
@@ -208,7 +209,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "psychology_society"
     },
     {
       "id": "reading-003",
@@ -275,7 +277,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "health_body"
     },
     {
       "id": "reading-004",
@@ -343,7 +346,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "psychology_society"
     },
     {
       "id": "reading-005",
@@ -449,7 +453,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "psychology_society"
     },
     {
       "id": "reading-006",
@@ -536,7 +541,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "history_culture"
     },
     {
       "id": "reading-007",
@@ -658,7 +664,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "psychology_society"
     },
     {
       "id": "reading-008",
@@ -780,7 +787,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "history_culture"
     },
     {
       "id": "reading-009",
@@ -867,7 +875,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "psychology_society"
     },
     {
       "id": "reading-010",
@@ -989,7 +998,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "science_tech"
     },
     {
       "id": "reading-011",
@@ -1076,7 +1086,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "health_body"
     },
     {
       "id": "reading-012",
@@ -1175,7 +1186,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "environment"
     },
     {
       "id": "reading-013",
@@ -1297,7 +1309,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "history_culture"
     },
     {
       "id": "reading-014",
@@ -1395,7 +1408,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "health_body"
     },
     {
       "id": "reading-015",
@@ -1489,7 +1503,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "health_body"
     },
     {
       "id": "reading-016",
@@ -1581,7 +1596,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "health_body"
     },
     {
       "id": "reading-short-01",
@@ -1624,7 +1640,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "environment"
     },
     {
       "id": "reading-short-02",
@@ -1691,7 +1708,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "environment"
     },
     {
       "id": "reading-short-03",
@@ -1728,7 +1746,8 @@
             }
           ]
         }
-      ]
+      ],
+      "category": "education_language"
     }
   ],
   "_excluded": [

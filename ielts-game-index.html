@@ -32,6 +32,10 @@
   .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:8px;}
   @media(max-width:600px){.cat-grid{grid-template-columns:1fr;}}
   .cat-grid .card{margin-bottom:0;}
+  .browse-toggle{display:flex;gap:8px;margin-bottom:16px;}
+  .browse-toggle button{border:1px solid var(--line);background:var(--panel);color:var(--sub);font-size:13px;font-weight:700;padding:8px 14px;border-radius:999px;cursor:pointer;}
+  .browse-toggle button.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .qtype-tip{background:#fff3d6;border:1px solid #f0c46b;color:#8a6400;font-size:13.5px;line-height:1.7;padding:12px 16px;border-radius:10px;margin-bottom:16px;}
 
   /* passage/test view */
   .backbtn{background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;font-size:14px;margin-bottom:14px;padding:0;}
@@ -819,7 +823,7 @@ function readingCardHTML(p, i){
   const hasDraft = !best && !!loadReadingAnswers(passageKey);
   const doneBadge = best ? `<span class="badge" style="background:#e6f6ec;color:var(--good);">✓ 最佳 ${best.score}/${best.total}</span>` : '';
   const draftBadge = hasDraft ? `<span class="badge" style="background:#fff3d6;color:var(--warn);">📝 進行中，點擊繼續</span>` : '';
-  const shortBadge = p.short ? `<span class="badge" style="background:#eef2ff;color:var(--accent);">⚡ 快速練習．約5分鐘</span>` : `<span class="badge">第 ${i+1} 篇</span>`;
+  const shortBadge = p.short ? `<span class="badge" style="background:#eef2ff;color:var(--accent);">⚡ 快速練習．約5分鐘</span>` : '';
   return `<div class="card" onclick="openPassage(${i})">
       ${shortBadge}${doneBadge}${draftBadge}
       <h3>${p.title}</h3>
@@ -827,8 +831,29 @@ function readingCardHTML(p, i){
     </div>`;
 }
 
+const READING_CATEGORY_NAMES = { psychology_society:'心理與社會', science_tech:'科學與科技', health_body:'健康與人體', environment:'環境與永續', history_culture:'歷史與文化', society_global:'社會與全球議題', education_language:'教育與語言' };
+const READING_CATEGORY_ORDER = ['psychology_society','science_tech','health_body','environment','history_culture','society_global','education_language'];
+
+const QTYPE_INFO = {
+  matching_headings: { name:'段落標題配對', en:'Matching Headings', tip:'先讀完全部標題、抓每個標題的關鍵字；再讀每段的第一兩句和最後一句找主旨，跟標題比對意思（通常是同義詞改寫，不會原字重複）。標題數量通常比段落多，會有干擾選項。' },
+  true_false_not_given: { name:'是非╱未提及', en:'True/False/Not Given', tip:'依題目順序回文章找對應位置，逐字比對細節。FALSE是文章明確說了相反的事；NOT GIVEN是文章根本沒提到，不要自己用常識推論。' },
+  yes_no_not_given: { name:'作者觀點題', en:'Yes/No/Not Given', tip:'這題判斷的是「作者同不同意這個說法」，不是這件事是不是事實。用在有明顯論述/評論觀點的文章，NOT GIVEN代表作者沒有針對這一點表態。' },
+  multiple_choice: { name:'選擇題', en:'Multiple Choice', tip:'先讀題幹畫出關鍵字，回文章定位再看選項；選項中出現 always／never／completely 等極端用詞的，通常是陷阱。' },
+  sentence_completion: { name:'句子填空', en:'Sentence Completion', tip:'注意字數限制（如 NO MORE THAN TWO WORDS），答案幾乎都是文章裡出現過的原詞，不用自己改寫。' },
+  summary_completion: { name:'摘要填空', en:'Summary Completion', tip:'先掃過摘要抓主題與邏輯順序，再依序回文章找答案；如果有提供詞庫，先排除詞性明顯不合的選項。' },
+  matching_information: { name:'段落資訊配對', en:'Matching Information', tip:'找的是「哪一段包含這個資訊」，不是段落大意——跟 Matching Headings 不同。同一段可能對應多題，也可能有段落沒有任何題目對應到。' },
+  matching_features: { name:'特徵配對', en:'Matching Features', tip:'把敘述配對到對應的人物／類別／國家。先掃過所有選項，注意有些選項可能會被重複使用（題目會說明），別急著用完就跳過。' },
+  matching_sentence_endings: { name:'句子拼接', en:'Matching Sentence Endings', tip:'先看句首找文法線索（例如需要接動詞還是名詞），再確認語意合不合邏輯——很多選項文法上都通，但只有一個語意正確。' },
+  short_answer_question: { name:'簡答題', en:'Short-Answer Questions', tip:'注意字數限制，答案要用文章中的具體詞語作答，不要寫成完整句子。' },
+};
+const QTYPE_ORDER = ['matching_headings','true_false_not_given','yes_no_not_given','multiple_choice','sentence_completion','summary_completion','matching_information','matching_features','matching_sentence_endings','short_answer_question'];
+
+function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
+
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'閱讀新增「依題型瀏覽」，補齊雅思正式考試的題型（YES/NO/NOT GIVEN、特徵配對、句子拼接、簡答題），每種題型附解題提示' },
+  { date:'2026-08-10', text:'閱讀題庫新增「依主題瀏覽」分類（心理社會、科學科技、健康人體、環境永續、歷史文化、社會議題、教育語言）' },
   { date:'2026-08-10', text:'口說 Part 1、Part 2、Part 3 全部都能錄音了（原本只有 Part 2 題卡有錄音功能）' },
   { date:'2026-08-10', text:'修正部分瀏覽器（如 iPhone Safari）錄音存檔格式標記錯誤、播放時出現 error 的問題' },
   { date:'2026-08-10', text:'口說 AI 批改串接真正的 Gemini API（需部署新版後台並設定 API 金鑰，未設定時自動顯示示範資料）' },
@@ -909,16 +934,93 @@ function renderDashboardStrip(){
   renderUpdatesSlot();
 }
 
+function browseToggleHTML(mode){
+  return `<div class="browse-toggle">
+    <button class="${mode==='topic'?'active':''}" onclick="setReadingBrowseMode('topic')">📚 依主題瀏覽</button>
+    <button class="${mode==='qtype'?'active':''}" onclick="setReadingBrowseMode('qtype')">🧩 依題型瀏覽</button>
+  </div>`;
+}
+function setReadingBrowseMode(mode){
+  state.readingBrowseMode = mode;
+  renderReadingList();
+}
 function renderReadingList(){
+  state.currentReadingCat = null;
+  state.currentReadingQType = null;
   const el = document.getElementById('reading-list');
   if(!state.reading || !state.reading.passages){ el.innerHTML='<div class="empty">找不到 reading-bank.json</div>'; return; }
-  const full = [], short = [];
-  state.reading.passages.forEach((p,i)=>{ (p.short ? short : full).push([p,i]); });
-  let html = full.map(([p,i])=>readingCardHTML(p,i)).join('');
-  if(short.length){
-    html += `<div class="section-title" style="margin-top:26px;">⚡ 快速練習（短文，題目較少，手機也能幾分鐘做完）</div>`;
-    html += short.map(([p,i])=>readingCardHTML(p,i)).join('');
+  const mode = state.readingBrowseMode || 'topic';
+  let html = browseToggleHTML(mode);
+  const all = state.reading.passages.map((p,i)=>({ p, i }));
+
+  if(mode === 'qtype'){
+    html += '<div class="section-title">依題型選擇</div><div class="cat-grid">';
+    QTYPE_ORDER.forEach(t=>{
+      const count = all.filter(x=>passageQTypes(x.p).has(t)).length;
+      if(!count) return;
+      html += `<div class="card" onclick="openReadingQType('${t}')"><h3>${QTYPE_INFO[t].name}</h3><p>${QTYPE_INFO[t].en}．${count} 篇有這種題型</p></div>`;
+    });
+    html += '</div>';
+    el.innerHTML = html;
+    return;
   }
+
+  const shortOnes = all.filter(x=>x.p.short);
+  html += '<div class="section-title">依主題選擇</div><div class="cat-grid">';
+  if(shortOnes.length){
+    html += `<div class="card" onclick="openReadingCategory('__short__')"><h3>⚡ 快速練習</h3><p>${shortOnes.length} 篇．約5分鐘可做完</p></div>`;
+  }
+  READING_CATEGORY_ORDER.forEach(cat=>{
+    const group = all.filter(x=>x.p.category===cat && !x.p.short);
+    if(!group.length) return;
+    html += `<div class="card" onclick="openReadingCategory('${cat}')"><h3>${READING_CATEGORY_NAMES[cat]}</h3><p>${group.length} 篇</p></div>`;
+  });
+  const uncategorized = all.filter(x=>!x.p.short && !x.p.category);
+  if(uncategorized.length){
+    html += `<div class="card" onclick="openReadingCategory('__other__')"><h3>其他</h3><p>${uncategorized.length} 篇</p></div>`;
+  }
+  html += '</div>';
+  el.innerHTML = html;
+}
+
+function openReadingCategory(cat){
+  state.currentReadingCat = cat;
+  state.currentReadingQType = null;
+  renderReadingCategoryList();
+}
+
+function renderReadingCategoryList(){
+  const el = document.getElementById('reading-list');
+  const cat = state.currentReadingCat;
+  if(!cat){ renderReadingList(); return; }
+  const all = state.reading.passages.map((p,i)=>({ p, i }));
+  let group, label;
+  if(cat === '__short__'){ group = all.filter(x=>x.p.short); label = '⚡ 快速練習'; }
+  else if(cat === '__other__'){ group = all.filter(x=>!x.p.short && !x.p.category); label = '其他'; }
+  else { group = all.filter(x=>x.p.category===cat && !x.p.short); label = READING_CATEGORY_NAMES[cat] || cat; }
+  let html = `<button class="backbtn" onclick="renderReadingList()">&larr; 返回主題分類</button>`;
+  html += `<div class="section-title">${label}</div>`;
+  html += group.map(({p,i})=>readingCardHTML(p,i)).join('');
+  el.innerHTML = html;
+}
+
+function openReadingQType(t){
+  state.currentReadingQType = t;
+  state.currentReadingCat = null;
+  renderReadingQTypeList();
+}
+
+function renderReadingQTypeList(){
+  const el = document.getElementById('reading-list');
+  const t = state.currentReadingQType;
+  if(!t){ renderReadingList(); return; }
+  const all = state.reading.passages.map((p,i)=>({ p, i }));
+  const group = all.filter(x=>passageQTypes(x.p).has(t));
+  const info = QTYPE_INFO[t];
+  let html = `<button class="backbtn" onclick="state.readingBrowseMode='qtype';renderReadingList()">&larr; 返回題型分類</button>`;
+  html += `<div class="section-title">${info.name}（${info.en}）</div>`;
+  html += `<div class="qtype-tip">💡 <b>解題提示：</b>${info.tip}</div>`;
+  html += group.map(({p,i})=>readingCardHTML(p,i)).join('');
   el.innerHTML = html;
 }
 
@@ -1016,6 +1118,54 @@ function openPassage(i){
           <span class="result" id="res-${it.n}"></span>
         </div>`;
       }).join('');
+    } else if(g.type === 'yes_no_not_given'){
+      inner += g.items.map(it=>`<div class="qitem" data-type="yes_no_not_given" data-text="${it.statement.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
+          <span class="qn">${it.n}.</span>
+          <span class="qstatement">${it.statement}</span>
+          <span class="tfng">
+            ${['YES','NO','NOT GIVEN'].map(v=>`<label><input type="radio" name="q${it.n}" value="${v}" data-n="${it.n}" data-answer="${it.answer}"> ${v}</label>`).join('')}
+          </span>
+          <span class="result" id="res-${it.n}"></span>
+        </div>`).join('');
+    } else if(g.type === 'matching_features'){
+      if(g.features) inner += `<div class="heading-list">${g.features.join('<br>')}</div>`;
+      inner += g.items.map(it=>{
+        const opts = (g.features||[]).map(f=>{
+          const val = f.split('.')[0].trim();
+          return `<option value="${val}">${val}</option>`;
+        }).join('');
+        return `<div class="qitem" data-type="matching_features" data-text="${it.statement.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
+          <span class="qn">${it.n}.</span>
+          <span class="qstatement">${it.statement}</span>
+          <select data-n="${it.n}" data-answer="${it.answer}">
+            <option value="">--</option>${opts}
+          </select>
+          <span class="result" id="res-${it.n}"></span>
+        </div>`;
+      }).join('');
+    } else if(g.type === 'matching_sentence_endings'){
+      if(g.endings) inner += `<div class="heading-list">${g.endings.join('<br>')}</div>`;
+      inner += g.items.map(it=>{
+        const opts = (g.endings||[]).map(e=>{
+          const val = e.split('.')[0].trim();
+          return `<option value="${val}">${val}</option>`;
+        }).join('');
+        return `<div class="qitem" data-type="matching_sentence_endings" data-text="${it.start.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
+          <span class="qn">${it.n}.</span>
+          <span class="qstatement">${it.start}</span>
+          <select data-n="${it.n}" data-answer="${it.answer}">
+            <option value="">--</option>${opts}
+          </select>
+          <span class="result" id="res-${it.n}"></span>
+        </div>`;
+      }).join('');
+    } else if(g.type === 'short_answer_question'){
+      inner += g.items.map(it=>`<div class="qitem" data-type="short_answer_question" data-text="${it.question.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
+          <span class="qn">${it.n}.</span>
+          <span class="qstatement">${it.question}</span>
+          <input type="text" placeholder="answer" data-n="${it.n}" data-answer="${it.answer}" style="width:160px;">
+          <span class="result" id="res-${it.n}"></span>
+        </div>`).join('');
     }
     return `<div class="qgroup">
       <h4>Questions ${g.group}</h4>
@@ -1069,7 +1219,9 @@ function stopReadingTimer(){
 }
 
 function closePassage(){
-  renderReadingList();
+  if(state.currentReadingQType) renderReadingQTypeList();
+  else if(state.currentReadingCat) renderReadingCategoryList();
+  else renderReadingList();
   document.getElementById('reading-test').style.display='none';
   document.getElementById('reading-list').style.display='block';
   document.getElementById('updates-slot').style.display='';
