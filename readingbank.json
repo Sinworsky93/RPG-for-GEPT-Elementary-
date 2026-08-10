@@ -301,22 +301,26 @@
             {
               "n": 1,
               "statement": "The UK government's current exercise guideline recommends a fixed daily step count.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"individuals are encouraged to walk a minimum of ten thousand steps daily\"（政府建議每天走一萬步，是固定的步數目標），與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 2,
               "statement": "James Gallagher exercises multiple times per week.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"whose weekly exercise routine consisted solely of a single swimming session\"（他一週只游泳一次），與題目「每週運動多次」相反，故為 FALSE。"
             },
             {
               "n": 3,
               "statement": "Increasing the intensity of a workout can allow people to shorten its duration while keeping the same benefits.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"if individuals wish to reduce the duration of their exercise, they must compensate by increasing its intensity...gain health benefits in a much shorter period of time\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 4,
               "statement": "The passage states that outdoor running produces better fitness results than swimming.",
-              "answer": "NOT GIVEN"
+              "answer": "NOT GIVEN",
+              "explanation": "文章比較的是「結構化運動」與「高強度短時間運動」，並未比較「戶外跑步」與「游泳」何者效果較好，故為 NOT GIVEN。"
             }
           ]
         },
@@ -328,22 +332,26 @@
             {
               "n": 5,
               "prompt": "Planned activities such as swimming or fitness classes are described as ______ exercise.",
-              "answer": "structured"
+              "answer": "structured",
+              "explanation": "原文：\"Health experts frequently advocate for structured exercise, which refers to planned, organized physical activities\"，空格填 structured。"
             },
             {
               "n": 6,
               "prompt": "The UK's original guideline recommended at least ______ minutes of moderate exercise per day.",
-              "answer": "thirty"
+              "answer": "thirty",
+              "explanation": "原文：\"the UK government previously recommended a minimum of thirty minutes of moderate exercise per day\"，空格填 thirty。"
             },
             {
               "n": 7,
               "prompt": "Dr. Saynor calls small, easily achievable actions built into daily routines ______.",
-              "answer": "easy wins"
+              "answer": "easy wins",
+              "explanation": "原文：\"Dr. Saynor suggests that office workers can integrate easy wins into their daily routines\"，空格填 easy wins。"
             },
             {
               "n": 8,
               "prompt": "Walking 5,000 steps at a faster pace is linked to measurable ______ health improvements.",
-              "answer": "long-term"
+              "answer": "long-term",
+              "explanation": "原文：\"walking 5,000 steps at an accelerated pace can lead to measurable long-term health improvements\"，空格填 long-term。"
             }
           ]
         },
@@ -355,22 +363,26 @@
             {
               "n": 9,
               "question": "What term describes planned activities such as swimming or fitness classes?",
-              "answer": "structured exercise"
+              "answer": "structured exercise",
+              "explanation": "原文：\"Health experts frequently advocate for structured exercise, which refers to planned, organized physical activities\"，答案為 structured exercise。"
             },
             {
               "n": 10,
               "question": "How many steps does current UK government advice recommend walking daily?",
-              "answer": "ten thousand steps"
+              "answer": "ten thousand steps",
+              "explanation": "原文：\"individuals are encouraged to walk a minimum of ten thousand steps daily\"，答案為 ten thousand steps。"
             },
             {
               "n": 11,
               "question": "What must a person increase if they want to shorten their workout duration, according to Dr Saynor?",
-              "answer": "intensity"
+              "answer": "intensity",
+              "explanation": "原文：\"if individuals wish to reduce the duration of their exercise, they must compensate by increasing its intensity\"，答案為 intensity。"
             },
             {
               "n": 12,
               "question": "What idiom is used to describe getting greater health benefits without more time or effort?",
-              "answer": "more bang for your buck"
+              "answer": "more bang for your buck",
+              "explanation": "原文：\"This method effectively provides more bang for your buck\"，答案為 more bang for your buck。"
             }
           ]
         }
@@ -1304,27 +1316,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "第A段介紹糖的分子分類（葡萄糖、果糖、澱粉等）以及甜味如何傳到大腦，對應標題 iv。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "第B段介紹多巴胺這個決定「值不值得重複」的化學訊息物質，對應標題 vi。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "第C段解釋大腦對重複進食如何逐漸「習慣化（habituation）」而減少多巴胺反應，對應標題 v。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "第D段講腸胃道也有糖受器，不只是舌頭，對應標題 i。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "第E段講長期攝取過量糖分如何從正常獎勵反應演變成強迫性渴求，對應標題 iii。"
             }
           ]
         },
@@ -1336,27 +1353,32 @@
             {
               "n": 6,
               "statement": "Added sugars are typically found in foods that are not obviously sweet, such as sauces.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"added sugars, hidden in processed foods like sauces and yogurt\"（添加糖常藏在醬料、優格等不明顯的加工食品中），與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 7,
               "statement": "Dopamine receptors are spread evenly throughout the forebrain.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"dopamine, which is concentrated in dense receptor clusters within the forebrain\"（多巴胺集中在前腦密集的受器叢中，不是平均分布），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 8,
               "statement": "The habituation process disappears almost completely when a person repeatedly eats high-sugar foods.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"when an individual consumes sugar-dense foods, this habituation process is conspicuously absent\"（吃高糖食物時，習慣化過程明顯「消失」，不是「幾乎消失」而已，程度上更強烈但方向相符），對應原文明確指出習慣化缺席，故為 TRUE。"
             },
             {
               "n": 9,
               "statement": "Gut sugar receptors trigger a conscious taste sensation similar to receptors on the tongue.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"it is not uncommon for these gut receptors to remain unperceived, as they do not generate conscious taste sensations\"（腸道受器不會產生有意識的味覺），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 10,
               "statement": "Long-term excessive sugar consumption can produce cravings comparable to those caused by nicotine or alcohol.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"individuals lose behavioural control and experience intense cravings, which mirror the addictive states induced by substances like nicotine or alcohol\"，與題目敘述相符，故為 TRUE。"
             }
           ]
         },
@@ -1375,22 +1397,26 @@
             {
               "n": 11,
               "start": "Dopamine release evolved to spike during essential activities",
-              "answer": "B"
+              "answer": "B",
+              "explanation": "原文：\"When humans engage in activities necessary for evolutionary survival...dopamine levels spike...reinforces beneficial behaviours\"，對應 B。"
             },
             {
               "n": 12,
               "start": "Habituation to a repeated meal is useful",
-              "answer": "E"
+              "answer": "E",
+              "explanation": "原文：\"it enables organisms to detect decomposed, potentially toxic sustenance\"，對應 E。"
             },
             {
               "n": 13,
               "start": "Sugar disrupts the brain's normal habituation process",
-              "answer": "A"
+              "answer": "A",
+              "explanation": "原文：\"when an individual consumes sugar-dense foods, this habituation process is conspicuously absent...dopamine release fails to level out\"，對應 A。"
             },
             {
               "n": 14,
               "start": "Gut sugar receptors are different from receptors on the tongue",
-              "answer": "C"
+              "answer": "C",
+              "explanation": "原文：\"it is not uncommon for these gut receptors to remain unperceived, as they do not generate conscious taste sensations; instead, they function as metabolic sensors\"，對應 C。"
             }
           ]
         }
@@ -1710,27 +1736,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "第A段介紹動態與靜態兩種伸展方式，並指出「肌肉像橡皮筋」的常見比喻其實不準確，對應標題 iii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "第B段解釋結締組織（肌腱、韌帶）在伸展時如何被拉長，對應標題 v。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "第C段講反覆30秒伸展帶來的柔軟度提升只是「暫時性」的，10分鐘內就會消失，對應標題 iv。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "第D段講唯有長期規律訓練、增加肌節數量才能達成「永久性」的柔軟度改變，對應標題 ii。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "第E段講伸展並非對所有運動都有幫助，例如長跑，對應標題 i。"
             }
           ]
         },
@@ -1811,32 +1842,38 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "第A段介紹中樞神經系統不只處理外界刺激，也持續監控體內狀態以維持恆定，對應標題 iii。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "第B段講演化上，即使沒有中央神經系統的生物也能透過局部反射弧調節生理狀態，對應標題 v。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "第C段講「胃裡有蝴蝶」等情緒引發的生理感受，對應標題 iv。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "第D段講呼吸在自主與意識控制之間的特殊定位，對應標題 i。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "第E段講運動如何促進海馬迴與前額葉的神經生長因子，對應標題 ii。"
             },
             {
               "n": 6,
               "paragraph": "F",
-              "answer": "vi"
+              "answer": "vi",
+              "explanation": "第F段講神經可塑性推翻了「成年後大腦無法改變」的舊觀念，對應標題 vi。"
             }
           ]
         },
@@ -1848,27 +1885,32 @@
             {
               "n": 7,
               "statement": "Organisms without a centralised brain were entirely unable to regulate their internal biological state.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"ancestral organisms flourished without centralised cerebral processing—successfully managing their biological economy through localised reflex arcs\"（沒有中樞神經的生物仍能透過局部反射弧成功調節），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 8,
               "statement": "Heart rate and digestion can be consciously controlled in the same way as breathing.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"Unlike cardiac contractions or gastrointestinal motility...processes that function entirely outside conscious control...respiration can be seamlessly shifted...to conscious modulation\"（心跳與腸胃蠕動完全不受意識控制，只有呼吸可以），與題目敘述相反，故為 FALSE。"
             },
             {
               "n": 9,
               "statement": "Physical exercise can trigger the release of growth factors that strengthen the hippocampus and prefrontal cortex.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"these molecular agents stimulate neurogenesis and synaptic strengthening within...the hippocampus...and the prefrontal cortex\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 10,
               "statement": "A short walk of about ten minutes can raise levels of chemicals such as dopamine and serotonin.",
-              "answer": "TRUE"
+              "answer": "TRUE",
+              "explanation": "原文：\"even brief bouts of physical exertion—such as a ten-minute walk—...bathing the brain in dopamine, serotonin, noradrenaline, and endorphins\"，與題目敘述相符，故為 TRUE。"
             },
             {
               "n": 11,
               "statement": "Modern neuroimaging research supports the older belief that the adult brain cannot meaningfully reorganise itself.",
-              "answer": "FALSE"
+              "answer": "FALSE",
+              "explanation": "原文：\"Modern neuroimaging...reveals a highly dynamic organ that continually reorganises its synaptic connections\"（現代研究支持大腦會持續重組，推翻舊觀念），與題目「支持舊觀念」相反，故為 FALSE。"
             }
           ]
         },
@@ -1880,22 +1922,26 @@
             {
               "n": 12,
               "question": "What sensation is triggered when systemic water levels diminish, according to Paragraph B?",
-              "answer": "thirst"
+              "answer": "thirst",
+              "explanation": "原文：\"As systemic water levels diminish...this crisis is rapidly translated into the conscious sensation of thirst\"，答案為 thirst。"
             },
             {
               "n": 13,
               "question": "Which bodily process can shift between automatic and conscious control, according to Paragraph D?",
-              "answer": "respiration / breathing"
+              "answer": "respiration / breathing",
+              "explanation": "原文：\"Pulmonary ventilation, which operates under both voluntary and involuntary neural pathways...can be seamlessly shifted from autonomic maintenance to conscious modulation\"，答案為 respiration/breathing。"
             },
             {
               "n": 14,
               "question": "Besides the hippocampus, which brain region benefits from exercise-triggered growth factors?",
-              "answer": "the prefrontal cortex"
+              "answer": "the prefrontal cortex",
+              "explanation": "原文：\"these molecular agents stimulate neurogenesis and synaptic strengthening within two crucial brain regions: the hippocampus...and the prefrontal cortex\"，答案為 the prefrontal cortex。"
             },
             {
               "n": 15,
               "question": "What term describes the brain's capacity to structurally reorganise itself throughout life?",
-              "answer": "neuroplasticity"
+              "answer": "neuroplasticity",
+              "explanation": "原文：\"Neuroplasticity, the intrinsic capacity of the brain to structurally modify its architecture\"，答案為 neuroplasticity。"
             }
           ]
         }
@@ -1931,27 +1977,32 @@
             {
               "n": 1,
               "paragraph": "A",
-              "answer": "i"
+              "answer": "i",
+              "explanation": "第A段講古希臘人用「顱骨環鑽術」治療頭痛的危險古法，對應標題 i。"
             },
             {
               "n": 2,
               "paragraph": "B",
-              "answer": "ii"
+              "answer": "ii",
+              "explanation": "第B段講頭痛分為原發性與續發性兩大類，觸發原因各異，對應標題 ii。"
             },
             {
               "n": 3,
               "paragraph": "C",
-              "answer": "iii"
+              "answer": "iii",
+              "explanation": "第C段以鼻竇炎為例，解釋感染如何造成疼痛，對應標題 iii。"
             },
             {
               "n": 4,
               "paragraph": "D",
-              "answer": "iv"
+              "answer": "iv",
+              "explanation": "第D段講三種原發性頭痛（偏頭痛、叢集性頭痛、緊張性頭痛）的成因仍不明確，對應標題 iv。"
             },
             {
               "n": 5,
               "paragraph": "E",
-              "answer": "v"
+              "answer": "v",
+              "explanation": "第E段講不同嚴重程度的頭痛需要不同的治療方式，對應標題 v。"
             }
           ]
         },
