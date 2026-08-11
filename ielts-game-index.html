@@ -442,25 +442,33 @@ function enlargeBtnHTML(sourceId, label){
 }
 
 /* ---------- highlighter (螢光筆) for reading passages ---------- */
+// Highlight containers are identified generically via a data-hl-key attribute rather
+// than a single hardcoded #passageTextOnly id, so the same logic works whether there's
+// one passage on screen (normal practice) or three at once (mock exam, each panel
+// carrying its own key) — highlightSelection() finds whichever container the current
+// text selection actually falls inside.
+const PASSAGE_TEXT_REGISTRY = {}; // hlKey -> { label: paragraphText }
 function loadPassageHighlights(){
   try{ return JSON.parse(localStorage.getItem('ieltsHighlights')||'{}'); }catch(e){ return {}; }
 }
-function savePassageHighlights(){
-  if(!state.currentPassage) return;
-  const key = state.currentPassage.id || state.currentPassage.title;
-  const box = document.getElementById('passageTextOnly');
-  if(!box) return;
+function savePassageHighlightsFor(container){
+  const key = container && container.dataset.hlKey;
+  if(!key) return;
   const all = loadPassageHighlights();
-  all[key] = box.innerHTML;
+  all[key] = container.innerHTML;
   try{ localStorage.setItem('ieltsHighlights', JSON.stringify(all)); }catch(e){}
+}
+function highlightContainers(){
+  return Array.from(document.querySelectorAll('[data-hl-key]'));
 }
 function unwrapHighlight(mark){
   const parent = mark.parentNode;
   if(!parent) return;
+  const container = mark.closest('[data-hl-key]');
   while(mark.firstChild) parent.insertBefore(mark.firstChild, mark);
   parent.removeChild(mark);
   parent.normalize();
-  savePassageHighlights();
+  savePassageHighlightsFor(container);
 }
 /* Click on any existing highlight (live view or restored from storage) removes it. */
 document.addEventListener('click', e=>{
@@ -471,8 +479,8 @@ function highlightSelection(){
   const sel = window.getSelection();
   if(!sel || !sel.rangeCount || sel.isCollapsed) return;
   const range = sel.getRangeAt(0);
-  const container = document.getElementById('passageTextOnly');
-  if(!container || !container.contains(range.commonAncestorContainer)) return;
+  const container = highlightContainers().find(c => c.contains(range.commonAncestorContainer));
+  if(!container) return;
 
   /* Walk only the text nodes touched by the selection and wrap the selected
      substring of each one individually (splitText), instead of moving whole
@@ -502,16 +510,17 @@ function highlightSelection(){
   });
 
   sel.removeAllRanges();
-  savePassageHighlights();
+  savePassageHighlightsFor(container);
 }
-function clearHighlights(){
-  if(!state.currentPassage) return;
-  const key = state.currentPassage.id || state.currentPassage.title;
+function clearHighlights(containerId){
+  const box = document.getElementById(containerId || 'passageTextOnly');
+  if(!box) return;
+  const key = box.dataset.hlKey;
   const all = loadPassageHighlights();
   delete all[key];
   try{ localStorage.setItem('ieltsHighlights', JSON.stringify(all)); }catch(e){}
-  const box = document.getElementById('passageTextOnly');
-  if(box) box.innerHTML = Object.entries(state.currentPassage.paragraphs).map(([label,text])=>
+  const paragraphs = PASSAGE_TEXT_REGISTRY[key];
+  if(paragraphs) box.innerHTML = Object.entries(paragraphs).map(([label,text])=>
     `<p><span class="para-label">${label}</span>${text}</p>`).join('');
 }
 
@@ -908,6 +917,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'修正模擬考試裡文章不能標記螢光筆的問題；補齊「The Science of Persuasion」文章原本只有3段（357字，遠低於一般篇幅），新增2段內容與2題，達到跟其他文章一致的15題' },
   { date:'2026-08-10', text:'閱讀新增「模擬考試」模式：隨機抽3篇文章（自動湊近40題），60分鐘倒數，可自由切換三篇作答，交卷後顯示總分並換算成雅思Band分數；一般單篇練習也同步加上Band換算，跟口說的評分方式一致' },
   { date:'2026-08-10', text:'字體改成Georgia，上方導覽列按鈕放大（字級與內距都加大），手機版也更好點選' },
   { date:'2026-08-10', text:'寫作Task 1圖表數字全部改成整數（8篇原本有小數點，例如4.5、6.8），範文內容也同步修正對應數字，更方便學生練習描述' },
@@ -1248,6 +1258,7 @@ function openPassage(i){
   readingSecondsLeft = p.short ? 5*60 : 15*60;
 
   const passageKey = p.id || p.title;
+  PASSAGE_TEXT_REGISTRY[passageKey] = p.paragraphs;
   const savedHL = loadPassageHighlights()[passageKey];
   const paragraphsHTML = savedHL || Object.entries(p.paragraphs).map(([label,text])=>
     `<p><span class="para-label">${label}</span>${text}</p>`).join('');
@@ -1267,7 +1278,7 @@ function openPassage(i){
             <button type="button" class="enlarge-btn" title="放大文章（仍可標記螢光筆）" onclick="openEnlargeLive('passageTextOnly', true)">⛶</button>
           </span>
         </div>
-        <div id="passageTextOnly">${paragraphsHTML}</div>
+        <div id="passageTextOnly" data-hl-key="${passageKey}">${paragraphsHTML}</div>
       </div>
       <div class="qbox">
         <form id="qform" onchange="saveReadingAnswers()" oninput="saveReadingAnswers()">${qgroupsHTML}</form>
@@ -1490,13 +1501,24 @@ function renderMockExam(){
   ).join('');
   const panelsHTML = passages.map((p,i)=>{
     const qgroupsHTML = renderQuestionGroupsHTML(p);
-    const paragraphsHTML = Object.entries(p.paragraphs).map(([label,text])=>
+    const passageKey = p.id || p.title;
+    PASSAGE_TEXT_REGISTRY[passageKey] = p.paragraphs;
+    const savedHL = loadPassageHighlights()[passageKey];
+    const paragraphsHTML = savedHL || Object.entries(p.paragraphs).map(([label,text])=>
       `<p><span class="para-label">${label}</span>${text}</p>`).join('');
+    const textId = `mockPassageText-${i}`;
     return `<div class="mock-passage-panel ${i===activeIdx?'active':''}" id="mock-passage-${i}">
       <div class="split">
         <div class="passage-box">
-          <h2 style="margin-top:0;">${p.title}</h2>
-          <div>${paragraphsHTML}</div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;">
+            <h2 style="margin-top:0;">${p.title}</h2>
+            <span style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
+              <button type="button" class="enlarge-btn" title="標記螢光筆" onpointerdown="event.preventDefault()" onclick="highlightSelection()">🖍</button>
+              <button type="button" class="enlarge-btn" title="清除標記" onclick="clearHighlights('${textId}')">🧹</button>
+              <button type="button" class="enlarge-btn" title="放大文章（仍可標記螢光筆）" onclick="openEnlargeLive('${textId}', true)">⛶</button>
+            </span>
+          </div>
+          <div id="${textId}" data-hl-key="${passageKey}">${paragraphsHTML}</div>
         </div>
         <div class="qbox">
           <form id="mockform-${i}">${qgroupsHTML}</form>
