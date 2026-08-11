@@ -12,13 +12,13 @@
     --chip:#eef2ff;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);}
+  body{margin:0;font-family:Georgia,"Times New Roman","Noto Serif TC","Noto Sans TC",serif;background:var(--bg);color:var(--ink);}
   header{background:var(--panel);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10;}
   .wrap{max-width:960px;margin:0 auto;padding:0 16px;}
   header .wrap{display:flex;align-items:center;justify-content:space-between;min-height:56px;flex-wrap:wrap;gap:6px;padding-top:8px;padding-bottom:8px;}
-  header h1{font-size:16px;margin:0;font-weight:700;letter-spacing:.3px;white-space:nowrap;}
-  nav{display:flex;gap:2px;flex-wrap:wrap;}
-  nav button{border:none;background:transparent;color:var(--sub);font-size:13px;font-weight:600;padding:7px 10px;border-radius:8px;cursor:pointer;white-space:nowrap;}
+  header h1{font-size:20px;margin:0;font-weight:700;letter-spacing:.3px;white-space:nowrap;}
+  nav{display:flex;gap:6px;flex-wrap:wrap;}
+  nav button{border:none;background:transparent;color:var(--sub);font-size:16px;font-weight:700;padding:12px 18px;border-radius:10px;cursor:pointer;white-space:nowrap;}
   nav button.active{background:var(--accent);color:var(--accent-ink);}
   main{max-width:960px;margin:0 auto;padding:20px 16px 80px;}
   .view{display:none;} .view.active{display:block;}
@@ -219,8 +219,8 @@
   .vocab-chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;}
 
   @media(max-width:600px){
-    header h1{font-size:14px;}
-    nav button{font-size:12px;padding:6px 8px;}
+    header h1{font-size:16px;}
+    nav button{font-size:14px;padding:10px 12px;}
     header .wrap{justify-content:flex-start;}
     nav{order:3;width:100%;}
     #studentBadge{margin-left:auto;}
@@ -901,6 +901,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'字體改成Georgia，上方導覽列按鈕放大（字級與內距都加大），手機版也更好點選' },
   { date:'2026-08-10', text:'寫作Task 1圖表數字全部改成整數（8篇原本有小數點，例如4.5、6.8），範文內容也同步修正對應數字，更方便學生練習描述' },
   { date:'2026-08-10', text:'調整題型比例更貼近真題：閱讀題把過度使用的Matching Headings（原本超過一半文章都有）改掉8組，換成真題更常見的Matching Information；寫作Task 1把過多的流程圖換成2篇新的長條圖／表格題，六種圖表比例更符合真實雅思考試分布' },
   { date:'2026-08-10', text:'修正寫作題目跟真題不符的地方：environment類別一題移除假的「200-250字」提示改為真實題型結尾句；14篇Task 1圖表題補上真題都會有的標準結尾句（Summarise the information...）' },
