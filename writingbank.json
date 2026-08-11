@@ -4,7 +4,7 @@
     {
       "id": "w1-01",
       "chart_type": "process",
-      "prompt": "The diagram shows the process by which milk and related products are produced.",
+      "prompt": "The diagram shows the process by which milk and related products are produced. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "steps": [
           "Cows graze in the field",
@@ -143,7 +143,7 @@
     {
       "id": "w1-04",
       "chart_type": "line",
-      "prompt": "The graph below gives information about the percentage of the population in 4 Asian countries living in cities from 1970 to 2020, with predictions for 2030 and 2040.",
+      "prompt": "The graph below gives information about the percentage of the population in 4 Asian countries living in cities from 1970 to 2020, with predictions for 2030 and 2040. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "%",
         "labels": [
@@ -216,7 +216,7 @@
     {
       "id": "w1-05",
       "chart_type": "process",
-      "prompt": "The diagram below shows how geothermal energy is used to produce electricity.",
+      "prompt": "The diagram below shows how geothermal energy is used to produce electricity. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "steps": [
           "Cold water is pumped down the injection well, 4.5km underground",
@@ -232,7 +232,7 @@
     {
       "id": "w1-06",
       "chart_type": "pie",
-      "prompt": "The chart below shows a comparison of different kinds of energy production in France in 1995 and 2005.",
+      "prompt": "The chart below shows a comparison of different kinds of energy production in France in 1995 and 2005. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "%",
         "pies": [
@@ -351,7 +351,7 @@
     {
       "id": "w1-08",
       "chart_type": "table",
-      "prompt": "The table below shows a survey on secondary school attendance in a European country between 2000 and 2009.",
+      "prompt": "The table below shows a survey on secondary school attendance in a European country between 2000 and 2009. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "%",
         "rowLabel": "School type",
@@ -523,7 +523,7 @@
     {
       "id": "w1-11",
       "chart_type": "process",
-      "prompt": "The diagram below shows how tomato ketchup is made.",
+      "prompt": "The diagram below shows how tomato ketchup is made. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "steps": [
           "Tomatoes are picked and put in baskets",
@@ -564,7 +564,7 @@
     {
       "id": "w1-13",
       "chart_type": "process",
-      "prompt": "The diagram below shows the life cycle of the female mosquito.",
+      "prompt": "The diagram below shows the life cycle of the female mosquito. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "steps": [
           "Week 1: Eggs are laid",
@@ -581,7 +581,7 @@
     {
       "id": "w1-14",
       "chart_type": "map",
-      "prompt": "The maps below show Hunderstone town at present and a proposed plan for it.",
+      "prompt": "The maps below show Hunderstone town at present and a proposed plan for it. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "columns": [
           "Hunderstone — Now",
@@ -728,7 +728,7 @@
     {
       "id": "w1-15",
       "chart_type": "map",
-      "prompt": "The map below is of the town of Garlsdon (population 65,000). A new supermarket (S) is planned for the town. The map shows two possible sites for the supermarket.",
+      "prompt": "The map below is of the town of Garlsdon (population 65,000). A new supermarket (S) is planned for the town. The map shows two possible sites for the supermarket. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "columns": [
           "Site S1",
@@ -934,7 +934,7 @@
     {
       "id": "w1-16",
       "chart_type": "line",
-      "prompt": "The graph below gives information about international migration to the UK, 1999-2008.",
+      "prompt": "The graph below gives information about international migration to the UK, 1999-2008. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "thousands",
         "labels": [
@@ -1002,7 +1002,7 @@
     {
       "id": "w1-17",
       "chart_type": "table",
-      "prompt": "The table below highlights data on the number of travellers using three major British airports between 1998 and 2003.",
+      "prompt": "The table below highlights data on the number of travellers using three major British airports between 1998 and 2003. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "million travellers/year",
         "rowLabel": "Airport",
@@ -1055,7 +1055,7 @@
     {
       "id": "w1-18",
       "chart_type": "pie",
-      "prompt": "The pie charts below show exports between the US and Vietnam.",
+      "prompt": "The pie charts below show exports between the US and Vietnam. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "$million",
         "pies": [
@@ -1655,7 +1655,7 @@
     {
       "id": "w1-27",
       "chart_type": "bar",
-      "prompt": "The bar chart below shows the percentage of Australian men and women in different age groups who did regular physical activity in 2010.",
+      "prompt": "The bar chart below shows the percentage of Australian men and women in different age groups who did regular physical activity in 2010. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "%",
         "labels": [
@@ -1696,7 +1696,7 @@
     {
       "id": "w1-28",
       "chart_type": "bar",
-      "prompt": "The chart below shows the number of girls per 100 boys enrolled in different levels of school education, comparing developing and developed countries in 1990 and 1998.",
+      "prompt": "The chart below shows the number of girls per 100 boys enrolled in different levels of school education, comparing developing and developed countries in 1990 and 1998. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
       "chart": {
         "unit": "girls per 100 boys",
         "labels": [
@@ -1878,7 +1878,7 @@
         "model_answer": "Some claim that individuals have no real power to improve the environment and that only governments and corporations can bring about meaningful change. I largely disagree with this view, though I accept that large-scale action is also essential.\n\nIt is true that governments and companies possess resources and influence far beyond that of any individual. A single corporation switching to renewable energy, or a government introducing strict emissions regulations, can reduce pollution on a scale that no individual could match alone. Large organisations also control infrastructure, such as public transport systems and waste management, which shape environmental outcomes for entire populations regardless of personal choices.\n\nHowever, this does not mean individual action is meaningless. Collectively, millions of people choosing to recycle, reduce energy consumption, or avoid single-use plastics can produce a substantial cumulative effect. Moreover, individual consumer choices directly influence corporate behaviour; companies frequently adjust their practices, such as reducing packaging or sourcing sustainable materials, in response to shifting consumer demand. Individuals also play a democratic role, since public pressure and voting patterns can compel governments to adopt stronger environmental policies than they otherwise might.\n\nIn conclusion, while governments and corporations undeniably hold greater direct power, individual actions matter both cumulatively and as a driver of institutional change. Real environmental progress requires both large-scale policy and widespread individual responsibility working together, rather than relying on either alone.\n\n(228 words)"
       },
       {
-        "prompt": "The government should reduce the amount of money spent on local environmental problems and instead increase funding into more urgent and threatening issues such as global warming. Please compose a 200-250 word essay discussing the related issue.",
+        "prompt": "The government should reduce the amount of money spent on local environmental problems and instead increase funding into more urgent and threatening issues such as global warming. To what extent do you agree or disagree?",
         "model_answer": "Some argue that governments should reduce spending on local environmental issues in order to prioritise more pressing global threats such as climate change. I disagree with this proposal, as I believe both local and global environmental problems deserve continued investment.\n\nProponents of this view point out that global warming poses an existential threat affecting the entire planet, with consequences including rising sea levels, extreme weather and mass displacement. Given limited public funds, they argue it makes sense to concentrate resources on this larger, more urgent crisis rather than smaller, localised issues such as litter or local water pollution.\n\nHowever, local environmental problems are not trivial, and neglecting them could allow issues to worsen until they too become significant crises. Local water and air pollution directly affect residents' health, and unmanaged waste can contaminate ecosystems that later contribute to broader environmental damage. Furthermore, local environmental projects, such as community clean-ups or urban tree planting, often build public awareness and engagement that ultimately support broader climate action, making local investment complementary rather than competing with global efforts.\n\nIn my opinion, governments should not view local and global environmental spending as mutually exclusive. A balanced budget that maintains local environmental protections while significantly increasing investment in climate change mitigation would address both immediate community needs and the long-term global crisis more effectively than abandoning one for the other.\n\n(227 words)"
       },
       {

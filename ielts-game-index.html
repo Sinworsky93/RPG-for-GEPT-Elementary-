@@ -901,6 +901,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'修正寫作題目跟真題不符的地方：environment類別一題移除假的「200-250字」提示改為真實題型結尾句；14篇Task 1圖表題補上真題都會有的標準結尾句（Summarise the information...）' },
   { date:'2026-08-10', text:'地圖題重新設計成真正對應內容的地圖：3篇地圖題（Hunderstone、Garlsdon、Felixstowe）都改用實際座標繪製道路/鐵路/地標，現況與提案兩張圖同一地標位置對齊，才能真正練習判讀地圖空間關係，不再是隨機裝飾圖' },
   { date:'2026-08-10', text:'地圖題改成真的手繪風格地圖插圖（田野、道路、編號地標）＋對照說明；流程圖改成橫向排列、用箭頭連接的流程方框圖，兩者都是真正畫出來的圖，不再是條列文字' },
   { date:'2026-08-10', text:'修正圓餅圖小區塊（低於8%）沒有顯示數字的問題，改用指引線把數字標示在圓外；折線圖改用「顏色＋實線虛線＋資料點形狀」三重方式區分每條線，即使數值重疊也能分辨是哪一條' },
