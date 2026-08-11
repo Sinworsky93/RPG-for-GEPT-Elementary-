@@ -546,22 +546,6 @@
       "model_answer": "The diagram outlines the manufacturing process by which tomato ketchup is produced, from harvesting to final sale.\n\nOverall, the process involves several stages of sorting, processing and quality control before the finished product reaches supermarket shelves, where it is ultimately purchased and consumed with foods such as hamburgers and fries.\n\nThe process begins with tomatoes being picked and placed into baskets. They are then sorted to separate good tomatoes from bad ones, before being transported to the factory by truck. At the factory, the stalks, seeds and skin are removed, and the sorted tomatoes are collected in a container before being crushed.\n\nSugar, vinegar and salt are then added to the crushed tomatoes, and the mixture is boiled before being left to stand for two hours. The resulting ketchup is poured into containers, and the bottles are labelled and passed through quality control. Once packed into boxes, the bottles are delivered to supermarkets by truck, where the ketchup is finally sold to consumers and eaten with foods such as hamburgers and fries.\n\n(172 words)"
     },
     {
-      "id": "w1-12",
-      "chart_type": "process",
-      "prompt": "The diagram below shows how recycled paper is made. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "chart": {
-        "steps": [
-          "Used paper is collected and moved along a conveyor belt to make pulp",
-          "Water and chemicals are added to break the paper down into pulp",
-          "The pulp is filtered to remove ink, separating cleaned pulp from ink and unfiltered pulp",
-          "The pulp is cleaned using air, water and soap",
-          "Water and chemicals are added again, and heated rollers press the pulp into sheets on a conveyor belt",
-          "The finished recycled paper is produced"
-        ]
-      },
-      "model_answer": "The diagram illustrates the process by which used paper is recycled into new paper products.\n\nOverall, the process consists of five main stages, transforming collected waste paper into clean, usable pulp before it is finally pressed into new sheets of recycled paper.\n\nThe process begins with used paper being collected and transported along a conveyor belt to begin pulp production. Water and chemicals are then added to the paper, breaking it down into a soft pulp. This pulp subsequently passes through a filtering stage, in which ink is removed, resulting in two separate outputs: cleaned pulp and unfiltered pulp mixed with ink.\n\nThe cleaned pulp then undergoes a further cleaning process using a combination of air, water and soap to remove any remaining impurities. Following this, water and chemicals are added once again, and the pulp is passed through heated rollers, which press it into flat sheets along a conveyor belt. In the final stage, these sheets emerge as finished recycled paper, ready for use.\n\n(158 words)"
-    },
-    {
       "id": "w1-13",
       "chart_type": "process",
       "prompt": "The diagram below shows the life cycle of the female mosquito. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
@@ -1637,22 +1621,6 @@
       "model_answer": "The bar chart compares the number of films produced by five countries, labelled A to E, in 2007, 2008 and 2009.\n\nOverall, Country A produced by far the most films throughout the period despite a gradual decline, while Country B saw considerable growth and Countries C, D and E produced comparatively small numbers of films throughout.\n\nCountry A led film production in all three years, though its output fell steadily from 88 films in 2007 to 80 in 2009. Country B, by contrast, showed clear growth, rising from 48 films in 2007 to 70 in 2009, narrowing the gap with Country A considerably by the end of the period.\n\nThe remaining three countries produced far fewer films overall. Country C's output more than doubled, from just 7 films in 2007 to 19 in 2009, while Country D's production fell from 16 to 14 films. Country E's figures remained the most stable of all five countries, changing only slightly from 10 films in 2007 to 11 in 2009.\n\n(168 words)"
     },
     {
-      "id": "w1-26",
-      "chart_type": "process",
-      "prompt": "The diagram below shows how glass is recycled. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
-      "chart": {
-        "steps": [
-          "Glass bottles are collected in a recycle bin",
-          "A truck transports the bottles to a treatment plant",
-          "Bottles are washed and sterilised",
-          "Glass is crushed and melted",
-          "Melted glass is shaped in a moulding machine into new bottles",
-          "New bottles are delivered by truck to supermarkets for sale"
-        ]
-      },
-      "model_answer": "The diagram illustrates the process by which glass is recycled into new bottles for sale.\n\nOverall, the process consists of six main stages, beginning with the collection of used glass bottles and ending with new bottles being delivered to supermarkets, involving both washing and melting stages along the way.\n\nThe process begins with glass bottles being collected by the public in designated recycle bins. A truck then transports these collected bottles to a treatment plant for processing. At the treatment plant, the bottles first undergo washing and sterilisation to remove any contamination before further processing takes place.\n\nFollowing this cleaning stage, the glass is crushed into small pieces and then melted at high temperatures. The resulting molten glass is subsequently shaped in a moulding machine, which forms it into new bottles. In the final stage of the process, these newly manufactured bottles are delivered by truck to supermarkets, where they are made available for sale, completing the recycling cycle.\n\n(157 words)"
-    },
-    {
       "id": "w1-27",
       "chart_type": "bar",
       "prompt": "The bar chart below shows the percentage of Australian men and women in different age groups who did regular physical activity in 2010. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
@@ -1815,6 +1783,95 @@
         ]
       },
       "model_answer": "The diagrams illustrate the life cycle of the silkworm and the subsequent process by which silk cloth is manufactured from silkworm cocoons.\n\nOverall, the life cycle progresses through four distinct stages over roughly two months, after which the silk production process converts the cocoons into finished woven cloth through a separate five-stage process.\n\nThe silkworm's life cycle begins when an egg hatches into a larva after approximately 10 days. This larva then feeds on mulberry leaves for a period of four to six weeks, during which it grows considerably. The larva subsequently spins itself into a cocoon made of silk thread over three to eight days, before emerging as a moth after around 16 days inside the cocoon, at which point it lays new eggs to continue the cycle.\n\nIn the silk production process, cocoons are first selected before being boiled in water to loosen the silk thread. Each cocoon yields a single thread of between 300 and 900 metres long, which is unwound and then twisted together with threads from several other cocoons. Finally, this twisted thread is dyed and woven into finished silk cloth.\n\n(180 words)"
+    },
+    {
+      "id": "w1-31",
+      "chart_type": "bar",
+      "prompt": "The bar chart below shows the percentage of households with internet access in four countries in 2005, 2015 and 2023. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
+      "chart": {
+        "unit": "%",
+        "labels": [
+          "South Korea",
+          "Germany",
+          "Brazil",
+          "Nigeria"
+        ],
+        "series": [
+          {
+            "name": "2005",
+            "values": [
+              59,
+              45,
+              14,
+              1
+            ]
+          },
+          {
+            "name": "2015",
+            "values": [
+              88,
+              82,
+              41,
+              13
+            ]
+          },
+          {
+            "name": "2023",
+            "values": [
+              97,
+              91,
+              74,
+              36
+            ]
+          }
+        ]
+      },
+      "model_answer": "The bar chart illustrates the proportion of households with internet access in four countries — South Korea, Germany, Brazil and Nigeria — in 2005, 2015 and 2023.\n\nOverall, internet access rose substantially in all four countries over the period, although a clear gap remained between the two more developed nations and the two developing ones throughout.\n\nIn 2005, South Korea already had the highest level of internet access at 59%, considerably ahead of Germany on 45%. Brazil and Nigeria lagged far behind, with only 14% and 1% of households connected respectively. By 2015, access had expanded rapidly everywhere: South Korea reached 88% and Germany 82%, while Brazil climbed to 41% and Nigeria to 13%.\n\nBy 2023, South Korea led all countries with 97% household internet access, closely followed by Germany at 91%. Brazil saw the steepest relative increase of the four countries, nearly doubling from 41% to 74% between 2015 and 2023, whereas Nigeria's growth, though substantial in relative terms, left it still the lowest of the four at 36%.\n\n(170 words)"
+    },
+    {
+      "id": "w1-32",
+      "chart_type": "table",
+      "prompt": "The table below shows the average time (in hours per week) spent on different leisure activities by teenagers in three countries in 2022. Summarise the information by selecting and reporting the main features and make comparisons where relevant.",
+      "chart": {
+        "unit": "hours per week",
+        "rowLabel": "Country",
+        "columns": [
+          "Watching TV",
+          "Social Media",
+          "Sports",
+          "Reading"
+        ],
+        "rows": [
+          {
+            "label": "UK",
+            "values": [
+              10,
+              14,
+              5,
+              3
+            ]
+          },
+          {
+            "label": "Japan",
+            "values": [
+              8,
+              10,
+              4,
+              6
+            ]
+          },
+          {
+            "label": "Mexico",
+            "values": [
+              12,
+              16,
+              7,
+              2
+            ]
+          }
+        ]
+      },
+      "model_answer": "The table shows the average number of hours per week that teenagers in the UK, Japan and Mexico spent on four leisure activities — watching TV, using social media, playing sports and reading — in 2022.\n\nOverall, social media was the most time-consuming activity for teenagers in all three countries, while reading consistently occupied the least time, and Mexican teenagers reported the highest weekly totals for both entertainment-related activities.\n\nMexican teenagers spent the most time on social media, at 16 hours per week, compared with 14 hours in the UK and only 10 hours in Japan. A similar pattern emerged for television, with Mexican teenagers watching 12 hours per week, slightly more than the 10 hours reported in the UK and considerably more than the 8 hours in Japan.\n\nIn contrast, Japanese teenagers spent the most time on sports and reading relative to their other activities, dedicating 6 hours per week to reading, double the figure for the UK and triple that of Mexico. Sports participation was highest in Mexico at 7 hours per week, followed by the UK at 5 hours, while Japanese teenagers spent the least time on sports, at just 4 hours per week.\n\n(197 words)"
     }
   ],
   "task2_essay": {

@@ -15,47 +15,38 @@
       "questions": [
         {
           "group": "1-5",
-          "type": "matching_headings",
-          "instructions": "Reading Passage 1 has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below. Write the correct number, i-vii.",
-          "headings": [
-            "i. The origins of a global spirits rivalry",
-            "ii. Reinventing barrel treatment for faster maturation",
-            "iii. A climate once seen as unsuitable now used as an asset",
-            "iv. From unknown producer to internationally recognised brand",
-            "v. Shared struggles across Taiwan's boutique industries",
-            "vi. The rise of a lesser-known manufacturing sector",
-            "vii. Government incentives driving industry growth"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-E.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "vi",
-              "explanation": "原文：\"there is a quiet diversification underway...the premium spirits sector...has emerged as an unexpected contender\"（半導體之外，威士忌等精品產業正悄悄崛起），第A段介紹這個較少人知的產業，對應標題 vi。"
+              "statement": "A statistic showing the share of Taiwan's economy attributable to a well-known export industry.",
+              "answer": "A",
+              "explanation": "原文：\"an industry that accounts for approximately 15% of the island's economic output and constitutes more than one-third of its exports\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "iii",
-              "explanation": "原文：\"the island's environment was traditionally viewed as a major impediment...these meteorological challenges were creatively re-engineered into distinct advantages\"（原本被視為不利的氣候被轉化為優勢），對應標題 iii。"
+              "statement": "A description of how a climate once seen as unsuitable was turned into an advantage.",
+              "answer": "B",
+              "explanation": "原文：\"these meteorological challenges were creatively re-engineered into distinct advantages\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "ii",
-              "explanation": "原文：\"A cornerstone of this rapid-maturation success lies in sophisticated barrel management, exemplified by the proprietary STR process\"（STR是重新設計木桶處理法的核心），對應標題 ii。"
+              "statement": "A three-step technical process involving shaving, toasting and recharring.",
+              "answer": "C",
+              "explanation": "原文：\"STR, an acronym for shaving, toasting, and recharring, represents a highly controlled mechanical and thermal treatment\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "iv",
-              "explanation": "原文：\"The global breakthrough for Taiwanese spirits occurred in 2015...transitioning the island from an obscure domestic producer to a global phenomenon\"（從默默無聞到享譽國際），對應標題 iv。"
+              "statement": "A specific year in which a facility expansion increased annual production capacity.",
+              "answer": "D",
+              "explanation": "原文：\"Following a major facility expansion in 2016, Taiwan's dominant producer increased its annual capacity to approximately 10 million bottles\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "v",
-              "explanation": "原文：\"these boutique industries share nearly identical macroeconomic bottlenecks...Taiwanese producers have adopted a value-over-volume strategy\"（台灣精品產業共同面臨的困境與策略），對應標題 v。"
+              "statement": "A comparison between Taiwan's craft industries and mass-market global competitors regarding cost.",
+              "answer": "E",
+              "explanation": "原文：\"Due to Taiwan's restricted land availability, high cost of labor, and relatively small production scales, competing on price with mass-market global giants is economically unviable\"，對應 E。"
             }
           ]
         },
@@ -144,47 +135,38 @@
       "questions": [
         {
           "group": "1-5",
-          "type": "matching_headings",
-          "instructions": "Choose the correct heading for each paragraph, A-E, from the list of headings below.",
-          "headings": [
-            "i. Why business credentials do not guarantee interpersonal skill",
-            "ii. Reading conversational cues through word choice",
-            "iii. The consequences of mismatched conversational styles",
-            "iv. Three categories underlying everyday dialogue",
-            "v. Communication as a skill that can be deliberately developed",
-            "vi. The financial cost of workplace miscommunication",
-            "vii. Overcoming cultural barriers in international teams"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-E.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "i",
-              "explanation": "原文：\"prestigious academic credentials did not automatically guarantee communicative efficacy\"（顯赫學歷不保證溝通能力）。第A段描述 Duhigg 雖是哈佛商學院畢業，卻在當上主管後才發現自己不懂同事真正需要的是什麼，對應標題 i「業界資歷不保證人際溝通能力」。容易誤選 v（溝通是可以刻意培養的技能），但那其實是結論段（E段）才提到的主題。"
+              "statement": "A personal anecdote about a manager discovering a flaw in his own communication style.",
+              "answer": "A",
+              "explanation": "原文：\"Duhigg recognized a profound deficiency in his everyday interactions\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "iv",
-              "explanation": "原文：\"researchers have categorized human dialogue into three primary dimensions: practical, emotional, and social\"（研究者把對話分成三大類：實務、情緒、社交）。第B段主要在介紹這三種對話類型，對應標題 iv「日常對話背後的三種分類」。"
+              "statement": "A description of three distinct categories used to classify human conversations.",
+              "answer": "B",
+              "explanation": "原文：\"researchers have categorized human dialogue into three primary dimensions: practical, emotional, and social\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "iii",
-              "explanation": "原文：\"Communication failures frequently occur when interlocutors operate in discordant modes\"（雙方對話模式不一致時常導致溝通失敗）。第C段講的是「兩艘船在夜裡擦身而過」的比喻，對應標題 iii「對話模式不一致的後果」。"
+              "statement": "A metaphor comparing miscommunication to two ships passing in the night.",
+              "answer": "C",
+              "explanation": "原文：\"a distressing phenomenon metaphorically described as 'two ships passing in the night'\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "ii",
-              "explanation": "原文：\"analyzing lexical choices is equally paramount...such expressions...indicate that the dialogue has shifted from a practical dimension to an emotional one\"（分析用字選擇同樣重要，這類用語代表對話已從實務轉為情緒層面）。第D段講的是如何從用字判斷對話類型轉換，對應標題 ii「透過用字判讀對話線索」。"
+              "statement": "An example of how a shift in vocabulary can signal a change from a practical conversation to an emotional one.",
+              "answer": "D",
+              "explanation": "原文：\"a colleague might suddenly employ highly affective language...Such expressions...indicate that the dialogue has shifted from a practical dimension to an emotional one\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "v",
-              "explanation": "原文：\"they are individuals who consciously allocate cognitive resources...any dedicated individual can cultivate them through systematic practice\"（優秀溝通者是刻意投入心力練習出來的）。第E段結論強調溝通是可以後天培養的技能，對應標題 v。"
+              "statement": "An explanation of what allows communication skills to be learned rather than being an innate talent.",
+              "answer": "E",
+              "explanation": "原文：\"because these communicative techniques are skills rather than innate mysteries, any dedicated individual can cultivate them through systematic practice\"，對應 E。"
             }
           ]
         },
@@ -637,47 +619,38 @@
       "questions": [
         {
           "group": "1-5",
-          "type": "matching_headings",
-          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
-          "headings": [
-            "i. Turning a perishable liquid into a storage strategy",
-            "ii. How enzymes improved control over the cheesemaking process",
-            "iii. Climate-driven variety across cheesemaking cultures",
-            "iv. A chemical accident that solved a digestive problem",
-            "v. Monasteries as centres of culinary experimentation",
-            "vi. Cheese's symbolic role in early bureaucracy and religion",
-            "vii. The decline of pastoral cheesemaking after industrialisation"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-E.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "iv",
-              "explanation": "原文：\"This acidic transformation...prompted milk proteins to coagulate into soft curds. It was through the discovery of this natural coagulation that early farmers learned...\"（是偶然的酸化反應導致凝乳，早期農民才因此發現製乳酪的方法，並解決了乳糖難消化的問題），對應標題 iv。"
+              "statement": "An explanation of why an early food-preservation process also solved a digestive problem.",
+              "answer": "A",
+              "explanation": "原文：\"it also resolved a significant dietary bottleneck: the high concentration of lactose...that remains exceedingly difficult for many human populations to digest\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "i",
-              "explanation": "原文：\"cheese represented an unprecedented survival strategy...By transforming highly perishable milk into a storable commodity, ancient societies successfully stockpiled essential proteins\"（把易腐敗的鮮奶轉化成可儲存的商品，是重要的生存策略），對應標題 i。"
+              "statement": "Archaeological evidence of dairy residue found in pottery from a specific era.",
+              "answer": "B",
+              "explanation": "原文：\"seventh-millennium BCE pottery fragments excavated in modern-day Turkey, which still retain chemical residues of ancient dairy lipids\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "vi",
-              "explanation": "原文：\"cheese was integrated into both administrative structures and sacred rituals...clay tablets featuring cuneiform script contain administrative logs detailing cheese quotas\"（乳酪配額被記錄在行政文書與宗教儀式中），對應標題 vi。"
+              "statement": "A description of an enzyme that gave cheesemakers more control over the coagulation process.",
+              "answer": "C",
+              "explanation": "原文：\"technological innovations in cheesemaking emerged in Anatolia, where records document the utilization of rennet...allowed for a far more controlled precipitation\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "iii",
-              "explanation": "原文：\"distinct regional adaptations arose, reflecting local climates and cultural preferences\"（蒙古、埃及、南亞、歐洲各地依氣候文化發展出不同乳酪），對應標題 iii。"
+              "statement": "A reference to a military ration relied on by soldiers stationed across a large empire.",
+              "answer": "D",
+              "explanation": "原文：\"caseus aridus sustained nearly half a million Roman legionaries stationed along the empire's extensive frontiers\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "v",
-              "explanation": "原文：\"the epicenter of cheesemaking innovation shifted to the European countryside, particularly within the walls of Benedictine monasteries. Medieval monks...experimented with diverse milk sources\"，對應標題 v。"
+              "statement": "A description of a conflict triggered by control of a valuable cheese-trading region.",
+              "answer": "E",
+              "explanation": "原文：\"an armed conflict erupted when a neighboring state invaded the Gruyere highlands of Switzerland to seize control of the lucrative Alpine cheese trade\"，對應 E。"
             }
           ]
         },
@@ -1049,47 +1022,38 @@
       "questions": [
         {
           "group": "1-5",
-          "type": "matching_headings",
-          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
-          "headings": [
-            "i. How dopamine locks people into a cycle of overwork",
-            "ii. Treating oneself as a tool rather than a whole person",
-            "iii. Why hard work is often mistaken for something else entirely",
-            "iv. Two kinds of relationships and their different values",
-            "v. Rebuilding a sense of self through genuine relationships",
-            "vi. The link between income level and workaholism",
-            "vii. Why bonuses rarely change a workaholic's behaviour"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-E.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "iii",
-              "explanation": "原文：\"workaholism, a phenomenon widely misconstrued as a commendable work ethic. However...excessive labor is merely a secondary symptom\"（過勞常被誤認為是優良的工作倫理，但其實只是次要症狀）。第A段解釋過勞常被誤解的本質，對應標題 iii。"
+              "statement": "A common misconception about the true nature of workaholism.",
+              "answer": "A",
+              "explanation": "原文：\"workaholism, a phenomenon widely misconstrued as a commendable work ethic. However...excessive labor is merely a secondary symptom\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "i",
-              "explanation": "原文：\"success triggers the release of dopamine...prompting them to seek identical stimuli repeatedly\"（成功會釋放多巴胺，驅使人不斷追求同樣的刺激）。第B段講多巴胺如何形成過勞循環，對應標題 i。"
+              "statement": "An explanation of the chemical reward that drives repeated success-seeking behaviour.",
+              "answer": "B",
+              "explanation": "原文：\"success triggers the release of dopamine, a neuromodulator intrinsically implicated in addictive behaviors\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "ii",
-              "explanation": "原文：\"the tendency of high-achievers to reduce themselves to mere success machines...treat themselves as instruments of labor rather than complex human beings\"（高成就者把自己簡化成「成功機器」，當成生產工具而非完整的人）。第C段主題正是這種自我物化，對應標題 ii。"
+              "statement": "A description of individuals reducing themselves to instruments of labour rather than complex human beings.",
+              "answer": "C",
+              "explanation": "原文：\"individuals treat themselves as instruments of labor rather than complex human beings\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "iv",
-              "explanation": "原文：\"A critical distinction must be made between deal friends...and real friends\"（必須區分「利益之交」與「真心朋友」）。第D段講這兩種關係的差異，對應標題 iv。"
+              "statement": "A distinction drawn between two different types of professional relationships.",
+              "answer": "D",
+              "explanation": "原文：\"A critical distinction must be made between 'deal friends'...and 'real friends'\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "v",
-              "explanation": "原文：\"individuals must cultivate relationships with those who can love them back...work cannot substitute for genuine human intimacy\"（必須培養能夠回應情感的關係，工作無法取代真正的親密感）。第E段講重建真實關係，對應標題 v。"
+              "statement": "A suggestion involving spiritual practice as a source of psychological grounding.",
+              "answer": "E",
+              "explanation": "原文：\"engaging in spiritual practices or exploring wisdom literature can provide a metaphysical grounding\"，對應 E。"
             }
           ]
         },
@@ -1178,47 +1142,38 @@
       "questions": [
         {
           "group": "1-5",
-          "type": "matching_headings",
-          "instructions": "Reading Passage has five paragraphs, A-E. Choose the correct heading for each paragraph from the list of headings below.",
-          "headings": [
-            "i. A single economic principle behind decades of exponential growth",
-            "ii. The astronomical cost of staying at the cutting edge",
-            "iii. Why global politics can threaten chip supply overnight",
-            "iv. The extreme purity required at the material level",
-            "v. Machines built to work where human hands cannot",
-            "vi. A brief history of the transistor's invention",
-            "vii. Government subsidies driving the semiconductor race"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-E.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "i",
-              "explanation": "原文：\"This unprecedented expansion is governed by Moore's Law—a principle of economics rather than physics\"（半導體的擴張由摩爾定律這個經濟原則驅動）。第A段介紹摩爾定律，對應標題 i。"
+              "statement": "A statistic on how frequently the number of transistors on a chip is predicted to double.",
+              "answer": "A",
+              "explanation": "原文：\"predicting that the number of transistors on a single chip doubles approximately every couple of years\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "iv",
-              "explanation": "原文：\"refining it to an extraordinary level of purity remains a formidable challenge...even a single atomic impurity can disrupt the functions of a circuit\"（提煉到極高純度極為困難，一個原子雜質就能毀掉電路）。第B段講矽晶圓的純度要求，對應標題 iv。"
+              "statement": "An explanation of why even a tiny impurity can ruin an entire silicon wafer.",
+              "answer": "B",
+              "explanation": "原文：\"even a single atomic impurity can disrupt the functions of a circuit, rendering the entire wafer defective\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "v",
-              "explanation": "原文：\"humans are far too imprecise for manufacturing at the nanometer level...highly automated factories containing massive, specialized machinery\"（人手無法達到奈米級精度，需要高度自動化的機械）。第C段講精密機械（微影機），對應標題 v。"
+              "statement": "A description of specialised equipment that uses a laser and plasma to carve transistors.",
+              "answer": "C",
+              "explanation": "原文：\"this machine utilizes a powerful laser to strike falling tin droplets, creating a plasma that emits light\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "ii",
-              "explanation": "原文：\"a company must accumulate approximately $20 billion...some of the most expensive [factories] in human history\"（建一座晶圓廠要200億美元）。第D段講建廠的天文成本，對應標題 ii。"
+              "statement": "A statistic on the cost required to build a single advanced fabrication facility.",
+              "answer": "D",
+              "explanation": "原文：\"a company must accumulate approximately $20 billion, making these factories some of the most expensive in human history\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "iii",
-              "explanation": "原文：\"geopolitical issues can immediately disrupt supply\"（地緣政治問題會立即干擾供應鏈）。第E段講國際供應鏈的脆弱性，對應標題 iii。"
+              "statement": "An example of how a single product depends on suppliers from multiple countries.",
+              "answer": "E",
+              "explanation": "原文：\"a smartphone processor is typically manufactured in Taiwan using lithography tools from the Netherlands, Japan, and the United States\"，對應 E。"
             }
           ]
         },
@@ -1344,47 +1299,38 @@
       "questions": [
         {
           "group": "1-5",
-          "type": "matching_headings",
-          "instructions": "Choose the correct heading for each paragraph, A-E, from the list of headings below.",
-          "headings": [
-            "i. Why sugar receptors are not confined to the mouth",
-            "ii. The neurological process that keeps a habit rewarding",
-            "iii. From a fixed treat to compulsive craving",
-            "iv. Two competing categories of sugar and their entry into the brain",
-            "v. How the brain normally learns to stop craving repeated meals",
-            "vi. The chemical messenger that decides what is worth repeating",
-            "vii. Sugar substitutes and their effect on insulin production"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-E.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "iv",
-              "explanation": "第A段介紹糖的分子分類（葡萄糖、果糖、澱粉等）以及甜味如何傳到大腦，對應標題 iv。"
+              "statement": "An explanation of how receptors on the tongue send signals about sweetness to the brain.",
+              "answer": "A",
+              "explanation": "原文：\"these carbohydrates contact the human tongue, they stimulate specialized sweet-taste receptors. These receptors immediately transmit electrochemical impulses to the brain stem\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "vi",
-              "explanation": "第B段介紹多巴胺這個決定「值不值得重複」的化學訊息物質，對應標題 vi。"
+              "statement": "A description of the chemical that reinforces behaviours necessary for survival.",
+              "answer": "B",
+              "explanation": "原文：\"dopamine...this chemical surge produce a rewarding sensation, but it also reinforces beneficial behaviours\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "v",
-              "explanation": "第C段解釋大腦對重複進食如何逐漸「習慣化（habituation）」而減少多巴胺反應，對應標題 v。"
+              "statement": "An explanation of why the brain's response to sugar does not diminish with repeated consumption.",
+              "answer": "C",
+              "explanation": "原文：\"when an individual consumes sugar-dense foods, this habituation process is conspicuously absent. Instead, dopamine release fails to level out\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "i",
-              "explanation": "第D段講腸胃道也有糖受器，不只是舌頭，對應標題 i。"
+              "statement": "A description of sugar receptors located outside the mouth.",
+              "answer": "D",
+              "explanation": "原文：\"the gastrointestinal tract also possesses specialised sugar receptors\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "iii",
-              "explanation": "第E段講長期攝取過量糖分如何從正常獎勵反應演變成強迫性渴求，對應標題 iii。"
+              "statement": "A comparison between the effects of chronic sugar consumption and other addictive substances.",
+              "answer": "E",
+              "explanation": "原文：\"individuals lose behavioural control and experience intense cravings, which mirror the addictive states induced by substances like nicotine or alcohol\"，對應 E。"
             }
           ]
         },
@@ -1481,54 +1427,44 @@
       "questions": [
         {
           "group": "1-6",
-          "type": "matching_headings",
-          "instructions": "Choose the correct heading for each paragraph, A-F, from the list of headings below.",
-          "headings": [
-            "i. Corporate expansion through political interference",
-            "ii. From a local African-Caribbean crop to a mass-market product",
-            "iii. A modern industry still dependent on chemicals despite a variety change",
-            "iv. Land reform, a coup, and union recognition",
-            "v. Rapid corporate growth and its environmental footprint",
-            "vi. A single-variety plantation system creates a disease risk",
-            "vii. The complete disappearance of the banana trade after 1960",
-            "viii. Scientists engineered a permanently disease-proof banana"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-F.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "ii",
-              "explanation": "原文：\"merchants...began experimenting with banana imports...transformed the banana into an affordable, year-round staple\"（從非洲裔加勒比小農的地方作物變成大眾商品），對應標題 ii。"
+              "statement": "A description of the specific characteristic that made one banana variety suitable for long-distance shipping.",
+              "answer": "A",
+              "explanation": "原文：\"possessing an exceptionally thick skin that rendered it ideal for long-distance maritime shipping\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "i",
-              "explanation": "原文：\"banana moguls aggressively lobbied and bribed government officials in Central America, even funding military coups\"，對應標題 i。"
+              "statement": "An explanation of how banana companies gained political influence through funding and bribery.",
+              "answer": "B",
+              "explanation": "原文：\"banana moguls aggressively lobbied and bribed government officials in Central America, even funding military coups\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "v",
-              "explanation": "原文：\"the United Fruit Company had established an unprecedented corporate hegemony...felling pristine rainforests...to establish plantations\"（快速擴張與環境破壞），對應標題 v。"
+              "statement": "A description of infrastructure built to support banana exports, including railroads and ports.",
+              "answer": "C",
+              "explanation": "原文：\"the company built extensive railroads, ports, and towns, which attracted thousands of migrant labourers\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "vi",
-              "explanation": "原文：\"their complete lack of biological diversity created a highly volatile ecological scenario...a soil-borne fungus...began to level Gros Michel plantations\"（單一品種種植帶來的病害風險），對應標題 vi。"
+              "statement": "An account of how transport infrastructure helped a plant disease spread rapidly.",
+              "answer": "D",
+              "explanation": "原文：\"The very infrastructure built to facilitate rapid export served as a highly efficient vector, as pathogens easily hitched a ride on workers' boots, railroad cars, and steamships\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "iv",
-              "explanation": "原文：\"President Jacobo Arbenz...tried to buy back uncultivated corporate land...the CIA orchestrated the overthrow...Honduran workers organised historic strikes, forcing the corporation to formally recognise a new labour union\"（土地改革、政變、工會承認），對應標題 iv。"
+              "statement": "A reference to a labour movement that forced a company to officially recognise a union.",
+              "answer": "E",
+              "explanation": "原文：\"Honduran workers organised historic strikes, forcing the corporation to formally recognise a new labour union\"，對應 E。"
             },
             {
               "n": 6,
-              "paragraph": "F",
-              "answer": "iii",
-              "explanation": "原文：\"United Fruit finally transitioned from Gros Michel to the disease-resistant Cavendish...growers rely on the frequent application of toxic chemical pesticides\"（換品種後仍依賴化學藥劑），對應標題 iii。"
+              "statement": "An explanation of why switching to a new banana variety did not fully solve the industry's ecological problems.",
+              "answer": "F",
+              "explanation": "原文：\"Because Cavendish farms still operate as uniform monocultures lacking biological diversity, they remain highly susceptible to emerging pathogens\"，對應 F。"
             }
           ]
         },
@@ -1888,54 +1824,44 @@
       "questions": [
         {
           "group": "1-6",
-          "type": "matching_headings",
-          "instructions": "Choose the correct heading for each paragraph, A-F, from the list of headings below.",
-          "headings": [
-            "i. Breathing's unusual position between automatic and conscious control",
-            "ii. Physical exercise strengthens brain regions linked to memory and focus",
-            "iii. The brain as a constant monitor and manager of the body",
-            "iv. Emotions expressed as physical bodily sensations",
-            "v. Why organisms without a brain could still regulate their internal state",
-            "vi. Old assumptions about a fixed adult brain are overturned",
-            "vii. Heart rate can be consciously controlled in the same way as breathing",
-            "viii. Ancient physicians first discovered the cause of thirst"
-          ],
+          "type": "matching_information",
+          "instructions": "Which paragraph contains the following information? Write the correct letter, A-F.",
           "items": [
             {
               "n": 1,
-              "paragraph": "A",
-              "answer": "iii",
-              "explanation": "第A段介紹中樞神經系統不只處理外界刺激，也持續監控體內狀態以維持恆定，對應標題 iii。"
+              "statement": "An explanation of how the brain functions as an internal regulator, not just a processor of external stimuli.",
+              "answer": "A",
+              "explanation": "原文：\"Not only does the human central nervous system process external environmental stimuli, but it also functions as the supreme economic governor of the internal physiological landscape\"，對應 A。"
             },
             {
               "n": 2,
-              "paragraph": "B",
-              "answer": "v",
-              "explanation": "第B段講演化上，即使沒有中央神經系統的生物也能透過局部反射弧調節生理狀態，對應標題 v。"
+              "statement": "An example of a homeostatic response triggered by a change in the body's water levels.",
+              "answer": "B",
+              "explanation": "原文：\"As systemic water levels diminish, peripheral osmotic sensors fire frantically...This crisis is rapidly translated into the conscious sensation of thirst\"，對應 B。"
             },
             {
               "n": 3,
-              "paragraph": "C",
-              "answer": "iv",
-              "explanation": "第C段講「胃裡有蝴蝶」等情緒引發的生理感受，對應標題 iv。"
+              "statement": "A description of physical sensations connected to romantic attraction and embarrassment.",
+              "answer": "C",
+              "explanation": "原文：\"The familiar sensation of 'butterflies' in the stomach during romantic attraction, or the sudden flushing of facial capillaries amidst social embarrassment\"，對應 C。"
             },
             {
               "n": 4,
-              "paragraph": "D",
-              "answer": "i",
-              "explanation": "第D段講呼吸在自主與意識控制之間的特殊定位，對應標題 i。"
+              "statement": "An explanation of why breathing is different from other automatic bodily processes.",
+              "answer": "D",
+              "explanation": "原文：\"Unlike cardiac contractions or gastrointestinal motility...respiration can be seamlessly shifted from autonomic maintenance to conscious modulation\"，對應 D。"
             },
             {
               "n": 5,
-              "paragraph": "E",
-              "answer": "ii",
-              "explanation": "第E段講運動如何促進海馬迴與前額葉的神經生長因子，對應標題 ii。"
+              "statement": "A description of chemicals released during physical exercise that affect mood.",
+              "answer": "E",
+              "explanation": "原文：\"bathing the brain in dopamine, serotonin, noradrenaline, and endorphins\"，對應 E。"
             },
             {
               "n": 6,
-              "paragraph": "F",
-              "answer": "vi",
-              "explanation": "第F段講神經可塑性推翻了「成年後大腦無法改變」的舊觀念，對應標題 vi。"
+              "statement": "Evidence that challenges the old belief that the adult brain is incapable of change.",
+              "answer": "F",
+              "explanation": "原文：\"Modern neuroimaging, however, reveals a highly dynamic organ that continually reorganises its synaptic connections\"，對應 F。"
             }
           ]
         },
