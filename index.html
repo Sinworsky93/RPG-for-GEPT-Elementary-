@@ -175,6 +175,56 @@
             0%, 100% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(255,0,0,0.5)); }
             50% { transform: scale(1.15); filter: drop-shadow(0 0 25px rgba(255,0,0,0.9)); }
         }
+
+        .hit-spark {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 16;
+        }
+        .hit-spark.active::before {
+            content: "💥";
+            position: absolute;
+            top: 38%; left: 50%;
+            font-size: 2.5rem;
+            animation: sparkPop 0.4s ease-out forwards;
+        }
+        @keyframes sparkPop {
+            0%   { transform: translate(-50%, -50%) scale(0.2) rotate(-15deg); opacity: 0; }
+            45%  { transform: translate(-50%, -50%) scale(1.4) rotate(10deg); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1.7) rotate(15deg); opacity: 0; }
+        }
+
+        .dodge-active {
+            animation: dodgeJuke 0.45s ease-in-out;
+        }
+        @keyframes dodgeJuke {
+            0%   { transform: translateX(0) skewX(0); filter: brightness(1); }
+            22%  { transform: translateX(-22px) skewX(-3deg); filter: brightness(1.5); }
+            50%  { transform: translateX(16px) skewX(2deg); filter: brightness(1.1); }
+            75%  { transform: translateX(-6px) skewX(0); }
+            100% { transform: translateX(0) skewX(0); filter: brightness(1); }
+        }
+        .dodge-text {
+            position: absolute;
+            top: 45%; left: 50%;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ffcc;
+            text-shadow: 0 0 12px rgba(0,255,204,0.9), 2px 2px 0 #000;
+            z-index: 25;
+            pointer-events: none;
+            letter-spacing: 4px;
+            font-family: 'VT323', monospace;
+        }
+        .dodge-text.pop {
+            animation: dodgeTextPop 0.6s ease-out forwards;
+        }
+        @keyframes dodgeTextPop {
+            0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            30%  { opacity: 1; transform: translate(-50%, -50%) scale(1.25); }
+            100% { opacity: 0; transform: translate(-90%, -140%) scale(1); }
+        }
     </style>
 </head>
 <body class="flex items-center justify-center h-screen overflow-hidden m-0">
@@ -220,8 +270,10 @@
             </div>
 
             <!-- 第一人稱敵人視角區 -->
-            <div class="flex-1 min-h-0 flex flex-col items-center justify-center relative mb-2 overflow-hidden">
+            <div id="enemy-view" class="flex-1 min-h-0 flex flex-col items-center justify-center relative mb-2 overflow-hidden">
                 <div id="laser-shot" class="laser-shot"></div>
+                <div id="hit-spark" class="hit-spark"></div>
+                <div id="dodge-text" class="hidden dodge-text">DODGE!</div>
                 <div id="boss-warning" class="hidden absolute top-1 left-1/2 -translate-x-1/2 bg-red-900 border-2 border-red-500 text-red-200 font-bold text-sm sm:text-lg px-3 py-1 z-20 boss-warning-banner font-sans text-center whitespace-nowrap rounded">⚠️ 魔王蓄力反擊！快點作答！</div>
                 <div class="text-center mb-4">
                     <h2 id="enemy-name" class="text-2xl sm:text-4xl font-bold text-red-500 mb-2 sm:mb-4 tracking-widest uppercase font-sans"></h2>
@@ -605,6 +657,7 @@
         function sfxLevelUp() { [523, 659, 784, 1047].forEach((f, i) => beep(f, 0.16, 'square', 0.15, null, i * 0.09)); }
         function sfxBossAttack() { [0, 0.15, 0.3, 0.45].forEach((d, i) => beep(i % 2 === 0 ? 200 : 350, 0.16, 'sawtooth', 0.18, null, d)); }
         function sfxBossHit() { beep(90, 0.35, 'sawtooth', 0.25, 40); }
+        function sfxDodge() { beep(700, 0.09, 'square', 0.12, 1200); }
         function sfxWin() { [523, 659, 784, 1047, 1319].forEach((f, i) => beep(f, 0.2, 'square', 0.16, null, i * 0.12)); }
         function sfxLose() { [392, 349, 311, 262].forEach((f, i) => beep(f, 0.4, 'sawtooth', 0.15, null, i * 0.2)); }
 
@@ -614,6 +667,33 @@
             laser.classList.remove('firing');
             void laser.offsetWidth;
             laser.classList.add('firing');
+        }
+
+        // 命中特效：雷射打中敵人時的爆炸火花
+        function triggerHitSpark() {
+            const spark = document.getElementById('hit-spark');
+            if (!spark) return;
+            spark.classList.remove('active');
+            void spark.offsetWidth;
+            spark.classList.add('active');
+        }
+
+        // 閃避特效：畫面快速位移 + 「DODGE!」文字彈出，代表玩家及時作答躲過魔王反擊
+        function triggerDodge() {
+            const view = document.getElementById('enemy-view');
+            const text = document.getElementById('dodge-text');
+            sfxDodge();
+            if (view) {
+                view.classList.remove('dodge-active');
+                void view.offsetWidth;
+                view.classList.add('dodge-active');
+            }
+            if (text) {
+                text.classList.remove('hidden', 'pop');
+                void text.offsetWidth;
+                text.classList.add('pop');
+                setTimeout(() => text.classList.add('hidden'), 600);
+            }
         }
 
         // 魔王反擊：倒數過一半還沒作答，魔王會蓄力 0.7 秒後反擊；
@@ -630,7 +710,7 @@
             warn.classList.add('hidden');
             sprite.classList.remove('boss-lunge');
 
-            if (GAME.isProcessing) return; // 及時作答，閃避成功
+            if (GAME.isProcessing) { triggerDodge(); return; } // 及時作答，閃避成功
 
             sfxBossHit();
             GAME.hp -= 10;
@@ -965,6 +1045,7 @@
                 fireLaser();
                 sfxShoot();
                 await wait(180);
+                triggerHitSpark();
                 document.getElementById('enemy-hp').innerText = '█'.repeat(GAME.enemyHp);
                 document.getElementById('enemy-sprite').classList.add('shake');
                 document.getElementById('enemy-sprite').style.filter = 'drop-shadow(0 0 20px rgba(255, 0, 0, 0.8))';
