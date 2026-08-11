@@ -37,6 +37,12 @@
   .browse-toggle button.active{background:var(--accent);color:#fff;border-color:var(--accent);}
   .qtype-tip{background:#fff3d6;border:1px solid #f0c46b;color:#8a6400;font-size:13.5px;line-height:1.7;padding:12px 16px;border-radius:10px;margin-bottom:16px;}
 
+  /* mock exam */
+  .mock-tab{border:1px solid var(--line);background:var(--panel);color:var(--sub);font-size:13.5px;font-weight:700;padding:8px 14px;border-radius:8px;cursor:pointer;}
+  .mock-tab.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+  .mock-passage-panel{display:none;}
+  .mock-passage-panel.active{display:block;}
+
   /* passage/test view */
   .backbtn{background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;font-size:14px;margin-bottom:14px;padding:0;}
   .split{display:grid;grid-template-columns:1fr;gap:20px;}
@@ -259,6 +265,7 @@
     </div>
     <div id="reading-list"><div class="loading">閱讀題庫載入中…</div></div>
     <div id="reading-test" style="display:none;"></div>
+    <div id="mock-exam-view" style="display:none;"></div>
   </section>
 
   <section id="view-writing" class="view">
@@ -559,7 +566,7 @@ function renderReview(){
       const dt = new Date(h.date);
       const dtStr = dt.toLocaleDateString()+' '+dt.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
       let right = '';
-      if(h.type==='reading') right = `<span class="score">${h.score} / ${h.total}</span>`;
+      if(h.type==='reading') right = `<span class="score">${h.score} / ${h.total}${h.band?` ・Band ${h.band.toFixed(1)}`:''}</span>`;
       else if(h.type==='writing') right = `<span class="score">${h.checksPassed} / ${h.checksTotal} 項通過</span>`;
       return `<div class="hist-row">
         <span><span class="badge">${h.type==='reading'?'閱讀':'寫作'}</span>${h.title}</span>
@@ -901,6 +908,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'閱讀新增「模擬考試」模式：隨機抽3篇文章（自動湊近40題），60分鐘倒數，可自由切換三篇作答，交卷後顯示總分並換算成雅思Band分數；一般單篇練習也同步加上Band換算，跟口說的評分方式一致' },
   { date:'2026-08-10', text:'字體改成Georgia，上方導覽列按鈕放大（字級與內距都加大），手機版也更好點選' },
   { date:'2026-08-10', text:'寫作Task 1圖表數字全部改成整數（8篇原本有小數點，例如4.5、6.8），範文內容也同步修正對應數字，更方便學生練習描述' },
   { date:'2026-08-10', text:'調整題型比例更貼近真題：閱讀題把過度使用的Matching Headings（原本超過一半文章都有）改掉8組，換成真題更常見的Matching Information；寫作Task 1把過多的流程圖換成2篇新的長條圖／表格題，六種圖表比例更符合真實雅思考試分布' },
@@ -1014,7 +1022,11 @@ function renderReadingList(){
   const el = document.getElementById('reading-list');
   if(!state.reading || !state.reading.passages){ el.innerHTML='<div class="empty">找不到 reading-bank.json</div>'; return; }
   const mode = state.readingBrowseMode || 'topic';
-  let html = browseToggleHTML(mode);
+  let html = `<div class="card" style="background:linear-gradient(135deg,var(--accent),#1d4fd1);color:#fff;border:none;" onclick="startMockExam()">
+    <h3 style="color:#fff;">📝 模擬考試 Mock Test</h3>
+    <p style="color:rgba(255,255,255,.85);">隨機抽出3篇文章（湊近40題），60分鐘倒數計時，交卷後換算 Band 分數 — 完整模擬真實雅思閱讀測驗</p>
+  </div>`;
+  html += browseToggleHTML(mode);
   const all = state.reading.passages.map((p,i)=>({ p, i }));
 
   if(mode === 'qtype'){
@@ -1091,22 +1103,8 @@ function renderReadingQTypeList(){
 let readingTimerId = null;
 let readingSecondsLeft = 0;
 
-function openPassage(i){
-  stopReadingTimer();
-  state.currentPassage = state.reading.passages[i];
-  document.getElementById('reading-list').style.display='none';
-  document.getElementById('updates-slot').style.display='none';
-  const test = document.getElementById('reading-test');
-  test.style.display='block';
-  const p = state.currentPassage;
-  readingSecondsLeft = p.short ? 5*60 : 15*60;
-
-  const passageKey = p.id || p.title;
-  const savedHL = loadPassageHighlights()[passageKey];
-  const paragraphsHTML = savedHL || Object.entries(p.paragraphs).map(([label,text])=>
-    `<p><span class="para-label">${label}</span>${text}</p>`).join('');
-
-  const qgroupsHTML = p.questions.map((g,gi)=>{
+function renderQuestionGroupsHTML(p){
+  return p.questions.map((g,gi)=>{
     let inner = '';
     if(g.type === 'matching_headings'){
       inner += `<div class="heading-list">${g.headings.join('<br>')}</div>`;
@@ -1170,7 +1168,7 @@ function openPassage(i){
         </div>`;
       }).join('');
     } else if(g.type === 'matching_information'){
-      const paraLetters = state.currentPassage ? Object.keys(state.currentPassage.paragraphs) : [];
+      const paraLetters = Object.keys(p.paragraphs);
       inner += g.items.map(it=>{
         const opts = paraLetters.map(l=>`<option value="${l}">${l}</option>`).join('');
         return `<div class="qitem" data-type="matching_information" data-text="${it.statement.replace(/"/g,'&quot;')}" data-explain="${(it.explanation||'').replace(/"/g,'&quot;')}">
@@ -1237,6 +1235,24 @@ function openPassage(i){
       ${inner}
     </div>`;
   }).join('');
+}
+
+function openPassage(i){
+  stopReadingTimer();
+  state.currentPassage = state.reading.passages[i];
+  document.getElementById('reading-list').style.display='none';
+  document.getElementById('updates-slot').style.display='none';
+  const test = document.getElementById('reading-test');
+  test.style.display='block';
+  const p = state.currentPassage;
+  readingSecondsLeft = p.short ? 5*60 : 15*60;
+
+  const passageKey = p.id || p.title;
+  const savedHL = loadPassageHighlights()[passageKey];
+  const paragraphsHTML = savedHL || Object.entries(p.paragraphs).map(([label,text])=>
+    `<p><span class="para-label">${label}</span>${text}</p>`).join('');
+
+  const qgroupsHTML = renderQuestionGroupsHTML(p);
 
   test.innerHTML = `
     <button class="backbtn" onclick="stopReadingTimer();closePassage()">&larr; 返回閱讀列表</button>
@@ -1350,17 +1366,18 @@ function clearExplanationBlock(qitem){
   if(old) old.remove();
 }
 
-function gradePassage(autoSubmitted){
-  stopReadingTimer();
-  const form = document.getElementById('qform');
+// Grades one <form> of rendered question groups against their data-answer attributes.
+// Looks up each item's result span via the enclosing .qitem rather than a global
+// getElementById('res-N') lookup, so this works even when multiple passages (each
+// with their own n=1.. numbering) are present in the DOM at once, as in the mock exam.
+function gradeForm(form, passageTitle){
   let correct=0, total=0;
   const wrongItems = [];
-  const passageTitle = state.currentPassage ? state.currentPassage.title : '';
 
   form.querySelectorAll('select[data-answer]').forEach(sel=>{
     total++;
-    const res = document.getElementById('res-'+sel.dataset.n);
     const qitem = sel.closest('.qitem');
+    const res = qitem.querySelector('.result');
     const qtext = qitem ? qitem.dataset.text : '';
     if(sel.value && sel.value.toLowerCase()===sel.dataset.answer.toLowerCase()){ correct++; res.textContent='✓'; res.className='result correct'; clearExplanationBlock(qitem); }
     else {
@@ -1374,8 +1391,8 @@ function gradePassage(autoSubmitted){
     if(seen.has(r.dataset.n)) return;
     const checked = form.querySelector('input[name=q'+r.dataset.n+']:checked');
     total++; seen.add(r.dataset.n);
-    const res = document.getElementById('res-'+r.dataset.n);
     const qitem = r.closest('.qitem');
+    const res = qitem.querySelector('.result');
     const qtext = qitem ? qitem.dataset.text : '';
     if(checked && checked.value===r.dataset.answer){ correct++; res.textContent='✓'; res.className='result correct'; clearExplanationBlock(qitem); }
     else {
@@ -1386,8 +1403,8 @@ function gradePassage(autoSubmitted){
   });
   form.querySelectorAll('input[type=text][data-answer]').forEach(inp=>{
     total++;
-    const res = document.getElementById('res-'+inp.dataset.n);
     const qitem = inp.closest('.qitem');
+    const res = qitem.querySelector('.result');
     const qtext = qitem ? qitem.dataset.text : '';
     const norm = s => (s||'').trim().toLowerCase();
     if(norm(inp.value)===norm(inp.dataset.answer)){ correct++; res.textContent='✓'; res.className='result correct'; clearExplanationBlock(qitem); }
@@ -1397,14 +1414,169 @@ function gradePassage(autoSubmitted){
       showExplanationBlock(qitem, inp.dataset.answer);
     }
   });
-  const scoreEl = document.getElementById('scoreDisplay');
-  scoreEl.textContent = (autoSubmitted ? "⏰ 時間到 — " : '') + `分數：${correct} / ${total}`;
+  return { correct, total, wrongItems };
+}
 
-  saveHistoryEntry({ type:'reading', title: passageTitle, score: correct, total });
+// Official-style IELTS Academic Reading raw-score (out of 40) to Band conversion table.
+// Since individual passage practice rarely totals exactly 40 questions, the score is
+// scaled proportionally to a /40 equivalent before lookup — an estimate, not an
+// official result, which is why it's always labelled "換算約" / "僅供參考".
+const READING_BAND_TABLE = [
+  [39,9.0],[37,8.5],[35,8.0],[33,7.5],[30,7.0],[27,6.5],[23,6.0],
+  [19,5.5],[15,5.0],[13,4.5],[10,4.0],[8,3.5],[6,3.0],[4,2.5],[0,1.0]
+];
+function readingBandFromRaw40(raw){
+  for(const [min,band] of READING_BAND_TABLE){ if(raw>=min) return band; }
+  return 1.0;
+}
+function readingBandEstimate(correct, total){
+  if(!total) return null;
+  const scaled = Math.round((correct/total)*40);
+  return readingBandFromRaw40(scaled);
+}
+
+function gradePassage(autoSubmitted){
+  stopReadingTimer();
+  const form = document.getElementById('qform');
+  const passageTitle = state.currentPassage ? state.currentPassage.title : '';
+  const { correct, total, wrongItems } = gradeForm(form, passageTitle);
+  const band = readingBandEstimate(correct, total);
+  const scoreEl = document.getElementById('scoreDisplay');
+  scoreEl.textContent = (autoSubmitted ? "⏰ 時間到 — " : '') + `分數：${correct} / ${total}　換算約 Band ${band.toFixed(1)}（僅供參考）`;
+
+  saveHistoryEntry({ type:'reading', title: passageTitle, score: correct, total, band });
   addWrongAnswers(wrongItems);
   syncToBackend('reading_score', { title: passageTitle, score: correct, total });
   wrongItems.forEach(w => syncToBackend('wrong_answer', w));
   if(state.currentPassage){ clearReadingAnswers(state.currentPassage.id || state.currentPassage.title); }
+}
+
+/* ---------- mock exam: 3 random passages, one shared 60-minute timer, free tab
+   switching between passages (like the real test), graded together at the end ---------- */
+function passageItemCount(p){ return p.questions.reduce((s,g)=>s+g.items.length, 0); }
+function pickMockPassages(){
+  const pool = (state.reading.passages||[]).filter(p => passageItemCount(p) >= 8);
+  if(pool.length < 3) return null;
+  let best=null, bestDiff=Infinity;
+  for(let attempt=0; attempt<300; attempt++){
+    const shuffled = [...pool].sort(()=>Math.random()-0.5);
+    const combo = shuffled.slice(0,3);
+    const total = combo.reduce((s,p)=>s+passageItemCount(p), 0);
+    const diff = Math.abs(total-40);
+    if(diff < bestDiff){ bestDiff = diff; best = combo; }
+    if(diff === 0) break;
+  }
+  return best;
+}
+
+let mockTimerId = null, mockSecondsLeft = 0;
+
+function startMockExam(){
+  const passages = pickMockPassages();
+  if(!passages){ alert('文章庫不足，無法產生模擬考試（需要至少3篇8題以上的文章）'); return; }
+  state.mockExam = { passages, activeIdx: 0 };
+  document.getElementById('reading-list').style.display = 'none';
+  document.getElementById('reading-test').style.display = 'none';
+  document.getElementById('updates-slot').style.display = 'none';
+  mockSecondsLeft = 60*60;
+  renderMockExam();
+  startMockTimer();
+}
+
+function renderMockExam(){
+  const { passages, activeIdx } = state.mockExam;
+  const tabsHTML = passages.map((p,i)=>
+    `<button type="button" class="mock-tab ${i===activeIdx?'active':''}" onclick="switchMockTab(${i})">Passage ${i+1}</button>`
+  ).join('');
+  const panelsHTML = passages.map((p,i)=>{
+    const qgroupsHTML = renderQuestionGroupsHTML(p);
+    const paragraphsHTML = Object.entries(p.paragraphs).map(([label,text])=>
+      `<p><span class="para-label">${label}</span>${text}</p>`).join('');
+    return `<div class="mock-passage-panel ${i===activeIdx?'active':''}" id="mock-passage-${i}">
+      <div class="split">
+        <div class="passage-box">
+          <h2 style="margin-top:0;">${p.title}</h2>
+          <div>${paragraphsHTML}</div>
+        </div>
+        <div class="qbox">
+          <form id="mockform-${i}">${qgroupsHTML}</form>
+          <div class="score" id="mockScore-${i}" style="margin-top:10px;"></div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  const el = document.getElementById('mock-exam-view');
+  el.style.display = 'block';
+  el.innerHTML = `
+    <button class="backbtn" onclick="exitMockExam()">&larr; 返回閱讀列表</button>
+    <div style="background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">${tabsHTML}</div>
+      <span id="mockTimerDisplay" style="font-weight:800;font-size:18px;color:var(--accent);white-space:nowrap;">${fmtTime(mockSecondsLeft)}</span>
+    </div>
+    ${panelsHTML}
+    <div class="submitbar" style="margin-top:16px;">
+      <button type="button" onclick="submitMockExam(false)">交卷 Submit All</button>
+    </div>
+  `;
+}
+
+function switchMockTab(i){
+  state.mockExam.activeIdx = i;
+  document.querySelectorAll('#mock-exam-view .mock-tab').forEach((btn,idx)=>btn.classList.toggle('active', idx===i));
+  document.querySelectorAll('.mock-passage-panel').forEach((panel,idx)=>panel.classList.toggle('active', idx===i));
+}
+
+function startMockTimer(){
+  mockTimerId = setInterval(()=>{
+    mockSecondsLeft--;
+    const d = document.getElementById('mockTimerDisplay');
+    if(d) d.textContent = fmtTime(Math.max(0,mockSecondsLeft));
+    if(mockSecondsLeft<=300 && d) d.style.color = 'var(--bad)';
+    if(mockSecondsLeft<=0) submitMockExam(true);
+  }, 1000);
+}
+function stopMockTimer(){ if(mockTimerId){ clearInterval(mockTimerId); mockTimerId=null; } }
+
+function exitMockExam(){
+  stopMockTimer();
+  document.getElementById('mock-exam-view').style.display = 'none';
+  document.getElementById('reading-list').style.display = 'block';
+  document.getElementById('updates-slot').style.display = '';
+  state.mockExam = null;
+  renderReadingList();
+}
+
+function submitMockExam(autoSubmitted){
+  stopMockTimer();
+  const { passages } = state.mockExam;
+  let totalCorrect = 0, totalItems = 0;
+  const allWrong = [];
+  const perPassage = passages.map((p,i)=>{
+    const form = document.getElementById('mockform-'+i);
+    const { correct, total, wrongItems } = gradeForm(form, p.title);
+    totalCorrect += correct; totalItems += total;
+    allWrong.push(...wrongItems);
+    const scoreEl = document.getElementById('mockScore-'+i);
+    if(scoreEl) scoreEl.textContent = `Passage ${i+1} 分數：${correct} / ${total}`;
+    return { title: p.title, correct, total };
+  });
+  const band = readingBandEstimate(totalCorrect, totalItems);
+
+  addWrongAnswers(allWrong);
+  saveHistoryEntry({ type:'reading', title: `模擬考試（${passages.map(p=>p.title).join('、')}）`, score: totalCorrect, total: totalItems, band });
+  syncToBackend('reading_score', { title: '模擬考試', score: totalCorrect, total: totalItems });
+  allWrong.forEach(w => syncToBackend('wrong_answer', w));
+
+  const old = document.getElementById('mockSummaryBanner');
+  if(old) old.remove();
+  const summaryHTML = `<div id="mockSummaryBanner" class="qbox" style="margin-bottom:16px;background:${autoSubmitted?'#fff4e5':'#e6f6ec'};border-color:${autoSubmitted?'#e0a95c':'#9bd6b3'};">
+    <h3 style="margin-top:0;">${autoSubmitted ? '⏰ 時間到，已自動交卷' : '✅ 模擬考試結果'}</h3>
+    <p style="font-size:20px;font-weight:800;margin:6px 0;">總分：${totalCorrect} / ${totalItems}　換算約 <span style="color:var(--accent);">Band ${band.toFixed(1)}</span>（僅供參考）</p>
+    <p style="color:var(--sub);font-size:13px;">${perPassage.map((pp,i)=>`Passage ${i+1}：${pp.correct}/${pp.total}`).join('　')}</p>
+  </div>`;
+  const el = document.getElementById('mock-exam-view');
+  el.insertAdjacentHTML('afterbegin', summaryHTML);
+  el.scrollIntoView({behavior:'smooth'});
 }
 
 /* ---------- chart rendering helpers ---------- */
