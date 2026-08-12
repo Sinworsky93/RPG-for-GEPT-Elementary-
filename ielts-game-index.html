@@ -163,6 +163,12 @@
   .ai-section ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;}
   .strength-list li{color:var(--good);}
   .improve-list li{color:var(--bad);}
+  .action-plan{background:#fff8e8;border:1px solid #f0c46b;border-radius:12px;padding:14px 16px;margin-top:16px;}
+  .action-plan h5{margin:0 0 10px;font-size:14px;color:#8a6400;display:flex;align-items:center;gap:6px;}
+  .action-plan .ap-block{margin-bottom:10px;}
+  .action-plan .ap-block:last-child{margin-bottom:0;}
+  .action-plan .ap-crit{font-weight:800;font-size:13px;color:#8a6400;margin-bottom:4px;}
+  .action-plan ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;color:#5c4a00;}
   .vocab-wrap{overflow-x:auto;}
   .vocab-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:420px;}
   .vocab-table td, .vocab-table th{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top;}
@@ -765,6 +771,10 @@ function mockAIFeedback(topic){
       { said:'very good', better:'thoroughly enjoyable', example:'The trip was a thoroughly enjoyable experience.' },
       { said:'a lot of', better:'a considerable number of', example:'A considerable number of visitors come here every year.' },
       { said:'help me', better:'benefit me significantly', example:'Learning this skill has benefited me significantly.' }
+    ],
+    action_plan: [
+      { criterion:'vocab', steps:['更頻繁地使用搭配詞詞典來尋找合適的詞語組合，並用這些片語每天造3個句子練習', '整理今天回饋中出現的更好說法（見上方詞彙建議），錄音時刻意套用進句子裡'] },
+      { criterion:'pronunciation', steps:['練習慢速說話，確保每個單字發音正確，熟練後再逐漸加快速度', '挑選一句考官回饋中提到的句子，跟讀原文影片3次，特別注意重音位置'] }
     ]
   };
 }
@@ -829,6 +839,14 @@ function renderAIFeedbackBody(f, topic, isDemo){
     <td class="ex">${v.example}</td>
   </tr>`).join('');
   const transcriptHTML = f.transcript ? `<div class="ai-section"><h5>📝 逐字稿</h5><p style="font-style:italic;">${f.transcript}</p></div>` : '';
+  const actionPlan = f.action_plan && f.action_plan.length ? f.action_plan : defaultActionPlan(f.sub);
+  const actionPlanHTML = actionPlan.length ? `<div class="action-plan">
+    <h5>✨ Action Plan 行動計畫</h5>
+    ${actionPlan.map(ap=>`<div class="ap-block">
+      <div class="ap-crit">針對「${subLabel(ap.criterion)}」：</div>
+      <ul>${(ap.steps||[]).map(s=>`<li>${s}</li>`).join('')}</ul>
+    </div>`).join('')}
+  </div>` : '';
   const banner = isDemo
     ? `<div class="disclaimer-banner">⚠️ 這是「介面示範」用的假資料，還沒有串接真正的 AI 語音評分服務 — 分數與建議都不是根據你剛剛的錄音產生的。</div>`
     : `<div class="disclaimer-banner" style="background:#e6f6ec;border-color:#9bd6b3;color:#1c8a4b;">✅ 由 AI 依據你這段錄音實際分析產生，僅供參考，不是正式雅思分數。</div>`;
@@ -850,7 +868,22 @@ function renderAIFeedbackBody(f, topic, isDemo){
         ${vocabRows}
       </table></div>
     </div>
+    ${actionPlanHTML}
   `;
+}
+// Generic per-criterion practice suggestions, used when the AI response doesn't
+// include its own action_plan (e.g. cached results from before this feature, or if
+// the backend hasn't been redeployed with the updated prompt yet).
+const ACTION_PLAN_DEFAULTS = {
+  fluency: ['練習用「先講重點、再補充理由跟例子」的結構回答，減少想到哪講到哪的停頓', '錄下自己回答同一題2-3次，聽聽看哪裡卡住，針對那句多練幾次'],
+  vocab: ['更頻繁地使用搭配詞詞典查合適的詞語組合，並用這些片語每天造3個句子練習', '把常用的簡單詞（good/very/a lot of）換成更精確的同義詞，整理成自己的替換清單'],
+  grammar: ['錄音前先在腦中確定這句話的時態，避免過去式與現在式混用', '練習用複合句（含連接詞like although/because/which）取代簡單句，增加文法多樣性'],
+  pronunciation: ['練習慢速說話，確保每個單字發音正確，熟練後再逐漸加快速度', '挑幾個常唸錯的字，跟讀原文影片，特別注意重音位置與語調起伏']
+};
+function defaultActionPlan(sub){
+  if(!sub) return [];
+  const weakest = Object.entries(sub).sort((a,b)=>a[1]-b[1]).slice(0,2);
+  return weakest.map(([k])=>({ criterion:k, steps: ACTION_PLAN_DEFAULTS[k]||[] }));
 }
 async function openAIFeedback(recId, topic){
   document.getElementById('aiFeedbackBody').innerHTML = `<div class="loading">AI 分析中…</div>`;
@@ -917,6 +950,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'口說 AI 批改新增「Action Plan 行動計畫」卡片：針對分數最低的1-2項評分標準，給出具體可執行的練習建議（需重新部署後台才能讓 AI 產生客製化建議，但畫面已支援，舊結果也會自動生成通用建議）' },
   { date:'2026-08-10', text:'修正模擬考試裡文章不能標記螢光筆的問題；補齊「The Science of Persuasion」文章原本只有3段（357字，遠低於一般篇幅），新增2段內容與2題，達到跟其他文章一致的15題' },
   { date:'2026-08-10', text:'閱讀新增「模擬考試」模式：隨機抽3篇文章（自動湊近40題），60分鐘倒數，可自由切換三篇作答，交卷後顯示總分並換算成雅思Band分數；一般單篇練習也同步加上Band換算，跟口說的評分方式一致' },
   { date:'2026-08-10', text:'字體改成Georgia，上方導覽列按鈕放大（字級與內距都加大），手機版也更好點選' },
