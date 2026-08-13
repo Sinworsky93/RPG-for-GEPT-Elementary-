@@ -225,19 +225,52 @@
             30%  { opacity: 1; transform: translate(-50%, -50%) scale(1.25); }
             100% { opacity: 0; transform: translate(-90%, -140%) scale(1); }
         }
+
+        .part-btn, .type-btn {
+            border-color: #145a4c;
+            background-color: rgba(0,30,25,0.4);
+            color: #7fd9c4;
+        }
+        .part-btn.selected, .type-btn.selected {
+            border-color: #00ffcc;
+            background-color: rgba(0,255,204,0.15);
+            color: #00ffcc;
+            box-shadow: 0 0 10px rgba(0,255,204,0.4);
+        }
     </style>
 </head>
 <body class="flex items-center justify-center h-screen overflow-hidden m-0">
     <div class="crt arcade-frame relative w-full max-w-4xl h-[95vh] sm:h-[85vh] bg-gray-900 border-4 p-4 flex flex-col shadow-[0_0_30px_rgba(0,255,204,0.3)] overflow-hidden">
 
         <!-- 系統開始畫面 -->
-        <div id="screen-start" class="flex-1 flex flex-col items-center justify-center text-center space-y-8 z-10">
-            <h1 class="text-6xl sm:text-8xl font-bold title-neon">GEPT-CORE</h1>
-            <p class="text-2xl text-teal-300">>> 終端機連線中... 載入初級英檢資料庫...</p>
-            <div class="w-full max-w-sm space-y-6">
-                <input type="text" id="player-name" placeholder="輸入機器人型號 (Name)" class="w-full bg-black border-2 border-[#00ffcc] text-[#00ffcc] p-3 focus:outline-none focus:bg-gray-800 text-center text-3xl placeholder-teal-700 uppercase">
-                <button onclick="startGame()" class="btn-pixel w-full py-4 text-3xl font-bold font-sans">啟動電源 (POWER ON)</button>
+        <div id="screen-start" class="flex-1 min-h-0 flex flex-col items-center text-center space-y-5 z-10 overflow-y-auto py-4">
+            <h1 class="text-5xl sm:text-7xl font-bold title-neon">GEPT-CORE</h1>
+            <p class="text-lg sm:text-2xl text-teal-300">>> 終端機連線中... 載入初級英檢資料庫...</p>
+
+            <div class="w-full max-w-md">
+                <input type="text" id="player-name" placeholder="輸入機器人型號 (Name)" class="w-full bg-black border-2 border-[#00ffcc] text-[#00ffcc] p-3 focus:outline-none focus:bg-gray-800 text-center text-2xl sm:text-3xl placeholder-teal-700 uppercase">
             </div>
+
+            <div class="w-full max-w-md font-sans">
+                <h3 class="text-lg sm:text-xl text-yellow-400 font-bold mb-2">🛠️ 組裝你的機體（選一個裝備）</h3>
+                <div id="part-select" class="grid grid-cols-2 gap-2 text-sm sm:text-base">
+                    <button onclick="selectPart('armor')" data-part="armor" class="part-btn selected border-2 px-2 py-2 text-left transition font-sans">🛡️ 強化裝甲<br><span class="text-xs opacity-70">裝甲 120（+20）</span></button>
+                    <button onclick="selectPart('time')" data-part="time" class="part-btn border-2 px-2 py-2 text-left transition font-sans">⏱️ 超頻處理器<br><span class="text-xs opacity-70">作答時間 +20%</span></button>
+                    <button onclick="selectPart('chip')" data-part="chip" class="part-btn border-2 px-2 py-2 text-left transition font-sans">💾 備用晶片<br><span class="text-xs opacity-70">作弊晶片 5 個（+2）</span></button>
+                    <button onclick="selectPart('score')" data-part="score" class="part-btn border-2 px-2 py-2 text-left transition font-sans">🎯 精準瞄準鏡<br><span class="text-xs opacity-70">積分 +20%</span></button>
+                </div>
+            </div>
+
+            <div class="w-full max-w-md font-sans">
+                <h3 class="text-lg sm:text-xl text-yellow-400 font-bold mb-2">📚 選擇練習題型（至少選一個）</h3>
+                <div id="type-select" class="flex gap-2 justify-center text-sm sm:text-base">
+                    <button onclick="toggleType('combat')" data-type="combat" class="type-btn selected border-2 px-3 py-2 transition font-sans">文法</button>
+                    <button onclick="toggleType('vocab')" data-type="vocab" class="type-btn selected border-2 px-3 py-2 transition font-sans">單字</button>
+                    <button onclick="toggleType('puzzle')" data-type="puzzle" class="type-btn selected border-2 px-3 py-2 transition font-sans">重組句子</button>
+                </div>
+            </div>
+
+            <button onclick="startGame()" class="btn-pixel w-full max-w-md py-4 text-2xl sm:text-3xl font-bold font-sans">啟動電源 (POWER ON)</button>
         </div>
 
         <!-- 遊戲主畫面 -->
@@ -260,7 +293,7 @@
             <div class="flex justify-between items-end border-b-2 border-teal-800 pb-2 mb-4 text-xl sm:text-2xl font-sans">
                 <div>
                     <span id="ui-name" class="font-bold text-teal-100"></span><br>
-                    裝甲 (HP): <span id="ui-hp" class="text-red-400 font-bold">100</span>/100
+                    裝甲 (HP): <span id="ui-hp" class="text-red-400 font-bold">100</span>/<span id="ui-hp-max">100</span>
                     <div class="w-32 sm:w-48 h-4 border-2 border-red-500 mt-1 bg-black">
                         <div id="ui-hp-bar" class="h-full bg-red-500 w-full transition-all duration-300"></div>
                     </div>
@@ -669,10 +702,12 @@
         ];
 
         let GAME = {
-            player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0, combo: 0, bossCounterFired: false, bossChipUsed: false,
+            player: 'ROBOT-X', hp: 100, maxHp: 100, chips: 3, parts: 0, stage: 0, score: 0, combo: 0, bossCounterFired: false, bossChipUsed: false,
             enemyHp: 0, isProcessing: false, isEventChallenge: false, paused: false,
             timer: null, timeLeft: 0, maxTime: 10, currentQ: null, currentQType: null,
-            combatQueue: [], puzzleQueue: [], vocabQueue: [], wrongAnswers: []
+            combatQueue: [], puzzleQueue: [], vocabQueue: [], wrongAnswers: [],
+            equippedPart: 'armor', timeMultiplier: 1, scoreMultiplier: 1,
+            enabledTypes: { combat: true, vocab: true, puzzle: true }
         };
 
         let puzzleSelected = [];
@@ -883,12 +918,40 @@
             });
         }
 
+        // 裝備選擇（開場只能選一個，會影響本次遊戲的能力加成）
+        function selectPart(part) {
+            GAME.equippedPart = part;
+            document.querySelectorAll('.part-btn').forEach(b => b.classList.toggle('selected', b.dataset.part === part));
+        }
+
+        // 練習題型選擇（可複選，至少要保留一個開啟）
+        function toggleType(type) {
+            const enabledCount = Object.values(GAME.enabledTypes).filter(Boolean).length;
+            if (GAME.enabledTypes[type] && enabledCount <= 1) return;
+            GAME.enabledTypes[type] = !GAME.enabledTypes[type];
+            document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('selected', GAME.enabledTypes[b.dataset.type]));
+        }
+
+        // 從目前開啟的題型中挑一個；如果指定的 preferred 題型有開啟就優先用它，否則隨機挑一個已開啟的題型
+        function pickEnabledType(preferred) {
+            const enabled = ['combat', 'vocab', 'puzzle'].filter(t => GAME.enabledTypes[t]);
+            if (enabled.length === 0) return 'combat';
+            if (preferred && enabled.includes(preferred)) return preferred;
+            return enabled[Math.floor(Math.random() * enabled.length)];
+        }
+
         function startGame() {
             ensureAudio();
             const nameInput = document.getElementById('player-name').value.trim();
             if (nameInput) GAME.player = nameInput.toUpperCase();
 
-            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0; GAME.combo = 0; GAME.paused = false; GAME.bossChipUsed = false;
+            GAME.maxHp = GAME.equippedPart === 'armor' ? 120 : 100;
+            GAME.hp = GAME.maxHp;
+            GAME.chips = GAME.equippedPart === 'chip' ? 5 : 3;
+            GAME.timeMultiplier = GAME.equippedPart === 'time' ? 1.2 : 1;
+            GAME.scoreMultiplier = GAME.equippedPart === 'score' ? 1.2 : 1;
+
+            GAME.parts = 0; GAME.stage = 0; GAME.score = 0; GAME.combo = 0; GAME.paused = false; GAME.bossChipUsed = false;
             GAME.combatQueue = []; GAME.puzzleQueue = []; GAME.vocabQueue = []; GAME.wrongAnswers = [];
             document.getElementById('pause-overlay').classList.add('hidden');
             document.getElementById('btn-pause').textContent = '⏸️';
@@ -902,7 +965,8 @@
         function updateTopUI() {
             document.getElementById('ui-name').innerText = `[${GAME.player}]`;
             document.getElementById('ui-hp').innerText = Math.max(0, GAME.hp);
-            document.getElementById('ui-hp-bar').style.width = `${Math.max(0, GAME.hp)}%`;
+            document.getElementById('ui-hp-max').innerText = GAME.maxHp;
+            document.getElementById('ui-hp-bar').style.width = `${Math.max(0, (GAME.hp / GAME.maxHp) * 100)}%`;
             document.getElementById('ui-score').innerText = GAME.score;
             document.getElementById('ui-chips').innerText = GAME.chips;
             document.getElementById('ui-parts').innerText = GAME.parts;
@@ -960,15 +1024,13 @@
             if (currentType === 'event') {
                 setupEvent(); return;
             }
-            if (currentType === 'boss') {
-                currentType = ['combat', 'puzzle', 'vocab'][Math.floor(Math.random() * 3)];
-            }
+            currentType = currentType === 'boss' ? pickEnabledType(null) : pickEnabledType(currentType);
 
             if (currentType === 'combat') setupCombat('combatQueue', Q_COMBAT);
             else if (currentType === 'vocab') setupCombat('vocabQueue', Q_VOCAB);
             else setupPuzzle();
 
-            GAME.maxTime = level.time;
+            GAME.maxTime = level.time * GAME.timeMultiplier;
             GAME.timeLeft = GAME.maxTime;
             startTimer();
         }
@@ -992,12 +1054,12 @@
                 document.getElementById('timer-container').style.visibility = 'visible';
 
                 GAME.enemyHp = 1; GAME.isEventChallenge = true;
-                const hackType = ['combat', 'puzzle', 'vocab'][Math.floor(Math.random() * 3)];
+                const hackType = pickEnabledType(null);
                 if (hackType === 'puzzle') setupPuzzle();
                 else if (hackType === 'vocab') setupCombat('vocabQueue', Q_VOCAB);
                 else setupCombat('combatQueue', Q_COMBAT);
 
-                GAME.maxTime = 20; GAME.timeLeft = 20;
+                GAME.maxTime = 20 * GAME.timeMultiplier; GAME.timeLeft = GAME.maxTime;
                 startTimer();
             };
 
@@ -1123,7 +1185,7 @@
                 const oldTier = comboMultiplier(GAME.combo);
                 GAME.combo++;
                 const mult = comboMultiplier(GAME.combo);
-                GAME.score += Math.round(points * mult);
+                GAME.score += Math.round(points * mult * GAME.scoreMultiplier);
                 if (mult > oldTier) {
                     sfxCombo(GAME.combo);
                     const comboEl = document.getElementById('ui-combo');
@@ -1173,20 +1235,12 @@
                 setTimeout(() => {
                     GAME.isProcessing = false;
                     const stageType = LEVELS[GAME.stage].type;
-                    if (stageType === 'boss') {
-                        const pick = ['combat', 'puzzle', 'vocab'][Math.floor(Math.random() * 3)];
-                        document.getElementById('puzzle-area').classList.add('hidden');
-                        document.getElementById('combat-area').classList.add('hidden');
-                        if (pick === 'puzzle') setupPuzzle();
-                        else if (pick === 'vocab') setupCombat('vocabQueue', Q_VOCAB);
-                        else setupCombat('combatQueue', Q_COMBAT);
-                    } else if (stageType === 'combat') {
-                        setupCombat('combatQueue', Q_COMBAT);
-                    } else if (stageType === 'vocab') {
-                        setupCombat('vocabQueue', Q_VOCAB);
-                    } else {
-                        setupPuzzle();
-                    }
+                    const pick = stageType === 'boss' ? pickEnabledType(null) : pickEnabledType(stageType);
+                    document.getElementById('puzzle-area').classList.add('hidden');
+                    document.getElementById('combat-area').classList.add('hidden');
+                    if (pick === 'puzzle') setupPuzzle();
+                    else if (pick === 'vocab') setupCombat('vocabQueue', Q_VOCAB);
+                    else setupCombat('combatQueue', Q_COMBAT);
                     // 扣血後補回一點時間
                     GAME.timeLeft = Math.min(GAME.maxTime, GAME.timeLeft + (GAME.maxTime * 0.4));
                     startTimer();
@@ -1222,7 +1276,7 @@
         async function addPart() {
             GAME.parts++;
             if (GAME.parts >= 3) {
-                GAME.parts = 0; GAME.chips++; GAME.hp = Math.min(100, GAME.hp + 30);
+                GAME.parts = 0; GAME.chips++; GAME.hp = Math.min(GAME.maxHp, GAME.hp + 30);
                 updateTopUI();
                 await showMessage('系統修復！<br>HP +30<br>獲得晶片 +1', 'text-[#00ffcc]', 2000);
             } else {
@@ -1287,7 +1341,7 @@
             if (isWin) {
                 title.innerText = '任務完成\n(MISSION ACCOMPLISHED)';
                 title.className = 'text-5xl sm:text-7xl font-bold text-yellow-400 drop-shadow-[0_0_15px_rgba(250,204,21,0.8)]';
-                desc.innerHTML = `幹得好，機體 ${GAME.player}！<br><br>母艦核心已成功奪回<br>最終積分：${GAME.score}<br>剩餘晶片：${GAME.chips}<br>最終殘餘裝甲：${GAME.hp}%`;
+                desc.innerHTML = `幹得好，機體 ${GAME.player}！<br><br>母艦核心已成功奪回<br>最終積分：${GAME.score}<br>剩餘晶片：${GAME.chips}<br>最終殘餘裝甲：${Math.max(0, GAME.hp)}/${GAME.maxHp}`;
             } else {
                 title.innerText = '系統崩潰\n(SYSTEM FAILURE)';
                 title.className = 'text-5xl sm:text-7xl font-bold text-red-600 drop-shadow-[0_0_20px_rgba(220,38,38,0.8)] animate-pulse';
