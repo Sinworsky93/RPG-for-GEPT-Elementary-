@@ -244,6 +244,13 @@
         <div id="screen-game" class="hidden flex-1 flex flex-col z-10 relative min-h-0">
             <div id="warp-overlay" class="warp-overlay"></div>
 
+            <!-- 暫停疊加層（蓋住所有畫面與按鈕，計時器同步停止） -->
+            <div id="pause-overlay" class="hidden absolute inset-0 z-40 bg-black bg-opacity-90 flex flex-col items-center justify-center space-y-6 font-sans text-center p-6">
+                <h2 class="text-4xl sm:text-5xl font-bold text-teal-300 tracking-widest">⏸ 遊戲暫停 (PAUSED)</h2>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-md leading-relaxed">計時器已經停止，慢慢來，準備好後按下面的按鈕繼續！</p>
+                <button onclick="togglePause()" class="btn-pixel px-8 py-3 text-2xl font-bold">▶ 繼續遊戲 (RESUME)</button>
+            </div>
+
             <!-- 系統訊息疊加層（蓋住整個遊戲畫面，訊息再長都放得下） -->
             <div id="sys-message" class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-90 hidden z-30 border-2 border-teal-500 p-4 overflow-y-auto">
                 <h2 id="sys-message-text" class="text-3xl sm:text-5xl font-bold text-center leading-relaxed font-sans"></h2>
@@ -260,6 +267,7 @@
                 </div>
                 <div class="text-right leading-tight">
                     <button id="btn-mute" onclick="toggleMute()" class="text-xl mr-1 align-middle" title="靜音開關">🔊</button>
+                    <button id="btn-pause" onclick="togglePause()" class="text-xl mr-1 align-middle" title="暫停遊戲">⏸️</button>
                     積分 (SCORE): <span id="ui-score" class="font-bold text-green-400 text-2xl">0</span>
                     <span id="ui-combo" class="hidden ml-1 text-pink-400 font-bold text-lg align-middle"></span><br>
                     作弊晶片 (HACK): <span id="ui-chips" class="font-bold text-yellow-400 text-3xl">3</span>
@@ -464,94 +472,94 @@
 
         // 單字題庫：涵蓋 GEPT 初級常見生活單字（家庭、學校、場所、動詞、形容詞、易混淆單字）
         const Q_VOCAB = [
-            { q: "'library' 的意思是？", opt: ["圖書館", "醫院", "超市", "公園"], ans: 0 },
-            { q: "'hospital' 的意思是？", opt: ["學校", "醫院", "餐廳", "工廠"], ans: 1 },
-            { q: "'restaurant' 的意思是？", opt: ["餐廳", "麵包店", "銀行", "車站"], ans: 0 },
-            { q: "'airport' 的意思是？", opt: ["港口", "車站", "機場", "飯店"], ans: 2 },
-            { q: "'umbrella' 的意思是？", opt: ["雨傘", "毛巾", "毯子", "枕頭"], ans: 0 },
-            { q: "'refrigerator' 的意思是？", opt: ["烤箱", "洗衣機", "冰箱", "冷氣機"], ans: 2 },
-            { q: "'neighbor' 的意思是？", opt: ["陌生人", "客人", "鄰居", "同學"], ans: 2 },
-            { q: "'holiday' 的意思是？", opt: ["平日", "假期", "週末", "生日"], ans: 1 },
-            { q: "'weather' 的意思是？", opt: ["季節", "天氣", "方向", "顏色"], ans: 1 },
-            { q: "'schedule' 的意思是？", opt: ["字典", "日曆", "時間表", "筆記本"], ans: 2 },
-            { q: "'stranger' 的意思是？", opt: ["朋友", "鄰居", "老師", "陌生人"], ans: 3 },
-            { q: "'address' 的意思是？", opt: ["地址", "姓名", "號碼", "訊息"], ans: 0 },
-            { q: "'instrument' 的意思是？", opt: ["家具", "樂器", "交通工具", "蔬菜"], ans: 1 },
-            { q: "'customer' 的意思是？", opt: ["老闆", "服務生", "顧客", "司機"], ans: 2 },
-            { q: "'towel' 的意思是？", opt: ["雨傘", "毯子", "襪子", "毛巾"], ans: 3 },
-            { q: "'borrow' 的意思是？", opt: ["借（入）", "借（出）", "歸還", "購買"], ans: 0 },
-            { q: "'arrive' 的意思是？", opt: ["離開", "到達", "等待", "停留"], ans: 1 },
-            { q: "'invite' 的意思是？", opt: ["拒絕", "邀請", "同意", "承諾"], ans: 1 },
-            { q: "'repair' 的意思是？", opt: ["打破", "建造", "修理", "打掃"], ans: 2 },
-            { q: "'discover' 的意思是？", opt: ["遺失", "隱藏", "忘記", "發現"], ans: 3 },
-            { q: "'complain' 的意思是？", opt: ["稱讚", "抱怨", "同意", "感謝"], ans: 1 },
-            { q: "'celebrate' 的意思是？", opt: ["取消", "避免", "慶祝", "忽略"], ans: 2 },
-            { q: "'improve' 的意思是？", opt: ["改善", "停止", "遺忘", "拒絕"], ans: 0 },
-            { q: "'protect' 的意思是？", opt: ["攻擊", "保護", "損害", "忽視"], ans: 1 },
-            { q: "'explain' 的意思是？", opt: ["隱藏", "質疑", "解釋", "猜測"], ans: 2 },
-            { q: "'dangerous' 的意思是？", opt: ["安全的", "舒適的", "危險的", "方便的"], ans: 2 },
-            { q: "'crowded' 的意思是？", opt: ["空的", "擁擠的", "安靜的", "寬的"], ans: 1 },
-            { q: "'nervous' 的意思是？", opt: ["放鬆的", "緊張的", "有自信的", "無聊的"], ans: 1 },
-            { q: "'polite' 的意思是？", opt: ["粗魯的", "害羞的", "懶惰的", "有禮貌的"], ans: 3 },
-            { q: "'honest' 的意思是？", opt: ["不誠實的", "自私的", "誠實的", "粗心的"], ans: 2 },
-            { q: "'patient' 的意思是？", opt: ["沒耐心的", "生氣的", "緊張的", "有耐心的"], ans: 3 },
-            { q: "'wonderful' 的意思是？", opt: ["很糟的", "普通的", "無聊的", "極好的"], ans: 3 },
-            { q: "'careful' 的意思是？", opt: ["粗心的", "小心的", "勇敢的", "好奇的"], ans: 1 },
-            { q: "'curious' 的意思是？", opt: ["好奇的", "無聊的", "疲累的", "生氣的"], ans: 0 },
-            { q: "'generous' 的意思是？", opt: ["小氣的", "嫉妒的", "驕傲的", "慷慨的"], ans: 3 },
-            { q: "'suddenly' 的意思是？", opt: ["慢慢地", "最後", "通常", "突然地"], ans: 3 },
-            { q: "'probably' 的意思是？", opt: ["必定地", "從不", "可能地", "總是"], ans: 2 },
-            { q: "'carefully' 的意思是？", opt: ["粗心地", "快速地", "小心地", "大聲地"], ans: 2 },
-            { q: "'immediately' 的意思是？", opt: ["最終", "很少", "偶爾", "立刻"], ans: 3 },
-            { q: "'environment' 的意思是？", opt: ["設備", "實驗", "環境", "娛樂"], ans: 2 },
-            { q: "'exercise' 的意思是？", opt: ["經驗", "考試", "表達", "運動；練習"], ans: 3 },
-            { q: "'experience' 的意思是？", opt: ["花費", "藉口", "經驗", "交換"], ans: 2 },
-            { q: "'information' 的意思是？", opt: ["指示", "邀請函", "資訊", "想像力"], ans: 2 },
-            { q: "'decision' 的意思是？", opt: ["方向", "討論", "決定", "描述"], ans: 2 },
-            { q: "'mistake' 的意思是？", opt: ["訊息", "記憶", "方法", "錯誤"], ans: 3 },
-            { q: "'traffic' 的意思是？", opt: ["旅行", "交通", "運輸", "麻煩"], ans: 1 },
-            { q: "'difference' 的意思是？", opt: ["距離", "方向", "不同；差異", "決定"], ans: 2 },
-            { q: "'quality' 的意思是？", opt: ["數量", "問題", "隊伍", "品質"], ans: 3 },
-            { q: "This singer is very popular; almost every teenager in Taiwan knows her songs. 'popular' 的意思是？", opt: ["受歡迎的", "昂貴的", "古老的", "危險的"], ans: 0 },
-            { q: "These two bags look similar, but one is much more expensive than the other. 'similar' 的意思是？", opt: ["相似的", "便宜的", "破舊的", "巨大的"], ans: 0 },
-            { q: "This sofa is so comfortable that I always fall asleep on it after dinner. 'comfortable' 的意思是？", opt: ["昂貴的", "舒適的", "堅硬的", "狹窄的"], ans: 1 },
-            { q: "Living near the MRT station is very convenient for people who work downtown. 'convenient' 的意思是？", opt: ["困難的", "方便的", "擁擠的", "遙遠的"], ans: 1 },
-            { q: "It is necessary to bring an umbrella because it might rain this afternoon. 'necessary' 的意思是？", opt: ["必要的", "多餘的", "禁止的", "免費的"], ans: 0 },
-            { q: "Is it possible to finish this report before Friday if we work together? 'possible' 的意思是？", opt: ["不可能的", "可能的", "確定的", "困難的"], ans: 1 },
-            { q: "Sorry, this seat is not available; someone already reserved it for the concert. 'available' 的意思是？", opt: ["昂貴的", "損壞的", "可取得的", "禁止的"], ans: 2 },
-            { q: "Our school held an international food festival with dishes from ten countries. 'international' 的意思是？", opt: ["國際的", "國內的", "傳統的", "私人的"], ans: 0 },
-            { q: "My grandmother taught me how to cook several traditional dishes from her hometown. 'traditional' 的意思是？", opt: ["現代的", "傳統的", "昂貴的", "簡單的"], ans: 1 },
-            { q: "The city built a modern library with computers and comfortable reading rooms. 'modern' 的意思是？", opt: ["古老的", "現代的", "傳統的", "簡陋的"], ans: 1 },
-            { q: "Try to stay positive even when things don't go the way you planned. 'positive' 的意思是？", opt: ["正面的", "負面的", "中立的", "複雜的"], ans: 0 },
-            { q: "Too much negative news on TV can make people feel worried and tired. 'negative' 的意思是？", opt: ["正面的", "負面的", "積極的", "樂觀的"], ans: 1 },
-            { q: "Air pollution in big cities is getting worse because of heavy traffic. 'pollution' 的意思是？", opt: ["污染", "資源", "天氣", "景色"], ans: 0 },
-            { q: "We should recycle plastic bottles instead of throwing them into the trash can. 'recycle' 的意思是？", opt: ["丟棄", "購買", "回收", "製造"], ans: 2 },
-            { q: "Every weekend, my sister works as a volunteer at the animal shelter downtown. 'volunteer' 的意思是？", opt: ["顧客", "志工", "老闆", "專家"], ans: 1 },
-            { q: "The new park brings the whole community together for exercise and picnics. 'community' 的意思是？", opt: ["社區", "公司", "學校", "政府"], ans: 0 },
-            { q: "Taking off your shoes before entering a house is a common custom here. 'custom' 的意思是？", opt: ["習俗", "法律", "課程", "比賽"], ans: 0 },
-            { q: "Thousands of people gather in the park every year for the lantern festival. 'festival' 的意思是？", opt: ["節慶", "考試", "會議", "競賽"], ans: 0 },
-            { q: "I was disappointed when our trip to the beach was cancelled because of rain. 'disappointed' 的意思是？", opt: ["興奮的", "失望的", "驕傲的", "害怕的"], ans: 1 },
-            { q: "He felt embarrassed after he called his teacher 'Mom' in front of the class. 'embarrassed' 的意思是？", opt: ["自豪的", "尷尬的", "放鬆的", "滿意的"], ans: 1 },
-            { q: "After weeks of practice, she felt confident about her speech contest tomorrow. 'confident' 的意思是？", opt: ["緊張的", "害羞的", "有信心的", "懶惰的"], ans: 2 },
-            { q: "My grandfather is still very active; he goes hiking every single weekend. 'active' 的意思是？", opt: ["活躍的", "安靜的", "疲累的", "害羞的"], ans: 0 },
-            { q: "Her small bakery became so successful that she opened three more stores. 'successful' 的意思是？", opt: ["失敗的", "成功的", "普通的", "貧窮的"], ans: 1 },
-            { q: "Students should respect their teachers and listen carefully during class. 'respect' 的意思是？", opt: ["尊重", "抱怨", "懷疑", "忽略"], ans: 0 },
-            { q: "As the team leader, she is responsible for organizing all the meetings. 'responsible' 的意思是？", opt: ["粗心的", "負責任的", "懶惰的", "害怕的"], ans: 1 },
-            { q: "My coach always tries to encourage us, even after we lose a game. 'encourage' 的意思是？", opt: ["批評", "鼓勵", "拒絕", "懲罰"], ans: 1 },
-            { q: "It took him five years of hard training to achieve his Olympic dream. 'achieve' 的意思是？", opt: ["放棄", "達成", "忘記", "延遲"], ans: 1 },
-            { q: "The children were so energetic that they kept running around the playground. 'energetic' 的意思是？", opt: ["疲累的", "精力充沛的", "安靜的", "害羞的"], ans: 1 },
-            { q: "After the ten-kilometer race, all the runners looked completely exhausted. 'exhausted' 的意思是？", opt: ["精力充沛的", "精疲力盡的", "開心的", "緊張的"], ans: 1 },
-            { q: "The customer was satisfied with the service, so she left a good review. 'satisfied' 的意思是？", opt: ["生氣的", "滿意的", "失望的", "困惑的"], ans: 1 },
-            { q: "My brother recently moved to Taipei to start his new job at a bank. 'recently' 的意思是？", opt: ["最近", "很久以前", "從不", "總是"], ans: 0 },
-            { q: "Nowadays, many people prefer shopping online instead of going to the mall. 'nowadays' 的意思是？", opt: ["過去", "現今", "未來", "偶爾"], ans: 1 },
-            { q: "According to the weather report, it will be sunny for the whole weekend. 'according' 的意思是？", opt: ["根據", "除了", "儘管", "因為"], ans: 0 },
-            { q: "I love all fruits, especially watermelon, because it's sweet and refreshing. 'especially' 的意思是？", opt: ["尤其", "很少", "從不", "偶爾"], ans: 0 },
-            { q: "I thought the movie would be boring, but it was actually quite exciting. 'actually' 的意思是？", opt: ["也許", "事實上", "可能", "似乎"], ans: 1 },
-            { q: "Please read the following instructions carefully before you start the test. 'following' 的意思是？", opt: ["之前的", "接下來的", "相同的", "過去的"], ans: 1 },
-            { q: "The average student in this class studies about two hours every night. 'average' 的意思是？", opt: ["最高的", "平均的", "最低的", "特別的"], ans: 1 },
-            { q: "Losing your keys is a common problem, so always keep a spare one. 'common' 的意思是？", opt: ["罕見的", "常見的", "昂貴的", "危險的"], ans: 1 },
-            { q: "We decided to buy vegetables from the local farmers' market this weekend. 'local' 的意思是？", opt: ["外國的", "當地的", "國際的", "遙遠的"], ans: 1 },
-            { q: "Smoking is not allowed in most public places, such as parks and stations. 'public' 的意思是？", opt: ["私人的", "公共的", "秘密的", "個人的"], ans: 1 }
+            { q: "'library' 的意思是？", opt: ["圖書館", "醫院", "超市", "公園"], ans: 0, tip: "library：圖書館，重點是「借書看書」的地方，不是醫院(hospital)也不是超市(supermarket)。" },
+            { q: "'hospital' 的意思是？", opt: ["學校", "醫院", "餐廳", "工廠"], ans: 1, tip: "hospital：醫院，生病受傷要去的地方，別和 school（學校）搞混。" },
+            { q: "'restaurant' 的意思是？", opt: ["餐廳", "麵包店", "銀行", "車站"], ans: 0, tip: "restaurant：餐廳，吃飯的地方；bakery 是麵包店，bank 是銀行。" },
+            { q: "'airport' 的意思是？", opt: ["港口", "車站", "機場", "飯店"], ans: 2, tip: "airport：機場，搭飛機的地方；harbor 是港口，station 是車站。" },
+            { q: "'umbrella' 的意思是？", opt: ["雨傘", "毛巾", "毯子", "枕頭"], ans: 0, tip: "umbrella：雨傘，下雨天用來遮雨；towel 是毛巾，blanket 是毯子。" },
+            { q: "'refrigerator' 的意思是？", opt: ["烤箱", "洗衣機", "冰箱", "冷氣機"], ans: 2, tip: "refrigerator：冰箱，用來保存食物的家電；oven 是烤箱，washing machine 是洗衣機。" },
+            { q: "'neighbor' 的意思是？", opt: ["陌生人", "客人", "鄰居", "同學"], ans: 2, tip: "neighbor：鄰居，住在附近的人；stranger 是陌生人，guest 是客人。" },
+            { q: "'holiday' 的意思是？", opt: ["平日", "假期", "週末", "生日"], ans: 1, tip: "holiday：假期、節日，不用上班上課的日子；weekday 是平日。" },
+            { q: "'weather' 的意思是？", opt: ["季節", "天氣", "方向", "顏色"], ans: 1, tip: "weather：天氣，晴雨冷熱的狀態；season 是季節。" },
+            { q: "'schedule' 的意思是？", opt: ["字典", "日曆", "時間表", "筆記本"], ans: 2, tip: "schedule：時間表、行程表，安排事情的時間；calendar 是日曆。" },
+            { q: "'stranger' 的意思是？", opt: ["朋友", "鄰居", "老師", "陌生人"], ans: 3, tip: "stranger：陌生人，不認識的人；neighbor 是鄰居，friend 是朋友。" },
+            { q: "'address' 的意思是？", opt: ["地址", "姓名", "號碼", "訊息"], ans: 0, tip: "address：地址，用來寄信找地方的資訊；name 是姓名。" },
+            { q: "'instrument' 的意思是？", opt: ["家具", "樂器", "交通工具", "蔬菜"], ans: 1, tip: "instrument：樂器，用來演奏音樂的工具；furniture 是家具。" },
+            { q: "'customer' 的意思是？", opt: ["老闆", "服務生", "顧客", "司機"], ans: 2, tip: "customer：顧客，買東西的人；waiter 是服務生，boss 是老闆。" },
+            { q: "'towel' 的意思是？", opt: ["雨傘", "毯子", "襪子", "毛巾"], ans: 3, tip: "towel：毛巾，擦身體用的；umbrella 是雨傘，blanket 是毯子。" },
+            { q: "'borrow' 的意思是？", opt: ["借（入）", "借（出）", "歸還", "購買"], ans: 0, tip: "borrow：向別人借東西（借入）；lend 是借出去給別人。" },
+            { q: "'arrive' 的意思是？", opt: ["離開", "到達", "等待", "停留"], ans: 1, tip: "arrive：到達目的地；leave 是離開，wait 是等待。" },
+            { q: "'invite' 的意思是？", opt: ["拒絕", "邀請", "同意", "承諾"], ans: 1, tip: "invite：邀請別人來；refuse 是拒絕，promise 是承諾。" },
+            { q: "'repair' 的意思是？", opt: ["打破", "建造", "修理", "打掃"], ans: 2, tip: "repair：修理壞掉的東西；build 是建造，break 是打破。" },
+            { q: "'discover' 的意思是？", opt: ["遺失", "隱藏", "忘記", "發現"], ans: 3, tip: "discover：發現新事物；lose 是遺失，hide 是隱藏。" },
+            { q: "'complain' 的意思是？", opt: ["稱讚", "抱怨", "同意", "感謝"], ans: 1, tip: "complain：抱怨、不滿意時說出來；praise 是稱讚。" },
+            { q: "'celebrate' 的意思是？", opt: ["取消", "避免", "慶祝", "忽略"], ans: 2, tip: "celebrate：慶祝重要的日子；cancel 是取消。" },
+            { q: "'improve' 的意思是？", opt: ["改善", "停止", "遺忘", "拒絕"], ans: 0, tip: "improve：讓事情變得更好、改善；stop 是停止。" },
+            { q: "'protect' 的意思是？", opt: ["攻擊", "保護", "損害", "忽視"], ans: 1, tip: "protect：保護、避免受到傷害；attack 是攻擊，harm 是損害。" },
+            { q: "'explain' 的意思是？", opt: ["隱藏", "質疑", "解釋", "猜測"], ans: 2, tip: "explain：解釋讓別人懂；hide 是隱藏，guess 是猜測。" },
+            { q: "'dangerous' 的意思是？", opt: ["安全的", "舒適的", "危險的", "方便的"], ans: 2, tip: "dangerous：危險的，可能造成傷害；safe 是安全的。" },
+            { q: "'crowded' 的意思是？", opt: ["空的", "擁擠的", "安靜的", "寬的"], ans: 1, tip: "crowded：擁擠的，人很多；empty 是空的，quiet 是安靜的。" },
+            { q: "'nervous' 的意思是？", opt: ["放鬆的", "緊張的", "有自信的", "無聊的"], ans: 1, tip: "nervous：緊張的，考試前常有的感覺；relaxed 是放鬆的。" },
+            { q: "'polite' 的意思是？", opt: ["粗魯的", "害羞的", "懶惰的", "有禮貌的"], ans: 3, tip: "polite：有禮貌的；rude 是粗魯的。" },
+            { q: "'honest' 的意思是？", opt: ["不誠實的", "自私的", "誠實的", "粗心的"], ans: 2, tip: "honest：誠實的，不說謊；dishonest 是不誠實的。" },
+            { q: "'patient' 的意思是？", opt: ["沒耐心的", "生氣的", "緊張的", "有耐心的"], ans: 3, tip: "patient：有耐心的；impatient 是沒耐心的。" },
+            { q: "'wonderful' 的意思是？", opt: ["很糟的", "普通的", "無聊的", "極好的"], ans: 3, tip: "wonderful：極好的、很棒的；terrible 是很糟的。" },
+            { q: "'careful' 的意思是？", opt: ["粗心的", "小心的", "勇敢的", "好奇的"], ans: 1, tip: "careful：小心的；careless 是粗心的。" },
+            { q: "'curious' 的意思是？", opt: ["好奇的", "無聊的", "疲累的", "生氣的"], ans: 0, tip: "curious：好奇的，想知道更多；bored 是無聊的。" },
+            { q: "'generous' 的意思是？", opt: ["小氣的", "嫉妒的", "驕傲的", "慷慨的"], ans: 3, tip: "generous：慷慨的，願意分享；stingy 是小氣的。" },
+            { q: "'suddenly' 的意思是？", opt: ["慢慢地", "最後", "通常", "突然地"], ans: 3, tip: "suddenly：突然地，沒有預警地發生；slowly 是慢慢地。" },
+            { q: "'probably' 的意思是？", opt: ["必定地", "從不", "可能地", "總是"], ans: 2, tip: "probably：可能地，不是百分之百確定；never 是從不。" },
+            { q: "'carefully' 的意思是？", opt: ["粗心地", "快速地", "小心地", "大聲地"], ans: 2, tip: "carefully：小心地做某事；carelessly 是粗心地。" },
+            { q: "'immediately' 的意思是？", opt: ["最終", "很少", "偶爾", "立刻"], ans: 3, tip: "immediately：立刻、馬上；eventually 是最終。" },
+            { q: "'environment' 的意思是？", opt: ["設備", "實驗", "環境", "娛樂"], ans: 2, tip: "environment：環境，我們生活的周遭；equipment 是設備。" },
+            { q: "'exercise' 的意思是？", opt: ["經驗", "考試", "表達", "運動；練習"], ans: 3, tip: "exercise：運動、練習，用來保持健康；exam 是考試。" },
+            { q: "'experience' 的意思是？", opt: ["花費", "藉口", "經驗", "交換"], ans: 2, tip: "experience：經驗，做過的事累積的知識；expense 是花費。" },
+            { q: "'information' 的意思是？", opt: ["指示", "邀請函", "資訊", "想像力"], ans: 2, tip: "information：資訊、消息；invitation 是邀請函。" },
+            { q: "'decision' 的意思是？", opt: ["方向", "討論", "決定", "描述"], ans: 2, tip: "decision：決定，做選擇後的結果；discussion 是討論。" },
+            { q: "'mistake' 的意思是？", opt: ["訊息", "記憶", "方法", "錯誤"], ans: 3, tip: "mistake：錯誤，做錯的地方；memory 是記憶。" },
+            { q: "'traffic' 的意思是？", opt: ["旅行", "交通", "運輸", "麻煩"], ans: 1, tip: "traffic：交通，車輛來往的狀況；travel 是旅行。" },
+            { q: "'difference' 的意思是？", opt: ["距離", "方向", "不同；差異", "決定"], ans: 2, tip: "difference：不同、差異；distance 是距離。" },
+            { q: "'quality' 的意思是？", opt: ["數量", "問題", "隊伍", "品質"], ans: 3, tip: "quality：品質，東西好壞的程度；quantity 是數量。" },
+            { q: "This singer is very popular; almost every teenager in Taiwan knows her songs. 'popular' 的意思是？", opt: ["受歡迎的", "昂貴的", "古老的", "危險的"], ans: 0, tip: "這句話的意思：這位歌手很受歡迎，台灣幾乎每個青少年都知道她的歌。" },
+            { q: "These two bags look similar, but one is much more expensive than the other. 'similar' 的意思是？", opt: ["相似的", "便宜的", "破舊的", "巨大的"], ans: 0, tip: "這句話的意思：這兩個包包看起來很相似，但其中一個貴很多。" },
+            { q: "This sofa is so comfortable that I always fall asleep on it after dinner. 'comfortable' 的意思是？", opt: ["昂貴的", "舒適的", "堅硬的", "狹窄的"], ans: 1, tip: "這句話的意思：這張沙發好舒服，我晚餐後常常在上面睡著。" },
+            { q: "Living near the MRT station is very convenient for people who work downtown. 'convenient' 的意思是？", opt: ["困難的", "方便的", "擁擠的", "遙遠的"], ans: 1, tip: "這句話的意思：住在捷運站附近，對在市區上班的人來說很方便。" },
+            { q: "It is necessary to bring an umbrella because it might rain this afternoon. 'necessary' 的意思是？", opt: ["必要的", "多餘的", "禁止的", "免費的"], ans: 0, tip: "這句話的意思：帶雨傘是必要的，因為下午可能會下雨。" },
+            { q: "Is it possible to finish this report before Friday if we work together? 'possible' 的意思是？", opt: ["不可能的", "可能的", "確定的", "困難的"], ans: 1, tip: "這句話的意思：如果我們一起合作，星期五前完成這份報告有可能嗎？" },
+            { q: "Sorry, this seat is not available; someone already reserved it for the concert. 'available' 的意思是？", opt: ["昂貴的", "損壞的", "可取得的", "禁止的"], ans: 2, tip: "這句話的意思：抱歉，這個位子已經有人訂了演唱會，沒辦法取得。" },
+            { q: "Our school held an international food festival with dishes from ten countries. 'international' 的意思是？", opt: ["國際的", "國內的", "傳統的", "私人的"], ans: 0, tip: "這句話的意思：我們學校舉辦了國際美食節，有十個國家的料理。" },
+            { q: "My grandmother taught me how to cook several traditional dishes from her hometown. 'traditional' 的意思是？", opt: ["現代的", "傳統的", "昂貴的", "簡單的"], ans: 1, tip: "這句話的意思：我奶奶教我煮她家鄉的幾道傳統菜。" },
+            { q: "The city built a modern library with computers and comfortable reading rooms. 'modern' 的意思是？", opt: ["古老的", "現代的", "傳統的", "簡陋的"], ans: 1, tip: "這句話的意思：這座城市蓋了一座有電腦和舒適閱覽室的現代化圖書館。" },
+            { q: "Try to stay positive even when things don't go the way you planned. 'positive' 的意思是？", opt: ["正面的", "負面的", "中立的", "複雜的"], ans: 0, tip: "這句話的意思：即使事情不如預期，也要盡量保持正面積極。" },
+            { q: "Too much negative news on TV can make people feel worried and tired. 'negative' 的意思是？", opt: ["正面的", "負面的", "積極的", "樂觀的"], ans: 1, tip: "這句話的意思：看太多負面新聞會讓人感到擔心又疲累。" },
+            { q: "Air pollution in big cities is getting worse because of heavy traffic. 'pollution' 的意思是？", opt: ["污染", "資源", "天氣", "景色"], ans: 0, tip: "這句話的意思：因為交通繁忙，大城市的空氣污染越來越嚴重。" },
+            { q: "We should recycle plastic bottles instead of throwing them into the trash can. 'recycle' 的意思是？", opt: ["丟棄", "購買", "回收", "製造"], ans: 2, tip: "這句話的意思：我們應該回收塑膠瓶，而不是丟進垃圾桶。" },
+            { q: "Every weekend, my sister works as a volunteer at the animal shelter downtown. 'volunteer' 的意思是？", opt: ["顧客", "志工", "老闆", "專家"], ans: 1, tip: "這句話的意思：我姊姊每個週末都在市區的動物收容所當志工。" },
+            { q: "The new park brings the whole community together for exercise and picnics. 'community' 的意思是？", opt: ["社區", "公司", "學校", "政府"], ans: 0, tip: "這句話的意思：這座新公園把整個社區的人聚在一起運動、野餐。" },
+            { q: "Taking off your shoes before entering a house is a common custom here. 'custom' 的意思是？", opt: ["習俗", "法律", "課程", "比賽"], ans: 0, tip: "這句話的意思：進門前脫鞋在這裡是很常見的習俗。" },
+            { q: "Thousands of people gather in the park every year for the lantern festival. 'festival' 的意思是？", opt: ["節慶", "考試", "會議", "競賽"], ans: 0, tip: "這句話的意思：每年都有成千上萬的人聚集在公園參加燈籠節慶。" },
+            { q: "I was disappointed when our trip to the beach was cancelled because of rain. 'disappointed' 的意思是？", opt: ["興奮的", "失望的", "驕傲的", "害怕的"], ans: 1, tip: "這句話的意思：因為下雨海邊之旅取消了，我覺得很失望。" },
+            { q: "He felt embarrassed after he called his teacher 'Mom' in front of the class. 'embarrassed' 的意思是？", opt: ["自豪的", "尷尬的", "放鬆的", "滿意的"], ans: 1, tip: "這句話的意思：他在全班面前把老師叫成「媽媽」，覺得很尷尬。" },
+            { q: "After weeks of practice, she felt confident about her speech contest tomorrow. 'confident' 的意思是？", opt: ["緊張的", "害羞的", "有信心的", "懶惰的"], ans: 2, tip: "這句話的意思：練習了好幾週後，她對明天的演講比賽感到很有信心。" },
+            { q: "My grandfather is still very active; he goes hiking every single weekend. 'active' 的意思是？", opt: ["活躍的", "安靜的", "疲累的", "害羞的"], ans: 0, tip: "這句話的意思：我爺爺依然很活躍，每個週末都去健行。" },
+            { q: "Her small bakery became so successful that she opened three more stores. 'successful' 的意思是？", opt: ["失敗的", "成功的", "普通的", "貧窮的"], ans: 1, tip: "這句話的意思：她的小烘焙坊變得非常成功，所以又多開了三家店。" },
+            { q: "Students should respect their teachers and listen carefully during class. 'respect' 的意思是？", opt: ["尊重", "抱怨", "懷疑", "忽略"], ans: 0, tip: "這句話的意思：學生應該尊重老師，上課時要專心聽講。" },
+            { q: "As the team leader, she is responsible for organizing all the meetings. 'responsible' 的意思是？", opt: ["粗心的", "負責任的", "懶惰的", "害怕的"], ans: 1, tip: "這句話的意思：身為隊長，她負責安排所有的會議。" },
+            { q: "My coach always tries to encourage us, even after we lose a game. 'encourage' 的意思是？", opt: ["批評", "鼓勵", "拒絕", "懲罰"], ans: 1, tip: "這句話的意思：即使我們輸了比賽，教練也總是設法鼓勵我們。" },
+            { q: "It took him five years of hard training to achieve his Olympic dream. 'achieve' 的意思是？", opt: ["放棄", "達成", "忘記", "延遲"], ans: 1, tip: "這句話的意思：他花了五年苦練才達成他的奧運夢想。" },
+            { q: "The children were so energetic that they kept running around the playground. 'energetic' 的意思是？", opt: ["疲累的", "精力充沛的", "安靜的", "害羞的"], ans: 1, tip: "這句話的意思：孩子們精力充沛，一直在遊樂場裡跑來跑去。" },
+            { q: "After the ten-kilometer race, all the runners looked completely exhausted. 'exhausted' 的意思是？", opt: ["精力充沛的", "精疲力盡的", "開心的", "緊張的"], ans: 1, tip: "這句話的意思：跑完十公里的比賽後，所有跑者都顯得精疲力盡。" },
+            { q: "The customer was satisfied with the service, so she left a good review. 'satisfied' 的意思是？", opt: ["生氣的", "滿意的", "失望的", "困惑的"], ans: 1, tip: "這句話的意思：這位顧客對服務感到滿意，所以留下了好評。" },
+            { q: "My brother recently moved to Taipei to start his new job at a bank. 'recently' 的意思是？", opt: ["最近", "很久以前", "從不", "總是"], ans: 0, tip: "這句話的意思：我哥哥最近搬到台北，開始在一家銀行上班。" },
+            { q: "Nowadays, many people prefer shopping online instead of going to the mall. 'nowadays' 的意思是？", opt: ["過去", "現今", "未來", "偶爾"], ans: 1, tip: "這句話的意思：現今很多人偏好網路購物，而不是去逛百貨公司。" },
+            { q: "According to the weather report, it will be sunny for the whole weekend. 'according' 的意思是？", opt: ["根據", "除了", "儘管", "因為"], ans: 0, tip: "這句話的意思：根據天氣預報，整個週末都會是晴天。" },
+            { q: "I love all fruits, especially watermelon, because it's sweet and refreshing. 'especially' 的意思是？", opt: ["尤其", "很少", "從不", "偶爾"], ans: 0, tip: "這句話的意思：我喜歡所有水果，尤其是西瓜，因為又甜又消暑。" },
+            { q: "I thought the movie would be boring, but it was actually quite exciting. 'actually' 的意思是？", opt: ["也許", "事實上", "可能", "似乎"], ans: 1, tip: "這句話的意思：我原以為這部電影會很無聊，但事實上還蠻精彩的。" },
+            { q: "Please read the following instructions carefully before you start the test. 'following' 的意思是？", opt: ["之前的", "接下來的", "相同的", "過去的"], ans: 1, tip: "這句話的意思：開始考試前，請仔細閱讀接下來的指示。" },
+            { q: "The average student in this class studies about two hours every night. 'average' 的意思是？", opt: ["最高的", "平均的", "最低的", "特別的"], ans: 1, tip: "這句話的意思：這班的學生平均每晚讀書大約兩小時。" },
+            { q: "Losing your keys is a common problem, so always keep a spare one. 'common' 的意思是？", opt: ["罕見的", "常見的", "昂貴的", "危險的"], ans: 1, tip: "這句話的意思：弄丟鑰匙是很常見的問題，所以要隨時準備一把備份。" },
+            { q: "We decided to buy vegetables from the local farmers' market this weekend. 'local' 的意思是？", opt: ["外國的", "當地的", "國際的", "遙遠的"], ans: 1, tip: "這句話的意思：這個週末我們決定跟當地的農夫市集買蔬菜。" },
+            { q: "Smoking is not allowed in most public places, such as parks and stations. 'public' 的意思是？", opt: ["私人的", "公共的", "秘密的", "個人的"], ans: 1, tip: "這句話的意思：大部分公共場所，像是公園和車站，都禁止抽菸。" }
         ];
 
         const Q_PUZZLE = [
@@ -608,7 +616,7 @@
 
         let GAME = {
             player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0, combo: 0, bossCounterFired: false,
-            enemyHp: 0, isProcessing: false, isEventChallenge: false,
+            enemyHp: 0, isProcessing: false, isEventChallenge: false, paused: false,
             timer: null, timeLeft: 0, maxTime: 10, currentQ: null, currentQType: null,
             combatQueue: [], puzzleQueue: [], vocabQueue: []
         };
@@ -633,6 +641,27 @@
             document.getElementById('btn-mute').textContent = muted ? '🔇' : '🔊';
         }
         document.getElementById('btn-mute').textContent = muted ? '🔇' : '🔊';
+
+        // 暫停遊戲：停止計時器、擋住畫面互動，讓老師可以隨時暫停講解
+        function togglePause() {
+            if (document.getElementById('screen-game').classList.contains('hidden')) return;
+            GAME.paused = !GAME.paused;
+            const overlay = document.getElementById('pause-overlay');
+            const btn = document.getElementById('btn-pause');
+            if (GAME.paused) {
+                clearInterval(GAME.timer);
+                overlay.classList.remove('hidden');
+                btn.textContent = '▶️';
+                btn.title = '繼續遊戲';
+            } else {
+                overlay.classList.add('hidden');
+                btn.textContent = '⏸️';
+                btn.title = '暫停遊戲';
+                if (!GAME.isProcessing && GAME.timeLeft > 0 && document.getElementById('timer-container').style.visibility !== 'hidden') {
+                    startTimer();
+                }
+            }
+        }
 
         function beep(freq, duration, type = 'square', startGain = 0.15, glideTo = null, delay = 0) {
             if (muted || !audioCtx) return;
@@ -706,6 +735,7 @@
             sfxBossAttack();
 
             await wait(700);
+            while (GAME.paused) await wait(200); // 暫停中先不結算，等繼續遊戲後才判定
 
             warn.classList.add('hidden');
             sprite.classList.remove('boss-lunge');
@@ -802,8 +832,10 @@
             const nameInput = document.getElementById('player-name').value.trim();
             if (nameInput) GAME.player = nameInput.toUpperCase();
 
-            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0; GAME.combo = 0;
+            GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0; GAME.combo = 0; GAME.paused = false;
             GAME.combatQueue = []; GAME.puzzleQueue = []; GAME.vocabQueue = [];
+            document.getElementById('pause-overlay').classList.add('hidden');
+            document.getElementById('btn-pause').textContent = '⏸️';
             document.getElementById('ui-max-stage').innerText = LEVELS.length;
 
             updateTopUI();
@@ -1020,7 +1052,8 @@
                 sfxWrong();
                 GAME.combo = 0; updateTopUI();
                 logAnswer('puzzle', GAME.currentQ.hint, userAns, GAME.currentQ.correct);
-                await takeDamage(20, 'ERR: 邏輯錯誤 (LOGIC ERROR)');
+                const msg = `ERR: 邏輯錯誤 (LOGIC ERROR)<br><span class="text-lg sm:text-xl text-teal-200 normal-case tracking-normal block mt-2">正確答案: ${GAME.currentQ.correct}</span>`;
+                await takeDamage(20, msg, 2200);
             }
         }
 
