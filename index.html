@@ -324,10 +324,14 @@
         </div>
 
         <!-- 結束畫面 -->
-        <div id="screen-end" class="hidden flex-1 flex flex-col items-center justify-center text-center space-y-8 z-10 font-sans">
+        <div id="screen-end" class="hidden flex-1 min-h-0 flex flex-col items-center text-center space-y-6 z-10 font-sans overflow-y-auto py-6">
             <h1 id="end-title" class="text-5xl sm:text-7xl font-bold"></h1>
             <p id="end-desc" class="text-3xl leading-relaxed text-teal-200"></p>
-            <button onclick="location.reload()" class="btn-pixel px-8 py-4 text-3xl mt-8 font-sans">系統重啟 (REBOOT)</button>
+            <div id="wrong-answers-panel" class="hidden w-full max-w-2xl text-left border-2 border-teal-700 bg-black bg-opacity-60 p-4">
+                <h3 class="text-2xl text-yellow-400 font-bold mb-3 text-center">📋 錯題紀錄 (REVIEW)</h3>
+                <div id="wrong-answers-list" class="space-y-3 text-lg sm:text-xl"></div>
+            </div>
+            <button onclick="location.reload()" class="btn-pixel px-8 py-4 text-3xl font-sans">系統重啟 (REBOOT)</button>
         </div>
     </div>
 
@@ -668,7 +672,7 @@
             player: 'ROBOT-X', hp: 100, chips: 3, parts: 0, stage: 0, score: 0, combo: 0, bossCounterFired: false, bossChipUsed: false,
             enemyHp: 0, isProcessing: false, isEventChallenge: false, paused: false,
             timer: null, timeLeft: 0, maxTime: 10, currentQ: null, currentQType: null,
-            combatQueue: [], puzzleQueue: [], vocabQueue: []
+            combatQueue: [], puzzleQueue: [], vocabQueue: [], wrongAnswers: []
         };
 
         let puzzleSelected = [];
@@ -816,6 +820,7 @@
         const SHEET_WEBHOOK_URL = "";
 
         function logAnswer(type, question, userAnswer, correctAnswer) {
+            GAME.wrongAnswers.push({ type, question, userAnswer, correctAnswer });
             if (!SHEET_WEBHOOK_URL) return;
             try {
                 fetch(SHEET_WEBHOOK_URL, {
@@ -884,7 +889,7 @@
             if (nameInput) GAME.player = nameInput.toUpperCase();
 
             GAME.hp = 100; GAME.chips = 3; GAME.parts = 0; GAME.stage = 0; GAME.score = 0; GAME.combo = 0; GAME.paused = false; GAME.bossChipUsed = false;
-            GAME.combatQueue = []; GAME.puzzleQueue = []; GAME.vocabQueue = [];
+            GAME.combatQueue = []; GAME.puzzleQueue = []; GAME.vocabQueue = []; GAME.wrongAnswers = [];
             document.getElementById('pause-overlay').classList.add('hidden');
             document.getElementById('btn-pause').textContent = '⏸️';
             document.getElementById('ui-max-stage').innerText = LEVELS.length;
@@ -1288,6 +1293,25 @@
                 title.className = 'text-5xl sm:text-7xl font-bold text-red-600 drop-shadow-[0_0_20px_rgba(220,38,38,0.8)] animate-pulse';
                 desc.innerHTML = `機體 ${GAME.player} 裝甲值歸零...<br><br>最終積分：${GAME.score}<br>連線中斷。請重新訓練文法神經網路。`;
             }
+
+            renderWrongAnswers();
+        }
+
+        // 錯題統計表：不需要任何後台設定，遊戲結束時直接列出這次答錯的題目
+        function renderWrongAnswers() {
+            const panel = document.getElementById('wrong-answers-panel');
+            const list = document.getElementById('wrong-answers-list');
+            if (!GAME.wrongAnswers.length) { panel.classList.add('hidden'); return; }
+
+            const typeLabel = { grammar: '文法', vocab: '單字', puzzle: '重組句子' };
+            list.innerHTML = GAME.wrongAnswers.map((w, i) => `
+                <div class="border-b border-teal-800 pb-2">
+                    <span class="text-teal-500">${i + 1}. [${typeLabel[w.type] || w.type}]</span> ${w.question}<br>
+                    <span class="text-red-400">你的答案：${w.userAnswer}</span>
+                    <span class="text-[#00ffcc]">正確答案：${w.correctAnswer}</span>
+                </div>
+            `).join('');
+            panel.classList.remove('hidden');
         }
     </script>
 </body>
