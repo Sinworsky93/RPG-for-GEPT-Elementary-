@@ -804,7 +804,7 @@ async function fetchRealAIFeedback(recording, topic, onStatus){
     body: JSON.stringify({ type:'ai_feedback', requestId, name, topic, mimeType: recording.blob.type || 'audio/webm', audioBase64 })
   }).catch(()=>{});
 
-  const maxAttempts = 40; // ~80 seconds
+  const maxAttempts = 55; // ~110 seconds — gives the backend's automatic retry-on-failure a bit of headroom
   for(let i=0; i<maxAttempts; i++){
     await sleep(2000);
     if(onStatus) onStatus(i);
@@ -952,6 +952,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'改善口說AI批改穩定度：後台改為 Gemini 呼叫失敗自動重試（最多3次），避免額度限制或暫時性錯誤造成單次批改直接失敗，需重新部署後台生效' },
   { date:'2026-08-10', text:'口說頁面新增「跟讀練習 Shadowing」雛型：播放範例回答（瀏覽器內建語音合成，可調速度），句子會同步反白跟讀，念完可以錄音跟自己比對。目前只有一則示範文字，先試試看效果如何' },
   { date:'2026-08-10', text:'口說 AI 批改新增「Action Plan 行動計畫」卡片：針對分數最低的1-2項評分標準，給出具體可執行的練習建議（需重新部署後台才能讓 AI 產生客製化建議，但畫面已支援，舊結果也會自動生成通用建議）' },
   { date:'2026-08-10', text:'修正模擬考試裡文章不能標記螢光筆的問題；補齊「The Science of Persuasion」文章原本只有3段（357字，遠低於一般篇幅），新增2段內容與2題，達到跟其他文章一致的15題' },
