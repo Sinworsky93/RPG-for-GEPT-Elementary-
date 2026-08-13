@@ -169,6 +169,8 @@
   .action-plan .ap-block:last-child{margin-bottom:0;}
   .action-plan .ap-crit{font-weight:800;font-size:13px;color:#8a6400;margin-bottom:4px;}
   .action-plan ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;color:#5c4a00;}
+  .shadow-sent{transition:background .15s;border-radius:3px;}
+  .shadow-sent.active{background:#e4dcfb;box-shadow:0 0 0 2px #c9bdf5;}
   .vocab-wrap{overflow-x:auto;}
   .vocab-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:420px;}
   .vocab-table td, .vocab-table th{border-bottom:1px solid var(--line);padding:7px 6px;text-align:left;vertical-align:top;}
@@ -950,6 +952,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'口說頁面新增「跟讀練習 Shadowing」雛型：播放範例回答（瀏覽器內建語音合成，可調速度），句子會同步反白跟讀，念完可以錄音跟自己比對。目前只有一則示範文字，先試試看效果如何' },
   { date:'2026-08-10', text:'口說 AI 批改新增「Action Plan 行動計畫」卡片：針對分數最低的1-2項評分標準，給出具體可執行的練習建議（需重新部署後台才能讓 AI 產生客製化建議，但畫面已支援，舊結果也會自動生成通用建議）' },
   { date:'2026-08-10', text:'修正模擬考試裡文章不能標記螢光筆的問題；補齊「The Science of Persuasion」文章原本只有3段（357字，遠低於一般篇幅），新增2段內容與2題，達到跟其他文章一致的15題' },
   { date:'2026-08-10', text:'閱讀新增「模擬考試」模式：隨機抽3篇文章（自動湊近40題），60分鐘倒數，可自由切換三篇作答，交卷後顯示總分並換算成雅思Band分數；一般單篇練習也同步加上Band換算，跟口說的評分方式一致' },
@@ -2199,7 +2202,8 @@ function usefulWordsHTML(words){
 function renderSpeaking(){
   const el = document.getElementById('speaking-list');
   if(!state.speaking){ el.innerHTML='<div class="empty">找不到 speaking-bank.json</div>'; return; }
-  let html = '<div class="section-title">Part 1－選擇主題</div>';
+  let html = shadowingDemoHTML();
+  html += '<div class="section-title">Part 1－選擇主題</div>';
   html += `<div class="chip-row" id="p1chips">${(state.speaking.part1_topics||[]).map((t,i)=>`<span onclick="showPart1(${i})" style="cursor:pointer;">${t.topic}</span>`).join('')}</div>`;
   html += `<div id="p1questions"></div>`;
 
@@ -2249,6 +2253,71 @@ function nextCue(){
   const cards = state.speaking.part2_cue_cards;
   cueIndex = Math.floor(Math.random()*cards.length);
   document.getElementById('cueCard').innerHTML = cueCardHTML(cards[cueIndex], cueIndex);
+}
+
+/* ---------- shadowing prototype (瀏覽器內建 TTS 唸範例回答，學生跟讀＋錄音比對) ----------
+   Only one hardcoded sample answer for now — this is a prototype to validate the
+   mechanic (sentence-highlighted TTS playback at adjustable speed + shadow recording)
+   before writing model-answer text for the full speaking question bank. */
+const SHADOW_DEMO = {
+  title: 'Describe your favourite city or a city you have visited that you like very much.',
+  text: "I'd like to talk about Kyoto, a city I visited in Japan a few years ago. It's located in the Kansai region, not too far from Osaka, and it used to be the capital of Japan for over a thousand years. I went there in the spring, actually, during cherry blossom season, which turned out to be perfect timing. The main reason I loved it so much was the incredible mix of old and new — you'd walk past a modern shopping street and then suddenly find yourself in front of a centuries-old temple. As for major attractions, I'd definitely recommend Fushimi Inari Shrine, with its thousands of bright orange gates winding up the mountain, and also the Arashiyama bamboo grove, which honestly felt like walking into another world. What really left a lasting impression on me, though, was just how peaceful everything felt, even with so many tourists around. I'd love to go back one day, maybe in autumn this time, to see the leaves change color."
+};
+let shadowSpeaking = false;
+function shadowSentences(){ return SHADOW_DEMO.text.match(/[^.!?]+[.!?]+(\s|$)/g) || [SHADOW_DEMO.text]; }
+function shadowingDemoHTML(){
+  const sentences = shadowSentences();
+  const spans = sentences.map((s,i)=>`<span id="shadowSent-${i}" class="shadow-sent">${s}</span>`).join('');
+  return `<div class="qbox" style="background:#f3f0ff;border-color:#c9bdf5;margin-bottom:18px;">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
+      <h3 style="margin:0;">🧪 跟讀練習 Shadowing（雛型）</h3>
+      <span class="badge" style="background:#e4dcfb;color:#5b3fc4;">Beta</span>
+    </div>
+    <div class="instr" style="margin-bottom:10px;">播放範例回答，跟著同步唸出來，可以調整語速。念完可以錄音跟自己比對。這是雛型功能，只有這一則示範文字，如果覺得有用，之後會補上完整題庫的範例回答。</div>
+    <div style="font-weight:700;font-size:13.5px;margin-bottom:8px;">${SHADOW_DEMO.title}</div>
+    <div id="shadowText" style="font-size:14.5px;line-height:2;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px;">${spans}</div>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
+      <button type="button" class="smallbtn" id="shadowPlayBtn" onclick="toggleShadowPlay()">▶️ 播放</button>
+      <label style="font-size:12.5px;color:var(--sub);display:flex;align-items:center;gap:6px;">語速
+        <select id="shadowRate" onchange="if(shadowSpeaking){stopShadowPlay();toggleShadowPlay();}">
+          <option value="0.7">0.7x（慢）</option>
+          <option value="0.85">0.85x</option>
+          <option value="1" selected>1x（正常）</option>
+          <option value="1.15">1.15x</option>
+        </select>
+      </label>
+    </div>
+    ${recorderHTML('shadow-demo', 'Shadowing: '+SHADOW_DEMO.title)}
+  </div>`;
+}
+function toggleShadowPlay(){
+  if(shadowSpeaking){ stopShadowPlay(); return; }
+  if(!window.speechSynthesis){ alert('這個瀏覽器不支援語音合成（Speech Synthesis）'); return; }
+  const rate = parseFloat(document.getElementById('shadowRate').value || '1');
+  const sentences = shadowSentences();
+  shadowSpeaking = true;
+  document.getElementById('shadowPlayBtn').textContent = '⏸ 停止';
+  let i = 0;
+  function speakNext(){
+    if(!shadowSpeaking || i >= sentences.length){ stopShadowPlay(); return; }
+    document.querySelectorAll('.shadow-sent').forEach(s=>s.classList.remove('active'));
+    const el = document.getElementById('shadowSent-'+i);
+    if(el){ el.classList.add('active'); el.scrollIntoView({block:'nearest', behavior:'smooth'}); }
+    const u = new SpeechSynthesisUtterance(sentences[i]);
+    u.rate = rate;
+    u.lang = 'en-US';
+    u.onend = () => { i++; speakNext(); };
+    u.onerror = () => { i++; speakNext(); };
+    window.speechSynthesis.speak(u);
+  }
+  speakNext();
+}
+function stopShadowPlay(){
+  shadowSpeaking = false;
+  window.speechSynthesis && window.speechSynthesis.cancel();
+  document.querySelectorAll('.shadow-sent').forEach(s=>s.classList.remove('active'));
+  const btn = document.getElementById('shadowPlayBtn');
+  if(btn) btn.textContent = '▶️ 播放';
 }
 
 /* ---------- speech recording (MediaRecorder + IndexedDB, ~7-day local retention) ---------- */
