@@ -952,6 +952,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-10', text:'Shadowing 跟讀改用 Google Cloud Text-to-Speech 真人等級語音，取代原本機械化的瀏覽器內建語音；每句只抓取一次音檔、調速度不用重新下載，需重新部署後台並另外開通 Text-to-Speech API 才會生效（未部署時會自動退回原本的瀏覽器語音）' },
   { date:'2026-08-10', text:'改善口說AI批改穩定度：後台改為 Gemini 呼叫失敗自動重試（最多3次），避免額度限制或暫時性錯誤造成單次批改直接失敗，需重新部署後台生效' },
   { date:'2026-08-10', text:'口說頁面新增「跟讀練習 Shadowing」雛型：播放範例回答（瀏覽器內建語音合成，可調速度），句子會同步反白跟讀，念完可以錄音跟自己比對。目前只有一則示範文字，先試試看效果如何' },
   { date:'2026-08-10', text:'口說 AI 批改新增「Action Plan 行動計畫」卡片：針對分數最低的1-2項評分標準，給出具體可執行的練習建議（需重新部署後台才能讓 AI 產生客製化建議，但畫面已支援，舊結果也會自動生成通用建議）' },
@@ -2256,31 +2257,44 @@ function nextCue(){
   document.getElementById('cueCard').innerHTML = cueCardHTML(cards[cueIndex], cueIndex);
 }
 
-/* ---------- shadowing prototype (瀏覽器內建 TTS 唸範例回答，學生跟讀＋錄音比對) ----------
+/* ---------- shadowing prototype (真人等級語音跟讀＋錄音比對) ----------
    Only one hardcoded sample answer for now — this is a prototype to validate the
-   mechanic (sentence-highlighted TTS playback at adjustable speed + shadow recording)
-   before writing model-answer text for the full speaking question bank. */
+   mechanic (sentence-highlighted playback at adjustable speed + shadow recording)
+   before writing model-answer text for the full speaking question bank.
+   Audio comes from Google Cloud Text-to-Speech (Neural2 voice) via the Apps Script
+   backend when BACKEND_URL is configured — same fire-and-forget-POST + GET-poll
+   pattern as the AI speaking feedback, for the same cross-browser reasons. Each
+   sentence's audio is fetched once (at natural rate) and cached client-side as a
+   blob URL; the speed selector then just changes <audio>.playbackRate locally, so
+   changing speed never needs a re-fetch. Falls back to the browser's built-in
+   speechSynthesis when no backend is configured, so the feature still works without
+   deployment — just with the more robotic voice quality. */
 const SHADOW_DEMO = {
   title: 'Describe your favourite city or a city you have visited that you like very much.',
   text: "I'd like to talk about Kyoto, a city I visited in Japan a few years ago. It's located in the Kansai region, not too far from Osaka, and it used to be the capital of Japan for over a thousand years. I went there in the spring, actually, during cherry blossom season, which turned out to be perfect timing. The main reason I loved it so much was the incredible mix of old and new — you'd walk past a modern shopping street and then suddenly find yourself in front of a centuries-old temple. As for major attractions, I'd definitely recommend Fushimi Inari Shrine, with its thousands of bright orange gates winding up the mountain, and also the Arashiyama bamboo grove, which honestly felt like walking into another world. What really left a lasting impression on me, though, was just how peaceful everything felt, even with so many tourists around. I'd love to go back one day, maybe in autumn this time, to see the leaves change color."
 };
 let shadowSpeaking = false;
+const shadowAudioCache = {}; // sentence index -> blob URL (fetched once at rate 1.0)
+let shadowAudioEl = null;
 function shadowSentences(){ return SHADOW_DEMO.text.match(/[^.!?]+[.!?]+(\s|$)/g) || [SHADOW_DEMO.text]; }
 function shadowingDemoHTML(){
   const sentences = shadowSentences();
   const spans = sentences.map((s,i)=>`<span id="shadowSent-${i}" class="shadow-sent">${s}</span>`).join('');
+  const voiceNote = BACKEND_URL
+    ? '播放範例回答（Google 真人等級語音），跟著同步唸出來，可以調整語速。念完可以錄音跟自己比對。這是雛型功能，只有這一則示範文字，如果覺得有用，之後會補上完整題庫的範例回答。'
+    : '播放範例回答，跟著同步唸出來，可以調整語速。念完可以錄音跟自己比對。⚠️ 目前後台未設定，暫時使用瀏覽器內建語音（較機械化）— 部署後台後會自動改用真人等級語音。';
   return `<div class="qbox" style="background:#f3f0ff;border-color:#c9bdf5;margin-bottom:18px;">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
       <h3 style="margin:0;">🧪 跟讀練習 Shadowing（雛型）</h3>
       <span class="badge" style="background:#e4dcfb;color:#5b3fc4;">Beta</span>
     </div>
-    <div class="instr" style="margin-bottom:10px;">播放範例回答，跟著同步唸出來，可以調整語速。念完可以錄音跟自己比對。這是雛型功能，只有這一則示範文字，如果覺得有用，之後會補上完整題庫的範例回答。</div>
+    <div class="instr" style="margin-bottom:10px;">${voiceNote}</div>
     <div style="font-weight:700;font-size:13.5px;margin-bottom:8px;">${SHADOW_DEMO.title}</div>
     <div id="shadowText" style="font-size:14.5px;line-height:2;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px;">${spans}</div>
     <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">
       <button type="button" class="smallbtn" id="shadowPlayBtn" onclick="toggleShadowPlay()">▶️ 播放</button>
       <label style="font-size:12.5px;color:var(--sub);display:flex;align-items:center;gap:6px;">語速
-        <select id="shadowRate" onchange="if(shadowSpeaking){stopShadowPlay();toggleShadowPlay();}">
+        <select id="shadowRate" onchange="applyShadowRate()">
           <option value="0.7">0.7x（慢）</option>
           <option value="0.85">0.85x</option>
           <option value="1" selected>1x（正常）</option>
@@ -2291,13 +2305,77 @@ function shadowingDemoHTML(){
     ${recorderHTML('shadow-demo', 'Shadowing: '+SHADOW_DEMO.title)}
   </div>`;
 }
+function applyShadowRate(){
+  if(shadowAudioEl) shadowAudioEl.playbackRate = parseFloat(document.getElementById('shadowRate').value || '1');
+}
+function base64ToBlobUrl(base64, mimeType){
+  const bytes = atob(base64);
+  const arr = new Uint8Array(bytes.length);
+  for(let i=0;i<bytes.length;i++) arr[i] = bytes.charCodeAt(i);
+  return URL.createObjectURL(new Blob([arr], { type: mimeType }));
+}
+async function fetchShadowSentenceAudio(text){
+  const requestId = 'tts_' + Date.now() + '_' + Math.random().toString(36).slice(2,8);
+  fetch(BACKEND_URL, {
+    method: 'POST', mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ type:'tts', requestId, text })
+  }).catch(()=>{});
+  for(let i=0;i<25;i++){ // ~50 seconds
+    await sleep(2000);
+    let data;
+    try{
+      const res = await fetch(`${BACKEND_URL}?action=tts_status&id=${encodeURIComponent(requestId)}`);
+      data = await res.json();
+    }catch(e){ continue; }
+    if(data.ready){
+      if(!data.ok || !data.audioContent) throw new Error(data.error || 'TTS 產生失敗');
+      return base64ToBlobUrl(data.audioContent, 'audio/mp3');
+    }
+  }
+  throw new Error('TTS 逾時，請再試一次');
+}
 function toggleShadowPlay(){
   if(shadowSpeaking){ stopShadowPlay(); return; }
-  if(!window.speechSynthesis){ alert('這個瀏覽器不支援語音合成（Speech Synthesis）'); return; }
-  const rate = parseFloat(document.getElementById('shadowRate').value || '1');
-  const sentences = shadowSentences();
   shadowSpeaking = true;
   document.getElementById('shadowPlayBtn').textContent = '⏸ 停止';
+  if(BACKEND_URL) playShadowWithTTS(); else playShadowWithBrowserVoice();
+}
+async function playShadowWithTTS(){
+  const sentences = shadowSentences();
+  const btn = document.getElementById('shadowPlayBtn');
+  for(let i=0; i<sentences.length; i++){
+    if(!shadowSpeaking) return;
+    document.querySelectorAll('.shadow-sent').forEach(s=>s.classList.remove('active'));
+    const el = document.getElementById('shadowSent-'+i);
+    if(el){ el.classList.add('active'); el.scrollIntoView({block:'nearest', behavior:'smooth'}); }
+    if(!shadowAudioCache[i]){
+      btn.textContent = '⏳ 載入語音中…';
+      try{
+        shadowAudioCache[i] = await fetchShadowSentenceAudio(sentences[i]);
+      }catch(err){
+        alert('語音載入失敗：' + err.message);
+        stopShadowPlay();
+        return;
+      }
+      if(!shadowSpeaking) return;
+      btn.textContent = '⏸ 停止';
+    }
+    if(!shadowAudioEl){ shadowAudioEl = new Audio(); }
+    shadowAudioEl.src = shadowAudioCache[i];
+    shadowAudioEl.playbackRate = parseFloat(document.getElementById('shadowRate').value || '1');
+    await new Promise((resolve)=>{
+      shadowAudioEl.onended = resolve;
+      shadowAudioEl.onerror = resolve;
+      shadowAudioEl.play().catch(resolve);
+    });
+  }
+  stopShadowPlay();
+}
+function playShadowWithBrowserVoice(){
+  if(!window.speechSynthesis){ alert('這個瀏覽器不支援語音合成（Speech Synthesis）'); stopShadowPlay(); return; }
+  const rate = parseFloat(document.getElementById('shadowRate').value || '1');
+  const sentences = shadowSentences();
   let i = 0;
   function speakNext(){
     if(!shadowSpeaking || i >= sentences.length){ stopShadowPlay(); return; }
@@ -2316,6 +2394,7 @@ function toggleShadowPlay(){
 function stopShadowPlay(){
   shadowSpeaking = false;
   window.speechSynthesis && window.speechSynthesis.cancel();
+  if(shadowAudioEl){ shadowAudioEl.pause(); }
   document.querySelectorAll('.shadow-sent').forEach(s=>s.classList.remove('active'));
   const btn = document.getElementById('shadowPlayBtn');
   if(btn) btn.textContent = '▶️ 播放';
