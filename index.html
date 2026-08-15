@@ -164,8 +164,8 @@
             animation: warnPulse 0.35s ease-in-out infinite alternate;
         }
         @keyframes warnPulse {
-            from { opacity: 0.7; transform: translateX(-50%) scale(1); }
-            to { opacity: 1; transform: translateX(-50%) scale(1.05); }
+            from { opacity: 0.7; transform: scale(1); }
+            to { opacity: 1; transform: scale(1.05); }
         }
 
         .boss-lunge {
@@ -310,29 +310,31 @@
                 </div>
             </div>
 
+            <!-- 魔王警告橫幅：獨立一列，不會蓋住下面的敵人名稱 -->
+            <div id="boss-warning" class="hidden bg-red-900 border-2 border-red-500 text-red-200 font-bold text-xs sm:text-lg px-3 py-0.5 sm:py-1 mb-1 boss-warning-banner font-sans text-center whitespace-nowrap rounded self-center">⚠️ 魔王蓄力反擊！快點作答！</div>
+
             <!-- 第一人稱敵人視角區 -->
-            <div id="enemy-view" class="flex-1 min-h-0 flex flex-col items-center justify-center relative mb-2 overflow-hidden">
+            <div id="enemy-view" class="flex-1 min-h-0 flex flex-col items-center justify-start relative mb-1 overflow-hidden">
                 <div id="laser-shot" class="laser-shot"></div>
                 <div id="hit-spark" class="hit-spark"></div>
                 <div id="dodge-text" class="hidden dodge-text">DODGE!</div>
-                <div id="boss-warning" class="hidden absolute top-1 left-1/2 -translate-x-1/2 bg-red-900 border-2 border-red-500 text-red-200 font-bold text-sm sm:text-lg px-3 py-1 z-20 boss-warning-banner font-sans text-center whitespace-nowrap rounded">⚠️ 魔王蓄力反擊！快點作答！</div>
-                <div class="text-center mb-4">
-                    <h2 id="enemy-name" class="text-2xl sm:text-4xl font-bold text-red-500 mb-2 sm:mb-4 tracking-widest uppercase font-sans"></h2>
-                    <div id="enemy-sprite" class="text-6xl sm:text-9xl mb-2 sm:mb-4 animate-bounce enemy-sprite select-none">🛸</div>
-                    <div class="text-xl font-sans" id="enemy-hp-container">
+                <div class="text-center">
+                    <h2 id="enemy-name" class="text-[clamp(1.1rem,3.2vh,2.25rem)] font-bold text-red-500 mb-[clamp(2px,0.6vh,12px)] tracking-widest uppercase font-sans"></h2>
+                    <div id="enemy-sprite" class="text-[clamp(2.2rem,7vh,6rem)] mb-[clamp(2px,0.5vh,12px)] leading-none animate-bounce enemy-sprite select-none">🛸</div>
+                    <div class="text-[clamp(0.8rem,1.8vh,1.25rem)] font-sans" id="enemy-hp-container">
                         防護盾 (SHIELD): <br>
-                        <span id="enemy-hp" class="text-blue-400 text-3xl font-bold tracking-widest"></span>
+                        <span id="enemy-hp" class="text-blue-400 text-[clamp(0.95rem,2.5vh,1.875rem)] font-bold tracking-widest"></span>
                     </div>
                 </div>
             </div>
 
             <!-- 計時器 -->
-            <div class="w-full h-4 bg-gray-950 border-2 border-gray-700 mb-4" id="timer-container">
+            <div class="w-full h-3 sm:h-4 bg-gray-950 border-2 border-gray-700 mb-2 sm:mb-4" id="timer-container">
                 <div id="ui-timer-bar" class="h-full bg-[#00ffcc] w-full transition-all duration-100"></div>
             </div>
 
             <!-- 操作面板 -->
-            <div class="min-h-[16rem] max-h-[45vh] sm:max-h-[42vh] bg-black border-4 border-teal-700 p-4 flex flex-col relative font-sans overflow-y-auto">
+            <div class="min-h-[10rem] max-h-[45vh] sm:max-h-[42vh] bg-black border-4 border-teal-700 p-4 flex flex-col relative font-sans overflow-y-auto">
 
                 <!-- 突發狀況區塊 -->
                 <div id="event-area" class="hidden flex-1 flex flex-col items-center justify-center space-y-6">
