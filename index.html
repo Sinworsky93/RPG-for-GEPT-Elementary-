@@ -256,17 +256,18 @@
                 <div id="part-select" class="grid grid-cols-2 gap-2 text-sm sm:text-base">
                     <button onclick="selectPart('armor')" data-part="armor" class="part-btn selected border-2 px-2 py-2 text-left transition font-sans">🛡️ 強化裝甲<br><span class="text-xs opacity-70">裝甲 120（+20）</span></button>
                     <button onclick="selectPart('time')" data-part="time" class="part-btn border-2 px-2 py-2 text-left transition font-sans">⏱️ 超頻處理器<br><span class="text-xs opacity-70">作答時間 +20%</span></button>
-                    <button onclick="selectPart('chip')" data-part="chip" class="part-btn border-2 px-2 py-2 text-left transition font-sans">💾 備用晶片<br><span class="text-xs opacity-70">作弊晶片 5 個（+2）</span></button>
+                    <button onclick="selectPart('chip')" data-part="chip" class="part-btn border-2 px-2 py-2 text-left transition font-sans">💾 備用晶片<br><span class="text-xs opacity-70">自動作答 3 次（+1）</span></button>
                     <button onclick="selectPart('score')" data-part="score" class="part-btn border-2 px-2 py-2 text-left transition font-sans">🎯 精準瞄準鏡<br><span class="text-xs opacity-70">積分 +20%</span></button>
                 </div>
             </div>
 
             <div class="w-full max-w-md font-sans">
-                <h3 class="text-lg sm:text-xl text-yellow-400 font-bold mb-2">📚 選擇練習題型（至少選一個）</h3>
+                <h3 class="text-lg sm:text-xl text-yellow-400 font-bold mb-2">📚 選擇練習題型</h3>
+                <p class="text-xs text-gray-400 mb-2">文法一定會出現，再從單字／重組句子中選一種：</p>
                 <div id="type-select" class="flex gap-2 justify-center text-sm sm:text-base">
-                    <button onclick="toggleType('combat')" data-type="combat" class="type-btn selected border-2 px-3 py-2 transition font-sans">文法</button>
-                    <button onclick="toggleType('vocab')" data-type="vocab" class="type-btn selected border-2 px-3 py-2 transition font-sans">單字</button>
-                    <button onclick="toggleType('puzzle')" data-type="puzzle" class="type-btn selected border-2 px-3 py-2 transition font-sans">重組句子</button>
+                    <button class="type-btn selected border-2 px-3 py-2 font-sans opacity-80 cursor-not-allowed" disabled title="文法一定會出現">文法（必選）</button>
+                    <button onclick="selectSecondType('vocab')" data-type="vocab" class="type-btn selected border-2 px-3 py-2 transition font-sans">單字</button>
+                    <button onclick="selectSecondType('puzzle')" data-type="puzzle" class="type-btn border-2 px-3 py-2 transition font-sans">重組句子</button>
                 </div>
             </div>
 
@@ -662,7 +663,27 @@
             { q: "'sandwich' 的意思是？", opt: ["三明治", "蛋糕", "麵包", "餅乾"], ans: 0, tip: "sandwich：三明治，用麵包夾食材做成；cake 是蛋糕。" },
             { q: "'picnic' 的意思是？", opt: ["野餐", "派對", "露營", "旅行"], ans: 0, tip: "picnic：野餐，帶食物到戶外一起吃飯；camping 是露營。" },
             { q: "'weekend' 的意思是？", opt: ["平日", "週末", "假期", "生日"], ans: 1, tip: "weekend：週末，星期六和星期日；weekday 是平日。" },
-            { q: "'police station' 的意思是？", opt: ["警察局", "消防局", "郵局", "銀行"], ans: 0, tip: "police station：警察局，警察上班、報案的地方；fire station 是消防局。" }
+            { q: "'police station' 的意思是？", opt: ["警察局", "消防局", "郵局", "銀行"], ans: 0, tip: "police station：警察局，警察上班、報案的地方；fire station 是消防局。" },
+            { q: "The soup is too ______ for me to drink right now.", opt: ["hot", "cold", "heavy", "light"], ans: 0, tip: "湯剛煮好通常很燙，用 hot（燙的）。" },
+            { q: "It's very ______ today, so I need to wear a warm coat.", opt: ["hot", "cold", "easy", "busy"], ans: 1, tip: "天氣冷需要穿保暖外套，用 cold（冷的）。" },
+            { q: "This box is too ______ for me to carry alone.", opt: ["heavy", "light", "cheap", "fast"], ans: 0, tip: "太重需要別人幫忙，用 heavy（重的）。" },
+            { q: "My grandmother walks very ______ because her legs are weak.", opt: ["fast", "slowly", "loudly", "quickly"], ans: 1, tip: "腿無力走路會慢，用 slowly（慢慢地）。" },
+            { q: "The classroom is very ______ because all the students went home.", opt: ["noisy", "quiet", "crowded", "busy"], ans: 1, tip: "學生都回家了應該很安靜，用 quiet（安靜的）。" },
+            { q: "This math problem is very ______; I can't solve it.", opt: ["easy", "difficult", "cheap", "fast"], ans: 1, tip: "解不出來表示很難，用 difficult（困難的）。" },
+            { q: "I feel very ______ after running for one hour.", opt: ["tired", "fresh", "happy", "bored"], ans: 0, tip: "跑步一小時後會累，用 tired（累的）。" },
+            { q: "The library is a ______ place, so we should not talk loudly.", opt: ["noisy", "quiet", "dirty", "dangerous"], ans: 1, tip: "圖書館要保持安靜，用 quiet（安靜的）。" },
+            { q: "This bag is too ______; I can't afford it.", opt: ["cheap", "expensive", "small", "light"], ans: 1, tip: "買不起表示太貴，用 expensive（昂貴的）。" },
+            { q: "These shoes are very ______, so I bought two pairs.", opt: ["cheap", "expensive", "heavy", "old"], ans: 0, tip: "便宜才會多買，用 cheap（便宜的）。" },
+            { q: "He was very ______ when he lost his wallet.", opt: ["happy", "upset", "excited", "proud"], ans: 1, tip: "弄丟錢包會沮喪，用 upset（沮喪的）。" },
+            { q: "She felt very ______ when she won first prize.", opt: ["sad", "upset", "excited", "tired"], ans: 2, tip: "贏得第一名會興奮，用 excited（興奮的）。" },
+            { q: "The street was very ______ during the holiday, full of cars and people.", opt: ["empty", "crowded", "quiet", "clean"], ans: 1, tip: "假期街上車多人多，用 crowded（擁擠的）。" },
+            { q: "My brother is very ______; he always helps our neighbors.", opt: ["kind", "rude", "lazy", "shy"], ans: 0, tip: "常幫忙鄰居表示親切，用 kind（親切的）。" },
+            { q: "This river is so ______ that no fish can live in it.", opt: ["clean", "dirty", "cold", "deep"], ans: 1, tip: "魚無法生存表示很髒，用 dirty（髒的）。" },
+            { q: "I need to buy a new umbrella because it is going to be ______ tomorrow.", opt: ["sunny", "rainy", "dry", "windy"], ans: 1, tip: "要用雨傘表示會下雨，用 rainy（下雨的）。" },
+            { q: "The test was very ______, so most students passed easily.", opt: ["difficult", "easy", "long", "strange"], ans: 1, tip: "大部分人都輕鬆通過表示簡單，用 easy（容易的）。" },
+            { q: "This coffee is too ______ to drink; please add some sugar.", opt: ["sweet", "bitter", "cold", "sour"], ans: 1, tip: "沒加糖的咖啡通常很苦，用 bitter（苦的）。" },
+            { q: "The ice cream is very ______, and I love it.", opt: ["sweet", "sour", "bitter", "salty"], ans: 0, tip: "冰淇淋通常是甜的，用 sweet（甜的）。" },
+            { q: "He ran very ______ and won the race.", opt: ["slowly", "fast", "loudly", "quietly"], ans: 1, tip: "贏得比賽表示跑得快，用 fast（快地）。" }
         ];
 
         const Q_PUZZLE = [
@@ -749,7 +770,7 @@
             timer: null, timeLeft: 0, maxTime: 10, currentQ: null, currentQType: null,
             combatQueue: [], puzzleQueue: [], vocabQueue: [], wrongAnswers: [],
             equippedPart: 'armor', timeMultiplier: 1, scoreMultiplier: 1,
-            enabledTypes: { combat: true, vocab: true, puzzle: true }
+            enabledTypes: { combat: true, vocab: true, puzzle: false }
         };
 
         let puzzleSelected = [];
@@ -966,12 +987,13 @@
             document.querySelectorAll('.part-btn').forEach(b => b.classList.toggle('selected', b.dataset.part === part));
         }
 
-        // 練習題型選擇（可複選，至少要保留一個開啟）
-        function toggleType(type) {
-            const enabledCount = Object.values(GAME.enabledTypes).filter(Boolean).length;
-            if (GAME.enabledTypes[type] && enabledCount <= 1) return;
-            GAME.enabledTypes[type] = !GAME.enabledTypes[type];
-            document.querySelectorAll('.type-btn').forEach(b => b.classList.toggle('selected', GAME.enabledTypes[b.dataset.type]));
+        // 練習題型選擇：文法一定開啟，單字／重組句子二選一
+        function selectSecondType(type) {
+            GAME.enabledTypes.vocab = (type === 'vocab');
+            GAME.enabledTypes.puzzle = (type === 'puzzle');
+            document.querySelectorAll('#type-select .type-btn[data-type]').forEach(b => {
+                b.classList.toggle('selected', GAME.enabledTypes[b.dataset.type]);
+            });
         }
 
         // 從目前開啟的題型中挑一個；如果指定的 preferred 題型有開啟就優先用它，否則隨機挑一個已開啟的題型
@@ -989,7 +1011,7 @@
 
             GAME.maxHp = GAME.equippedPart === 'armor' ? 120 : 100;
             GAME.hp = GAME.maxHp;
-            GAME.chips = GAME.equippedPart === 'chip' ? 5 : 3;
+            GAME.chips = GAME.equippedPart === 'chip' ? 3 : 2;
             GAME.timeMultiplier = GAME.equippedPart === 'time' ? 1.2 : 1;
             GAME.scoreMultiplier = GAME.equippedPart === 'score' ? 1.2 : 1;
 
