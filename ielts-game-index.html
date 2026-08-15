@@ -46,9 +46,16 @@
   /* passage/test view */
   .backbtn{background:none;border:none;color:var(--accent);font-weight:600;cursor:pointer;font-size:14px;margin-bottom:14px;padding:0;}
   .split{display:grid;grid-template-columns:1fr;gap:20px;}
-  @media(min-width:860px){.split{grid-template-columns:1.1fr 1fr;}}
+  @media(min-width:860px){.split{grid-template-columns:1.1fr 10px 1fr;gap:0;}}
+  .split-resizer{display:none;}
+  @media(min-width:860px){
+    .split-resizer{display:block;cursor:col-resize;position:relative;touch-action:none;}
+    .split-resizer::after{content:'';position:absolute;top:0;bottom:0;left:50%;width:4px;margin-left:-2px;background:var(--line);border-radius:2px;transition:background .15s;}
+    .split-resizer:hover::after,.split-resizer.dragging::after{background:var(--accent);}
+  }
   .passage-box, .qbox{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;}
-  @media(min-width:860px){.passage-box{position:sticky;top:66px;max-height:78vh;overflow-y:auto;}}
+  @media(min-width:860px){.passage-box{position:sticky;top:66px;max-height:78vh;overflow-y:auto;margin-right:10px;}}
+  @media(min-width:860px){.qbox{margin-left:10px;}}
   .passage-box h2{font-size:19px;margin-top:0;}
   .passage-box p{line-height:1.8;font-size:16px;}
   .para-label{font-weight:800;color:var(--accent);margin-right:6px;}
@@ -455,6 +462,47 @@ function enlargeBtnHTML(sourceId, label){
 // one passage on screen (normal practice) or three at once (mock exam, each panel
 // carrying its own key) — highlightSelection() finds whichever container the current
 // text selection actually falls inside.
+// Resizable split between the passage text column and the question column —
+// shared px width is persisted so every passage/mock panel opens at the
+// student's last-chosen ratio, but only applies at desktop widths (>=860px)
+// where .split lays the two columns out side by side.
+const SPLIT_MIN = 240;
+function applySavedSplitWidths(root){
+  if(window.innerWidth < 860) return;
+  const saved = parseInt(localStorage.getItem('readingSplitLeftPx'), 10);
+  if(!saved) return;
+  (root||document).querySelectorAll('.split').forEach(splitEl=>{
+    splitEl.style.gridTemplateColumns = `${saved}px 10px 1fr`;
+  });
+}
+function splitResizerStart(e){
+  if(window.innerWidth < 860) return;
+  e.preventDefault();
+  const resizer = e.currentTarget;
+  const splitEl = resizer.closest('.split');
+  if(!splitEl) return;
+  resizer.classList.add('dragging');
+  const rect = splitEl.getBoundingClientRect();
+  const onMove = (ev) => {
+    const clientX = ev.touches ? ev.touches[0].clientX : ev.clientX;
+    let leftPx = clientX - rect.left;
+    leftPx = Math.max(SPLIT_MIN, Math.min(rect.width - SPLIT_MIN - 10, leftPx));
+    splitEl.style.gridTemplateColumns = `${leftPx}px 10px 1fr`;
+    try{ localStorage.setItem('readingSplitLeftPx', String(Math.round(leftPx))); }catch(err){}
+  };
+  const onUp = () => {
+    resizer.classList.remove('dragging');
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onUp);
+    document.removeEventListener('touchmove', onMove);
+    document.removeEventListener('touchend', onUp);
+  };
+  document.addEventListener('mousemove', onMove);
+  document.addEventListener('mouseup', onUp);
+  document.addEventListener('touchmove', onMove, {passive:false});
+  document.addEventListener('touchend', onUp);
+}
+
 const PASSAGE_TEXT_REGISTRY = {}; // hlKey -> { label: paragraphText }
 function loadPassageHighlights(){
   try{ return JSON.parse(localStorage.getItem('ieltsHighlights')||'{}'); }catch(e){ return {}; }
@@ -952,6 +1000,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-15', text:'閱讀頁面（單篇練習與模擬考試）新增可拖曳的欄寬調整功能，文章欄與題目欄之間可自由拖曳分隔線調整比例，偏好會自動記住' },
   { date:'2026-08-10', text:'寫作 Task 2 新增 12 篇範文（教育、環境、社會、職場、科技類別），全數符合250字以上規範；其中2題原本題庫已有較短版本，改用新的完整版取代避免重複' },
   { date:'2026-08-10', text:'Shadowing 跟讀改用 Google Cloud Text-to-Speech 真人等級語音，取代原本機械化的瀏覽器內建語音；每句只抓取一次音檔、調速度不用重新下載，需重新部署後台並另外開通 Text-to-Speech API 才會生效（未部署時會自動退回原本的瀏覽器語音）' },
   { date:'2026-08-10', text:'改善口說AI批改穩定度：後台改為 Gemini 呼叫失敗自動重試（最多3次），避免額度限制或暫時性錯誤造成單次批改直接失敗，需重新部署後台生效' },
@@ -1320,6 +1369,7 @@ function openPassage(i){
         </div>
         <div id="passageTextOnly" data-hl-key="${passageKey}">${paragraphsHTML}</div>
       </div>
+      <div class="split-resizer" onmousedown="splitResizerStart(event)" ontouchstart="splitResizerStart(event)"></div>
       <div class="qbox">
         <form id="qform" onchange="saveReadingAnswers()" oninput="saveReadingAnswers()">${qgroupsHTML}</form>
         <div class="submitbar">
@@ -1331,6 +1381,7 @@ function openPassage(i){
   `;
   restoreReadingAnswers(passageKey);
   startReadingTimer();
+  applySavedSplitWidths(test);
 }
 
 function startReadingTimer(){
@@ -1560,6 +1611,7 @@ function renderMockExam(){
           </div>
           <div id="${textId}" data-hl-key="${passageKey}">${paragraphsHTML}</div>
         </div>
+        <div class="split-resizer" onmousedown="splitResizerStart(event)" ontouchstart="splitResizerStart(event)"></div>
         <div class="qbox">
           <form id="mockform-${i}">${qgroupsHTML}</form>
           <div class="score" id="mockScore-${i}" style="margin-top:10px;"></div>
@@ -1580,6 +1632,7 @@ function renderMockExam(){
       <button type="button" onclick="submitMockExam(false)">交卷 Submit All</button>
     </div>
   `;
+  applySavedSplitWidths(el);
 }
 
 function switchMockTab(i){
