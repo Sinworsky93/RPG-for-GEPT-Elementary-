@@ -2733,6 +2733,502 @@
         "commemorate",
         "customs"
       ]
+    },
+    {
+      "topic": "Describe an outdoor activity you enjoy.",
+      "points": [
+        "what the activity is",
+        "where you usually do it",
+        "who you do it with",
+        "and explain why you enjoy it"
+      ],
+      "useful_words": [
+        "fresh air",
+        "get some exercise",
+        "outdoor pursuit",
+        "reconnect with nature",
+        "invigorating"
+      ]
+    },
+    {
+      "topic": "Describe a TV programme you enjoy watching.",
+      "points": [
+        "what it is",
+        "which channel or platform it's on",
+        "how often you watch it",
+        "and explain why you enjoy it"
+      ],
+      "useful_words": [
+        "binge-watch",
+        "gripping storyline",
+        "streaming platform",
+        "must-watch",
+        "critically acclaimed"
+      ]
+    },
+    {
+      "topic": "Describe a time when you learned something useful from social media.",
+      "points": [
+        "what you learned",
+        "which platform it was on",
+        "how it happened",
+        "and explain how it affected you"
+      ],
+      "useful_words": [
+        "viral post",
+        "credible source",
+        "stumble upon",
+        "practical tip",
+        "online community"
+      ]
+    },
+    {
+      "topic": "Describe a website or app that you use often.",
+      "points": [
+        "what it is",
+        "when you started using it",
+        "how you use it",
+        "and explain why it is useful to you"
+      ],
+      "useful_words": [
+        "user-friendly interface",
+        "indispensable",
+        "streamline",
+        "daily routine",
+        "productivity"
+      ]
+    },
+    {
+      "topic": "Describe a number that is important to you.",
+      "points": [
+        "what the number is",
+        "why it is important to you",
+        "how you remember it",
+        "and explain its significance in your life"
+      ],
+      "useful_words": [
+        "lucky number",
+        "milestone",
+        "significant date",
+        "sentimental value",
+        "memorable"
+      ]
+    },
+    {
+      "topic": "Describe a maths class or teacher you remember well.",
+      "points": [
+        "who the teacher was, or what the class was about",
+        "when this was",
+        "what you learned",
+        "and explain why you remember it"
+      ],
+      "useful_words": [
+        "logical thinking",
+        "formula",
+        "problem-solving",
+        "patient teacher",
+        "breakthrough moment"
+      ]
+    },
+    {
+      "topic": "Describe an art exhibition or gallery you have visited.",
+      "points": [
+        "where it was",
+        "when you went",
+        "what you saw there",
+        "and explain how you felt about the experience"
+      ],
+      "useful_words": [
+        "thought-provoking",
+        "curated collection",
+        "contemporary art",
+        "aesthetically pleasing",
+        "immersive"
+      ]
+    },
+    {
+      "topic": "Describe how you made a new friend.",
+      "points": [
+        "who this person is",
+        "where and how you met",
+        "what happened when you met",
+        "and explain why you became friends"
+      ],
+      "useful_words": [
+        "hit it off",
+        "common ground",
+        "acquaintance",
+        "first impression",
+        "form a bond"
+      ]
+    },
+    {
+      "topic": "Describe a family gathering you enjoyed.",
+      "points": [
+        "what the occasion was",
+        "who was there",
+        "what you did together",
+        "and explain why you enjoyed it"
+      ],
+      "useful_words": [
+        "extended family",
+        "reunion",
+        "convivial atmosphere",
+        "catch up",
+        "bond over"
+      ]
+    },
+    {
+      "topic": "Describe something you once borrowed from someone.",
+      "points": [
+        "what it was",
+        "who you borrowed it from",
+        "why you needed it",
+        "and explain how you felt when returning it"
+      ],
+      "useful_words": [
+        "on loan",
+        "return a favour",
+        "trustworthy",
+        "obligated",
+        "in good condition"
+      ]
+    },
+    {
+      "topic": "Describe a time you shared something with someone.",
+      "points": [
+        "what you shared",
+        "who you shared it with",
+        "why you decided to share it",
+        "and explain how it turned out"
+      ],
+      "useful_words": [
+        "generous",
+        "considerate",
+        "mutual benefit",
+        "selfless act",
+        "split evenly"
+      ]
+    },
+    {
+      "topic": "Describe a museum you have visited.",
+      "points": [
+        "where it was",
+        "what it displayed",
+        "who you went with",
+        "and explain what you learned there"
+      ],
+      "useful_words": [
+        "exhibit",
+        "artefact",
+        "informative",
+        "interactive display",
+        "preserve heritage"
+      ]
+    },
+    {
+      "topic": "Describe a scenic place you have visited.",
+      "points": [
+        "where it was",
+        "when you went there",
+        "what it looked like",
+        "and explain why it left an impression on you"
+      ],
+      "useful_words": [
+        "breathtaking",
+        "picturesque",
+        "panoramic view",
+        "unspoiled nature",
+        "awe-inspiring"
+      ]
+    },
+    {
+      "topic": "Describe your favourite drink.",
+      "points": [
+        "what it is",
+        "when you usually drink it",
+        "how it is made",
+        "and explain why you like it"
+      ],
+      "useful_words": [
+        "refreshing",
+        "acquired taste",
+        "brew",
+        "aromatic",
+        "comfort drink"
+      ]
+    },
+    {
+      "topic": "Describe a time you changed your hairstyle.",
+      "points": [
+        "when this happened",
+        "what you changed about it",
+        "why you decided to change it",
+        "and explain how you felt about the new style"
+      ],
+      "useful_words": [
+        "makeover",
+        "trendy",
+        "low-maintenance",
+        "bold choice",
+        "hairdresser"
+      ]
+    },
+    {
+      "topic": "Describe a piece of clothing you often wear.",
+      "points": [
+        "what it is",
+        "when you got it",
+        "why you like wearing it",
+        "and explain when you usually wear it"
+      ],
+      "useful_words": [
+        "versatile",
+        "go-to outfit",
+        "comfortable fit",
+        "practical",
+        "wardrobe staple"
+      ]
+    },
+    {
+      "topic": "Describe a fashion trend you have followed or noticed.",
+      "points": [
+        "what the trend is",
+        "when it became popular",
+        "why people followed it",
+        "and explain your opinion of it"
+      ],
+      "useful_words": [
+        "trendsetter",
+        "fad",
+        "statement piece",
+        "mainstream",
+        "short-lived"
+      ]
+    },
+    {
+      "topic": "Describe a recent change in your neighbourhood.",
+      "points": [
+        "what the change was",
+        "when it happened",
+        "why it happened",
+        "and explain how you feel about it"
+      ],
+      "useful_words": [
+        "revitalise",
+        "redevelopment",
+        "run-down",
+        "up-and-coming",
+        "gentrification"
+      ]
+    },
+    {
+      "topic": "Describe a place with a beautiful view that you visited.",
+      "points": [
+        "where it was",
+        "when you went there",
+        "what you saw",
+        "and explain why it impressed you"
+      ],
+      "useful_words": [
+        "breathtaking",
+        "vantage point",
+        "panoramic",
+        "picture-perfect",
+        "awe-inspiring"
+      ]
+    },
+    {
+      "topic": "Describe a public holiday you enjoy celebrating.",
+      "points": [
+        "what the holiday is",
+        "when it takes place",
+        "how people usually celebrate it",
+        "and explain why you enjoy it"
+      ],
+      "useful_words": [
+        "festive atmosphere",
+        "time-honoured tradition",
+        "family gathering",
+        "public celebration",
+        "commemorate"
+      ]
+    },
+    {
+      "topic": "Describe a photo that means a lot to you.",
+      "points": [
+        "what it shows",
+        "when it was taken",
+        "who took it",
+        "and explain why it is meaningful to you"
+      ],
+      "useful_words": [
+        "candid shot",
+        "cherished memory",
+        "snapshot",
+        "sentimental value",
+        "capture a moment"
+      ]
+    },
+    {
+      "topic": "Describe a memorable event from your childhood.",
+      "points": [
+        "what happened",
+        "when it happened",
+        "who was involved",
+        "and explain why you remember it so well"
+      ],
+      "useful_words": [
+        "vivid memory",
+        "formative experience",
+        "nostalgic",
+        "milestone",
+        "stick in one's mind"
+      ]
+    },
+    {
+      "topic": "Describe a form of transportation you often use.",
+      "points": [
+        "what it is",
+        "how often you use it",
+        "why you use it",
+        "and explain its advantages"
+      ],
+      "useful_words": [
+        "commute",
+        "punctual",
+        "cost-effective",
+        "convenient",
+        "fuel-efficient"
+      ]
+    },
+    {
+      "topic": "Describe a crowded place you have been to.",
+      "points": [
+        "where it was",
+        "when you went there",
+        "why it was crowded",
+        "and explain how you felt about it"
+      ],
+      "useful_words": [
+        "packed",
+        "bustling",
+        "elbow room",
+        "overwhelming",
+        "jam-packed"
+      ]
+    },
+    {
+      "topic": "Describe an evening out that you enjoyed.",
+      "points": [
+        "where you went",
+        "who you went with",
+        "what you did",
+        "and explain why you enjoyed it"
+      ],
+      "useful_words": [
+        "hang out",
+        "memorable night",
+        "lively atmosphere",
+        "socialise",
+        "unwind"
+      ]
+    },
+    {
+      "topic": "Describe a bicycle you have owned or ridden.",
+      "points": [
+        "what it looked like",
+        "how you got it",
+        "how you used it",
+        "and explain your feelings about it"
+      ],
+      "useful_words": [
+        "pedal",
+        "gear up",
+        "cycle lane",
+        "commute by bike",
+        "well-maintained"
+      ]
+    },
+    {
+      "topic": "Describe a time you took up a new form of exercise.",
+      "points": [
+        "what it was",
+        "when you started",
+        "how you learned it",
+        "and explain how it has benefited you"
+      ],
+      "useful_words": [
+        "break a sweat",
+        "stamina",
+        "warm up",
+        "personal trainer",
+        "physically demanding"
+      ]
+    },
+    {
+      "topic": "Describe a water-related activity you have done or would like to try.",
+      "points": [
+        "what it is",
+        "where you did or would do it",
+        "who you would do it with",
+        "and explain why it interests you"
+      ],
+      "useful_words": [
+        "adrenaline rush",
+        "coastal area",
+        "water safety",
+        "refreshing",
+        "out of one's comfort zone"
+      ]
+    },
+    {
+      "topic": "Describe a walk you remember well.",
+      "points": [
+        "where it was",
+        "when it happened",
+        "who you were with",
+        "and explain why you remember it"
+      ],
+      "useful_words": [
+        "stroll",
+        "scenic route",
+        "brisk walk",
+        "memorable",
+        "on foot"
+      ]
+    },
+    {
+      "topic": "Describe a time you watched a beautiful sky, such as a sunset or the stars.",
+      "points": [
+        "when this happened",
+        "where you were",
+        "what you saw",
+        "and explain how it made you feel"
+      ],
+      "useful_words": [
+        "breathtaking",
+        "stargazing",
+        "clear sky",
+        "tranquil",
+        "awe-inspiring"
+      ]
+    },
+    {
+      "topic": "Describe a time when the weather affected your plans.",
+      "points": [
+        "what your plans were",
+        "when this happened",
+        "how the weather affected them",
+        "and explain how you dealt with it"
+      ],
+      "useful_words": [
+        "downpour",
+        "postpone",
+        "unpredictable weather",
+        "adapt to circumstances",
+        "weather forecast"
+      ]
     }
   ],
   "part3_discussion_sets": [
@@ -3063,6 +3559,502 @@
         "What has led to the decline of traditional crafts?",
         "Is it important to protect cultural heritage? Why?",
         "Do you think globalisation is making cultures more similar to each other?"
+      ]
+    },
+    {
+      "theme": "Outdoor Activities and Health",
+      "questions": [
+        "What are the benefits of outdoor activities compared to indoor entertainment?",
+        "Should schools encourage students to spend more time outdoors?",
+        "How has urbanisation affected people's access to outdoor activities?",
+        "Are extreme outdoor sports becoming more popular? Why?"
+      ],
+      "useful_words": [
+        "physical wellbeing",
+        "sedentary lifestyle",
+        "urban sprawl",
+        "adrenaline-fuelled",
+        "green space"
+      ]
+    },
+    {
+      "theme": "Television and Media Habits",
+      "questions": [
+        "Has streaming changed the way people watch TV?",
+        "Should children's TV-watching time be limited?",
+        "Do TV programmes influence public opinion?",
+        "Will traditional broadcast TV disappear in the future?"
+      ],
+      "useful_words": [
+        "on-demand content",
+        "screen time",
+        "public opinion",
+        "cord-cutting",
+        "media influence"
+      ]
+    },
+    {
+      "theme": "Social Media in Society",
+      "questions": [
+        "What are the benefits and drawbacks of social media for relationships?",
+        "Should social media companies be more strictly regulated?",
+        "How does social media affect teenagers' mental health?",
+        "Is an online friendship as valuable as an offline one?"
+      ],
+      "useful_words": [
+        "double-edged sword",
+        "echo chamber",
+        "screen addiction",
+        "cyberbullying",
+        "curated image"
+      ]
+    },
+    {
+      "theme": "The Internet in Daily Life",
+      "questions": [
+        "How has the internet changed the way people access information?",
+        "Should internet access be considered a basic right?",
+        "What are the disadvantages of relying too heavily on the internet?",
+        "Is there a digital divide between older and younger generations?"
+      ],
+      "useful_words": [
+        "information overload",
+        "instant access",
+        "digital literacy",
+        "over-reliance",
+        "connectivity"
+      ]
+    },
+    {
+      "theme": "Numbers and Numeracy",
+      "questions": [
+        "Why is numeracy an important skill in daily life?",
+        "Do people rely too much on calculators and phones for simple maths?",
+        "Are there cultural beliefs about lucky or unlucky numbers in your country?",
+        "How should numeracy be taught in schools?"
+      ],
+      "useful_words": [
+        "mental arithmetic",
+        "numerical literacy",
+        "superstition",
+        "calculation",
+        "practical skill"
+      ]
+    },
+    {
+      "theme": "Mathematics Education",
+      "questions": [
+        "Why do some people find mathematics difficult to learn?",
+        "Is mathematics equally important for all careers?",
+        "Should mathematics be compulsory throughout secondary school?",
+        "Are there gender stereotypes about ability in mathematics?"
+      ],
+      "useful_words": [
+        "abstract concept",
+        "curriculum",
+        "aptitude",
+        "practical application",
+        "stereotype"
+      ]
+    },
+    {
+      "theme": "Art and Society",
+      "questions": [
+        "What role does art play in society?",
+        "Should art education be compulsory in schools?",
+        "Should governments fund public art projects?",
+        "How does digital art compare to traditional art forms?"
+      ],
+      "useful_words": [
+        "public funding",
+        "cultural expression",
+        "creative outlet",
+        "digital medium",
+        "artistic merit"
+      ]
+    },
+    {
+      "theme": "Friendship",
+      "questions": [
+        "What qualities make a good friend?",
+        "Is it harder to make friends as an adult than as a child?",
+        "How has technology changed the way people make and keep friends?",
+        "Are online friends as important as friends made in person?"
+      ],
+      "useful_words": [
+        "trustworthy",
+        "like-minded",
+        "social circle",
+        "maintain a friendship",
+        "genuine connection"
+      ]
+    },
+    {
+      "theme": "Family Life",
+      "questions": [
+        "What role does extended family play in society today?",
+        "Has the structure of the family changed across generations?",
+        "How do people balance time between family and friends?",
+        "Why are family traditions important?"
+      ],
+      "useful_words": [
+        "nuclear family",
+        "close-knit",
+        "generational gap",
+        "family values",
+        "time-honoured tradition"
+      ]
+    },
+    {
+      "theme": "Borrowing and Ownership",
+      "questions": [
+        "What are people's attitudes towards lending money to friends?",
+        "How has the sharing economy changed the way people borrow and rent things?",
+        "Is it easy to borrow money in your country?",
+        "How have peer-to-peer apps changed lending and borrowing?"
+      ],
+      "useful_words": [
+        "sharing economy",
+        "collateral",
+        "peer-to-peer",
+        "financial obligation",
+        "mutual trust"
+      ]
+    },
+    {
+      "theme": "Sharing and Generosity",
+      "questions": [
+        "Should children be taught to share from a young age?",
+        "How have sharing-economy platforms changed consumer habits?",
+        "Are there cultural differences in attitudes towards generosity?",
+        "What are the drawbacks of oversharing on social media?"
+      ],
+      "useful_words": [
+        "collective ownership",
+        "altruism",
+        "cultural norm",
+        "oversharing",
+        "communal resource"
+      ]
+    },
+    {
+      "theme": "Museums and Heritage",
+      "questions": [
+        "Why are museums important for preserving culture and history?",
+        "Should entry to museums be free for everyone?",
+        "How is technology, such as VR, changing the museum experience?",
+        "Are physical museums still relevant in the digital age?"
+      ],
+      "useful_words": [
+        "cultural heritage",
+        "curator",
+        "immersive technology",
+        "admission fee",
+        "preservation"
+      ]
+    },
+    {
+      "theme": "Natural Scenery and Tourism",
+      "questions": [
+        "What impact does tourism have on natural scenery?",
+        "Should governments do more to protect scenic areas?",
+        "How has social media affected the popularity of certain tourist destinations?",
+        "How can development and conservation be balanced?"
+      ],
+      "useful_words": [
+        "overtourism",
+        "conservation effort",
+        "ecosystem",
+        "sustainable tourism",
+        "pristine landscape"
+      ]
+    },
+    {
+      "theme": "Food and Drink Culture",
+      "questions": [
+        "What is the cultural significance of tea or coffee ceremonies in some countries?",
+        "What effects does caffeine have on health?",
+        "How do drink preferences differ between generations?",
+        "How has the rise of coffee chains affected local cafes?"
+      ],
+      "useful_words": [
+        "ritual",
+        "stimulant",
+        "artisanal",
+        "commercialisation",
+        "local establishment"
+      ]
+    },
+    {
+      "theme": "Appearance and Identity",
+      "questions": [
+        "How important is personal appearance in society today?",
+        "Do hairstyles reflect a person's personality or cultural background?",
+        "Should workplaces have strict dress codes and appearance rules?",
+        "Is there social pressure related to physical appearance?"
+      ],
+      "useful_words": [
+        "self-expression",
+        "conform to norms",
+        "first impression",
+        "body image",
+        "societal pressure"
+      ]
+    },
+    {
+      "theme": "Clothing and Fashion Trends",
+      "questions": [
+        "How does fast fashion affect the environment?",
+        "Do people follow fashion trends too closely?",
+        "Are there notable cultural differences in clothing choices?",
+        "Should workplaces relax their dress codes?"
+      ],
+      "useful_words": [
+        "fast fashion",
+        "disposable clothing",
+        "cultural attire",
+        "dress code",
+        "sustainable fabric"
+      ]
+    },
+    {
+      "theme": "The Fashion Industry",
+      "questions": [
+        "What environmental impact does the fast-fashion industry have?",
+        "How much influence do celebrities and social media have on fashion trends?",
+        "Is it important for young people to follow fashion?",
+        "What ethical issues exist in fashion manufacturing?"
+      ],
+      "useful_words": [
+        "influencer marketing",
+        "sweatshop labour",
+        "ethical sourcing",
+        "brand loyalty",
+        "conspicuous consumption"
+      ]
+    },
+    {
+      "theme": "Urban Development and Neighbourhoods",
+      "questions": [
+        "What are the advantages and disadvantages of urban development?",
+        "What role does community play in a neighbourhood?",
+        "How can cities balance growth with liveability?",
+        "Why are green spaces important in residential areas?"
+      ],
+      "useful_words": [
+        "liveability",
+        "community spirit",
+        "urban planning",
+        "green space",
+        "infrastructure"
+      ]
+    },
+    {
+      "theme": "Scenic Views and Travel",
+      "questions": [
+        "Why do people travel specifically to see beautiful views?",
+        "How has photography and social media affected the choice of travel destinations?",
+        "Should scenic spots be developed for tourism, or left in their natural state?",
+        "How do views and landscapes affect people's wellbeing?"
+      ],
+      "useful_words": [
+        "Instagrammable spot",
+        "natural beauty",
+        "overdevelopment",
+        "tranquillity",
+        "landscape"
+      ]
+    },
+    {
+      "theme": "Public Holidays and Culture",
+      "questions": [
+        "What is the purpose of public holidays in society?",
+        "Should countries have more or fewer public holidays?",
+        "How do public holidays reflect a country's cultural values?",
+        "How has globalisation affected traditional holidays?"
+      ],
+      "useful_words": [
+        "cultural significance",
+        "day off",
+        "national identity",
+        "commercialisation",
+        "tradition"
+      ]
+    },
+    {
+      "theme": "Photography in the Digital Age",
+      "questions": [
+        "How have smartphones changed the way people take photographs?",
+        "Do people take too many photos nowadays?",
+        "What role does photography play in preserving memories?",
+        "Are there ethical concerns about sharing photos online?"
+      ],
+      "useful_words": [
+        "digital archive",
+        "oversaturation",
+        "privacy concern",
+        "documentary value",
+        "curated feed"
+      ]
+    },
+    {
+      "theme": "Memory and the Mind",
+      "questions": [
+        "How does memory change as people get older?",
+        "Are some memories more reliable than others?",
+        "How does technology help or hinder people's memory?",
+        "What techniques can people use to improve their memory?"
+      ],
+      "useful_words": [
+        "cognitive decline",
+        "distort a memory",
+        "memory aid",
+        "recall",
+        "mental exercise"
+      ]
+    },
+    {
+      "theme": "Transportation and Urban Planning",
+      "questions": [
+        "What are the advantages and disadvantages of public versus private transport?",
+        "What does the future of transportation look like, with electric and autonomous vehicles?",
+        "How can cities reduce traffic congestion?",
+        "What is the environmental impact of different forms of transportation?"
+      ],
+      "useful_words": [
+        "carbon emissions",
+        "autonomous vehicle",
+        "traffic congestion",
+        "public infrastructure",
+        "sustainable mobility"
+      ]
+    },
+    {
+      "theme": "Crowds and Urban Life",
+      "questions": [
+        "What causes overcrowding in cities?",
+        "How do people cope with crowded environments?",
+        "How does population growth affect city life?",
+        "How can crowds be managed safely at public events?"
+      ],
+      "useful_words": [
+        "population density",
+        "overcrowding",
+        "crowd management",
+        "urban congestion",
+        "personal space"
+      ]
+    },
+    {
+      "theme": "Nightlife and Socialising",
+      "questions": [
+        "How important is nightlife to a city's culture?",
+        "How has technology changed the way people go out and socialise?",
+        "Are there generational differences in socialising habits?",
+        "How do people balance socialising with other responsibilities?"
+      ],
+      "useful_words": [
+        "work-life balance",
+        "social scene",
+        "digital invitation",
+        "late-night venue",
+        "peer pressure"
+      ]
+    },
+    {
+      "theme": "Cycling and Sustainable Transport",
+      "questions": [
+        "What are the benefits of cycling for health and the environment?",
+        "How can cities encourage more people to cycle?",
+        "What challenges do cyclists face in urban areas?",
+        "How does cycling culture differ between countries?"
+      ],
+      "useful_words": [
+        "eco-friendly commute",
+        "cycling infrastructure",
+        "road safety",
+        "carbon-neutral",
+        "cycling culture"
+      ]
+    },
+    {
+      "theme": "Exercise and Wellbeing",
+      "questions": [
+        "Why is regular exercise important for overall health?",
+        "How do busy work or study schedules affect people's exercise habits?",
+        "What role do fitness apps and trackers play in exercise today?",
+        "Should schools and workplaces do more to encourage exercise?"
+      ],
+      "useful_words": [
+        "sedentary lifestyle",
+        "fitness tracker",
+        "cardiovascular health",
+        "wellness programme",
+        "consistency"
+      ]
+    },
+    {
+      "theme": "Sports and Adventure",
+      "questions": [
+        "Why are extreme and adventure sports becoming more popular?",
+        "What safety measures are important in adventure sports?",
+        "How does adventure sport tourism affect local economies?",
+        "How has technology changed the way athletes train for sports?"
+      ],
+      "useful_words": [
+        "risk assessment",
+        "adventure tourism",
+        "adrenaline junkie",
+        "physically demanding",
+        "training regimen"
+      ]
+    },
+    {
+      "theme": "Walking and City Design",
+      "questions": [
+        "What are the benefits of living in a walkable city?",
+        "How does urban design affect people's walking habits?",
+        "How does walking compare to other forms of exercise?",
+        "What can be done to improve pedestrian safety in cities?"
+      ],
+      "useful_words": [
+        "pedestrian-friendly",
+        "walkability",
+        "urban design",
+        "pavement",
+        "road safety"
+      ]
+    },
+    {
+      "theme": "Nature and Wellbeing",
+      "questions": [
+        "How does spending time in nature affect mental health?",
+        "What effects does light pollution have on people and wildlife?",
+        "Why is it important to preserve dark skies for stargazing?",
+        "How can urban design incorporate more connection to nature?"
+      ],
+      "useful_words": [
+        "light pollution",
+        "mental wellbeing",
+        "biodiversity",
+        "restorative",
+        "natural surroundings"
+      ]
+    },
+    {
+      "theme": "Weather and Climate",
+      "questions": [
+        "How does weather affect people's mood and behaviour?",
+        "What impact does climate change have on people's daily lives?",
+        "How do people in different countries adapt to extreme weather?",
+        "Should weather forecasting be made more accessible to the public?"
+      ],
+      "useful_words": [
+        "extreme weather",
+        "climate change",
+        "seasonal adaptation",
+        "forecast accuracy",
+        "natural disaster"
       ]
     }
   ]

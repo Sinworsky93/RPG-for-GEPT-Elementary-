@@ -1000,6 +1000,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-17', text:'口說 Part 1 改為每次進頁面隨機顯示3組主題練習，並新增全部主題的下拉目錄可自由瀏覽；新增31個主題各自對應的 Part 2 題卡與 Part 3 延伸討論題目' },
   { date:'2026-08-17', text:'口說 Part 1 題庫大幅擴充，新增 31 個主題（如交通、天氣、運動、記憶、社群軟體、居住地區等），並為既有主題補充更多題目' },
   { date:'2026-08-15', text:'閱讀頁面（單篇練習與模擬考試）新增可拖曳的欄寬調整功能，文章欄與題目欄之間可自由拖曳分隔線調整比例，偏好會自動記住' },
   { date:'2026-08-10', text:'寫作 Task 2 新增 12 篇範文（教育、環境、社會、職場、科技類別），全數符合250字以上規範；其中2題原本題庫已有較短版本，改用新的完整版取代避免重複' },
@@ -2256,13 +2257,48 @@ function usefulWordsHTML(words){
   return `<div class="useful-words"><span class="lbl">實用詞彙</span>${words.map(w=>`<span class="word-chip">${w}</span>`).join('')}</div>`;
 }
 
+function pickRandomIndices(total, n){
+  const idx = Array.from({length: total}, (_, i) => i);
+  for(let i = idx.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i+1));
+    [idx[i], idx[j]] = [idx[j], idx[i]];
+  }
+  return idx.slice(0, Math.min(n, idx.length));
+}
+function part1BlockHTML(i){
+  const t = state.speaking.part1_topics[i];
+  return `<div class="part3set"><h4>${t.topic}</h4>${usefulWordsHTML(t.useful_words)}<ul>${t.questions.map(q=>`<li>${q}</li>`).join('')}</ul>${recorderHTML('p1r-'+i, t.topic)}</div>`;
+}
+function renderPart1RandomBlocks(){
+  const box = document.getElementById('p1randomBlocks');
+  if(!box) return;
+  box.innerHTML = state.speakingPart1RandomIdx.map(i=>part1BlockHTML(i)).join('');
+}
+function shufflePart1(){
+  state.speakingPart1RandomIdx = pickRandomIndices(state.speaking.part1_topics.length, 3);
+  renderPart1RandomBlocks();
+}
+function showPart1FromSelect(val){
+  const box = document.getElementById('p1selectedBlock');
+  if(val === ''){ box.innerHTML=''; return; }
+  box.innerHTML = part1BlockHTML(parseInt(val,10));
+}
 function renderSpeaking(){
   const el = document.getElementById('speaking-list');
   if(!state.speaking){ el.innerHTML='<div class="empty">找不到 speaking-bank.json</div>'; return; }
   let html = shadowingDemoHTML();
-  html += '<div class="section-title">Part 1－選擇主題</div>';
-  html += `<div class="chip-row" id="p1chips">${(state.speaking.part1_topics||[]).map((t,i)=>`<span onclick="showPart1(${i})" style="cursor:pointer;">${t.topic}</span>`).join('')}</div>`;
-  html += `<div id="p1questions"></div>`;
+  state.speakingPart1RandomIdx = pickRandomIndices(state.speaking.part1_topics.length, 3);
+  html += '<div class="section-title">Part 1－隨機練習（每次進頁面隨機換一組）</div>';
+  html += `<button class="flipbtn" onclick="shufflePart1()">🔀 換一組主題</button>`;
+  html += `<div id="p1randomBlocks">${state.speakingPart1RandomIdx.map(i=>part1BlockHTML(i)).join('')}</div>`;
+
+  html += '<div class="section-title" style="margin-top:18px;">Part 1－全部主題目錄</div>';
+  const p1Options = (state.speaking.part1_topics||[]).map((t,i)=>`<option value="${i}">${t.topic}</option>`).join('');
+  html += `<select id="p1AllSelect" onchange="showPart1FromSelect(this.value)" style="width:100%;max-width:360px;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--panel);color:var(--text);font-size:14px;">
+      <option value="">選擇主題瀏覽...（共${(state.speaking.part1_topics||[]).length}個主題）</option>
+      ${p1Options}
+    </select>`;
+  html += `<div id="p1selectedBlock"></div>`;
 
   html += '<div class="section-title">Part 2－題卡</div>';
   html += `<button class="flipbtn" onclick="nextCue()">🎴 隨機抽一張題卡</button>`;
@@ -2284,7 +2320,8 @@ function showPart1(i){
    examiner-style follow-up questions on the same topic, just like the real
    exam structure (Part 3 builds directly on the Part 2 topic). */
 const CUE_TO_PART3 = [9,3,0,0,5,0,0,5,2,9,4,5,2,9,3,1,11,5,14,5,4,7,3,8,9,5,16,9,0,8,1,8,5,0,8,4,4,8,5,4,5,5,5,1,10,7,1,1,8,5,9,9,9,9,2,2,11,5,10,10,11,10,5,12,1,13,14,12,3,3,13,5,5,15,16,3,
-  8,3,4,17,0,18,4,9,18,9,9,9,4,17,10,10,5,5,18];
+  8,3,4,17,0,18,4,9,18,9,9,9,4,17,10,10,5,5,18,
+  19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49];
 
 function linkedPart3HTML(cardIndex){
   const idx = CUE_TO_PART3[cardIndex];
