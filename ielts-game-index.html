@@ -57,7 +57,7 @@
   @media(min-width:860px){.passage-box{position:sticky;top:66px;max-height:78vh;overflow-y:auto;margin-right:10px;}}
   @media(min-width:860px){.qbox{margin-left:10px;}}
   .passage-box h2{font-size:19px;margin-top:0;}
-  .passage-box p{line-height:1.8;font-size:16px;}
+  .passage-box p{line-height:1.85;font-size:18px;}
   .para-label{font-weight:800;color:var(--accent);margin-right:6px;}
   mark.hl{background:#fff59d;padding:0 1px;border-radius:2px;cursor:pointer;}
   mark.hl:hover{background:#ffe066;}
@@ -176,6 +176,15 @@
   .action-plan .ap-block:last-child{margin-bottom:0;}
   .action-plan .ap-crit{font-weight:800;font-size:13px;color:#8a6400;margin-bottom:4px;}
   .action-plan ul{margin:0;padding-left:18px;font-size:13.5px;line-height:1.8;color:#5c4a00;}
+  .hl-toggle-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+  .hl-toggle{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;opacity:.45;transition:opacity .15s;}
+  .hl-toggle.active{opacity:1;}
+  .hl-toggle .dot{width:10px;height:10px;border-radius:50%;display:inline-block;}
+  .hl-toggle .cnt{color:var(--sub);font-weight:600;}
+  .hl-collocation{background:#dbeafe;border-radius:2px;padding:0 1px;}
+  .hl-topic{background:#dcfce7;border-radius:2px;padding:0 1px;font-style:italic;font-weight:700;}
+  .hl-linking{background:transparent;text-decoration:underline;text-decoration-color:#f59e0b;text-decoration-thickness:2.5px;text-underline-offset:2px;font-weight:700;}
+  .essay-highlighted{white-space:pre-wrap;font-size:13.5px;line-height:1.85;background:var(--chip);border-radius:8px;padding:14px;}
   .shadow-sent{transition:background .15s;border-radius:3px;}
   .shadow-sent.active{background:#e4dcfb;box-shadow:0 0 0 2px #c9bdf5;}
   .vocab-wrap{overflow-x:auto;}
@@ -245,7 +254,7 @@
     header .wrap{justify-content:flex-start;}
     nav{order:3;width:100%;}
     #studentBadge{margin-left:auto;}
-    .passage-box p{font-size:15px;}
+    .passage-box p{font-size:17px;}
     #enlargeOverlay{padding:10px;}
     #enlargeOverlay .sheet{padding:16px;font-size:17px;}
     #enlargeOverlay .sheet p{font-size:17px;}
@@ -958,6 +967,199 @@ function closeAIFeedback(){
   document.getElementById('aiFeedbackModal').classList.remove('active');
 }
 
+/* ---------- writing AI feedback (Task Response/Coherence/Lexical/Grammar bands +
+   collocation/topic-word/linking-device highlighting in the essay text) ----------
+   Same fire-and-forget-POST + GET-poll pattern as the speaking AI feedback, but
+   text-only (no audio upload) so it's faster and works without microphone access.
+   Gemini is asked to return highlight spans as exact substrings copied from the
+   essay, which buildHighlightedEssayHTML() then locates and wraps in <mark> tags —
+   this keeps the highlighting accurate without needing token offsets from the model. */
+function escapeHTML(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function buildHighlightedEssayHTML(text, highlights, activeCats){
+  const taken = [];
+  const overlaps = (s,e) => taken.some(([ts,te]) => s<te && e>ts);
+  const catClass = { collocation:'hl-collocation', topic_word:'hl-topic', linking_device:'hl-linking' };
+  const matches = [];
+  (highlights||[]).forEach(h=>{
+    if(!h || !h.text || !catClass[h.category]) return;
+    let idx = text.indexOf(h.text);
+    while(idx !== -1 && overlaps(idx, idx+h.text.length)){
+      idx = text.indexOf(h.text, idx+1);
+    }
+    if(idx !== -1){
+      matches.push({ start: idx, end: idx+h.text.length, category: h.category, text: h.text });
+      taken.push([idx, idx+h.text.length]);
+    }
+  });
+  matches.sort((a,b)=>a.start-b.start);
+  let html = '', pos = 0;
+  matches.forEach(m=>{
+    html += escapeHTML(text.slice(pos, m.start));
+    if(activeCats.has(m.category)){
+      html += `<mark class="${catClass[m.category]}">${escapeHTML(m.text)}</mark>`;
+    } else {
+      html += escapeHTML(m.text);
+    }
+    pos = m.end;
+  });
+  html += escapeHTML(text.slice(pos));
+  return html;
+}
+function writingSubLabel(key){
+  return {
+    task_response: '內容回應 Task Response',
+    coherence_cohesion: '連貫與銜接 Coherence & Cohesion',
+    lexical_resource: '詞彙資源 Lexical Resource',
+    grammar: '文法範圍與準確度 Grammatical Range & Accuracy'
+  }[key] || key;
+}
+function countHL(highlights, cat){ return (highlights||[]).filter(h=>h.category===cat).length; }
+function mockWritingAIFeedback(text){
+  const sub = { task_response:6.5, coherence_cohesion:6.0, lexical_resource:6.5, grammar:6.0 };
+  const overall = Math.round(((sub.task_response+sub.coherence_cohesion+sub.lexical_resource+sub.grammar)/4)*2)/2;
+  const linkers = ['however','therefore','moreover','furthermore','in addition','for example','for instance',
+    'in conclusion','on the other hand','as a result','overall','in contrast','firstly','secondly','finally'];
+  const lower = text.toLowerCase();
+  const highlights = [];
+  linkers.forEach(l=>{
+    const idx = lower.indexOf(l);
+    if(idx !== -1) highlights.push({ text: text.slice(idx, idx+l.length), category:'linking_device' });
+  });
+  const words = [...new Set(text.match(/\b[a-zA-Z]{7,}\b/g) || [])].slice(0, 8);
+  words.forEach((w,i)=> highlights.push({ text:w, category: i%2===0 ? 'topic_word' : 'collocation' }));
+  return {
+    sub, overall,
+    comment: '整體回應切題，段落結構清楚，但部分句子的銜接可以更自然，詞彙的精確度與多樣性仍有進步空間。',
+    strengths: ['整體結構完整，有明確的引言與結論', '能針對題目提出具體例子支持論點', '用字大致正確，沒有明顯離題'],
+    improvements: ['部分段落之間的銜接較生硬，可多用連接詞', '詞彙重複度偏高，可替換為更精確的同義詞', '少數句子文法時態不一致'],
+    highlights,
+    action_plan: [
+      { criterion:'lexical_resource', steps:['整理這篇回饋中標記的詞彙，練習用同義詞替換重複的字', '每天精讀一篇範文，挑出3個搭配詞加入自己的詞庫'] },
+      { criterion:'coherence_cohesion', steps:['寫作前先列出段落大綱，確保每段只講一個重點並用連接詞銜接', '檢查每個新段落開頭是否有清楚的主題句'] }
+    ]
+  };
+}
+async function fetchWritingAIFeedback(text, ctx, onStatus){
+  const name = getStudentName();
+  const requestId = 'wreq_' + Date.now() + '_' + Math.random().toString(36).slice(2,8);
+  fetch(BACKEND_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify({ type:'writing_feedback', requestId, name, kind: ctx.kind, prompt: ctx.promptText, text })
+  }).catch(()=>{});
+
+  const maxAttempts = 40; // ~80 seconds — text-only, so should resolve faster than audio feedback
+  for(let i=0; i<maxAttempts; i++){
+    await sleep(2000);
+    if(onStatus) onStatus(i);
+    let data;
+    try{
+      const res = await fetch(`${BACKEND_URL}?action=writing_status&id=${encodeURIComponent(requestId)}`);
+      data = await res.json();
+    }catch(networkErr){
+      continue;
+    }
+    if(data.ready){
+      if(!data.ok) throw new Error(data.error || 'AI 批改失敗');
+      const f = data.feedback;
+      if(!f || typeof f.overall !== 'number' || !f.sub || typeof f.sub !== 'object'){
+        throw new Error('AI 回覆格式不完整，請再試一次');
+      }
+      return f;
+    }
+  }
+  throw new Error('AI 分析逾時，請稍後再試一次');
+}
+const WRITING_ACTION_PLAN_DEFAULTS = {
+  task_response: ['寫作前先花2分鐘列出大綱，確保每個論點都直接回應題目要求', '寫完後對照題目逐句檢查，刪除離題或重複的句子'],
+  coherence_cohesion: ['每段只講一個重點，並用連接詞（however/in addition/as a result）銜接上下段', '檢查每段開頭是否有清楚的主題句'],
+  lexical_resource: ['整理這篇回饋中標記的詞彙，練習用同義詞替換重複的字', '每天精讀一篇範文，挑出3個搭配詞加入自己的詞庫'],
+  grammar: ['寫作前決定好整篇的主要時態，避免不必要的時態切換', '練習用複合句（含連接詞如although/because/which）取代簡單句']
+};
+function defaultWritingActionPlan(sub){
+  if(!sub) return [];
+  const weakest = Object.entries(sub).sort((a,b)=>a[1]-b[1]).slice(0,2);
+  return weakest.map(([k])=>({ criterion:k, steps: WRITING_ACTION_PLAN_DEFAULTS[k]||[] }));
+}
+let writingFeedbackState = null;
+function toggleHLCategory(el, cat){
+  if(!writingFeedbackState) return;
+  el.classList.toggle('active');
+  if(writingFeedbackState.active.has(cat)) writingFeedbackState.active.delete(cat);
+  else writingFeedbackState.active.add(cat);
+  const box = document.getElementById('writingHighlightBox');
+  if(box) box.innerHTML = buildHighlightedEssayHTML(writingFeedbackState.text, writingFeedbackState.highlights, writingFeedbackState.active);
+}
+function renderWritingAIFeedbackBody(f, ctx, text, isDemo){
+  const activeCats = new Set(['collocation','topic_word','linking_device']);
+  writingFeedbackState = { text, highlights: f.highlights||[], active: activeCats };
+  const pct = Math.round((f.overall/9)*100);
+  const subRows = Object.entries(f.sub).map(([k,v])=>{
+    const warn = v < 6 ? 'warn' : '';
+    return `<div class="subscore-row">
+      <div class="lbl"><span>${writingSubLabel(k)}</span><b style="color:${v<6?'var(--warn)':'var(--accent)'}">${v.toFixed(1)}</b></div>
+      <div class="subscore-bar ${warn}"><div style="width:${(v/9)*100}%"></div></div>
+    </div>`;
+  }).join('');
+  const actionPlan = f.action_plan && f.action_plan.length ? f.action_plan : defaultWritingActionPlan(f.sub);
+  const actionPlanHTML = actionPlan.length ? `<div class="action-plan">
+    <h5>✨ Action Plan 行動計畫</h5>
+    ${actionPlan.map(ap=>`<div class="ap-block">
+      <div class="ap-crit">針對「${writingSubLabel(ap.criterion)}」：</div>
+      <ul>${(ap.steps||[]).map(s=>`<li>${s}</li>`).join('')}</ul>
+    </div>`).join('')}
+  </div>` : '';
+  const banner = isDemo
+    ? `<div class="disclaimer-banner">⚠️ 這是「介面示範」用的假資料，還沒有串接真正的 AI 寫作批改服務 — 分數與標記都不是根據你這篇作文產生的。</div>`
+    : `<div class="disclaimer-banner" style="background:#e6f6ec;border-color:#9bd6b3;color:#1c8a4b;">✅ 由 AI 依據你這篇作文實際分析產生，僅供參考，不是正式雅思分數。</div>`;
+  const cCol = countHL(f.highlights, 'collocation'), cTopic = countHL(f.highlights,'topic_word'), cLink = countHL(f.highlights,'linking_device');
+  document.getElementById('aiFeedbackBody').innerHTML = `
+    ${banner}
+    <h4 style="margin:0 0 4px;">${escapeHTML((ctx.promptText||'AI 寫作評分').slice(0,80))}</h4>
+    <div class="score-hero">
+      <div class="score-gauge" style="--pct:${pct}"><div class="score-gauge-inner"><b>${f.overall.toFixed(1)}</b><span>Band</span></div></div>
+      <div class="score-meta"><span class="lbl">總體評分 Score</span><b>${f.overall.toFixed(1)}</b><span class="lbl">${f.overall>=7?'Good User':f.overall>=6?'Competent User':'Modest User'}</span></div>
+    </div>
+    ${subRows}
+    <div class="ai-section"><h5>💬 考官意見</h5><p>${f.comment}</p></div>
+    <div class="ai-section"><h5>✅ 優點</h5><ul class="strength-list">${(f.strengths||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
+    <div class="ai-section"><h5>✗ 需要改善的地方</h5><ul class="improve-list">${(f.improvements||[]).map(s=>`<li>${s}</li>`).join('')}</ul></div>
+    <div class="ai-section">
+      <h5>🖍 標記後的作文</h5>
+      <div class="hl-toggle-row">
+        <span class="hl-toggle active" onclick="toggleHLCategory(this,'collocation')"><span class="dot" style="background:#93c5fd;"></span>Collocations <span class="cnt">${cCol}</span></span>
+        <span class="hl-toggle active" onclick="toggleHLCategory(this,'topic_word')"><span class="dot" style="background:#86efac;"></span>Topic words <span class="cnt">${cTopic}</span></span>
+        <span class="hl-toggle active" onclick="toggleHLCategory(this,'linking_device')"><span class="dot" style="background:#f59e0b;"></span>Linking devices <span class="cnt">${cLink}</span></span>
+      </div>
+      <div class="essay-highlighted" id="writingHighlightBox">${buildHighlightedEssayHTML(text, f.highlights||[], activeCats)}</div>
+    </div>
+    ${actionPlanHTML}
+  `;
+}
+async function openWritingAIFeedback(){
+  const ctx = taskCtx;
+  const text = (ctx && ctx.lastText || '').trim();
+  if(!text){ alert('請先完成作文再進行 AI 批改'); return; }
+  document.getElementById('aiFeedbackBody').innerHTML = `<div class="loading">AI 批改中…</div>`;
+  document.getElementById('aiFeedbackModal').classList.add('active');
+  if(!BACKEND_URL){
+    setTimeout(()=> renderWritingAIFeedbackBody(mockWritingAIFeedback(text), ctx, text, true), 600);
+    return;
+  }
+  try{
+    const f = await fetchWritingAIFeedback(text, ctx, (tick)=>{
+      const box = document.getElementById('aiFeedbackBody');
+      if(box) box.innerHTML = `<div class="loading">AI 批改中…（已等待約 ${tick*2} 秒）</div>`;
+    });
+    renderWritingAIFeedbackBody(f, ctx, text, false);
+  }catch(e){
+    document.getElementById('aiFeedbackBody').innerHTML = `<div class="disclaimer-banner">⚠️ AI 批改失敗：${(e.message||'未知錯誤').replace(/</g,'&lt;')}</div>`;
+  }
+}
+
 /* ---------- reading ---------- */
 function bestReadingScore(title){
   const hist = loadHistory().filter(h => h.type==='reading' && h.title===title);
@@ -1000,6 +1202,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-17', text:'閱讀文章字體放大，並新增「AI 批改（測試版）」功能：作文完成後可送交 AI 分析，取得 Task Response／Coherence & Cohesion／Lexical Resource／Grammar 四項分數，並標記出作文中的 Collocations／Topic-specific words／Linking devices（可個別開關顯示），需重新部署後台才會生效' },
   { date:'2026-08-17', text:'口說 Part 1 改為每次進頁面隨機顯示3組主題練習，並新增全部主題的下拉目錄可自由瀏覽；新增31個主題各自對應的 Part 2 題卡與 Part 3 延伸討論題目' },
   { date:'2026-08-17', text:'口說 Part 1 題庫大幅擴充，新增 31 個主題（如交通、天氣、運動、記憶、社群軟體、居住地區等），並為既有主題補充更多題目' },
   { date:'2026-08-15', text:'閱讀頁面（單篇練習與模擬考試）新增可拖曳的欄寬調整功能，文章欄與題目欄之間可自由拖曳分隔線調整比例，偏好會自動記住' },
@@ -2217,6 +2420,7 @@ function finishEssay(autoSubmitted){
     { label: '使用連接詞串連論點', pass: linkersUsed.length>=2, detail: linkersUsed.length ? `已使用：${linkersUsed.join(', ')}` : '未偵測到' }
   ];
   const checksPassed = checks.filter(c=>c.pass).length;
+  ctx.lastText = text;
 
   const modelAnswerHTML = ctx.modelAnswer ? `
       <div class="qgroup">
@@ -2239,6 +2443,7 @@ function finishEssay(autoSubmitted){
       <div class="qgroup">
         <h4>你的作文</h4>
         <div style="white-space:pre-wrap;font-size:13.5px;line-height:1.7;background:var(--chip);border-radius:8px;padding:14px;">${text ? text.replace(/</g,'&lt;') : '<span style="color:var(--sub);">（尚未作答）</span>'}</div>
+        ${text ? `<button type="button" class="flipbtn" style="margin-top:12px;" onclick="openWritingAIFeedback()">🤖 AI 批改（測試版）</button>` : ''}
       </div>
       ${modelAnswerHTML}
     </div>
