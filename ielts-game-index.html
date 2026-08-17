@@ -1000,6 +1000,7 @@ function passageQTypes(p){ return new Set((p.questions||[]).map(g=>g.type)); }
 
 /* ---------- dashboard: exam countdown + recent updates ---------- */
 const UPDATES = [
+  { date:'2026-08-17', text:'口說 Part 1 題庫大幅擴充，新增 31 個主題（如交通、天氣、運動、記憶、社群軟體、居住地區等），並為既有主題補充更多題目' },
   { date:'2026-08-15', text:'閱讀頁面（單篇練習與模擬考試）新增可拖曳的欄寬調整功能，文章欄與題目欄之間可自由拖曳分隔線調整比例，偏好會自動記住' },
   { date:'2026-08-10', text:'寫作 Task 2 新增 12 篇範文（教育、環境、社會、職場、科技類別），全數符合250字以上規範；其中2題原本題庫已有較短版本，改用新的完整版取代避免重複' },
   { date:'2026-08-10', text:'Shadowing 跟讀改用 Google Cloud Text-to-Speech 真人等級語音，取代原本機械化的瀏覽器內建語音；每句只抓取一次音檔、調速度不用重新下載，需重新部署後台並另外開通 Text-to-Speech API 才會生效（未部署時會自動退回原本的瀏覽器語音）' },
